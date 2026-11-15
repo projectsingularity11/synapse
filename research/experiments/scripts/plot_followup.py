@@ -95,7 +95,7 @@ def confidence_figure(diagnostics, confirmation):
     ax.plot(coverage, implied, marker="D", linestyle="--", color=NEURAL, linewidth=1.4, markersize=4, label="Model-implied mean error")
     # Threshold labels are direct data labels, not additional measurements.
     for i, g in enumerate(groups):
-        offset = {0: (-16, 12), 1: (-48, 5), 2: (-48, -1), 3: (-48, -10)}.get(i, (-5, 11))
+        offset = {0: (-16, 12), 1: (-48, 5), 2: (-48, -1), 3: (12, -10)}.get(i, (-5, 11))
         ax.annotate(f"≥{g['minimumConfidence']:.2f}", (coverage[i], errors[i]), xytext=offset,
                     textcoords="offset points", fontsize=7, color=FAILURE,
                     arrowprops={"arrowstyle": "-", "color": "#9da8a3", "linewidth": .6} if i in [1, 2, 3] else None)

@@ -1,7 +1,7 @@
 {
   "generator": "research/experiments/scripts/plot_followup.py",
-  "scriptSha256": "2e5b5f8015af5eb1f2c3fe3afe3850313ffe4e1c6edf52a96c044f8b9cac88b2",
-  "executionDateUTC": "2026-11-15T02:04:23.264948+00:00",
+  "scriptSha256": "6f71acbb0a84ae3cef777f2b60f3fe6d357c4c57f156ac11cde6652bd08167da",
+  "executionDateUTC": "2026-11-15T02:18:40.191122+00:00",
   "matplotlibVersion": "3.11.2",
   "font": "Bundled DejaVu Sans; no new font download",
   "dataRuns": [
@@ -28,19 +28,19 @@
   },
   "outputs": {
     "confidence-coverage.pdf": {
-      "sha256": "821995e891eb5052226806ea6b1840554b4214645c3f22ae4a1ead849e2c5dbd",
-      "bytes": 39167
+      "sha256": "c859f6e61a74d8ea9ed2893ae2d762eeb754108c18bd162224358e7d0f33f2be",
+      "bytes": 39170
     },
     "confidence-coverage.png": {
-      "sha256": "184ca36bf68e46f4a6a187a0c01d2b951125973365bbbfa334cc8dc3b8277d00",
-      "bytes": 265176
+      "sha256": "800846d1586aefa2756c7cea1644128336d07eb2ca0b88a84882319c7602e9a1",
+      "bytes": 265035
     },
     "confidence-coverage.svg": {
-      "sha256": "284ac4af2a9a0a3986135ceb2230916a4d49b4fa7f9021e505d24cca44db1d5d",
-      "bytes": 39677
+      "sha256": "cba0c9bba9d83a41b6c0f809d911d5fced0fa5ef1c93d2eae1b3e5ffbb7d021b",
+      "bytes": 39678
     },
     "training-noise-control.pdf": {
-      "sha256": "e41620a6d28b825985d366dafbccc31660bba1db3de9e18d8a0d649f03dc2a5f",
+      "sha256": "0172448c7a2dd03ab2b417e70704692824d211b974d10c551c17ca6200d80acb",
       "bytes": 34719
     },
     "training-noise-control.png": {
@@ -48,7 +48,7 @@
       "bytes": 242487
     },
     "training-noise-control.svg": {
-      "sha256": "bb265232eb35796099ef37a81a6fe39faa1d2e17e0552724befddcd237e38c3f",
+      "sha256": "dcae1452ff20dfc259d0287f5fb3fad1829d4469924d890dfb6c7fa4b52c7ce7",
       "bytes": 39675
     }
   }
