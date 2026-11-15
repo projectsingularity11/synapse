@@ -1,3 +1,5 @@
+> **Latest release:** the recorded 3D demo, autonomous ambient lighting, white/flame transitions, and automatic music behavior are documented in [recorded-demo.md](recorded-demo.md). This supersedes earlier preview-only and opt-in audio descriptions.
+
 > **Current release:** the black/white/ember redesign, Bricolage typography, instanced scenes, persistent fluid/tracker, and opt-in licensed jazz supersede the historical implementation below. See [ember-redesign.md](ember-redesign.md) for current verification and licensing, and [deployment.md](deployment.md) for the review preview. Research evidence remains unchanged.
 
 > The current cinematic revision supersedes the historical design and deployment status below. See [cinematic-redesign.md](cinematic-redesign.md) and [deployment.md](deployment.md).

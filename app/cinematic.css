@@ -3355,3 +3355,24 @@ html[data-graphics="software"] main > .ambient-light { width: min(540px, 80vw); 
 html[data-graphics="software"] main > .ambient-light--silver { left: -240px; }
 html[data-graphics="software"] main > .ambient-light--ember { right: -230px; }
 @media(max-width:700px) { html[data-graphics="software"] main > .ambient-light--silver { left:-190px; } html[data-graphics="software"] main > .ambient-light--ember { right:-200px; } }
+
+/* Independent, random compositor paths are managed by WaterBackdrop. */
+main > .ambient-light { animation: none; }
+/* Page wipes use the same baked white and flame light fields as the site. */
+.route-curtain { background:#070707; color:#f3f0ec; backdrop-filter:none; -webkit-backdrop-filter:none; }
+.route-curtain::after { background-image:linear-gradient(120deg,#ffffff09,transparent 42%,#ff622414),url('/art/ambient-silver.webp'),url('/art/ambient-ember.webp'); background-size:100% 100%,80% auto,85% auto; background-position:center,left -15vw top -15vh,right -20vw bottom -25vh; background-repeat:no-repeat; }
+.route-curtain > span { font-family:var(--display); font-weight:600; letter-spacing:-.025em; color:#f3f0ec; text-shadow:0 5px 60px #ff7b2326; }
+.experience-loader { background:#070707; color:#f3f0ec; }
+.loader-line::after { background:linear-gradient(90deg,#fff0e3,#ff7338); }
+.cinema-header nav a[aria-current="page"] { box-shadow:inset 0 0 0 1px #ff9b4938,inset 0 -2px #ff793b; }
+.control-button:focus-visible,.demo-camera-tools button:focus-visible { outline-color:#ff8d4d; }
+.paper-toc a[aria-current="location"],.chapter-navigation button[aria-pressed="true"] { color:#ffab78; }
+input[type="range"] { accent-color:#ff8748; }
+.explore-subnav a:first-child { color:#ffad7a; }
+@media(min-width:701px) and (max-width:1080px) { .cinema-header .wordmark { font-size:25px;padding-right:12px;gap:7px; } .cinema-header.site-header { gap:12px;padding-inline:16px; } .cinema-header nav a { font-size:10px;padding-inline:8px; } .cinema-header .sound-label { display:none; } }
+@media(min-width:701px) and (max-width:1000px){
+ .cinema-header .menu-toggle{display:block;margin-left:auto;padding:7px 0;min-height:40px;border:0;background:none;color:var(--ink);font-size:11px}
+ .cinema-header nav{display:none;position:absolute;top:80px;left:-1px;right:-1px;background:#121011f5;border:1px solid #ffffff27;border-radius:14px;padding:20px 24px;margin:0;box-shadow:0 25px 60px #0007}
+ .cinema-header nav.is-open{display:flex;flex-direction:column;align-items:start;gap:8px}
+ .cinema-header nav a{font-family:var(--display);font-size:26px;min-height:44px;padding:6px 10px}
+}

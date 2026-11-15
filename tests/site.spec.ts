@@ -3,6 +3,7 @@ import AxeBuilder from "@axe-core/playwright";
 const routes = [
   "/",
   "/explore",
+  "/demo",
   "/explore/failures",
   "/study",
   "/study/paper",
@@ -97,11 +98,9 @@ test("system reduced motion is clear and full-motion override persists", async (
 }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
-  expect(
-    await page
-      .locator("audio")
-      .evaluate((el) => (el as HTMLAudioElement).paused),
-  ).toBe(true);
+  await expect(
+    page.getByRole("button", { name: /Sound settings/ }),
+  ).toBeVisible();
   await page.keyboard.press("Tab");
   await expect(
     page.getByRole("link", { name: "Skip to content" }),
@@ -279,9 +278,7 @@ test("stabilizer inspector exposes actual check support and boundaries", async (
   page,
 }) => {
   await page.goto("/explore");
-  await page
-    .getByText("Stabilizer checks and detector records")
-    .click();
+  await page.getByText("Stabilizer checks and detector records").click();
   await page.getByLabel("Inspect measurement ancilla").selectOption("9");
   await expect(page.locator(".check-summary")).toContainText("Q1, Q3, Q8, Q10");
   const t = page.getByRole("table", {
@@ -302,7 +299,7 @@ test("all reading content works without JavaScript or WebGL", async ({
   const page = await context.newPage();
   await page.goto("/study");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "What changed when the noise increased?",
+    "Measurement-noise results",
   );
   await expect(
     page.getByText("Neural error · 732 / 20,000 shots"),

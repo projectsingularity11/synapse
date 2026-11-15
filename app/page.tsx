@@ -32,8 +32,8 @@ export default function Home() {
             Then I made the measurements noisier.
           </p>
           <div className="hero-actions">
-            <a className="primary-action" href="#inside">
-              Explore the experiment <span>↘</span>
+            <a className="primary-action" href="/demo">
+              Watch the recorded demo <span>↘</span>
             </a>
             <Link className="quiet-action" href="/study/paper">
               Read the paper <span>↗</span>
@@ -75,9 +75,7 @@ export default function Home() {
       </section>
       <section className="research-question" id="question">
         <span className="micro">MEASUREMENT-NOISE SHIFT</span>
-        <h2>
-          The research question
-        </h2>
+        <h2>The research question</h2>
         <div className="question-aside">
           <p>
             A quantum computer needs a way to tell whether its stored
@@ -116,9 +114,7 @@ export default function Home() {
       <section className="research-door">
         <span className="micro">RESEARCH MATERIALS</span>
         <div className="research-door-title">
-          <h2>
-            Paper and experimental records
-          </h2>
+          <h2>Paper and experimental records</h2>
           <p>
             Read the methods and results, or inspect individual saved shots.
           </p>

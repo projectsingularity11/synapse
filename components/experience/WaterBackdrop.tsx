@@ -23,7 +23,9 @@ export function WaterBackdrop() {
       rings = Array.from(fallback.current!.children) as HTMLElement[],
       ring = tracker.current!,
       point = dot.current!;
-    const lights = Array.from(document.querySelectorAll<HTMLElement>(".ambient-light"));
+    const lights = Array.from(
+      document.querySelectorAll<HTMLElement>(".ambient-light"),
+    );
     let fluid: WebGLFluidEnhanced | null = null,
       disposed = false,
       usingGPU = false,
@@ -42,6 +44,41 @@ export function WaterBackdrop() {
       lastSplat = 0,
       slow = 0,
       quality = 0;
+    const ambientAnimations = new Map<HTMLElement, Animation>();
+    function wander(light: HTMLElement, index: number) {
+      if (disposed || quiet.current || document.hidden) return;
+      const from = getComputedStyle(light).transform;
+      ambientAnimations.get(light)?.cancel();
+      const tx = (Math.random() - 0.5) * 150;
+      const ty = (Math.random() - 0.5) * 180;
+      const scale = 0.88 + Math.random() * 0.24;
+      const turn = (Math.random() - 0.5) * 12;
+      const animation = light.animate(
+        [
+          { transform: from === "none" ? "translate3d(0,0,0) scale(1)" : from },
+          {
+            transform: `translate3d(${tx}px,${ty}px,0) rotate(${turn}deg) scale(${scale})`,
+          },
+        ],
+        {
+          duration: 14000 + Math.random() * 12000 + index * 1700,
+          easing: "cubic-bezier(.4,0,.6,1)",
+          fill: "forwards",
+        },
+      );
+      ambientAnimations.set(light, animation);
+      animation.onfinish = () => wander(light, index);
+    }
+    function resumeWandering() {
+      if (quiet.current || document.hidden) return;
+      lights.forEach((light, index) => {
+        const animation = ambientAnimations.get(light);
+        if (animation) {
+          if (animation.playState === "finished") wander(light, index);
+          else animation.play();
+        } else wander(light, index);
+      });
+    }
     let canvas: HTMLCanvasElement | null = null;
     function ready() {
       node.dataset.ready = "true";
@@ -169,8 +206,14 @@ export function WaterBackdrop() {
       y += (py - y) * ease;
       ring.style.transform = `translate3d(${x}px,${y}px,0) scale(${interactive ? 1.2 : 1})`;
       for (const light of lights) {
-        light.style.setProperty("--ambient-x", `${(x - innerWidth / 2) * 0.18}px`);
-        light.style.setProperty("--ambient-y", `${(y - innerHeight / 2) * 0.16}px`);
+        light.style.setProperty(
+          "--ambient-x",
+          `${(x - innerWidth / 2) * 0.035}px`,
+        );
+        light.style.setProperty(
+          "--ambient-y",
+          `${(y - innerHeight / 2) * 0.03}px`,
+        );
       }
       point.style.transform = `translate3d(${px}px,${py}px,0)`;
       if (interactive !== wasInteractive) {
@@ -200,6 +243,7 @@ export function WaterBackdrop() {
     }
     function preference() {
       if (quiet.current) {
+        ambientAnimations.forEach((animation) => animation.pause());
         for (const light of lights) {
           light.style.removeProperty("--ambient-x");
           light.style.removeProperty("--ambient-y");
@@ -212,6 +256,7 @@ export function WaterBackdrop() {
         cancelAnimationFrame(frame);
         frame = 0;
       } else {
+        resumeWandering();
         if (usingGPU && !document.hidden) fluid?.start();
         wake();
       }
@@ -219,6 +264,7 @@ export function WaterBackdrop() {
     function visibility() {
       last = 0;
       if (document.hidden) {
+        ambientAnimations.forEach((animation) => animation.pause());
         fluid?.stop();
         cancelAnimationFrame(frame);
         frame = 0;
@@ -226,6 +272,7 @@ export function WaterBackdrop() {
           ?.getAnimations({ subtree: true })
           .forEach((a) => a.pause());
       } else {
+        resumeWandering();
         if (usingGPU && !quiet.current) fluid?.start();
         wake();
       }
@@ -239,9 +286,12 @@ export function WaterBackdrop() {
     document.addEventListener("pointerleave", leave);
     document.addEventListener("visibilitychange", visibility);
     window.addEventListener("synapse-visual-wake", preference);
+    resumeWandering();
     initialize();
     return () => {
       disposed = true;
+      ambientAnimations.forEach((animation) => animation.cancel());
+      ambientAnimations.clear();
       cancelAnimationFrame(frame);
       fluid?.stop();
       canvas?.removeEventListener("webglcontextlost", contextLost);

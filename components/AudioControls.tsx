@@ -4,12 +4,61 @@ import { enableInterfaceSound, playInterfaceSound } from "@/lib/sound";
 export function AudioControls() {
   const [open, setOpen] = useState(false),
     [playing, setPlaying] = useState(false),
+    [awaitingGesture, setAwaitingGesture] = useState(false),
     [sfx, setSfx] = useState(false),
     [volume, setVolume] = useState(0.18),
     [error, setError] = useState("");
   const root = useRef<HTMLDivElement>(null),
     audio = useRef<HTMLAudioElement>(null),
-    wasPlaying = useRef(false);
+    wasPlaying = useRef(false),
+    wanted = useRef(true);
+  useEffect(() => {
+    const element = audio.current!;
+    let disposed = false;
+    try {
+      wanted.current = localStorage.getItem("synapse-music") !== "off";
+    } catch {}
+    element.volume = 0.18;
+    const remove = () => {
+      document.removeEventListener("pointerdown", gesture);
+      document.removeEventListener("keydown", gesture);
+    };
+    const attempt = () => {
+      if (!wanted.current || document.hidden) return;
+      void element
+        .play()
+        .then(() => {
+          if (!disposed) {
+            setAwaitingGesture(false);
+            remove();
+          }
+        })
+        .catch((err: unknown) => {
+          if (disposed) return;
+          if (err instanceof DOMException && err.name === "NotAllowedError")
+            setAwaitingGesture(true);
+          else {
+            setError("Music could not start. Select play to retry.");
+            remove();
+          }
+        });
+    };
+    const gesture = (event: Event) => {
+      if ((event.target as Element)?.closest?.(".audio-controls")) return;
+      if (event instanceof KeyboardEvent && !["Enter", " "].includes(event.key))
+        return;
+      attempt();
+    };
+    if (wanted.current) {
+      document.addEventListener("pointerdown", gesture);
+      document.addEventListener("keydown", gesture);
+      attempt();
+    }
+    return () => {
+      disposed = true;
+      remove();
+    };
+  }, []);
   useEffect(() => {
     const click = (e: MouseEvent) => {
       const target = (e.target as Element).closest("a,button,summary");
@@ -51,7 +100,7 @@ export function AudioControls() {
       if (document.hidden) {
         wasPlaying.current = !element.paused;
         element.pause();
-      } else if (wasPlaying.current) {
+      } else if (wasPlaying.current && wanted.current) {
         element.play().catch(() => setError("Select play to resume."));
         wasPlaying.current = false;
       }
@@ -65,10 +114,19 @@ export function AudioControls() {
   function toggleMusic() {
     const element = audio.current!;
     setError("");
-    if (!element.paused) {
+    if (!element.paused || awaitingGesture) {
+      wanted.current = false;
+      setAwaitingGesture(false);
+      try {
+        localStorage.setItem("synapse-music", "off");
+      } catch {}
       element.pause();
       return;
     }
+    wanted.current = true;
+    try {
+      localStorage.setItem("synapse-music", "on");
+    } catch {}
     element.volume = volume;
     element
       .play()
@@ -93,7 +151,10 @@ export function AudioControls() {
         ref={audio}
         loop
         preload="none"
-        onPlay={() => setPlaying(true)}
+        onPlay={() => {
+          setPlaying(true);
+          setAwaitingGesture(false);
+        }}
         onPause={() => setPlaying(false)}
         onError={() => setError("Music is unavailable.")}
       >
@@ -103,7 +164,7 @@ export function AudioControls() {
         className="sound-toggle"
         aria-expanded={open}
         aria-controls="sound-panel"
-        aria-label={`Sound settings. Music ${playing ? "on" : "off"}`}
+        aria-label={`Sound settings. Music ${playing ? "on" : awaitingGesture ? "ready" : "off"}`}
         onClick={() => setOpen(!open)}
       >
         <span className="sound-bars" data-playing={playing} aria-hidden="true">
@@ -111,7 +172,9 @@ export function AudioControls() {
             <i key={i} />
           ))}
         </span>
-        <span className="sound-label">Sound {playing ? "on" : "off"}</span>
+        <span className="sound-label">
+          Sound {playing ? "on" : awaitingGesture ? "ready" : "off"}
+        </span>
       </button>
       {open && (
         <div
@@ -129,14 +192,40 @@ export function AudioControls() {
               ×
             </button>
           </div>
-          <p>Instrumental jazz, kept in the background.</p>
+          <p>
+            {awaitingGesture
+              ? "Your browser requires an interaction before music can start."
+              : "Instrumental jazz · automatic playback at low volume."}
+          </p>
           <button
             className="music-play"
-            aria-pressed={playing}
+            aria-label={
+              playing
+                ? "Pause music"
+                : awaitingGesture
+                  ? "Disable automatic music"
+                  : "Play lounge music"
+            }
+            aria-pressed={playing || awaitingGesture}
             onClick={toggleMusic}
           >
-            <span>{playing ? "Ⅱ" : "▶"}</span>
-            {playing ? "Pause music" : "Play lounge music"}
+            <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
+              {playing ? (
+                <path
+                  d="M6 4v12M14 4v12"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                />
+              ) : (
+                <path d="M5 3l12 7-12 7Z" fill="currentColor" />
+              )}
+            </svg>
+            {playing
+              ? "Pause music"
+              : awaitingGesture
+                ? "Disable automatic music"
+                : "Play lounge music"}
           </button>
           <label className="volume-control">
             Music volume <output>{Math.round(volume * 100)}%</output>

@@ -26,7 +26,18 @@ try {
       route: "/study/paper",
       kind: "paper",
     },
-  ]) {
+    {
+      name: "desktop-recorded-demo",
+      width: 1440,
+      route: "/demo",
+      kind: "demo",
+    },
+    { name: "phone-recorded-demo", width: 390, route: "/demo", kind: "demo" },
+  ].filter(
+    (s) =>
+      !process.env.PROFILE_SCENARIOS ||
+      process.env.PROFILE_SCENARIOS.split(",").includes(s.name),
+  )) {
     const context = await browser.newContext({
       viewport: {
         width: scenario.width,
@@ -47,12 +58,23 @@ try {
         .evaluate((el) => scrollTo(0, el.offsetTop));
       await page.waitForTimeout(300);
     }
+    if (scenario.kind === "demo") {
+      await page
+        .getByRole("button", { name: "Play demo", exact: true })
+        .click();
+      await page
+        .getByRole("slider", { name: "Demo playback position" })
+        .fill("8");
+      await page.waitForTimeout(400);
+    }
     const selector =
-      scenario.kind === "story"
-        ? ".story-stage"
-        : scenario.kind === "hero"
-          ? ".hero-stage"
-          : "main";
+      scenario.kind === "demo"
+        ? ".demo-scene"
+        : scenario.kind === "story"
+          ? ".story-stage"
+          : scenario.kind === "hero"
+            ? ".hero-stage"
+            : "main";
     if (scenario.kind === "story") {
       const bounds = await page.locator(selector).boundingBox();
       await page.mouse.move(
@@ -123,7 +145,11 @@ try {
                 longTasks,
                 sceneRenderer:
                   document.querySelector(
-                    kind === "story" ? ".story-stage" : ".hero-stage",
+                    kind === "demo"
+                      ? ".demo-scene"
+                      : kind === "story"
+                        ? ".story-stage"
+                        : ".hero-stage",
                   )?.dataset.renderer || null,
                 waterRenderer:
                   document.querySelector(".water-backdrop").dataset.renderer,
@@ -141,7 +167,7 @@ try {
   const report = {
     base,
     scope:
-      "180 requestAnimationFrame intervals during continuous pointer input, held-pointer drag, or narrative scrolling per scenario. CPU-composited Chromium with software WebGL detection; this measures browser scheduling, not physical presentation or a guarantee for every device.",
+      "180 requestAnimationFrame intervals during continuous pointer input, held-pointer drag, or narrative scrolling / recorded-demo playback per scenario. CPU-composited Chromium with software WebGL detection; this measures browser scheduling, not physical presentation or a guarantee for every device.",
     results,
   };
   fs.mkdirSync(outputDir, { recursive: true });

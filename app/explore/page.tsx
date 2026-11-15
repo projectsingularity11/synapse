@@ -17,7 +17,10 @@ export default function Explore() {
       <div className="page-body">
         <div className="data-links">
           <span>FIRST EIGHT SHOTS AT EACH NOISE SETTING</span>
-          <Link href="/explore/failures">Failure gallery →</Link>
+          <div className="explore-subnav">
+            <Link href="/demo">Recorded 3D demo ↗</Link>
+            <Link href="/explore/failures">Failure gallery →</Link>
+          </div>
         </div>
         <ReadoutLesson />
         {s && t ? (

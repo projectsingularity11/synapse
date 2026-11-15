@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { useReducedEffects } from "./useReducedEffects";
 const links = [
   ["/explore", "Explore"],
+  ["/demo", "Demo"],
   ["/study", "The study"],
   ["/study/paper", "Paper"],
   ["/about", "About me"],
@@ -39,8 +40,19 @@ export function SiteControls() {
     >
       <Link href="/" className="wordmark" aria-label="Synapse home">
         <svg viewBox="0 0 40 40" width="32" height="32" aria-hidden="true">
-          <path d="M29 7H18C6 7 6 19 18 19h4M11 33h11c12 0 12-12 0-12h-4" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-          <path d="m15 25 10-10" stroke="#ff922f" strokeWidth="3" strokeLinecap="round" />
+          <path
+            d="M29 7H18C6 7 6 19 18 19h4M11 33h11c12 0 12-12 0-12h-4"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          <path
+            d="m15 25 10-10"
+            stroke="#ff922f"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
           <circle cx="15" cy="25" r="2" fill="#ff922f" />
           <circle cx="25" cy="15" r="2" fill="#ff922f" />
         </svg>

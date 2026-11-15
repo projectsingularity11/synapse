@@ -1,11 +1,12 @@
 import { test, expect } from "@playwright/test";
-test("audio stays unloaded until requested, then music, volume and interface sounds work", async ({
+test("saved music-off preference is honored, then playback, volume and effects work", async ({
   page,
 }) => {
   const requests: string[] = [];
   page.on("request", (r) => {
     if (r.url().includes("/audio/")) requests.push(r.url());
   });
+  await page.addInitScript(() => localStorage.setItem("synapse-music", "off"));
   await page.goto("/");
   await expect(page.locator(".water-backdrop")).toHaveAttribute(
     "data-ready",

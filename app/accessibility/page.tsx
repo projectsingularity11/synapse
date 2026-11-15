@@ -31,10 +31,12 @@ export default function Accessibility() {
         </p>
         <h2>Optional audio.</h2>
         <p>
-          Music and interface sounds are off until you enable them in Sound
-          settings. Music pauses when the page is hidden. Volume, music, and
-          interface sounds have separate controls; no research information is
-          conveyed only through audio.
+          Music requests automatic playback at low volume. If the browser blocks
+          it, playback starts after an interaction. Sound settings provide pause
+          and volume controls, and a saved music-off choice is respected.
+          Interface sounds remain optional. Music pauses when the page is
+          hidden. Volume, music, and interface sounds have separate controls; no
+          research information is conveyed only through audio.
         </p>
         <h2>Data beyond color.</h2>
         <p>
