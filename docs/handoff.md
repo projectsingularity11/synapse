@@ -1,5 +1,7 @@
 # SYNDROME handoff
 
+> This document records the earlier editorial release. The immersive Synapse redesign supersedes its visual design and performance claims. See [the current redesign report](redesign-report.md).
+
 ## Delivered
 
 SYNDROME is a Next.js/TypeScript research website about a compact classical decoder for a simulated quantum surface-code memory. The visitor moves from an actual saved detection-event scene into shot replay, measured evidence, uncertainty, a stronger training control and a reproducible research vault. Start with [the proposed final product](proposed-final-product.md) for the editorial review path.

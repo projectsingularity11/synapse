@@ -13,7 +13,7 @@ export default function Failures() {
     <>
       <PageHeader
         index="THE INSTRUMENT / SELECTED CASES"
-        title="Where inference breaks."
+        title="Where the decoders disagree."
       >
         A deliberately selected gallery of neural errors and disagreements.
         These examples explain failure modes; they do not estimate their

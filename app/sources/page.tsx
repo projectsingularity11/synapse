@@ -16,7 +16,7 @@ export default function Sources() {
     >("claims/claims.json") ?? [];
   return (
     <>
-      <PageHeader index="THE READING ROOM / 05" title="Follow the evidence.">
+      <PageHeader index="THE READING ROOM / 05" title="Sources and exact claims.">
         Primary research, official software documentation, and a claim ledger.
         Published achievements and this project’s measurements belong to
         separate records.
@@ -66,7 +66,7 @@ export default function Sources() {
         </ol>
         <section id="claims" className="figure-section">
           <span className="eyebrow">CLAIM LEDGER / EXACT WORDING</span>
-          <h2>Claims with a trail.</h2>
+          <h2>Check each claim.</h2>
           <p className="muted">
             Each record links to its evidence and public context. Pending paper
             verification is a limitation, not a published finding adopted by

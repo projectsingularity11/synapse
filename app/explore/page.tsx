@@ -10,7 +10,7 @@ export default function Explore() {
     t = getTraces();
   return (
     <>
-      <PageHeader index="THE INSTRUMENT / 02" title="A history of clues.">
+      <PageHeader index="THE INSTRUMENT / 02" title="Replay the detector history.">
         Step through a saved surface-code memory shot. See exactly what the
         decoder receives, then reveal what it predicted.
       </PageHeader>

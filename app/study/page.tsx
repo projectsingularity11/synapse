@@ -13,7 +13,7 @@ export default function StudyPage() {
   const shifted = s?.conditions.at(-1);
   return (
     <>
-      <PageHeader index="THE EVIDENCE / 03" title="Changing the conditions.">
+      <PageHeader index="THE EVIDENCE / 03" title="What changed when the noise increased?">
         When measurement noise differs from the training distribution, how do
         logical prediction error and confidence calibration change for a compact
         neural decoder?

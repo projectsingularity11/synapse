@@ -1,0 +1,7 @@
+{
+  "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/manrope/Manrope%5Bwght%5D.ttf",
+  "sourceSha256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6",
+  "distributedSha256": "fc8e44e557a29e4a517e3c761bdaf40292da01e63061739a15450cd1cf049ba6",
+  "process": "fontTools WOFF2 container recompression with Brotli; full glyph set and outlines retained",
+  "license": "SIL Open Font License 1.1; OFL-Manrope.txt"
+}

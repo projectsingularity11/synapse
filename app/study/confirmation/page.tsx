@@ -11,7 +11,7 @@ export default function ConfirmationPage() {
     <>
       <PageHeader
         index="A SECOND LOOK / FROZEN MODEL"
-        title="A fresh set of clues."
+        title="Testing the frozen model on fresh shots."
       >
         More held-out shots. The same frozen model. A separate check of the
         initial pattern, with narrower sampling uncertainty.
@@ -107,7 +107,7 @@ export default function ConfirmationPage() {
             </div>
             <StudyFigures study={c} />
             <div className="prose">
-              <h2>Precision has a boundary.</h2>
+              <h2>What the extra shots can tell us.</h2>
               <p>
                 A larger test sample tightens a confidence interval about this
                 model in this simulator. It does not correct a misspecified

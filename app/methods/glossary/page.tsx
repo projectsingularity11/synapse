@@ -10,7 +10,7 @@ export default function Glossary() {
   });
   return (
     <>
-      <PageHeader index="A WORKING VOCABULARY" title="Give the clues a name.">
+      <PageHeader index="A WORKING VOCABULARY" title="The terms used in this study.">
         The distinctions that matter when reading a quantum memory
         experiment—and a model’s predictions about it.
       </PageHeader>

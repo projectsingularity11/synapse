@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-15T03:06:37.484411Z",
+  "title": "Design System: Synapse",
+  "extensions": {
+    "colorMeta": {
+      "cobalt": {
+        "role": "primary",
+        "displayName": "Cobalt",
+        "canonical": "#244aff",
+        "tonalRamp": [
+          "oklch(15.00% 0.26661 266.17)",
+          "oklch(26.43% 0.26661 266.17)",
+          "oklch(37.86% 0.26661 266.17)",
+          "oklch(49.29% 0.26661 266.17)",
+          "oklch(60.71% 0.26661 266.17)",
+          "oklch(72.14% 0.26661 266.17)",
+          "oklch(83.57% 0.26661 266.17)",
+          "oklch(95.00% 0.26661 266.17)"
+        ]
+      },
+      "acid": {
+        "role": "secondary",
+        "displayName": "Acid",
+        "canonical": "#dafa79",
+        "tonalRamp": [
+          "oklch(15.00% 0.15920 121.10)",
+          "oklch(26.43% 0.15920 121.10)",
+          "oklch(37.86% 0.15920 121.10)",
+          "oklch(49.29% 0.15920 121.10)",
+          "oklch(60.71% 0.15920 121.10)",
+          "oklch(72.14% 0.15920 121.10)",
+          "oklch(83.57% 0.15920 121.10)",
+          "oklch(95.00% 0.15920 121.10)"
+        ]
+      },
+      "silver": {
+        "role": "neutral",
+        "displayName": "Silver",
+        "canonical": "#eceeeb",
+        "tonalRamp": [
+          "oklch(15.00% 0.00451 134.85)",
+          "oklch(26.43% 0.00451 134.85)",
+          "oklch(37.86% 0.00451 134.85)",
+          "oklch(49.29% 0.00451 134.85)",
+          "oklch(60.71% 0.00451 134.85)",
+          "oklch(72.14% 0.00451 134.85)",
+          "oklch(83.57% 0.00451 134.85)",
+          "oklch(95.00% 0.00451 134.85)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#17191b",
+        "tonalRamp": [
+          "oklch(15.00% 0.00501 248.06)",
+          "oklch(26.43% 0.00501 248.06)",
+          "oklch(37.86% 0.00501 248.06)",
+          "oklch(49.29% 0.00501 248.06)",
+          "oklch(60.71% 0.00501 248.06)",
+          "oklch(72.14% 0.00501 248.06)",
+          "oklch(83.57% 0.00501 248.06)",
+          "oklch(95.00% 0.00501 248.06)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted text",
+        "canonical": "#555c62",
+        "tonalRamp": [
+          "oklch(15.00% 0.01312 243.86)",
+          "oklch(26.43% 0.01312 243.86)",
+          "oklch(37.86% 0.01312 243.86)",
+          "oklch(49.29% 0.01312 243.86)",
+          "oklch(60.71% 0.01312 243.86)",
+          "oklch(72.14% 0.01312 243.86)",
+          "oklch(83.57% 0.01312 243.86)",
+          "oklch(95.00% 0.01312 243.86)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Quiet divider",
+        "canonical": "#c7cbc9",
+        "tonalRamp": [
+          "oklch(15.00% 0.00517 164.98)",
+          "oklch(26.43% 0.00517 164.98)",
+          "oklch(37.86% 0.00517 164.98)",
+          "oklch(49.29% 0.00517 164.98)",
+          "oklch(60.71% 0.00517 164.98)",
+          "oklch(72.14% 0.00517 164.98)",
+          "oklch(83.57% 0.00517 164.98)",
+          "oklch(95.00% 0.00517 164.98)"
+        ]
+      },
+      "prediction": {
+        "role": "tertiary",
+        "displayName": "Prediction",
+        "canonical": "#a7b5ff",
+        "tonalRamp": [
+          "oklch(15.00% 0.10656 275.46)",
+          "oklch(26.43% 0.10656 275.46)",
+          "oklch(37.86% 0.10656 275.46)",
+          "oklch(49.29% 0.10656 275.46)",
+          "oklch(60.71% 0.10656 275.46)",
+          "oklch(72.14% 0.10656 275.46)",
+          "oklch(83.57% 0.10656 275.46)",
+          "oklch(95.00% 0.10656 275.46)"
+        ]
+      },
+      "failure": {
+        "role": "tertiary",
+        "displayName": "Failure",
+        "canonical": "#aa3329",
+        "tonalRamp": [
+          "oklch(15.00% 0.15684 28.77)",
+          "oklch(26.43% 0.15684 28.77)",
+          "oklch(37.86% 0.15684 28.77)",
+          "oklch(49.29% 0.15684 28.77)",
+          "oklch(60.71% 0.15684 28.77)",
+          "oklch(72.14% 0.15684 28.77)",
+          "oklch(83.57% 0.15684 28.77)",
+          "oklch(95.00% 0.15684 28.77)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 0.00)",
+          "oklch(26.43% 0.00000 0.00)",
+          "oklch(37.86% 0.00000 0.00)",
+          "oklch(49.29% 0.00000 0.00)",
+          "oklch(60.71% 0.00000 0.00)",
+          "oklch(72.14% 0.00000 0.00)",
+          "oklch(83.57% 0.00000 0.00)",
+          "oklch(95.00% 0.00000 0.00)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Hero wordmark",
+        "purpose": "Oversized close-set Synapse lettering; 23vw on mobile."
+      },
+      "headline": {
+        "displayName": "Scene headline",
+        "purpose": "Medium-weight narrative statements beside large demonstrations."
+      },
+      "body": {
+        "displayName": "Experience body",
+        "purpose": "Short explanations; evidence pages retain readable line lengths."
+      },
+      "navigation": {
+        "displayName": "Functional navigation",
+        "purpose": "Small links supporting the artifact rather than competing with it."
+      }
+    },
+    "shadows": [
+      {
+        "name": "readout",
+        "value": "0 20px 30px -22px #303a42aa",
+        "purpose": "Ground the metallic ordinary-bit analogy spheres."
+      },
+      {
+        "name": "history-plane",
+        "value": "0 18px 40px -20px #000",
+        "purpose": "Separate saved detector time-boundary planes on ink."
+      }
+    ],
+    "motion": [
+      {
+        "name": "action-transition",
+        "value": "background 0.25s, transform 0.25s",
+        "purpose": "Cobalt hover and translateY(-2px) for primary actions."
+      },
+      {
+        "name": "route-curtain",
+        "value": "transform 0.5s cubic-bezier(0.76, 0, 0.24, 1)",
+        "purpose": "Original cobalt internal-route wipe; router push follows after 260ms; reduced effects bypass it."
+      },
+      {
+        "name": "loader-exit",
+        "value": "transform 0.9s cubic-bezier(0.76, 0, 0.24, 1)",
+        "purpose": "Reveal after fonts and first frame, with bounded recovery."
+      },
+      {
+        "name": "wheel-inertia",
+        "value": "Lenis lerp: 0.085; autoRaf: true; smoothWheel: true; anchors: true",
+        "purpose": "Smooth wheel travel while preserving native touch, scrollbar, keyboard and anchors; bypassed for reduced motion/effects."
+      },
+      {
+        "name": "sculpture-response",
+        "value": "Pointer interpolation: 0.045; draw threshold: 0.002; pixel ratio cap: 1.5",
+        "purpose": "Original GPU shader reacts to pointer and scroll, rests at idle and pauses draws when hidden/offscreen; a frame callback continues checking. Reduced effects show a still sculpture; SVG fallback handles WebGL failure."
+      },
+      {
+        "name": "scroll-linked-scenes",
+        "value": "CSS view timelines under @supports and prefers-reduced-motion: no-preference",
+        "purpose": "Question/orbit reveal and sticky history assembly progressively enhance the readable scenes."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile-layout",
+        "value": "650px"
+      },
+      {
+        "name": "sculpture-point-count",
+        "value": "700px"
+      },
+      {
+        "name": "compact-desktop",
+        "value": "900px"
+      },
+      {
+        "name": "large-desktop",
+        "value": "1600px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ink pill opening the follow-up or another research destination.",
+      "html": "<button class=\"ds-primary\">Open the follow-up <svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" aria-hidden=\"true\"><path d=\"M4 12h16m-7-7 7 7-7 7\"/></svg></button>",
+      "css": ".ds-primary{display:inline-flex;align-items:center;justify-content:space-between;gap:24px;border:0;border-radius:50px;padding:16px 23px;font-size:13px;line-height:1.3;cursor:pointer;transition:background .25s,transform .25s;font-family:Manrope,Arial,sans-serif;background:var(--ink,#17191b);color:#fff;}.ds-primary:hover{background:var(--blue,#244aff);transform:translateY(-2px);}.ds-primary:focus-visible{outline:2px solid var(--blue,#244aff);outline-offset:6px;}"
+    },
+    {
+      "name": "History replay",
+      "kind": "button",
+      "refersTo": "button-replay",
+      "description": "Acid action on the ink saved-history scene.",
+      "html": "<div class=\"ds-history\"><button class=\"ds-replay\">Replay this history <svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" aria-hidden=\"true\"><path d=\"M4 12h16m-7-7 7 7-7 7\"/></svg></button></div>",
+      "css": ".ds-history{padding:24px;background:var(--ink,#17191b);}.ds-replay{display:inline-flex;align-items:center;justify-content:space-between;gap:24px;border:0;border-radius:50px;padding:16px 23px;font-size:13px;line-height:1.3;cursor:pointer;transition:background .25s,transform .25s;font-family:Manrope,Arial,sans-serif;background:var(--event,#dafa79);color:var(--ink,#17191b);}.ds-replay:hover{transform:translateY(-2px);}.ds-replay:focus-visible{outline:2px solid var(--blue,#244aff);outline-offset:6px;}"
+    },
+    {
+      "name": "Experience navigation",
+      "kind": "nav",
+      "description": "Small functional links with edge-origin underlines; mobile menu presentation lives in the application.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Research\"><a href=\"/\">Experience</a><a href=\"/study\">Study</a><a href=\"/methods\">Methods</a></nav>",
+      "css": ".ds-nav{display:flex;gap:30px;padding:24px;background:var(--paper,#eceeeb);color:var(--ink,#17191b);font-family:Manrope,Arial,sans-serif;}.ds-nav a{position:relative;font-size:12px;text-decoration:none;color:inherit;}.ds-nav a:after{content:\"\";position:absolute;bottom:-5px;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .35s;}.ds-nav a:hover:after{transform:scaleX(1);transform-origin:left;}.ds-nav a:focus-visible{outline:2px solid var(--blue,#244aff);outline-offset:6px;}"
+    },
+    {
+      "name": "Measurement noise selection",
+      "kind": "chip",
+      "refersTo": "noise-selected",
+      "description": "Pressed pill marks the selected test-noise condition; labels retain the training-level context.",
+      "html": "<div class=\"ds-noise\" role=\"group\" aria-label=\"Measurement noise\"><button aria-pressed=\"false\">0.5%<small>Training level</small></button><button aria-pressed=\"true\">3.0%</button></div>",
+      "css": ".ds-noise{display:flex;gap:15px;padding:20px;background:var(--event,#dafa79);border-block:1px solid #17191b50;}.ds-noise button{background:transparent;color:var(--ink,#17191b);border:0;padding:12px 20px;border-radius:50px;font-size:32px;line-height:1.25;cursor:pointer;transition:background .3s,color .3s;font-family:Manrope,Arial,sans-serif;}.ds-noise button[aria-pressed=\"true\"]{background:var(--ink,#17191b);color:var(--event,#dafa79);}.ds-noise small{display:block;font-size:9px;margin-top:3px;}.ds-noise button:focus-visible{outline:2px solid var(--blue,#244aff);outline-offset:6px;}"
+    },
+    {
+      "name": "Saved shot selector",
+      "kind": "input",
+      "refersTo": "saved-shot",
+      "description": "Native select for saved simulation shots on the dark history scene.",
+      "html": "<label class=\"ds-shot\">Saved shot<select aria-label=\"Saved shot\"><option>Shot 0</option><option selected>Shot 1</option><option>Shot 2</option></select></label>",
+      "css": ".ds-shot{display:flex;align-items:center;gap:12px;font-size:11px;padding:24px;background:var(--ink,#17191b);color:#f2f4ee;font-family:Manrope,Arial,sans-serif;}.ds-shot select{background:transparent;color:#f2f4ee;border:1px solid #80898c;border-radius:20px;padding:8px 14px;font-size:11px;font-family:Manrope,Arial,sans-serif;}.ds-shot option{background:var(--ink,#17191b);}.ds-shot select:focus-visible{outline:2px solid var(--blue,#244aff);outline-offset:6px;}"
+    },
+    {
+      "name": "Confidence cutoff",
+      "kind": "input",
+      "description": "Native range selects saved descriptive confidence subsets; it does not recommend a decision threshold.",
+      "html": "<label class=\"ds-confidence\">Minimum class confidence: 95%<input type=\"range\" min=\"0\" max=\"4\" step=\"1\" value=\"3\" aria-label=\"Minimum class confidence\"/></label>",
+      "css": ".ds-confidence{display:flex;flex-direction:column;gap:18px;width:290px;max-width:100%;padding:24px;background:#202cfa;color:white;font-size:12px;font-family:Manrope,Arial,sans-serif;}.ds-confidence input{width:100%;accent-color:var(--event,#dafa79);cursor:pointer;}.ds-confidence input:focus-visible{outline:2px solid var(--blue,#244aff);outline-offset:6px;}"
+    }
+  ],
+  "narrative": {
+    "overview": "Synapse uses an original silver, ink, cobalt and acid identity: oversized close-set lettering, large geometric demonstrations and full-viewport scenes. The homepage leads with an immersive experience, then opens into readable evidence and methods. The interface recedes around the research and its author, Assirem Benseddik.\n\nThe owner explicitly replaced the previous paper/green editorial identity. Lusion and Unseen are references for ambition, not sources of copied code or assets. The sculpture is original procedural artwork; research graphics remain grounded in saved simulation artifacts.",
+    "keyCharacteristics": [
+      "Self-hosted Manrope throughout.",
+      "Oversized typography, irregular alignment and generous scene spacing.",
+      "Flat color fields with selective geometric and particle depth.",
+      "Pointer and scroll response with native touch and reduced-effects alternatives.",
+      "Explicit separation between visual metaphor, teaching analogy and measured evidence."
+    ],
+    "rules": [],
+    "dos": [
+      "Do preserve the original silver/ink/cobalt/acid world and self-hosted Manrope.",
+      "Do keep demonstrations large, interactive and connected to the research question.",
+      "Do distinguish sculpture metaphor, ordinary-bit analogy and saved experimental evidence.",
+      "Do retain native navigation, touch scrolling, reduced effects, readable methods and exact research limitations."
+    ],
+    "donts": [
+      "Don't restore the rejected paper/green editorial identity.",
+      "Don't copy reference-site assets, shaders or code.",
+      "Don't turn research scenes into decorative dashboards or equal feature cards.",
+      "Don't imply quantum hardware, invented affiliations or results beyond the saved small simulation."
+    ]
+  }
+}

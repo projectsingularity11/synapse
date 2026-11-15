@@ -1,0 +1,4 @@
+# Synapse
+Independent research by Assirem Benseddik. The experience explains an actual small simulated quantum-memory decoding study to curious non-specialists. Preserve frozen experiment artifacts, counts, uncertainty and research limitations. This is classical computation, not hardware or a replication of published large decoders. Main visitor goal: understand the question and manipulate meaningful demonstrations before inspecting exact methods.
+
+The owner rejected the previous paper/green editorial identity and explicitly requested an immersive creative-studio experience with substantial motion, large visual demonstrations, little copy, and smooth navigation. Lusion/Unseen are reference ambitions, not licensed source suppliers. No filler slogans or invented affiliations. Creator: Assirem Benseddik.

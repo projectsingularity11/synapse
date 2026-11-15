@@ -1,5 +1,7 @@
 # SYNDROME — proposed final product
 
+> This document records the earlier editorial release. The immersive Synapse redesign supersedes its visual design and performance claims. See [the current redesign report](redesign-report.md).
+
 A quiet scientific instrument that opens into an evidence-led research notebook.
 
 ## The visitor's path

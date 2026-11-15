@@ -9,7 +9,7 @@ export default function Methods() {
     <>
       <PageHeader
         index="THE PROTOCOL / 04"
-        title="A smaller, answerable question."
+        title="How I tested the question."
       >
         One simulated memory, one logical observable, a compact classical model.
         Enough structure to ask a precise question—and enough limits to state it

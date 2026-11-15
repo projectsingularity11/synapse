@@ -4,7 +4,7 @@ export const metadata = { title: "Accessibility" };
 export default function Accessibility() {
   return (
     <>
-      <PageHeader index="EXPERIENCE OPTIONS / 08" title="Another way in.">
+      <PageHeader index="EXPERIENCE OPTIONS / 08" title="Accessibility and motion controls.">
         The research is available as ordinary text, diagrams, numeric tables and
         downloadable records. Sound, WebGL, dragging and animation are never
         required.

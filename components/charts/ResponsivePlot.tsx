@@ -40,10 +40,10 @@ export function ResponsivePlot({
   );
 }
 export const chartColors = {
-  neural: "#326449",
+  neural: "#244aff",
   fixed: "#55615b",
   matched: "#4b567e",
-  grid: "#c4ccc0",
+  grid: "#c7cbc9",
   muted: "#526056",
 };
 export function Point({

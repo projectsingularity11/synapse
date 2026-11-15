@@ -1,0 +1,18 @@
+{
+  "scope": "Full redesign suite:39/39 passed in59.1seconds before final spacing/idle-render corrections. Following raw stats are the six targeted confirmations after those corrections.",
+  "fullSuite": {
+    "passed": 39,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "durationSeconds": 59.1
+  },
+  "confirmation": {
+    "startTime": "2026-11-15T03:01:55.801Z",
+    "duration": 19963.034,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -12,7 +12,7 @@ export default function CircuitPage() {
     <>
       <PageHeader
         index="UNDER THE INSTRUMENT"
-        title="The circuit is the contract."
+        title="The actual simulated circuit."
       >
         Inspect the generated instructions, detector definitions and noise-model
         conversion behind the visual replay.
@@ -29,7 +29,7 @@ export default function CircuitPage() {
           </a>
         </div>
         <div className="prose">
-          <h2>A record, not an abstraction.</h2>
+          <h2>Read the circuit and error model.</h2>
           <p>
             This is the actual retained training-noise circuit for{" "}
             {study?.runId ?? "the study"}. QUBIT_COORDS define the physical

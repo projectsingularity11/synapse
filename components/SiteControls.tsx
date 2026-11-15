@@ -13,7 +13,7 @@ export function SiteControls() {
   const { reduced: quiet, toggle } = useReducedEffects();
   return (
     <header className="site-header">
-      <Link className="wordmark" href="/" aria-label="Syndrome home">
+      <Link className="wordmark" href="/" aria-label="Synapse home">
         <svg
           className="brand-icon"
           viewBox="0 0 32 32"
@@ -29,7 +29,7 @@ export function SiteControls() {
           />
           <path d="M12 12h8v8h-8z" fill="currentColor" />
         </svg>{" "}
-        SYNDROME<span className="edition">RESEARCH / 001</span>
+        Synapse<span className="edition">BY ASSIREM BENSEDDIK</span>
       </Link>
       <button
         className="menu-toggle"

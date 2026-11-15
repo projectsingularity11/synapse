@@ -4,8 +4,8 @@ export const metadata = { title: "About the project" };
 export default function About() {
   return (
     <>
-      <PageHeader index="PROJECT NOTES / 06" title="Independent, by design.">
-        SYNDROME is an open computational research and editorial project
+      <PageHeader index="PROJECT NOTES / 06" title="A question I wanted to test.">
+        Synapse is an independent project by Assirem Benseddik
         investigating classical learning for quantum error decoding.
       </PageHeader>
       <div className="page-body prose">
@@ -22,7 +22,7 @@ export default function About() {
           AlphaQubit and other published neural decoders are prior work, not
           systems reproduced by this study.
         </p>
-        <h2>Authorship and process.</h2>
+        <h2>Created by Assirem Benseddik.</h2>
         <p>
           The implementation, writing and computational pipeline were prepared
           with AI coding agents under the project owner’s brief. Research,

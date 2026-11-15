@@ -206,7 +206,7 @@ test("spatial view mounts on gesture, camera buttons and context-loss fallback w
 test("source claims resolve to source records", async ({ page }) => {
   await page.goto("/sources");
   await expect(
-    page.getByRole("heading", { name: "Claims with a trail." }),
+    page.getByRole("heading", { name: "Check each claim." }),
   ).toBeVisible();
   await page.locator('#C05 a[href="#S05"]').click();
   await expect(page).toHaveURL(/#S05/);
@@ -296,7 +296,7 @@ test("all reading content works without JavaScript or WebGL", async ({
   const page = await context.newPage();
   await page.goto("/study");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "Changing the conditions.",
+    "What changed when the noise increased?",
   );
   await expect(
     page.getByText("Neural error · 732 / 20,000 shots"),
@@ -448,14 +448,58 @@ test("conceptual readout comparison shows changes rather than raw values", async
     page.getByText("CONCEPTUAL EXAMPLE / NOT A SAVED SHOT"),
   ).toBeVisible();
 });
-test("hero opens the exact saved shot shown in its data-bound scene", async ({
+test("guided history links to its exact real saved shot", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator(".history-art .detected")).toHaveCount(2);
+  await page.getByRole("link", { name: /Inspect every detector/ }).click();
+  await expect(page).toHaveURL(/noise=0.03&shot=1/);
+  await expect(page.getByLabel("Saved test shot")).toHaveValue("1");
+});
+test("guided readout and noise comparisons respond with actual counts", async ({
   page,
 }) => {
   await page.goto("/");
-  await expect(
-    page.locator('.hero-instrument svg rect[fill="var(--event)"]'),
-  ).toHaveCount(2);
-  await page.getByRole("link", { name: /Inspect this actual shot/ }).click();
-  await expect(page).toHaveURL(/noise=0.03&shot=1/);
-  await expect(page.getByLabel("Saved test shot")).toHaveValue("1");
+  await page
+    .getByRole("button", { name: "Flip readout 2, currently 0" })
+    .click();
+  await expect(page.locator(".parity-readouts .changed")).toHaveCount(2);
+  await page
+    .getByRole("group", { name: "Measurement noise" })
+    .getByRole("button", { name: "0.1%" })
+    .click();
+  await expect(page.locator(".error-race strong").first()).toContainText("31");
+  await expect(page.locator(".error-race strong").last()).toContainText("10");
+});
+test("particle context loss preserves reading and route transition completes", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.waitForTimeout(1900);
+  await page
+    .locator(".particle-art canvas")
+    .evaluate((c) =>
+      c.dispatchEvent(new Event("webglcontextlost", { cancelable: true })),
+    );
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  await page.getByRole("link", { name: "The study", exact: true }).click();
+  await expect(page).toHaveURL(/\/study$/);
+  await expect(page.locator(".route-curtain")).not.toHaveClass(/cover/);
+});
+
+test("confidence cutoff changes retained evidence without inventing accuracy", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator(".confidence-note")).toContainText(
+    "83,087 retained shots · 1,178 mistakes",
+  );
+  const cutoff = page.getByRole("slider", { name: /Minimum class confidence/ });
+  await cutoff.focus();
+  await page.keyboard.press("Home");
+  await expect(page.locator(".confidence-note")).toContainText(
+    "100,000 retained shots · 3,796 mistakes",
+  );
+  await expect(page.locator(".confidence-number.observed")).toContainText(
+    "96.20",
+  );
 });
