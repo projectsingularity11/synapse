@@ -1,0 +1,66 @@
+{
+  "runId": "d3-memory-z-20261115T004549Z-confirmation-20261115T011610Z",
+  "parentRunId": "d3-memory-z-20261115T004549Z",
+  "purpose": "Fresh held-out shots for frozen seed101 model; precision confirmation conditional on the same fitted model, not independent training replication",
+  "sourceCodeCommit": "a8b624eabba1e7c923006df6634d903a4114ce56",
+  "protocolCommittedBeforeFreshLabels": true,
+  "workingTreeDirty": true,
+  "sourceScriptSha256": "fe03b645daaa8bb215a1dfe5e17f7986a8c2e1777ed5b18b566f45e6ea68ab05",
+  "configurationSha256": "7ab952e91a18836e997e57deba79f3564370e1d71ccfb5089a9fadf0f8ad6ee4",
+  "protocolSha256": "a36b6a343ef4b84b7fd8414795e69519a751530537637a7bd38038863c3afdbc",
+  "parentPipelineSha256": "03eb5215f8fae6cf9f1f46bb28a7737411af5a2cf65be8db52e4ec16060273df",
+  "parentArtifactSha256": "75e31a475c1d6ffad95b493370108f4d73984bbb8b2bcb7bdeb43714d9e27ae3",
+  "frozenCheckpointPath": "research/experiments/manifests/seed101-checkpoint.json",
+  "frozenCheckpointSha256": "7584092387b2ac5cf8c39027288b0b91a088dd4099b61a32d87a5cbf359cdd6e",
+  "packageVersions": {
+    "stim": "1.16.0",
+    "pymatching": "2.4.0",
+    "numpy": "2.5.4",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "threadpoolctl": "3.8.0"
+  },
+  "executionDateUTC": "2026-11-15T01:16:11.077754+00:00",
+  "python": "3.12.14",
+  "hardware": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+    "threads": 1,
+    "gpu": "none"
+  },
+  "randomSeeds": {
+    "freshTest": [
+      53001,
+      53002,
+      53003,
+      53004
+    ],
+    "frozenModel": 101
+  },
+  "datasetGeneration": "Stim rotated_memory_z circuit detector sampler; same channel placements as parent; all decoders share each condition's shots",
+  "splitDefinitions": "Fresh final test only, seeds disjoint from parent train/validation/test/pilot; no training or checkpoint selection",
+  "modelArchitecture": [
+    24,
+    32,
+    16,
+    1
+  ],
+  "optimizer": "None: frozen checkpoint; no fitting, retuning or recalibration",
+  "baselineSettings": {
+    "fixedPrior": "parent training DEM p_m=.005",
+    "matchedPrior": "evaluation DEM with oracle noise knowledge",
+    "decomposeErrors": true,
+    "correlationsEnabled": false
+  },
+  "sampleCounts": {
+    "testPerCondition": 100000,
+    "conditionsCompleted": 4,
+    "total": 400000
+  },
+  "completionStatus": "completed",
+  "failure": null,
+  "wallSeconds": 0.3372535590001462,
+  "outputFiles": [
+    "research/results/aggregates/confirmation.json"
+  ]
+}
