@@ -19,9 +19,9 @@ export function CheckInspector({
   return (
     <details className="check-inspector">
       <summary>
-        Go deeper: inspect a stabilizer check and its detector records
+        Stabilizer checks and detector records
       </summary>
-      <h2>One check, several clues.</h2>
+      <h2>Check support and measurement history</h2>
       <p className="muted">
         The light patches in the layout identify which data qubits participate
         in a check. The repeated history records changes in expected

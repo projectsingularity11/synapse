@@ -38,15 +38,13 @@ export function SiteControls() {
       className={`site-header cinema-header ${pathname === "/" ? "on-home" : ""}`}
     >
       <Link href="/" className="wordmark" aria-label="Synapse home">
-        <svg viewBox="0 0 32 32" width="27" height="27" aria-hidden="true">
-          <path
-            d="M16 2v28M2 16h28M6 6l20 20M6 26 26 6"
-            stroke="currentColor"
-            strokeWidth="1.5"
-          />
-          <circle cx="16" cy="16" r="6" fill="currentColor" />
+        <svg viewBox="0 0 40 40" width="32" height="32" aria-hidden="true">
+          <path d="M29 7H18C6 7 6 19 18 19h4M11 33h11c12 0 12-12 0-12h-4" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+          <path d="m15 25 10-10" stroke="#ff922f" strokeWidth="3" strokeLinecap="round" />
+          <circle cx="15" cy="25" r="2" fill="#ff922f" />
+          <circle cx="25" cy="15" r="2" fill="#ff922f" />
         </svg>
-        synapse
+        Synapse
       </Link>
       <button
         className="menu-toggle"

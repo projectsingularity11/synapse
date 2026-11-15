@@ -280,7 +280,7 @@ test("stabilizer inspector exposes actual check support and boundaries", async (
 }) => {
   await page.goto("/explore");
   await page
-    .getByText("Go deeper: inspect a stabilizer check and its detector records")
+    .getByText("Stabilizer checks and detector records")
     .click();
   await page.getByLabel("Inspect measurement ancilla").selectOption("9");
   await expect(page.locator(".check-summary")).toContainText("Q1, Q3, Q8, Q10");

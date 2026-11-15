@@ -74,14 +74,14 @@ export function WaterBackdrop() {
           densityDissipation: 2.8,
           velocityDissipation: 1.1,
           curl: 14,
-          splatRadius: 0.035,
+          splatRadius: 0.018,
           splatForce: 300,
           shading: true,
           colorful: false,
-          colorPalette: ["#ff381c", "#ff662e"],
+          colorPalette: ["#ff7925", "#ffa43b"],
           hover: false,
           transparent: true,
-          brightness: 0.045,
+          brightness: 0.13,
           bloom: false,
           sunrays: false,
         });
@@ -115,7 +115,7 @@ export function WaterBackdrop() {
           py * scale,
           dx * 12,
           -dy * 12,
-          iteration % 3 ? "#f34b25" : "#ff8c41",
+          iteration % 3 ? "#ff7925" : "#ffa43b",
         );
       } else {
         const ripple = rings[iteration % rings.length];
@@ -126,15 +126,15 @@ export function WaterBackdrop() {
           [
             {
               transform: "translate(-50%,-50%) rotate(-18deg) scale(.06)",
-              opacity: 0.055,
+              opacity: 0.2,
             },
             {
-              transform: "translate(-50%,-50%) rotate(12deg) scale(2.1)",
+              transform: "translate(-50%,-50%) rotate(12deg) scale(1.5)",
               opacity: 0,
             },
           ],
           {
-            duration: 850,
+            duration: 650,
             easing: "cubic-bezier(.12,.45,.35,1)",
             fill: "forwards",
           },
@@ -166,7 +166,10 @@ export function WaterBackdrop() {
       const ease = 1 - Math.exp(-dt / 42);
       x += (px - x) * ease;
       y += (py - y) * ease;
-      ring.style.transform = `translate3d(${x}px,${y}px,0) scale(${interactive ? 1.65 : 1})`;
+      ring.style.transform = `translate3d(${x}px,${y}px,0) scale(${interactive ? 1.2 : 1})`;
+      const ambient = document.getElementById("main");
+      ambient?.style.setProperty("--ambient-x", `${(x - innerWidth / 2) * 0.18}px`);
+      ambient?.style.setProperty("--ambient-y", `${(y - innerHeight / 2) * 0.16}px`);
       point.style.transform = `translate3d(${px}px,${py}px,0)`;
       if (interactive !== wasInteractive) {
         wasInteractive = interactive;
@@ -195,6 +198,8 @@ export function WaterBackdrop() {
     }
     function preference() {
       if (quiet.current) {
+        document.getElementById("main")?.style.removeProperty("--ambient-x");
+        document.getElementById("main")?.style.removeProperty("--ambient-y");
         node.dataset.pointer = "false";
         fluid?.stop();
         fallback.current

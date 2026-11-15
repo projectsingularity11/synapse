@@ -9,15 +9,15 @@ export default function Explore() {
   const s = getStudy(),
     t = getTraces();
   return (
-    <>
-      <PageHeader index="THE INSTRUMENT / 02" title="Replay the detector history.">
+    <article className="explore-page">
+      <PageHeader index="SAVED EXPERIMENTS" title="Detector history explorer">
         Step through a saved surface-code memory shot. See exactly what the
         decoder receives, then reveal what it predicted.
       </PageHeader>
       <div className="page-body">
         <div className="data-links">
-          <span>FIRST EIGHT SHOTS / REPRESENTATIVE RULE</span>
-          <Link href="/explore/failures">Open labeled failure gallery →</Link>
+          <span>FIRST EIGHT SHOTS AT EACH NOISE SETTING</span>
+          <Link href="/explore/failures">Failure gallery →</Link>
         </div>
         <ReadoutLesson />
         {s && t ? (
@@ -26,7 +26,7 @@ export default function Explore() {
           </Suspense>
         ) : (
           <div className="empty">
-            <h2>Pilot pending.</h2>
+            <h2>Saved traces unavailable</h2>
             <p>
               The replay will appear when a validated experiment artifact is
               available. No illustrative data are substituted for a real shot.
@@ -34,6 +34,6 @@ export default function Explore() {
           </div>
         )}
       </div>
-    </>
+    </article>
   );
 }
