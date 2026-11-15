@@ -1,0 +1,93 @@
+{
+  "runId": "d3-memory-z-20261115T004549Z-training-control-20261115T015445Z",
+  "parentRunId": "d3-memory-z-20261115T004549Z",
+  "sourceCodeCommit": "9ca45902ab9e7bb7e7b373c560f88f13f0e5bff1",
+  "protocolCommittedBeforeFreshLabels": true,
+  "workingTreeDirty": true,
+  "executionDateUTC": "2026-11-15T01:55:11.198927+00:00",
+  "allCheckpointsFrozenAtUTC": "2026-11-15T01:55:10.562105+00:00",
+  "testGenerationStartedAtUTC": "2026-11-15T01:55:10.565626+00:00",
+  "sourceAndInputHashes": {
+    "research/experiments/scripts/training_control.py": "258ad26f6b1dca0ca0d1da2b1434ccaf9382fac1464926a084aaec2c415c9c79",
+    "research/experiments/scripts/run.py": "03eb5215f8fae6cf9f1f46bb28a7737411af5a2cf65be8db52e4ec16060273df",
+    "research/experiments/configs/training-control.json": "ce8ff009a201801cb85bd7377482d9adf23a1b6ab504ddfd7c333205a3542baf",
+    "research/experiments/configs/training-control-protocol.md": "cb1da75e8df53036a466274fc09a21d5b447c4456ba05a8d23b65b100d777684",
+    "research/results/aggregates/study.json": "75e31a475c1d6ffad95b493370108f4d73984bbb8b2bcb7bdeb43714d9e27ae3"
+  },
+  "packageVersions": {
+    "stim": "1.16.0",
+    "pymatching": "2.4.0",
+    "numpy": "2.5.4",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "threadpoolctl": "3.8.0"
+  },
+  "hardware": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+    "threads": 1,
+    "gpu": "none"
+  },
+  "datasetGeneration": "Unchanged Stim rotated_memory_z generator; four train and validation noise groups, disjoint streams; common100k fresh test shots per eval noise across all compared models/baselines",
+  "randomSeeds": {
+    "train": [
+      61001,
+      61002,
+      61003,
+      61004
+    ],
+    "validation": [
+      62001,
+      62002,
+      62003,
+      62004
+    ],
+    "test": [
+      63001,
+      63002,
+      63003,
+      63004
+    ],
+    "initializationAndShuffling": [
+      101,
+      202,
+      303
+    ]
+  },
+  "splitDefinitions": "40k train and8k validation each noise. All12 validation-selected models frozen before test generation. p=.005 fixed/matched share same models by construction.",
+  "modelArchitecture": [
+    24,
+    32,
+    16,
+    1
+  ],
+  "optimizer": {
+    "name": "Adam",
+    "objective": "unweighted binary cross entropy",
+    "learningRate": 0.001,
+    "batchSize": 512,
+    "l2": 0.0001,
+    "maxEpochs": 40,
+    "patience": 8,
+    "threshold": 0.5
+  },
+  "baselineSettings": "Fixed0.005 DEM and oracle eval-noise DEM, decompose_errors=True, uncorrelated MWPM; no changed baseline settings",
+  "sampleCounts": {
+    "trainPerGroup": 40000,
+    "validationPerGroup": 8000,
+    "trainingGroupsCompleted": 4,
+    "testPerCondition": 100000,
+    "conditionsCompleted": 4
+  },
+  "completionStatus": "completed",
+  "failure": null,
+  "wallSeconds": 26.030892318000042,
+  "outputFiles": [
+    "research/results/aggregates/training-control.json",
+    "research/experiments/manifests/d3-memory-z-20261115T004549Z-training-control-20261115T015445Z-checkpoints.json"
+  ],
+  "outputHashes": {
+    "research/results/aggregates/training-control.json": "a357f0d48a46989beff14521156f7bad78726419f096d402d85d7b736242dbd6",
+    "research/experiments/manifests/d3-memory-z-20261115T004549Z-training-control-20261115T015445Z-checkpoints.json": "cce319c53aacf89d88612b65632a866be4e8ba2a6c26cd81ebb7d85c08bb411e"
+  }
+}
