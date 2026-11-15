@@ -14,9 +14,15 @@
     "source": "https://kenney.nl/assets/interface-sounds",
     "mirror": "https://github.com/GeorgeQLe/assets-sfx-ui",
     "files": {
-      "click.ogg": "ccfb7fa0cccdd9faec0eb16033c732b1e308d139d80f799161495d58f7adcdb9",
-      "switch.ogg": "6fc395be2ad1f99ce318a5d28f98fb76dbeb676d83a0b28239d8c1fb90736180",
+      "click.ogg": "be97ec4893a02d6eccfb678daa76c83e34cb2583b834ec2593d2641def739fa4",
+      "switch.ogg": "c977fe249ff42d1c93a552b33abc13a8399df3879fa510475426e5c4bbac1da9",
       "tick.ogg": "9d057b918024c787bbe6c00beed13a7ef72a3fa0c259add3cef36582792f4230"
+    },
+    "revision": "760afd035e8fc3cd7fb5bc58d49a967649875e3e",
+    "originalFiles": {
+      "click.ogg": "pluck_001.ogg",
+      "switch.ogg": "pluck_002.ogg",
+      "tick.ogg": "tick_001.ogg"
     }
   },
   "attribution": "ATTRIBUTION.txt"
