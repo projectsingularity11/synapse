@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import { chromium } from "@playwright/test";
 const base = process.env.TEST_BASE_URL || "http://127.0.0.1:3001";
+const outputDir = process.env.PROFILE_OUTPUT_DIR || "docs/qa/ember";
 const browser = await chromium.launch({
   executablePath: process.env.CHROMIUM_EXECUTABLE_PATH || "/usr/bin/chromium",
   args: ["--no-sandbox", "--disable-gpu", "--enable-unsafe-swiftshader"],
@@ -143,9 +144,9 @@ try {
       "180 requestAnimationFrame intervals during continuous pointer input, held-pointer drag, or narrative scrolling per scenario. CPU-composited Chromium with software WebGL detection; this measures browser scheduling, not physical presentation or a guarantee for every device.",
     results,
   };
-  fs.mkdirSync("docs/qa/ember", { recursive: true });
+  fs.mkdirSync(outputDir, { recursive: true });
   fs.writeFileSync(
-    "docs/qa/ember/frame-cadence.json",
+    `${outputDir}/frame-cadence.json`,
     JSON.stringify(report, null, 2) + "\n",
   );
   console.log(JSON.stringify(report, null, 2));

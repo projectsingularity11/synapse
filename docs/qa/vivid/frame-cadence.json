@@ -1,0 +1,87 @@
+{
+  "base": "http://127.0.0.1:3004",
+  "scope": "180 requestAnimationFrame intervals during continuous pointer input, held-pointer drag, or narrative scrolling per scenario. CPU-composited Chromium with software WebGL detection; this measures browser scheduling, not physical presentation or a guarantee for every device.",
+  "results": [
+    {
+      "scenario": "desktop-hero",
+      "width": 1440,
+      "frames": 180,
+      "fps": 57.14648549114229,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.800000000000182,
+      "over25ms": 5,
+      "longTasks": [],
+      "sceneRenderer": "poster",
+      "waterRenderer": "compositor"
+    },
+    {
+      "scenario": "phone-hero",
+      "width": 390,
+      "frames": 180,
+      "fps": 58.066389238362525,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.800000000000182,
+      "over25ms": 3,
+      "longTasks": [
+        {
+          "start": 2600,
+          "duration": 67
+        },
+        {
+          "start": 3799.800000000745,
+          "duration": 62
+        }
+      ],
+      "sceneRenderer": "poster",
+      "waterRenderer": "compositor"
+    },
+    {
+      "scenario": "desktop-drag-history",
+      "width": 1440,
+      "frames": 180,
+      "fps": 59.020263623844194,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.800000000000182,
+      "over25ms": 1,
+      "longTasks": [],
+      "sceneRenderer": "poster",
+      "waterRenderer": "compositor"
+    },
+    {
+      "scenario": "phone-drag-history",
+      "width": 390,
+      "frames": 180,
+      "fps": 59.67180507210343,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.800000000000182,
+      "over25ms": 1,
+      "longTasks": [],
+      "sceneRenderer": "poster",
+      "waterRenderer": "compositor"
+    },
+    {
+      "scenario": "horizontal-explanation-scroll",
+      "width": 1440,
+      "frames": 180,
+      "fps": 59.66982695750183,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.800000000000182,
+      "over25ms": 1,
+      "longTasks": [],
+      "sceneRenderer": "poster",
+      "waterRenderer": "compositor"
+    },
+    {
+      "scenario": "paper-water-tracker",
+      "width": 1440,
+      "frames": 180,
+      "fps": 57.7552461015209,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.800000000000182,
+      "over25ms": 1,
+      "longTasks": [],
+      "sceneRenderer": null,
+      "waterRenderer": "compositor"
+    }
+  ]
+}

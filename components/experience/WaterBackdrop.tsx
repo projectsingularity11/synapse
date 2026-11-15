@@ -23,6 +23,7 @@ export function WaterBackdrop() {
       rings = Array.from(fallback.current!.children) as HTMLElement[],
       ring = tracker.current!,
       point = dot.current!;
+    const lights = Array.from(document.querySelectorAll<HTMLElement>(".ambient-light"));
     let fluid: WebGLFluidEnhanced | null = null,
       disposed = false,
       usingGPU = false,
@@ -81,7 +82,7 @@ export function WaterBackdrop() {
           colorPalette: ["#ff7925", "#ffa43b"],
           hover: false,
           transparent: true,
-          brightness: 0.13,
+          brightness: 0.22,
           bloom: false,
           sunrays: false,
         });
@@ -126,7 +127,7 @@ export function WaterBackdrop() {
           [
             {
               transform: "translate(-50%,-50%) rotate(-18deg) scale(.06)",
-              opacity: 0.2,
+              opacity: 0.34,
             },
             {
               transform: "translate(-50%,-50%) rotate(12deg) scale(1.5)",
@@ -167,9 +168,10 @@ export function WaterBackdrop() {
       x += (px - x) * ease;
       y += (py - y) * ease;
       ring.style.transform = `translate3d(${x}px,${y}px,0) scale(${interactive ? 1.2 : 1})`;
-      const ambient = document.getElementById("main");
-      ambient?.style.setProperty("--ambient-x", `${(x - innerWidth / 2) * 0.18}px`);
-      ambient?.style.setProperty("--ambient-y", `${(y - innerHeight / 2) * 0.16}px`);
+      for (const light of lights) {
+        light.style.setProperty("--ambient-x", `${(x - innerWidth / 2) * 0.18}px`);
+        light.style.setProperty("--ambient-y", `${(y - innerHeight / 2) * 0.16}px`);
+      }
       point.style.transform = `translate3d(${px}px,${py}px,0)`;
       if (interactive !== wasInteractive) {
         wasInteractive = interactive;
@@ -198,8 +200,10 @@ export function WaterBackdrop() {
     }
     function preference() {
       if (quiet.current) {
-        document.getElementById("main")?.style.removeProperty("--ambient-x");
-        document.getElementById("main")?.style.removeProperty("--ambient-y");
+        for (const light of lights) {
+          light.style.removeProperty("--ambient-x");
+          light.style.removeProperty("--ambient-y");
+        }
         node.dataset.pointer = "false";
         fluid?.stop();
         fallback.current

@@ -3227,18 +3227,18 @@ html[data-graphics="software"] .water-fallback > i {
 .cinema-title h1 { font-weight: 650; letter-spacing: -.055em; }
 .cinema-title h1 em { font-family: var(--font-instrument), Georgia, serif; font-weight: 400; letter-spacing: -.045em; }
 .about-intro h1, .paper-title h1 { font-family: var(--display); font-weight: 600; }
-main::before, main::after { content: ""; position: fixed; width: min(540px, 75vw); height: min(540px,75vw); border-radius: 50%; pointer-events: none; z-index: 6; background: radial-gradient(ellipse, #ff4b161c, #ff902a09 42%, transparent 70%); will-change: transform; animation: ember-drift 24s ease-in-out infinite alternate; }
-main::before { left: -210px; top: 18vh; }
-main::after { right: -200px; bottom: -150px; background: radial-gradient(ellipse, #ff79231a, #e632160a 42%, transparent 70%); animation-delay: -12s; animation-direction: alternate-reverse; }
+main > .ambient-light--silver, main > .ambient-light--ember { content: ""; position: fixed; width: min(540px, 75vw); height: min(540px,75vw); border-radius: 50%; pointer-events: none; z-index: 6; background: radial-gradient(ellipse, #ff4b161c, #ff902a09 42%, transparent 70%); will-change: transform; animation: ember-drift 24s ease-in-out infinite alternate; }
+main > .ambient-light--silver { left: -210px; top: 18vh; }
+main > .ambient-light--ember { right: -200px; bottom: -150px; background: radial-gradient(ellipse, #ff79231a, #e632160a 42%, transparent 70%); animation-delay: -12s; animation-direction: alternate-reverse; }
 @keyframes ember-drift { from { transform: translate3d(0,-5vh,0) scale(.85); } to { transform: translate3d(7vw,12vh,0) scale(1.15); } }
-html[data-effects="reduced"] main::before, html[data-effects="reduced"] main::after { animation: none; will-change: auto; }
-@media (prefers-reduced-motion: reduce) { html:not([data-motion-choice="full"]) main::before, html:not([data-motion-choice="full"]) main::after { animation: none; will-change: auto; } }
-@media print { main::before, main::after { display: none; } }
+html[data-effects="reduced"] main > .ambient-light--silver, html[data-effects="reduced"] main > .ambient-light--ember { animation: none; will-change: auto; }
+@media (prefers-reduced-motion: reduce) { html:not([data-motion-choice="full"]) main > .ambient-light--silver, html:not([data-motion-choice="full"]) main > .ambient-light--ember { animation: none; will-change: auto; } }
+@media print { main > .ambient-light--silver, main > .ambient-light--ember { display: none; } }
 
 /* White is the primary light; flame remains a small signal accent. */
 .fluid-layer { opacity: .065; }
-main::before { background: radial-gradient(ellipse, #ffffff19, #ffffff08 42%, transparent 70%); }
-main::after { background: radial-gradient(ellipse, #fff9ed12, #ff693306 45%, transparent 70%); }
+main > .ambient-light--silver { background: radial-gradient(ellipse, #ffffff19, #ffffff08 42%, transparent 70%); }
+main > .ambient-light--ember { background: radial-gradient(ellipse, #fff9ed12, #ff693306 45%, transparent 70%); }
 .cinema-title h1 { font-size: clamp(60px, 5.6vw, 96px); font-weight: 600; letter-spacing: -.025em; line-height: 1.12; }
 .cinema-title h1 em { font-family: inherit; font-weight: inherit; font-style: normal; background: none; -webkit-text-fill-color: #f3f0ec; color: #f3f0ec; letter-spacing: inherit; }
 .cinema-header .wordmark { letter-spacing: -.025em; }
@@ -3250,8 +3250,8 @@ main::after { background: radial-gradient(ellipse, #fff9ed12, #ff693306 45%, tra
 .water-backdrop[data-interactive="true"] .cursor-tracker { border-color: #ffffff60; background: transparent; }
 
 /* Ambient light follows the pointer independently of the compact orange trail. */
-main::before { translate: var(--ambient-x, 0px) var(--ambient-y, 0px); }
-main::after { translate: calc(var(--ambient-x, 0px) * -.65) calc(var(--ambient-y, 0px) * -.65); }
+main > .ambient-light--silver { translate: var(--ambient-x, 0px) var(--ambient-y, 0px); }
+main > .ambient-light--ember { translate: calc(var(--ambient-x, 0px) * -.65) calc(var(--ambient-y, 0px) * -.65); }
 .fluid-layer { opacity: .18; }
 .water-fallback > i, html[data-graphics="software"] .water-fallback > i { width: 24px; height: 18px; border-color: #ff922f; }
 .water-fallback > i::after { inset: 4px; border-color: #ffad4b80; }
@@ -3290,3 +3290,68 @@ main::after { translate: calc(var(--ambient-x, 0px) * -.65) calc(var(--ambient-y
 @media(max-width:700px) { .cinema-header.site-header { padding-inline:14px; border-radius:18px 6px 18px 6px; gap:10px; } .cinema-header .wordmark { padding-right:0; border-right:0; font-size:25px; gap:6px; } .cinema-header .wordmark svg { width:26px; height:26px; } .cinema-header nav a { padding:14px 10px; } .explore-page .replay-grid > div { padding:16px; } .explore-page .spatial-section,.explore-page .check-inspector { padding:16px; } }
 .page-header h1 { font-family: var(--display); font-weight: 600; letter-spacing: -.025em; }
 .explore-page .readout-lesson { max-width: none; width: 100%; }
+
+/* Image-based light fields: static blur; compositor-only pointer translation. */
+main > .ambient-light--silver, main > .ambient-light--ember {
+  width: min(700px, 92vw);
+  height: min(700px, 92vw);
+  background-size: cover;
+  background-repeat: no-repeat;
+  mask-image: radial-gradient(ellipse, #000 20%, #000c 42%, transparent 71%);
+  -webkit-mask-image: radial-gradient(ellipse, #000 20%, #000c 42%, transparent 71%);
+}
+main > .ambient-light--silver {
+  left: -320px;
+  top: 8vh;
+  background-image: radial-gradient(ellipse at 48% 42%, #ffffff5c, transparent 62%), url('/art/synapse-knot.webp');
+  filter: blur(22px) saturate(.25) brightness(1.65);
+  opacity: .48;
+}
+main > .ambient-light--ember {
+  right: -310px;
+  bottom: -110px;
+  background-image: radial-gradient(ellipse at 45% 45%, #ff761c99, #d82c1730 50%, transparent 70%), url('/art/synapse-knot.webp');
+  filter: blur(26px) sepia(1) saturate(5) hue-rotate(-19deg) brightness(1.3);
+  opacity: .55;
+}
+.hero-atmosphere {
+  display: block;
+  background: radial-gradient(ellipse at 12% 48%, #ffffff0d, transparent 42%), radial-gradient(ellipse at 82% 85%, #ff4b2426, transparent 42%);
+}
+.research-question, .home-evidence, .research-door, .page-header {
+  background-image: radial-gradient(ellipse at 100% 0%, #ff4b2415, transparent 52%), radial-gradient(ellipse at 0% 85%, #ffffff09, transparent 48%);
+}
+.cinema-header.site-header { border-top-color: #ffffff60; box-shadow: inset 0 1px 0 #ffffff18, 0 12px 36px #0005; }
+.primary-action { border-bottom-color: #ff943e; box-shadow: inset 0 1px 0 #fff, 0 5px 30px #ff77251c; }
+.primary-action:hover { box-shadow: inset 0 1px 0 #fff, 0 7px 34px #ff772538; }
+.editorial-link:hover, .quiet-action:hover { color: #ffad63; }
+.fluid-layer { opacity: .3; }
+.cursor-tracker { border-color: #ff9b36; box-shadow: 0 0 9px #ff731959; }
+.cursor-point { background: #ffb44f; box-shadow: 0 0 7px #ff8a28b3; }
+.water-fallback > i, html[data-graphics="software"] .water-fallback > i { border-color: #ffa331; box-shadow: 0 0 7px #ff741c30; }
+.water-fallback > i::after { border-color: #ffc16c99; }
+/* Lower atmospheric light over long-form text, preserving the same palette. */
+main:has(.paper-page) > .ambient-light--silver, main:has(.paper-page) > .ambient-light--ember { opacity: .2; }
+@media(max-width:700px) {
+  main > .ambient-light--silver { left: -210px; top: 22vh; opacity: .4; }
+  main > .ambient-light--ember { right: -220px; bottom: 5vh; opacity: .48; }
+}
+@media print { main > .ambient-light--silver, main > .ambient-light--ember { display: none; } }
+.hero-stage { background: transparent; }
+.hero-stage canvas, .hero-stage .quantum-poster {
+  mask-image: radial-gradient(ellipse, #000 48%, #000d 62%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse, #000 48%, #000d 62%, transparent 80%);
+}
+
+/* Blur, tint, and feathering are baked once; runtime only composites textures. */
+main > .ambient-light--silver, main > .ambient-light--ember { filter: none; mask-image: none; -webkit-mask-image: none; background-size: 100% 100%; }
+main > .ambient-light--silver { background-image: url('/art/ambient-silver.webp'); }
+main > .ambient-light--ember { background-image: url('/art/ambient-ember.webp'); }
+/* Software graphics use a matching black base rather than a live image mask. */
+html[data-graphics="software"] .hero-stage .quantum-poster { mask-image: none; -webkit-mask-image: none; }
+html[data-graphics="software"] .hero-atmosphere { display: none; }
+/* Keep the same luminance with a smaller compositing footprint on software graphics. */
+html[data-graphics="software"] main > .ambient-light { width: min(540px, 80vw); height: min(540px, 80vw); }
+html[data-graphics="software"] main > .ambient-light--silver { left: -240px; }
+html[data-graphics="software"] main > .ambient-light--ember { right: -230px; }
+@media(max-width:700px) { html[data-graphics="software"] main > .ambient-light--silver { left:-190px; } html[data-graphics="software"] main > .ambient-light--ember { right:-200px; } }

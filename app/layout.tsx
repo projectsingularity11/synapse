@@ -56,7 +56,11 @@ export default function RootLayout({
           <style>{`.experience-loader{display:none!important}`}</style>
         </noscript>
         <SiteControls />
-        <main id="main">{children}</main>
+        <main id="main">
+          <span className="ambient-light ambient-light--silver" aria-hidden="true" />
+          <span className="ambient-light ambient-light--ember" aria-hidden="true" />
+          {children}
+        </main>
         <footer>
           <div>
             <Link href="/" className="footer-brand">
