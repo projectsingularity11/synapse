@@ -15,9 +15,9 @@ The `/demo` workspace adapts the supplied reference's interaction layout to the 
 
 Playback includes play/pause, restart, speed, loop, chapter seeking, a native scrubber, and shareable noise/shot/decoder/time links. Camera presets, drag rotation, zoom, time-layer visibility, and fullscreen are provided. The workspace has an independently scrolling sidebar on desktop and puts the visual player first on phones.
 
-Accelerated adapters receive an instanced Three.js scene. Software or unavailable WebGL receives a coordinate-projected SVG scene with the same records and camera controls. The renderer draws on demand, caps DPR, lowers rendering resolution under sustained pressure, and recovers to the vector path on context loss. Hidden documents pause playback; offscreen scene drawing stops. Reduced motion disables camera drift, event pulsing, and decorative movement.
+Accelerated adapters receive an instanced Three.js scene. Software or unavailable WebGL receives a coordinate-projected SVG scene with the same records and camera controls. The renderer draws on demand, caps DPR, lowers rendering resolution under sustained pressure, and recovers to the vector path on context loss. Hidden documents pause playback; offscreen scene drawing stops. Reduced motion disables camera drift, event pulsing, and cursor effects while the ambient background retains a gentle drift.
 
-Ambient lights now choose independent random transform paths. Small pointer translations nudge the layers without controlling their paths. Randomness is decorative only and never enters the saved scientific data. Animations pause for reduced motion and hidden tabs. Page-transition artwork uses the baked white and ember light textures, with no live blur or third-party assets.
+Ambient lights now choose independent random transform paths. Small pointer translations nudge the layers without controlling their paths. Randomness is decorative only and never enters the saved scientific data. Cursor effects stop under reduced motion; ambient animation becomes slower and smaller. Hidden tabs pause background work. Page-transition artwork uses the baked white and ember light textures, with no live blur or third-party assets.
 
 ## Music
 

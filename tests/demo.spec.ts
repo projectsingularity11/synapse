@@ -184,7 +184,7 @@ test("music starts on arrival when autoplay is permitted", async () => {
     await browser.close();
   }
 });
-test("ambient light wanders independently and reduced motion pauses it", async ({
+test("reduced motion keeps gentle ambient drift and completely removes cursor effects", async ({
   page,
 }) => {
   await page.goto("/demo");
@@ -215,10 +215,19 @@ test("ambient light wanders independently and reduced motion pauses it", async (
   await expect
     .poll(() =>
       light.evaluate((e) =>
-        e.getAnimations().every((a) => a.playState === "paused"),
+        e.getAnimations().some((a) => a.playState === "running"),
       ),
     )
     .toBe(true);
+  await expect(page.locator(".water-backdrop")).toBeHidden();
+  await page.mouse.move(300, 250);
+  await expect(page.locator(".cursor-tracker")).toBeHidden();
+  await expect(page.locator(".cursor-point")).toBeHidden();
+  expect(
+    await light.evaluate(
+      (e) => e.getAnimations()[0].effect?.getComputedTiming().duration,
+    ),
+  ).toBeGreaterThan(30000);
   await expect
     .poll(() => light.evaluate((e) => e.style.getPropertyValue("--ambient-x")))
     .toBe("");

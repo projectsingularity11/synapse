@@ -16,15 +16,20 @@ export function NoiseEvidence({ conditions }: { conditions: Condition[] }) {
   return (
     <section className="home-evidence" id="findings">
       <div className="section-heading">
-        <span className="micro">02 — THE OBSERVATION</span>
-        <span className="micro">ORIGINAL EXPERIMENT / SEED 101</span>
+        <span className="micro">
+          Results from the original experiment · seed 101
+        </span>
       </div>
       <div className="evidence-intro">
-        <h2>Logical error across measurement-noise settings</h2>
+        <h2>
+          The neural decoder made more mistakes as measurement noise increased.
+        </h2>
         <p>
-          I trained at 0.5% measurement noise, then changed it. More noise meant
-          more mistakes. But that alone cannot tell us how much damage came from
-          a mismatch in training.
+          The model was trained at 0.5% measurement noise and made more mistakes
+          when I raised that probability. That result alone cannot separate the
+          effect of harder examples from the effect of training on a different
+          noise level, which is why I ran the additional controls described in
+          the paper.
         </p>
       </div>
       <div className="evidence-instrument">

@@ -46,13 +46,13 @@ export function WaterBackdrop() {
       quality = 0;
     const ambientAnimations = new Map<HTMLElement, Animation>();
     function wander(light: HTMLElement, index: number) {
-      if (disposed || quiet.current || document.hidden) return;
+      if (disposed || document.hidden) return;
       const from = getComputedStyle(light).transform;
       ambientAnimations.get(light)?.cancel();
-      const tx = (Math.random() - 0.5) * 150;
-      const ty = (Math.random() - 0.5) * 180;
-      const scale = 0.88 + Math.random() * 0.24;
-      const turn = (Math.random() - 0.5) * 12;
+      const tx = (Math.random() - 0.5) * (quiet.current ? 36 : 150);
+      const ty = (Math.random() - 0.5) * (quiet.current ? 44 : 180);
+      const scale = quiet.current ? 1 : 0.88 + Math.random() * 0.24;
+      const turn = quiet.current ? 0 : (Math.random() - 0.5) * 12;
       const animation = light.animate(
         [
           { transform: from === "none" ? "translate3d(0,0,0) scale(1)" : from },
@@ -61,7 +61,10 @@ export function WaterBackdrop() {
           },
         ],
         {
-          duration: 14000 + Math.random() * 12000 + index * 1700,
+          duration:
+            (quiet.current ? 35000 : 14000) +
+            Math.random() * (quiet.current ? 16000 : 12000) +
+            index * 1700,
           easing: "cubic-bezier(.4,0,.6,1)",
           fill: "forwards",
         },
@@ -70,7 +73,7 @@ export function WaterBackdrop() {
       animation.onfinish = () => wander(light, index);
     }
     function resumeWandering() {
-      if (quiet.current || document.hidden) return;
+      if (document.hidden) return;
       lights.forEach((light, index) => {
         const animation = ambientAnimations.get(light);
         if (animation) {
@@ -181,6 +184,7 @@ export function WaterBackdrop() {
       node.dataset.ripples = String(++iteration);
     }
     function move(event: PointerEvent) {
+      if (quiet.current) return;
       px = event.clientX;
       py = event.clientY;
       if (!seen) {
@@ -242,8 +246,11 @@ export function WaterBackdrop() {
         frame = requestAnimationFrame(draw);
     }
     function preference() {
+      lights.forEach((light, index) => wander(light, index));
       if (quiet.current) {
-        ambientAnimations.forEach((animation) => animation.pause());
+        seen = false;
+        previousX = previousY = -100;
+        lastSplat = 0;
         for (const light of lights) {
           light.style.removeProperty("--ambient-x");
           light.style.removeProperty("--ambient-y");

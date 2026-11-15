@@ -39,22 +39,22 @@ export function SiteControls() {
       className={`site-header cinema-header ${pathname === "/" ? "on-home" : ""}`}
     >
       <Link href="/" className="wordmark" aria-label="Synapse home">
-        <svg viewBox="0 0 40 40" width="32" height="32" aria-hidden="true">
+        <svg
+          viewBox="0 0 48 48"
+          width="32"
+          height="32"
+          aria-hidden="true"
+          className="memory-mark"
+        >
           <path
-            d="M29 7H18C6 7 6 19 18 19h4M11 33h11c12 0 12-12 0-12h-4"
+            d="M24 5 43 16 24 27 5 16Z M5 24l19 11 19-11 M5 32l19 11 19-11 M5 16v16 M43 16v16 M24 27v16"
             fill="none"
             stroke="currentColor"
-            strokeWidth="3"
+            strokeWidth="2.2"
+            strokeLinejoin="round"
             strokeLinecap="round"
           />
-          <path
-            d="m15 25 10-10"
-            stroke="#ff922f"
-            strokeWidth="3"
-            strokeLinecap="round"
-          />
-          <circle cx="15" cy="25" r="2" fill="#ff922f" />
-          <circle cx="25" cy="15" r="2" fill="#ff922f" />
+          <path d="m24 11 9 5-9 5-9-5Z" fill="#ff803d" />
         </svg>
         Synapse
       </Link>

@@ -18,9 +18,10 @@ export default function Accessibility() {
         <p>
           The site follows your operating system’s reduced-motion preference. An
           explicit reduced-effects control is also available. Navigation is
-          ordinary links and scrolling. Reduced effects pause the 3D scenes,
-          disable animated ripples, and make the research film directly
-          seekable.
+          ordinary links and scrolling. Reduced effects remove the cursor trail
+          and tracker completely, pause continuous 3D motion, and make the
+          research film directly seekable. The background keeps a much slower,
+          smaller drift instead of freezing.
         </p>
         <h2>Keyboard and touch.</h2>
         <p>

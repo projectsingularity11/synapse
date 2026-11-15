@@ -1,0 +1,8 @@
+{
+  "origin": "Original static SVG paper grain",
+  "file": "paper-grain.svg",
+  "method": "Seeded SVG fractal noise; monochrome; low-alpha tiled background",
+  "seed": 17,
+  "rights": "Original project work",
+  "sha256": "dd1a434936ab3a9738e49479f687dcbcea4f0db7178a3f8d20fe77c5b6ec9a80"
+}

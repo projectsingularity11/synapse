@@ -15,21 +15,18 @@ export default function Home() {
         <div className="hero-atmosphere" aria-hidden="true" />
         <div className="hero-registration">
           <span className="micro">
-            <i /> INDEPENDENT RESEARCH BY ASSIREM BENSEDDIK
+            <i /> Independent research by Assirem Benseddik
           </span>
-          <span className="micro">QUANTUM COMPUTING / MACHINE LEARNING</span>
         </div>
         <div className="cinema-title">
           <h1 id="home-title">
-            Quantum error
-            <br />
-            decoding under
-            <br />
-            <em>measurement noise</em>
+            Can a neural network recognize errors in a quantum memory?
           </h1>
           <p>
-            I trained a small model to read error clues from a quantum memory.
-            Then I made the measurements noisier.
+            I trained a small neural network to predict whether a simulated
+            quantum memory’s final readout was wrong, using the error-checking
+            measurements around it. Then I made those measurements less reliable
+            to test how well the model would hold up.
           </p>
           <div className="hero-actions">
             <a className="primary-action" href="/demo">
@@ -47,45 +44,22 @@ export default function Home() {
             events={trace.detectionEvents}
           />
         )}
-        <div className="hero-instrument-label">
-          <span className="instrument-cross" aria-hidden="true">
-            +
-          </span>
-          <div>
-            <strong>Quantum memory schematic</strong>
-            <span>Turn the structure by dragging.</span>
-          </div>
-        </div>
-        <div className="hero-signal-strip">
-          {[
-            ["9", "Data qubits"],
-            ["3", "Repeated rounds"],
-            ["24", "Detector bits"],
-            ["4", "Noise settings"],
-          ].map(([value, label]) => (
-            <div key={label}>
-              <strong>{value}</strong>
-              <span>{label}</span>
-            </div>
-          ))}
-          <a href="#question" aria-label="Scroll to the research question">
-            Research question <span>↓</span>
-          </a>
-        </div>
       </section>
       <section className="research-question" id="question">
-        <span className="micro">MEASUREMENT-NOISE SHIFT</span>
-        <h2>The research question</h2>
+        <h2>Why I tested the decoder with noisier measurements</h2>
         <div className="question-aside">
           <p>
-            A quantum computer needs a way to tell whether its stored
-            information has been disturbed. It cannot simply read the whole
-            quantum state to check.
+            A quantum memory cannot simply inspect its stored state to check for
+            mistakes, because measuring that state can disturb the information
+            it is trying to preserve. Instead, it measures relationships between
+            qubits and asks a decoder to interpret the resulting clues.
           </p>
           <p>
-            Instead, it gathers clues. A decoder interprets those clues. I
-            wanted to see what happens when a learned decoder encounters more
-            measurement noise than it trained on.
+            I wanted to find out whether a neural decoder could still make
+            reliable predictions when those clues came from noisier measurements
+            than it had trained on. I compared it with a matching decoder that
+            knew the evaluation noise, rather than judging the network’s results
+            on their own.
           </p>
           <details className="inline-explanation">
             <summary>
@@ -112,38 +86,28 @@ export default function Home() {
         />
       )}
       <section className="research-door">
-        <span className="micro">RESEARCH MATERIALS</span>
         <div className="research-door-title">
-          <h2>Paper and experimental records</h2>
+          <h2>Read the evidence and decide what it supports</h2>
           <p>
-            Read the methods and results, or inspect individual saved shots.
+            If you want to check my reasoning, the paper explains the experiment
+            and the saved-shot explorer lets you compare predictions with what
+            the simulator actually recorded.
           </p>
         </div>
         <div className="research-doors">
           <Link href="/study/paper">
-            <span>01 / PAPER</span>
-            <h3>Full research paper</h3>
+            <h3>Read the full research paper</h3>
             <p>
-              The mathematical task, experimental design, results, controls, and
-              limitations.
+              I explain the experimental design, compare the decoders, and work
+              through the limitations that matter when interpreting the results.
             </p>
             <b aria-hidden="true">↗</b>
           </Link>
           <Link href="/explore">
-            <span>02 / EXPLORER</span>
-            <h3>Inspect a saved experiment</h3>
+            <h3>Explore the saved experiment one shot at a time</h3>
             <p>
               Turn the detector history, change the saved shot, and compare
               predictions with simulator truth.
-            </p>
-            <b aria-hidden="true">↗</b>
-          </Link>
-          <Link href="/about">
-            <span>03 / ABOUT ME</span>
-            <h3>About Assirem</h3>
-            <p>
-              My background in mathematics, physics, web development, CAD, and
-              robotics.
             </p>
             <b aria-hidden="true">↗</b>
           </Link>

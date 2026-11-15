@@ -16,8 +16,9 @@ export default function About() {
             Benseddik
           </h1>
           <p>
-            I’m Assirem, a high school sophomore interested in what happens
-            where mathematics, physics, and engineering meet.
+            I’m Assirem, a high school sophomore studying mathematics and
+            physics while building projects in web development, CAD, and
+            robotics.
           </p>
         </div>
         <div className="about-monogram" aria-hidden="true">
@@ -32,10 +33,10 @@ export default function About() {
         </h2>
         <div>
           <p>
-            Mathematics is central to how I approach a problem. I want to
-            understand the structure underneath it: what the assumptions are,
-            what follows from them, and where an explanation stops being
-            convincing.
+            My background in mathematics shapes how I approach a technical
+            problem. I want to understand the assumptions behind a method and
+            what happens when those assumptions stop holding, which is the
+            question that led me to this project.
           </p>
           <p>
             I’m currently taking AP Calculus BC and AP Physics 1. My goal is to
@@ -79,10 +80,9 @@ export default function About() {
             else.
           </p>
           <p>
-            Synapse brings those interests together. I wanted to investigate a
-            specific question about learned quantum error decoding, then create
-            a way for people to explore the evidence without hiding the
-            difficult parts.
+            My goal for Synapse is to make the reasoning open to inspection. I
+            want readers to be able to follow the question, examine the saved
+            experiments, and reach their own view of what the evidence supports.
           </p>
           <Link className="editorial-link" href="/study/paper">
             Read my research <span>↗</span>

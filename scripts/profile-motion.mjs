@@ -39,6 +39,8 @@ try {
       process.env.PROFILE_SCENARIOS.split(",").includes(s.name),
   )) {
     const context = await browser.newContext({
+      reducedMotion:
+        process.env.PROFILE_REDUCED === "1" ? "reduce" : "no-preference",
       viewport: {
         width: scenario.width,
         height: scenario.width === 390 ? 844 : 1000,
@@ -46,7 +48,7 @@ try {
     });
     const page = await context.newPage();
     await page.goto(base + scenario.route);
-    await page.locator(".water-backdrop[data-ready=true]").waitFor();
+    await page.locator(".water-backdrop[data-ready=true]").waitFor({state:"attached"});
     await page.waitForTimeout(1400);
     if (scenario.kind === "story") {
       await page.getByRole("button", { name: "Show step 3: Remember" }).click();
@@ -166,6 +168,7 @@ try {
   }
   const report = {
     base,
+    motionPreference: process.env.PROFILE_REDUCED === "1" ? "reduced" : "full",
     scope:
       "180 requestAnimationFrame intervals during continuous pointer input, held-pointer drag, or narrative scrolling / recorded-demo playback per scenario. CPU-composited Chromium with software WebGL detection; this measures browser scheduling, not physical presentation or a guarantee for every device.",
     results,

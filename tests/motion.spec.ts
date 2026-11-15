@@ -28,7 +28,9 @@ test("scroll changes the 3D explanation and keyboard seeking reaches every step"
   );
   await expect(section).toHaveAttribute("data-chapter", "2");
   await expect(
-    page.getByRole("heading", { name: "Detector history" }),
+    page.getByRole("heading", {
+      name: "Why the decoder needs a history of measurements",
+    }),
   ).toBeVisible();
   await expect(page.locator(".film-data")).toContainText(
     "2 EVENTS / 24 DETECTORS",
@@ -153,7 +155,7 @@ test("a touch visitor can move between steps using the native slider", async ({
   );
   await expect(
     page.getByRole("heading", {
-      name: "Neural decoder architecture",
+      name: "How the neural network makes its final prediction",
     }),
   ).toBeVisible();
   await context.close();
@@ -195,4 +197,24 @@ test("real WebGL rendering and context loss exercise the accelerated scene branc
     "data-ready",
     "true",
   );
+});
+test("mobile chapter selection keeps the explanation in view with reduced motion", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await page.getByRole("button", { name: "Show step 3: Remember" }).click();
+  await expect(
+    page.getByRole("heading", {
+      name: "Why the decoder needs a history of measurements",
+    }),
+  ).toBeInViewport({ ratio: 0.9 });
+  await expect
+    .poll(() =>
+      page
+        .locator(".story-stage .quantum-poster")
+        .evaluate((el) => (el as HTMLImageElement).naturalWidth),
+    )
+    .toBeGreaterThan(0);
 });

@@ -7,27 +7,27 @@ import type { Study, Trace } from "@/lib/data";
 const chapters = [
   {
     name: "Store",
-    title: "Logical-qubit encoding",
-    copy: "A quantum memory is fragile. This experiment spreads one logical qubit across nine data qubits, so a small disturbance does not have to erase the information.",
+    title: "Why one logical qubit uses several physical qubits",
+    copy: "In this experiment, nine data qubits work together to encode one logical qubit. That redundancy gives the decoder a way to recognize some disturbances without directly measuring the information the memory is supposed to preserve.",
     detail: "Distance-three surface code · schematic layout",
   },
   {
     name: "Check",
-    title: "Parity-check measurements",
-    copy: "Extra qubits measure checks around the memory. When an expected relation changes, it leaves a clue called a detection event.",
+    title: "How the memory checks for changes without reading its state",
+    copy: "Additional qubits measure relationships around the memory instead of reading its stored state directly. When an expected relationship changes, the resulting detection event gives the decoder evidence that something may have gone wrong.",
     detail: "Check illustration · not an animation of actual faults",
   },
   {
     name: "Remember",
-    title: "Detector history",
-    copy: "One round can be ambiguous. Keeping several rounds gives the decoder more context. Turn this saved shot to see two recorded events among its 24 detectors.",
+    title: "Why the decoder needs a history of measurements",
+    copy: "A single round does not always provide enough context, so the decoder reads checks across time. This saved shot contains two recorded events among 24 detectors; rotating the view makes it easier to see which time slices they belong to.",
     detail:
       "Saved shot 1 at 3% measurement noise · actual detector coordinates",
   },
   {
     name: "Decode",
-    title: "Neural decoder architecture",
-    copy: "The neural network reads all 24 detector bits and predicts one logical outcome. I then change the measurement noise to find out how well it holds up.",
+    title: "How the neural network makes its final prediction",
+    copy: "The neural network uses the complete 24-bit record to predict whether the memory’s logical readout has flipped. I evaluate that prediction against the simulator’s recorded outcome, then compare its overall error rate with the matching baselines.",
     detail:
       "24 → 32 → 16 → 1 · architecture schematic; lines are not learned weights",
   },
@@ -104,12 +104,17 @@ export function ResearchFilm({
       window.removeEventListener("synapse-story-seek", schedule);
     };
   }, [reduced]);
-  function seek(value: number) {
+  function seek(value: number, showChapter = false) {
     manual.current = value / 100;
     progress.current = value / 100;
     setScrub(value);
     setChapter(Math.min(3, Math.floor(value / 25)));
     window.dispatchEvent(new Event("synapse-story-seek"));
+    if (showChapter && (reduced || innerWidth <= 700))
+      root.current?.scrollIntoView({
+        block: "start",
+        behavior: reduced ? "auto" : "smooth",
+      });
   }
   return (
     <section
@@ -121,8 +126,7 @@ export function ResearchFilm({
     >
       <div className="film-sticky">
         <div className="film-topline">
-          <span className="micro">UNDERSTAND THE EXPERIMENT</span>
-          <span className="micro">SCROLL THROUGH FOUR STEPS</span>
+          <span className="micro">How the experiment works</span>
         </div>
         <div className="film-composition">
           <div className="film-reading-window">
@@ -185,7 +189,7 @@ export function ResearchFilm({
                 key={c.name}
                 aria-label={`Show step ${i + 1}: ${c.name}`}
                 aria-pressed={chapter === i}
-                onClick={() => seek(i === 3 ? 100 : i * 25 + 2)}
+                onClick={() => seek(i === 3 ? 100 : i * 25 + 2, true)}
               >
                 <span>0{i + 1}</span>
                 {c.name}

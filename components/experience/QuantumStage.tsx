@@ -189,7 +189,7 @@ export function QuantumStage({
         image.style.translate = `${px * 14}px ${py * 10}px`;
         image.style.rotate = `${rotation * 12}deg`;
       }
-      if (world && mode === "story") {
+      if (world && mode === "story" && !quiet.current) {
         const hit = world.inspect(px * 2, -py * 2);
         if (hit !== selection) {
           selection = hit;
@@ -293,7 +293,11 @@ export function QuantumStage({
         priority={mode === "hero"}
       />
       <div className="stage-readout" ref={readout}>
-        Drag to turn the view
+        {reduced
+          ? mode === "hero"
+            ? "Illustration of the simulated quantum memory"
+            : "Choose a chapter or scrub through the recorded steps."
+          : "Drag to turn the view"}
       </div>
     </div>
   );

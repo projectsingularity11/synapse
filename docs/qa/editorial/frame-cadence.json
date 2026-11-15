@@ -1,0 +1,36 @@
+{
+  "base": "http://127.0.0.1:3006",
+  "motionPreference": "full",
+  "scope": "180 requestAnimationFrame intervals during continuous pointer input, held-pointer drag, or narrative scrolling / recorded-demo playback per scenario. CPU-composited Chromium with software WebGL detection; this measures browser scheduling, not physical presentation or a guarantee for every device.",
+  "results": [
+    {
+      "scenario": "desktop-hero",
+      "width": 1440,
+      "frames": 180,
+      "fps": 57.14467125940506,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.799999999999727,
+      "over25ms": 4,
+      "longTasks": [],
+      "sceneRenderer": "poster",
+      "waterRenderer": "compositor"
+    },
+    {
+      "scenario": "phone-hero",
+      "width": 390,
+      "frames": 180,
+      "fps": 59.018328469785885,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.700000000000728,
+      "over25ms": 1,
+      "longTasks": [
+        {
+          "start": 2816.9000000059605,
+          "duration": 55
+        }
+      ],
+      "sceneRenderer": "poster",
+      "waterRenderer": "compositor"
+    }
+  ]
+}
