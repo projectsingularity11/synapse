@@ -75,8 +75,8 @@ export default function Credits() {
         <p>
           Interface Sounds by{" "}
           <a href="https://kenney.nl/assets/interface-sounds">Kenney</a>,
-          distributed under Creative Commons CC0 1.0. The three original Ogg
-          clips are unmodified.{" "}
+          distributed under Creative Commons CC0 1.0. The interface clips use gentle fades, softened high frequencies,
+          and reduced volume.{" "}
           <a href="/licenses/kenney-interface-sounds.txt">Full notice</a> ·{" "}
           <a href="/audio/ATTRIBUTION.txt">Audio attribution record</a>.
         </p>

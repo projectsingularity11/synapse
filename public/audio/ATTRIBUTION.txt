@@ -7,6 +7,8 @@ Changes: re-encoded at 96kbps for web delivery; playback volume controlled by th
 
 Interface Sounds by Kenney (kenney.nl), Creative Commons CC0 1.0.
 Source: https://kenney.nl/assets/interface-sounds
-Unmodified Ogg files pluck_001, pluck_002, tick_001 mirrored from:
+Source Ogg files open_001 and close_001 mirrored from:
 https://github.com/GeorgeQLe/assets-sfx-ui/tree/main/assets/kenney/interface-sounds/Audio
 Full retained notice: /licenses/kenney-interface-sounds.txt
+
+Interface edits: low-pass filtering at 1.1 kHz, gentle attack/release fades, and reduced amplitude for soft, quiet swells.

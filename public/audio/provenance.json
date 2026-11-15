@@ -14,16 +14,17 @@
     "source": "https://kenney.nl/assets/interface-sounds",
     "mirror": "https://github.com/GeorgeQLe/assets-sfx-ui",
     "files": {
-      "click.ogg": "be97ec4893a02d6eccfb678daa76c83e34cb2583b834ec2593d2641def739fa4",
-      "switch.ogg": "c977fe249ff42d1c93a552b33abc13a8399df3879fa510475426e5c4bbac1da9",
-      "tick.ogg": "9d057b918024c787bbe6c00beed13a7ef72a3fa0c259add3cef36582792f4230"
+      "click.ogg": "6177564265952e310422f8999e6bdc60fdc90ed5e823ed1e5597c85b5666638e",
+      "switch.ogg": "989d8dcbcf218709f0d89a457853fbe528ddee2990cb88ed12d71de559e3b33e",
+      "tick.ogg": "0bb52cb155e6165354c267314ca53d264eed36074dc52438e25e724b1d354768"
     },
     "revision": "760afd035e8fc3cd7fb5bc58d49a967649875e3e",
     "originalFiles": {
-      "click.ogg": "pluck_001.ogg",
-      "switch.ogg": "pluck_002.ogg",
-      "tick.ogg": "tick_001.ogg"
-    }
+      "click.ogg": "open_001.ogg",
+      "switch.ogg": "close_001.ogg",
+      "tick.ogg": "open_001.ogg"
+    },
+    "changes": "Replaced plucks and tick with open_001/close_001 swells; two 1.1 kHz low-pass filters, 35\u201345 ms fade-in, 80\u2013100 ms fade-out, padded to 180\u2013240 ms; amplitude reduced to 32\u201342% before existing quiet playback gain."
   },
   "attribution": "ATTRIBUTION.txt"
 }
