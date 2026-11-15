@@ -1,0 +1,11 @@
+# Question and estimand
+
+**When measurement noise differs from the training distribution, how do logical prediction error and confidence calibration change for a compact neural decoder of a small simulated surface-code quantum memory?**
+
+The unit is one complete three-round distance-3 memory experiment. The supervised task is to infer whether logical observable 0 flips relative to the noiseless circuit reference. Its target is not every physical error and not an arbitrary unknown quantum state.
+
+We vary the probability of a pre-measurement flip in Stim's circuit-level Pauli model, holding the remaining configured noise probabilities fixed. The four evaluated probabilities are protocol choices: 0.001, 0.005, 0.015 and 0.03. Training and validation use 0.005. This is a controlled form of covariate/distribution shift, not a complete model of laboratory drift.
+
+Primary error metric: fraction of complete experiments for which the thresholded observable prediction differs from the simulated target. Probabilistic metrics: Brier score and equal-width reliability bins with their sample counts. Wilson intervals quantify finite test-sampling uncertainty conditional on each trained model. Multiple model initializations describe some training variability, not independent replications of the entire dataset-generation process.
+
+Hypothesis, not an assumed conclusion: increasing measurement noise beyond training may increase errors and alter reliability. Baselines are fixed-prior and matched-prior MWPM; matched prior is given the test noise distribution and must be described as such. This project does not seek a quantum-advantage or real-time-hardware claim.

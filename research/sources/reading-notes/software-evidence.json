@@ -1,0 +1,114 @@
+[
+  {
+    "repository": "quantumlib/Stim",
+    "commit": "ffe0d043598ed5df0851a3e6b4920359a23fafbd",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/quantumlib/Stim/ffe0d043598ed5df0851a3e6b4920359a23fafbd/LICENSE",
+    "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+    "bytes": 11357
+  },
+  {
+    "repository": "quantumlib/Stim",
+    "commit": "ffe0d043598ed5df0851a3e6b4920359a23fafbd",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/quantumlib/Stim/ffe0d043598ed5df0851a3e6b4920359a23fafbd/README.md",
+    "sha256": "55af3b2b95cc654cc7b7b37e2a2c4b344c6b1619718e57f052ea06fce4c88199",
+    "bytes": 7901
+  },
+  {
+    "repository": "oscarhiggott/PyMatching",
+    "commit": "6f63b2b9474ba0fa7e511fe52bffdce858a06984",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/oscarhiggott/PyMatching/6f63b2b9474ba0fa7e511fe52bffdce858a06984/LICENSE",
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "bytes": 11357
+  },
+  {
+    "repository": "oscarhiggott/PyMatching",
+    "commit": "6f63b2b9474ba0fa7e511fe52bffdce858a06984",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/oscarhiggott/PyMatching/6f63b2b9474ba0fa7e511fe52bffdce858a06984/README.md",
+    "sha256": "1b61b585c437d062b5cdef04bc076b046b1db835d376490b80ec453e4617df6a",
+    "bytes": 17307
+  },
+  {
+    "repository": "pmndrs/react-three-fiber",
+    "commit": "d74622ea8ed717f7212d7e19d65ff3e325508389",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/pmndrs/react-three-fiber/d74622ea8ed717f7212d7e19d65ff3e325508389/LICENSE",
+    "sha256": "9c35b5de7b7493a707fffe4eb23bd2f7f449153c1911f7c6eefb4e591fd5349a",
+    "bytes": 1072
+  },
+  {
+    "repository": "pmndrs/react-three-fiber",
+    "commit": "d74622ea8ed717f7212d7e19d65ff3e325508389",
+    "path": "readme.md",
+    "url": "https://raw.githubusercontent.com/pmndrs/react-three-fiber/d74622ea8ed717f7212d7e19d65ff3e325508389/readme.md",
+    "sha256": "29c7319a41a30b95319e68d540672efaa31a2c3bd44bad6ef2e48b93d00d4ab6",
+    "bytes": 14301
+  },
+  {
+    "repository": "pmndrs/drei",
+    "commit": "bf6f4addf47467d3885de272d94ca5127f6ef68f",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/pmndrs/drei/bf6f4addf47467d3885de272d94ca5127f6ef68f/LICENSE",
+    "sha256": "2e36b208b403882158daf95cae207087bbb830db4d434a79ebafffca177244c8",
+    "bytes": 1069
+  },
+  {
+    "repository": "pmndrs/drei",
+    "commit": "bf6f4addf47467d3885de272d94ca5127f6ef68f",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/pmndrs/drei/bf6f4addf47467d3885de272d94ca5127f6ef68f/README.md",
+    "sha256": "26718342352d21f3d2011829bb58bc515f06d25d51b19025df5a9eb3ab66299a",
+    "bytes": 27833
+  },
+  {
+    "repository": "darkroomengineering/lenis",
+    "commit": "bd89165aa6ab64c4ae68242c8d2a5e90b76ff77d",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/darkroomengineering/lenis/bd89165aa6ab64c4ae68242c8d2a5e90b76ff77d/LICENSE",
+    "sha256": "7d1896b31f2eed9f286b05faca067c4e35b2f109ae7c4ed5105220e2d2820228",
+    "bytes": 1088
+  },
+  {
+    "repository": "darkroomengineering/lenis",
+    "commit": "bd89165aa6ab64c4ae68242c8d2a5e90b76ff77d",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/darkroomengineering/lenis/bd89165aa6ab64c4ae68242c8d2a5e90b76ff77d/README.md",
+    "sha256": "fe6aaa35a243c4e0a124a23e7149ffe66e83789fc7a55b01a2042fa14e8baa54",
+    "bytes": 34587
+  },
+  {
+    "repository": "radix-ui/primitives",
+    "commit": "eb3a2b7091293e27df8f9ba906632d8daa3d81a3",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/radix-ui/primitives/eb3a2b7091293e27df8f9ba906632d8daa3d81a3/LICENSE",
+    "sha256": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+    "bytes": 1063
+  },
+  {
+    "repository": "radix-ui/primitives",
+    "commit": "eb3a2b7091293e27df8f9ba906632d8daa3d81a3",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/radix-ui/primitives/eb3a2b7091293e27df8f9ba906632d8daa3d81a3/README.md",
+    "sha256": "20cbda0a49f12fb8d23bc41106611cd89d8ff3c6950059b4a3092b58f357656d",
+    "bytes": 1704
+  },
+  {
+    "repository": "recharts/recharts",
+    "commit": "0f32fe2ae473c46352fbec3f4d3bba0ded85d6b9",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/recharts/recharts/0f32fe2ae473c46352fbec3f4d3bba0ded85d6b9/LICENSE",
+    "sha256": "2d3aa48a8d1d3b93093680e8e68d3a64cfb590c3ade377ffcaefc69dac7c2ce5",
+    "bytes": 1084
+  },
+  {
+    "repository": "recharts/recharts",
+    "commit": "0f32fe2ae473c46352fbec3f4d3bba0ded85d6b9",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/recharts/recharts/0f32fe2ae473c46352fbec3f4d3bba0ded85d6b9/README.md",
+    "sha256": "f855882c0ab7bfe083228cd0ae2b7dd73a20eb827fee21bebb5fbb4ef297b93a",
+    "bytes": 4284
+  }
+]

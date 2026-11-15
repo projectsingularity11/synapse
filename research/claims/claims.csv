@@ -1,0 +1,17 @@
+claim_id,exact_claim,source_ids,category,verification_status,public_site_location
+C01,Stim simulates stabilizer circuits with Pauli noise; this experiment does not simulate arbitrary non-Clifford quantum computation.,S03,established theory,verified official documentation,/methods
+C02,"The decoder input is a vector of detection-event bits; the target is a logical-observable flip, not a unique physical error chain.",S03;S06,project method,verified code and artifact,/explore
+C03,This study uses a rotated distance-3 Z-basis memory with three measurement rounds and a 24-element detector vector.,S05;S06,project method,verified run artifact,/methods
+C04,"The neural classifier has 1,345 parameters and outputs a probability for observable 0 being flipped.",S05,project method,verified architecture,/methods
+C05,"For the preselected seed-101 model, prediction error rises from 78/20,000 at measurement noise 0.005 to 732/20,000 at 0.03.",S05,project result,verified aggregate counts,/study
+C06,The seed-101 Brier score rises from approximately 0.00337 at measurement noise 0.005 to 0.03102 at 0.03.,S05,project result,verified aggregate metric,/study
+C07,Matched-prior MWPM uses the evaluation noise model; fixed-prior MWPM retains the training noise model.,S04;S06,project method,verified implementation,/methods
+C08,The seed-101 neural model has more observed failures than matched-prior MWPM at each of the four evaluated settings.,S05,project result,verified aggregate comparison; no significance claim,/study
+C09,A model trained under one noise distribution may become less reliable when measurement noise changes.,S05,hypothesis,motivating hypothesis; limited evidence in this bounded run,/
+C10,"These results are classical simulation and classical machine learning, and are not evidence of quantum advantage or hardware real-time decoding.",S05;S06,project method,verified scope,/about
+C11,The starting AlphaQubit and near-term neural-decoder papers have not been independently read in this network-constrained session.,S01;S02,project method,verified access limitation,/sources
+C12,Brier score includes both calibration and discrimination; an increase alone does not isolate a calibration defect.,S06,project method,verified metric definition,/study
+C13,"The supplementary paired-outcome tables compare decoders on the same final test shots, without treating decoder errors as independent samples.",S05;S07,project method,verified diagnostic artifact,/study
+C14,"Calibration-bin intervals in the supplement are pointwise 95% Wilson intervals for observed flip frequency, not simultaneous confidence bands or uncertainty in the model probabilities.",S06;S07,project method,verified diagnostic definition,/study
+C15,"In a separate fresh-shot confirmation, the frozen seed101 model made 390/100,000 errors at measurement noise 0.005 and 3,796/100,000 at 0.03.",S08,project result,verified fresh-shot confirmation counts,/study
+C16,The confirmation uses the unchanged fitted seed101 model on disjoint fresh test streams; it improves conditional test precision without replicating model training.,S05;S08,project method,verified frozen-checkpoint protocol and manifest,/methods

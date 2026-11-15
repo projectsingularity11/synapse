@@ -1,0 +1,170 @@
+[
+  {
+    "id": "C01",
+    "claim": "Stim simulates stabilizer circuits with Pauli noise; this experiment does not simulate arbitrary non-Clifford quantum computation.",
+    "sourceIds": [
+      "S03"
+    ],
+    "category": "established theory",
+    "status": "verified official documentation",
+    "site": "/methods"
+  },
+  {
+    "id": "C02",
+    "claim": "The decoder input is a vector of detection-event bits; the target is a logical-observable flip, not a unique physical error chain.",
+    "sourceIds": [
+      "S03",
+      "S06"
+    ],
+    "category": "project method",
+    "status": "verified code and artifact",
+    "site": "/explore"
+  },
+  {
+    "id": "C03",
+    "claim": "This study uses a rotated distance-3 Z-basis memory with three measurement rounds and a 24-element detector vector.",
+    "sourceIds": [
+      "S05",
+      "S06"
+    ],
+    "category": "project method",
+    "status": "verified run artifact",
+    "site": "/methods"
+  },
+  {
+    "id": "C04",
+    "claim": "The neural classifier has 1,345 parameters and outputs a probability for observable 0 being flipped.",
+    "sourceIds": [
+      "S05"
+    ],
+    "category": "project method",
+    "status": "verified architecture",
+    "site": "/methods"
+  },
+  {
+    "id": "C05",
+    "claim": "For the preselected seed-101 model, prediction error rises from 78/20,000 at measurement noise 0.005 to 732/20,000 at 0.03.",
+    "sourceIds": [
+      "S05"
+    ],
+    "category": "project result",
+    "status": "verified aggregate counts",
+    "site": "/study"
+  },
+  {
+    "id": "C06",
+    "claim": "The seed-101 Brier score rises from approximately 0.00337 at measurement noise 0.005 to 0.03102 at 0.03.",
+    "sourceIds": [
+      "S05"
+    ],
+    "category": "project result",
+    "status": "verified aggregate metric",
+    "site": "/study"
+  },
+  {
+    "id": "C07",
+    "claim": "Matched-prior MWPM uses the evaluation noise model; fixed-prior MWPM retains the training noise model.",
+    "sourceIds": [
+      "S04",
+      "S06"
+    ],
+    "category": "project method",
+    "status": "verified implementation",
+    "site": "/methods"
+  },
+  {
+    "id": "C08",
+    "claim": "The seed-101 neural model has more observed failures than matched-prior MWPM at each of the four evaluated settings.",
+    "sourceIds": [
+      "S05"
+    ],
+    "category": "project result",
+    "status": "verified aggregate comparison; no significance claim",
+    "site": "/study"
+  },
+  {
+    "id": "C09",
+    "claim": "A model trained under one noise distribution may become less reliable when measurement noise changes.",
+    "sourceIds": [
+      "S05"
+    ],
+    "category": "hypothesis",
+    "status": "motivating hypothesis; limited evidence in this bounded run",
+    "site": "/"
+  },
+  {
+    "id": "C10",
+    "claim": "These results are classical simulation and classical machine learning, and are not evidence of quantum advantage or hardware real-time decoding.",
+    "sourceIds": [
+      "S05",
+      "S06"
+    ],
+    "category": "project method",
+    "status": "verified scope",
+    "site": "/about"
+  },
+  {
+    "id": "C11",
+    "claim": "The starting AlphaQubit and near-term neural-decoder papers have not been independently read in this network-constrained session.",
+    "sourceIds": [
+      "S01",
+      "S02"
+    ],
+    "category": "project method",
+    "status": "verified access limitation",
+    "site": "/sources"
+  },
+  {
+    "id": "C12",
+    "claim": "Brier score includes both calibration and discrimination; an increase alone does not isolate a calibration defect.",
+    "sourceIds": [
+      "S06"
+    ],
+    "category": "project method",
+    "status": "verified metric definition",
+    "site": "/study"
+  },
+  {
+    "id": "C13",
+    "claim": "The supplementary paired-outcome tables compare decoders on the same final test shots, without treating decoder errors as independent samples.",
+    "sourceIds": [
+      "S05",
+      "S07"
+    ],
+    "category": "project method",
+    "status": "verified diagnostic artifact",
+    "site": "/study"
+  },
+  {
+    "id": "C14",
+    "claim": "Calibration-bin intervals in the supplement are pointwise 95% Wilson intervals for observed flip frequency, not simultaneous confidence bands or uncertainty in the model probabilities.",
+    "sourceIds": [
+      "S06",
+      "S07"
+    ],
+    "category": "project method",
+    "status": "verified diagnostic definition",
+    "site": "/study"
+  },
+  {
+    "id": "C15",
+    "claim": "In a separate fresh-shot confirmation, the frozen seed101 model made 390/100,000 errors at measurement noise 0.005 and 3,796/100,000 at 0.03.",
+    "sourceIds": [
+      "S08"
+    ],
+    "category": "project result",
+    "status": "verified fresh-shot confirmation counts",
+    "site": "/study"
+  },
+  {
+    "id": "C16",
+    "claim": "The confirmation uses the unchanged fitted seed101 model on disjoint fresh test streams; it improves conditional test precision without replicating model training.",
+    "sourceIds": [
+      "S05",
+      "S08"
+    ],
+    "category": "project method",
+    "status": "verified frozen-checkpoint protocol and manifest",
+    "site": "/methods"
+  }
+]
