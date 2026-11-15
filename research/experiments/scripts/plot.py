@@ -37,16 +37,16 @@ def main():
     fig.subplots_adjust(bottom=.27, top=.85)
     fig.suptitle("When the measurement noise changes", fontsize=19, fontweight="bold", x=.12, ha="left")
     ax.set_title("Logical-observable prediction error · distance 3 · Z memory · 3 rounds", fontsize=10, loc="left", pad=15)
-    colors = ["#32666a", "#7c5494", "#bd592f"]
+    colors = ["#326449", "#55615b", "#4b567e"]
     keys = ["neural", "fixedMatching", "matchedMatching"]
     names = ["Neural (seed 101)", "MWPM, fixed training prior", "MWPM, matched evaluation prior"]
     x = np.array([c["measurementNoise"] for c in study["conditions"]]) * 100
-    for key, label, color, marker in zip(keys, names, colors, ["o", "s", "^"]):
+    for key, label, color, marker, linestyle in zip(keys, names, colors, ["D", "s", "o"], ["-", "--", ":"]):
         metrics = [c[key] for c in study["conditions"]]
         y = np.array([m["errorRate"] for m in metrics]) * 100
         ci = np.array([m["ci95"] for m in metrics]) * 100
         ax.errorbar(x, y, yerr=np.array([y - ci[:, 0], ci[:, 1] - y]), label=label, color=color, marker=marker,
-                    linewidth=1.5, markersize=5, capsize=3, elinewidth=.9)
+                    linewidth=1.5, markersize=5, capsize=3, elinewidth=.9, linestyle=linestyle)
     ax.axvline(.5, color="#9da8a3", linewidth=.8, linestyle=":")
     ax.text(.53, 3.15, "Training pₘ = 0.5%", fontsize=9, color="#52615b")
     ax.set_xlabel("Measurement-flip probability pₘ (%)")
@@ -63,7 +63,7 @@ def main():
     fig, axes = plt.subplots(2, 2, figsize=(9.4, 7.8), sharex="col", gridspec_kw={"height_ratios": [3, 1]})
     fig.subplots_adjust(bottom=.24, top=.84, hspace=.12, wspace=.2)
     fig.suptitle("Probability is a claim. Calibration tests it.", fontsize=19, fontweight="bold", x=.12, ha="left")
-    for column, p, title, color in [(0, .005, "Training distribution · pₘ = 0.5%", "#32666a"), (1, .03, "Shifted distribution · pₘ = 3%", "#bd592f")]:
+    for column, p, title, color in [(0, .005, "Training distribution · pₘ = 0.5%", "#326449"), (1, .03, "Shifted distribution · pₘ = 3%", "#326449")]:
         condition = next(c for c in extra["conditions"] if c["measurementNoise"] == p)
         bins = condition["reliability"]
         occupied = [b for b in bins if b["count"]]
