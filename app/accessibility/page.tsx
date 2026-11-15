@@ -4,7 +4,10 @@ export const metadata = { title: "Accessibility" };
 export default function Accessibility() {
   return (
     <>
-      <PageHeader index="EXPERIENCE OPTIONS / 08" title="Accessibility and motion controls.">
+      <PageHeader
+        index="EXPERIENCE OPTIONS / 08"
+        title="Accessibility and motion controls."
+      >
         The research is available as ordinary text, diagrams, numeric tables and
         downloadable records. Sound, WebGL, dragging and animation are never
         required.
@@ -15,8 +18,9 @@ export default function Accessibility() {
         <p>
           The site follows your operating system’s reduced-motion preference. An
           explicit reduced-effects control is also available. Navigation is
-          ordinary links and scrolling; there is no forced camera movement,
-          custom cursor or timed entrance.
+          ordinary links and scrolling. Reduced effects pause the 3D scenes,
+          disable animated ripples, and make the research film directly
+          seekable.
         </p>
         <h2>Keyboard and touch.</h2>
         <p>
@@ -25,12 +29,20 @@ export default function Accessibility() {
           inputs. All scientific explanations are available without hover. On
           small screens, the Menu button opens the primary links.
         </p>
+        <h2>Optional audio.</h2>
+        <p>
+          Music and interface sounds are off until you enable them in Sound
+          settings. Music pauses when the page is hidden. Volume, music, and
+          interface sounds have separate controls; no research information is
+          conveyed only through audio.
+        </p>
         <h2>Data beyond color.</h2>
         <p>
           Detection events use square markers and detector IDs. The neural
           decoder uses a diamond, fixed-prior matching a square, matched-prior
           matching a circle. Line patterns, labels and tables accompany colors.
-          Every chart includes a text caption and exact numeric values.
+          Research charts include captions and exact numeric tables. The
+          homepage overview links directly to those complete results.
         </p>
         <h2>Scope of verification.</h2>
         <p>

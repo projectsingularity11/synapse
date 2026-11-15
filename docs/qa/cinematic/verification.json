@@ -1,0 +1,31 @@
+{
+  "build": "passed",
+  "lint": "passed",
+  "typecheck": "passed in production build",
+  "dataIntegrityTests": "5 passed",
+  "browserChecks": {
+    "nonMotion": "40 passed in the full production run",
+    "motion": "7 passed on final source after touch seeking and compositor scheduling fixes"
+  },
+  "viewportWidths": [
+    320,
+    390,
+    430,
+    768,
+    1024,
+    1440,
+    1920
+  ],
+  "runtimeErrorsInScreenshotReview": [],
+  "physicalDeviceVerification": "not performed",
+  "preview": "https://synapse-ij4p69q45-project-singularity.vercel.app/",
+  "productionUpdated": false,
+  "previewStatus": "READY",
+  "remoteChecks": {
+    "/": 200,
+    "/study/paper": 200,
+    "/about": 200,
+    "/data/study.json": 200,
+    "/art/synapse-knot.webp": 200
+  }
+}

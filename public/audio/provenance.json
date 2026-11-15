@@ -1,0 +1,23 @@
+{
+  "music": {
+    "title": "Airport Lounge",
+    "artist": "Kevin MacLeod",
+    "ISRC": "USUAN1100806",
+    "license": "CC BY 4.0",
+    "source": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100806",
+    "changes": "Re-encoded MP3 at 96kbps",
+    "sha256": "36d1fe58300e3a15b4868f4f836f054322a96613462588784d72e07fc5df84f4"
+  },
+  "interface": {
+    "author": "Kenney",
+    "license": "CC0 1.0",
+    "source": "https://kenney.nl/assets/interface-sounds",
+    "mirror": "https://github.com/GeorgeQLe/assets-sfx-ui",
+    "files": {
+      "click.ogg": "ccfb7fa0cccdd9faec0eb16033c732b1e308d139d80f799161495d58f7adcdb9",
+      "switch.ogg": "6fc395be2ad1f99ce318a5d28f98fb76dbeb676d83a0b28239d8c1fb90736180",
+      "tick.ogg": "9d057b918024c787bbe6c00beed13a7ef72a3fa0c259add3cef36582792f4230"
+    }
+  },
+  "attribution": "ATTRIBUTION.txt"
+}

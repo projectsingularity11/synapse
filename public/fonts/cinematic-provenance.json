@@ -1,0 +1,18 @@
+[
+  {
+    "family": "Space Grotesk",
+    "file": "SpaceGrotesk.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf",
+    "license": "SIL Open Font License 1.1",
+    "licenseFile": "OFL-spacegrotesk.txt",
+    "sha256": "acad6de1fc93436f5c0f1f4137751ef04f1aea3063e7036535970ffcfbd79f72"
+  },
+  {
+    "family": "Instrument Serif",
+    "file": "InstrumentSerif-Italic.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/instrumentserif/InstrumentSerif-Italic.ttf",
+    "license": "SIL Open Font License 1.1",
+    "licenseFile": "OFL-instrumentserif.txt",
+    "sha256": "08939b8bdf534afec24ae0ef5e03f948940cd9a8fe08e7fecbad040e62327385"
+  }
+]

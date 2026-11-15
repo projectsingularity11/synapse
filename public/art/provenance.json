@@ -1,0 +1,8 @@
+{
+  "asset": "synapse-knot.webp",
+  "origin": "Original torus-knot geometry and metallic shader in components/experience/Sculpture.tsx",
+  "generator": "node scripts/render-sculpture.mjs",
+  "format": "1400x1400 transparent WebP, quality 88",
+  "bytes": 49904,
+  "sha256": "69be0eb6fc284b85d3a1381668c7f904b364284b128f71aa8e15821b1a59cd18"
+}

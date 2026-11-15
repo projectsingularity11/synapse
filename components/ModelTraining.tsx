@@ -10,7 +10,7 @@ export function ModelTraining({
   const ymax =
     Math.max(...records.flatMap((r) => r.validationLogLossByEpoch)) || 1;
   const maxEpoch = Math.max(...records.map((r) => r.epochsExecuted)) || 40;
-  const colors = ["#91b6ff", "#f39acb", "#a0c6d9"];
+  const colors = ["#ff8a58", "#e9b9a8", "#c4cad3"];
   return (
     <section className="figure-section" id="learning">
       <span className="eyebrow">CLASSICAL LEARNING / MODEL RECORD</span>

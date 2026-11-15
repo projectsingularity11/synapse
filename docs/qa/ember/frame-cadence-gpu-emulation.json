@@ -1,0 +1,78 @@
+{
+  "base": "http://127.0.0.1:3001",
+  "scope": "180 requestAnimationFrame intervals during continuous pointer input, held-pointer drag, or narrative scrolling per scenario. This measures browser scheduling in the selected renderer, not physical presentation or a guarantee for every device.",
+  "results": [
+    {
+      "scenario": "desktop-hero",
+      "width": 1440,
+      "frames": 180,
+      "fps": 59.018328469785885,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.799999999999727,
+      "over25ms": 2,
+      "longTasks": [],
+      "sceneRenderer": "poster",
+      "waterRenderer": "compositor"
+    },
+    {
+      "scenario": "phone-hero",
+      "width": 390,
+      "frames": 180,
+      "fps": 58.38090295796575,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.700000000000728,
+      "over25ms": 1,
+      "longTasks": [],
+      "sceneRenderer": "poster",
+      "waterRenderer": "compositor"
+    },
+    {
+      "scenario": "desktop-drag-history",
+      "width": 1440,
+      "frames": 180,
+      "fps": 58.06638923836254,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.800000000000182,
+      "over25ms": 6,
+      "longTasks": [],
+      "sceneRenderer": "poster",
+      "waterRenderer": "compositor"
+    },
+    {
+      "scenario": "phone-drag-history",
+      "width": 390,
+      "frames": 180,
+      "fps": 60.00200006666888,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.799999999999272,
+      "over25ms": 0,
+      "longTasks": [],
+      "sceneRenderer": "poster",
+      "waterRenderer": "compositor"
+    },
+    {
+      "scenario": "horizontal-explanation-scroll",
+      "width": 1440,
+      "frames": 180,
+      "fps": 59.99999999999999,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.700000000000728,
+      "over25ms": 0,
+      "longTasks": [],
+      "sceneRenderer": "poster",
+      "waterRenderer": "compositor"
+    },
+    {
+      "scenario": "paper-water-tracker",
+      "width": 1440,
+      "frames": 180,
+      "fps": 60.00200006666889,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.800000000000182,
+      "over25ms": 0,
+      "longTasks": [],
+      "sceneRenderer": null,
+      "waterRenderer": "compositor"
+    }
+  ]
+}

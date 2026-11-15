@@ -9,7 +9,7 @@ export function PageHeader({
 }) {
   return (
     <header className="page-header glass-surface">
-      <span className="eyebrow">SYNDROME / {index}</span>
+      <span className="eyebrow">SYNAPSE / {index}</span>
       <h1>{title}</h1>
       <p>{children}</p>
     </header>

@@ -1,0 +1,59 @@
+{
+  "base": "http://127.0.0.1:3001",
+  "scope": "180 requestAnimationFrame intervals during continuous pointer input, held-pointer drag, or narrative scrolling per scenario. This measures browser scheduling in the selected renderer, not physical presentation or a guarantee for every device.",
+  "results": [
+    {
+      "scenario": "story-small-rings",
+      "width": 1440,
+      "frames": 180,
+      "fps": 58.6988423283874,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.799999999999272,
+      "over25ms": 2,
+      "longTasks": [],
+      "sceneRenderer": "poster",
+      "waterRenderer": "compositor"
+    },
+    {
+      "scenario": "story-eight-rings",
+      "width": 1440,
+      "frames": 180,
+      "fps": 57.44925315970891,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.799999999999272,
+      "over25ms": 3,
+      "longTasks": [
+        {
+          "start": 5517.5,
+          "duration": 74
+        }
+      ],
+      "sceneRenderer": "poster",
+      "waterRenderer": "compositor"
+    },
+    {
+      "scenario": "story-all",
+      "width": 1440,
+      "frames": 180,
+      "fps": 60.00400026668446,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.800000000000182,
+      "over25ms": 0,
+      "longTasks": [],
+      "sceneRenderer": "poster",
+      "waterRenderer": "compositor"
+    },
+    {
+      "scenario": "scroll-all",
+      "width": 1440,
+      "frames": 180,
+      "fps": 59.01832846978591,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.800000000000182,
+      "over25ms": 3,
+      "longTasks": [],
+      "sceneRenderer": "poster",
+      "waterRenderer": "compositor"
+    }
+  ]
+}

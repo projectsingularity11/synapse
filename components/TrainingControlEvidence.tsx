@@ -15,7 +15,7 @@ export function TrainingControlEvidence({
     {
       label: `Neural trained at 0.5% · seed ${seed}`,
       kind: "diamond",
-      color: "#326449",
+      color: "#ff9160",
       dash: "6 4",
       points: study.conditions.map((c) => ({
         measurementNoise: c.measurementNoise,
@@ -25,7 +25,7 @@ export function TrainingControlEvidence({
     {
       label: `Neural trained at each test noise · seed ${seed}`,
       kind: "circle",
-      color: "#326449",
+      color: "#ff9160",
       points: study.conditions.map((c) => ({
         measurementNoise: c.measurementNoise,
         metric: c.seeds.find((s) => s.seed === seed)!.matchedTraining,
@@ -34,7 +34,7 @@ export function TrainingControlEvidence({
     {
       label: "Matched-prior matching",
       kind: "square",
-      color: "#4b567e",
+      color: "#c7ccd4",
       dash: "2 4",
       points: study.conditions.map((c) => ({
         measurementNoise: c.measurementNoise,

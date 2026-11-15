@@ -1,0 +1,12 @@
+"Airport Lounge" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+https://creativecommons.org/licenses/by/4.0/
+Source: https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100806
+Download: https://incompetech.com/music/royalty-free/mp3-royaltyfree/Airport%20Lounge.mp3
+Changes: re-encoded at 96kbps for web delivery; playback volume controlled by the visitor. No excerpt or new composition.
+
+Interface Sounds by Kenney (kenney.nl), Creative Commons CC0 1.0.
+Source: https://kenney.nl/assets/interface-sounds
+Unmodified Ogg files click_001, switch_002, tick_001 mirrored from:
+https://github.com/GeorgeQLe/assets-sfx-ui/tree/main/assets/kenney/interface-sounds/Audio
+Full retained notice: /licenses/kenney-interface-sounds.txt

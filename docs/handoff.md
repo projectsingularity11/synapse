@@ -1,3 +1,7 @@
+> **Current release:** the black/white/ember redesign, Bricolage typography, instanced scenes, persistent fluid/tracker, and opt-in licensed jazz supersede the historical implementation below. See [ember-redesign.md](ember-redesign.md) for current verification and licensing, and [deployment.md](deployment.md) for the review preview. Research evidence remains unchanged.
+
+> The current cinematic revision supersedes the historical design and deployment status below. See [cinematic-redesign.md](cinematic-redesign.md) and [deployment.md](deployment.md).
+
 # SYNDROME handoff
 
 > The current dark glass release and its motion/browser checks are documented in [dark-experience-report.md](dark-experience-report.md). Earlier visual and performance records below are historical.

@@ -1,15 +1,28 @@
 # Vercel deployment status
 
-Not deployed. No deployment URL exists. Build success is local evidence only.
+The owner confirmed the current production URL as https://synapse-pied-xi.vercel.app/. The Vercel connector verified the existing project `synapse` (`prj_TfuZ1u929MKgKPRANTlFRfsRFQRY`) under account `team_zQJh0y9soqRrLxA9F2AChFKO`.
 
-This Next.js App Router project uses Vercel's standard Next.js deployment path. Set the project root to this repository, Node 24.x, install `npm ci`, build `npm run build`. Precomputed JSON/CSV and original figure exports live in public/; no Python simulation, credentials, database or inference API is needed in production. The build validates source/config hashes, artifact identities and counts before compiling static routes.
+The previous cinematic preview is READY at https://synapse-ij4p69q45-project-singularity.vercel.app/. The ember redesign supersedes it; its final status is recorded below.
 
-## Required before a state-changing deployment
+- Deployment: `dpl_3z16CP9yy9rnfDKGrNVnB545EUd5`
+- Target: preview (`target: null`); no production aliases assigned.
+- Source snapshot SHA256: `64c269fe0e9dab61f884355185269cc3bab6be7fa1d3aa934abb545df04319d2`.
+- Authenticated remote verification: homepage, `/study/paper`, `/about`, `/data/study.json`, and `/art/synapse-knot.webp` all returned HTTP 200. Expected page/data content was verified.
+- Production aliases, DNS, environment variables, and project protection settings were not changed.
 
-The project owner must identify the exact Vercel account/team and project, confirm that a preview may be created there, and supply supported authenticated access. Current environment exposes no Vercel connector or CLI, no .vercel project binding, and no VERCEL-named environment-variable binding. Existing GitHub access is not Vercel authorization. Do not reveal credential values, deploy to an inferred account, replace production, change DNS or incur paid charges.
+The earlier preview `dpl_GdHRLPVqsV2aPKQSAn3DiSF2Bryf` also reached READY. The final preview adds the compositor-only fallback optimization and supersedes it. The final local QA report and deployment record were saved after the source snapshot; application source matches the final preview.
 
-After the target is known and authorized, authenticate through Vercel's supported secure flow and link that exact project. Create a preview first, record only the actual URL returned by Vercel, then run the browser and route/data checks against it. Verify asset downloads, keyboard replay, reduced effects, optional WebGL fallback, console errors and mobile layout. Sound is intentionally unavailable pending verified licensing. Production requires separate authorization for the verified project. No production or preview command has been executed.
+Deployments use source files through the authenticated Vercel connector, Next.js, Node 24.x, `npm ci`, and `npm run build`. The build exports and validates retained research artifacts before generating static routes. No secrets, database, training jobs, or inference service are required.
 
-## Known external research access limitation
+The preview is intended for owner review. Production replacement requires authorization for the verified project. Do not interpret the historical deployment notes elsewhere as a statement that no Vercel project exists now.
 
-The primary neural-decoder papers and unseen.co reference were denied by the network proxy. See reference-audit.md and research/sources/reading-notes/access-log.md. To finish the literature milestone, permitted primary-paper access or owner-supplied papers are needed. Do not assume saving environment configuration would automatically grant runtime access. The published cloud environment was not changed or republished during website implementation.
+## Ember redesign preview
+
+- URL: https://synapse-838egdaf9-project-singularity.vercel.app/
+- Deployment: `dpl_8nZPPUmTGetpNoSkv6mGyaNbtkjH`
+- Source snapshot SHA256: `a80a1d742ee4ce6971f15caccb239f96259eb56f5c01c35b5cb60f44f8afa144`
+- Source payload: 254 files; the music file was uploaded separately and referenced by verified SHA1/size.
+- Node 24.x, Next.js, `npm ci`, `npm run build`; target preview, no assigned production alias.
+- The source snapshot precedes this final deployment record and final QA screenshots. Application source matches the deployed snapshot.
+
+Status: **READY**. Authenticated remote fetches of `/`, `/study/paper`, `/about`, `/audio/provenance.json`, `/audio/ATTRIBUTION.txt`, and `/art/quantum-provenance.json` all returned HTTP 200 with expected content. Production remains at https://synapse-pied-xi.vercel.app/.

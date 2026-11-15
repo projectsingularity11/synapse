@@ -48,17 +48,17 @@ export default function SpatialScene({
         position: view === "front" ? [0, 4, 14] : [10, 8, 12],
         fov: 42,
       }}
-      gl={{ antialias: true, powerPreference: "low-power" }}
+      gl={{ antialias: true, powerPreference: "high-performance" }}
       fallback={<p>WebGL unavailable. Use the complete 2D view above.</p>}
       aria-label="Optional spatial detector-history view"
     >
-      <color attach="background" args={["#15251e"]} />
+      <color attach="background" args={["#050505"]} />
       <Lifecycle onLost={onLost} />
       <ambientLight intensity={1.5} />
       <directionalLight position={[5, 10, 5]} intensity={2} />
       <Instances limit={24}>
         <boxGeometry args={[0.22, 0.22, 0.22]} />
-        <meshStandardMaterial roughness={0.8} />
+        <meshStandardMaterial roughness={0.35} metalness={0.35} />
         {study.detectors.map((d) => (
           <Instance
             key={d.id}
@@ -69,8 +69,8 @@ export default function SpatialScene({
             ]}
             color={
               trace.detectionEvents[d.id] && d.coordinates[2] <= time
-                ? "#e2ae64"
-                : "#6c8271"
+                ? "#ff7744"
+                : "#aaa6a2"
             }
             scale={
               trace.detectionEvents[d.id] && d.coordinates[2] <= time
@@ -90,7 +90,7 @@ export default function SpatialScene({
             [-3, t * 1.8 - 2.7, 3],
             [-3, t * 1.8 - 2.7, -3],
           ]}
-          color="#536a5b"
+          color="#5e3b2a"
           lineWidth={1}
         />
       ))}
@@ -106,7 +106,8 @@ export default function SpatialScene({
       <OrbitControls
         makeDefault
         enablePan={false}
-        enableDamping={false}
+        enableDamping={true}
+        dampingFactor={0.08}
         minDistance={9}
         maxDistance={25}
         target={[0, 0, 0]}

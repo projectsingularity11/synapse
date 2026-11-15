@@ -1,0 +1,10 @@
+{
+  "family": "Bricolage Grotesque",
+  "designer": "Mathieu Triay",
+  "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/bricolagegrotesque/BricolageGrotesque%5Bopsz%2Cwdth%2Cwght%5D.ttf",
+  "file": "bricolage.woff2",
+  "changes": "Losslessly WOFF2 compressed from the original variable TTF; no glyphs removed",
+  "license": "SIL Open Font License 1.1",
+  "licenseFile": "OFL-BricolageGrotesque.txt",
+  "sha256": "296b4666f370f3ab2df80d877a56bbd618eb1425dfee9f61e022897ad6e6302e"
+}

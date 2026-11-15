@@ -1,35 +1,52 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { AudioControls } from "./AudioControls";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import { useReducedEffects } from "./useReducedEffects";
 const links = [
   ["/explore", "Explore"],
   ["/study", "The study"],
-  ["/methods", "Methods"],
-  ["/sources", "Sources"],
+  ["/study/paper", "Paper"],
+  ["/about", "About me"],
 ];
 export function SiteControls() {
   const [open, setOpen] = useState(false);
-  const { reduced: quiet, toggle } = useReducedEffects();
+  const { reduced, toggle } = useReducedEffects();
+  const pathname = usePathname();
+  const header = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const el = header.current!;
+    const update = () => {
+      el.dataset.scrolled = scrollY > 30 ? "true" : "false";
+    };
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+    return () => window.removeEventListener("scroll", update);
+  }, []);
+  useEffect(() => {
+    if (!open) return;
+    const close = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", close);
+    return () => document.removeEventListener("keydown", close);
+  }, [open]);
   return (
-    <header className="site-header glass-surface">
-      <Link className="wordmark" href="/" aria-label="Synapse home">
-        <svg
-          className="brand-icon"
-          viewBox="0 0 32 32"
-          aria-hidden="true"
-          width="28"
-          height="28"
-        >
+    <header
+      ref={header}
+      className={`site-header cinema-header ${pathname === "/" ? "on-home" : ""}`}
+    >
+      <Link href="/" className="wordmark" aria-label="Synapse home">
+        <svg viewBox="0 0 32 32" width="27" height="27" aria-hidden="true">
           <path
-            d="M7 7h18v18H7zM16 2v28M2 16h28"
+            d="M16 2v28M2 16h28M6 6l20 20M6 26 26 6"
             stroke="currentColor"
-            strokeWidth="1"
-            fill="none"
+            strokeWidth="1.5"
           />
-          <path d="M12 12h8v8h-8z" fill="currentColor" />
-        </svg>{" "}
-        Synapse<span className="edition">BY ASSIREM BENSEDDIK</span>
+          <circle cx="16" cy="16" r="6" fill="currentColor" />
+        </svg>
+        synapse
       </Link>
       <button
         className="menu-toggle"
@@ -41,24 +58,25 @@ export function SiteControls() {
       </button>
       <nav id="main-nav" aria-label="Main" className={open ? "is-open" : ""}>
         {links.map(([href, label]) => (
-          <Link key={href} href={href} onClick={() => setOpen(false)}>
+          <Link
+            key={href}
+            href={href}
+            aria-current={pathname === href ? "page" : undefined}
+            onClick={() => setOpen(false)}
+          >
             {label}
           </Link>
         ))}
       </nav>
+      <AudioControls />
       <button
         className="effects"
-        aria-label={`Motion: ${quiet ? "Reduced" : "Full"}. Reduced effects toggle`}
-        aria-pressed={quiet}
-        title={
-          quiet
-            ? "Reduced motion is active. Enable full motion and cursor effects."
-            : "Full motion is active. Reduce motion and cursor effects."
-        }
+        aria-label={`Reduced effects: ${reduced ? "on" : "off"}`}
+        aria-pressed={reduced}
         onClick={toggle}
       >
-        Motion: {quiet ? "Reduced" : "Full"}
-        <span aria-hidden="true">{quiet ? "○" : "●"}</span>
+        <span className="motion-dot" />
+        Motion: {reduced ? "Reduced" : "Full"}
       </button>
     </header>
   );

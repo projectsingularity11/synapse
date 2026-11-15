@@ -1,51 +1,106 @@
 import Link from "next/link";
-import { PageHeader } from "@/components/PageHeader";
-export const metadata = { title: "About the project" };
+export const metadata = {
+  title: "About me — Assirem Benseddik",
+  description:
+    "Assirem Benseddik: sophomore, two-time TSA state champion, and an independent researcher interested in mathematics, physics, web development, CAD, and robotics.",
+};
 export default function About() {
   return (
-    <>
-      <PageHeader index="PROJECT NOTES / 06" title="A question I wanted to test.">
-        Synapse is an independent project by Assirem Benseddik
-        investigating classical learning for quantum error decoding.
-      </PageHeader>
-      <div className="page-body prose">
-        <h2>A question, not a claim of advantage.</h2>
-        <p>
-          This project joins a small reproducible simulation with an accessible
-          explanation of what decoding does. It asks how measurement-noise
-          mismatch affects logical prediction and probability calibration for a
-          modest neural model.
-        </p>
-        <p>
-          No laboratory access, quantum hardware experiment, institutional
-          affiliation, publication, award or external collaboration is claimed.
-          AlphaQubit and other published neural decoders are prior work, not
-          systems reproduced by this study.
-        </p>
-        <h2>Created by Assirem Benseddik.</h2>
-        <p>
-          The implementation, writing and computational pipeline were prepared
-          with AI coding agents under the project owner’s brief. Research,
-          experiment and frontend work were assigned separate ownership and
-          integrated with tests. That process does not replace independent
-          scientific peer review.
-        </p>
-        <p>
-          The canonical research vault holds the protocol, source records, claim
-          ledger, scripts, manifests and aggregate results. Large training
-          datasets are generated locally and are not shipped to the browser.
-        </p>
-        <h2>What comes next?</h2>
-        <p>
-          A careful extension could vary code distance, repeat sampling budgets,
-          examine calibration under additional noise changes, or evaluate a
-          mixed-noise training distribution. Those are future experiments, not
-          completed findings.
-        </p>
-        <Link href="/methods" className="text-link">
-          Read the limits <span>→</span>
-        </Link>
-      </div>
-    </>
+    <article className="about-page">
+      <span className="micro">ABOUT ME / ASSIREM BENSEDDIK</span>
+      <header className="about-intro">
+        <div>
+          <h1>
+            Assirem
+            <br />
+            Benseddik
+          </h1>
+          <p>
+            I’m Assirem, a high school sophomore interested in what happens
+            where mathematics, physics, and engineering meet.
+          </p>
+        </div>
+        <div className="about-monogram" aria-hidden="true">
+          Ab
+        </div>
+      </header>
+      <section className="biography-grid">
+        <h2>
+          Mathematics
+          <br />
+          and physics
+        </h2>
+        <div>
+          <p>
+            Mathematics is central to how I approach a problem. I want to
+            understand the structure underneath it: what the assumptions are,
+            what follows from them, and where an explanation stops being
+            convincing.
+          </p>
+          <p>
+            I’m currently taking AP Calculus BC and AP Physics 1. My goal is to
+            finish the undergraduate mathematics and physics curriculum by my
+            senior year of high school.
+          </p>
+          <dl>
+            <div>
+              <dt>Current studies</dt>
+              <dd>AP Calculus BC · AP Physics 1</dd>
+            </div>
+            <div>
+              <dt>Academic goal</dt>
+              <dd>
+                Complete undergraduate mathematics and physics by senior year
+              </dd>
+            </div>
+            <div>
+              <dt>Research interests</dt>
+              <dd>
+                Quantum error correction · Machine learning · Applied
+                mathematics
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+      <section className="biography-grid">
+        <h2>Web development, CAD, and robotics</h2>
+        <div>
+          <p>
+            My background includes web development, computer-aided design, and
+            robotics. I’m drawn to projects that ask for both a strong technical
+            explanation and something I can build, test, or use.
+          </p>
+          <p>
+            I’ve won two Technology Student Association state championships, in
+            biotechnology and web development. Those experiences sit alongside
+            my interest in engineering: taking an open-ended question, working
+            through constraints, and making the result understandable to someone
+            else.
+          </p>
+          <p>
+            Synapse brings those interests together. I wanted to investigate a
+            specific question about learned quantum error decoding, then create
+            a way for people to explore the evidence without hiding the
+            difficult parts.
+          </p>
+          <Link className="editorial-link" href="/study/paper">
+            Read my research <span>↗</span>
+          </Link>
+        </div>
+      </section>
+      <section className="about-contact">
+        <h2>Get in touch</h2>
+        <a href="mailto:project.singularity11@gmail.com">
+          project.singularity11@gmail.com ↗
+        </a>
+        <div
+          className="portfolio-slot"
+          aria-label="Portfolio link not yet available"
+        >
+          Portfolio —
+        </div>
+      </section>
+    </article>
   );
 }

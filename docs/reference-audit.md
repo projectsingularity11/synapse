@@ -1,3 +1,13 @@
+# Current cinematic revision
+
+The reference homepages at https://lusion.co/, https://unseen.co/, https://immersive-g.com/, and https://www.awwwards.com/ were retrieved successfully with the environment HTTP client during this revision. Lusion exposes a scene-led opening, scroll invitation, large introductory statement, and selected-work structure in its HTML. This informed the hierarchy of an opening scene, a question, an interactive experiment, and deeper research entry points.
+
+The shared browser failed before navigation. Separate browser reference captures failed certificate validation; no browser security warning was bypassed. Consequently, this revision does not claim a pixel-for-pixel comparison or a visual audit of the live references. The previous access restriction below describes an earlier environment, not the current HTTP retrieval result.
+
+The implementation uses original torus-knot geometry and GLSL, real saved detector coordinates, compositor ripple fallbacks, Space Grotesk and Instrument Serif from the official Google Fonts repository, and the existing open-source Next.js/React/Lenis stack. No reference-site logo, copy, shader, movie, or other proprietary asset is shipped. The software fallback poster is rendered from the same original sculpture shader, not a third-party image.
+
+---
+
 # Reference audit
 
 ## Directly observed

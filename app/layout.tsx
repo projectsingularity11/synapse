@@ -4,8 +4,30 @@ import { SiteControls } from "@/components/SiteControls";
 import "./globals.css";
 import "./experience.css";
 import "./dark-experience.css";
+import "./cinematic.css";
 import { WaterBackdrop } from "@/components/experience/WaterBackdrop";
+import localFont from "next/font/local";
 import { ExperienceMotion } from "@/components/experience/ExperienceMotion";
+const display = localFont({
+  src: "../public/fonts/syne.woff2",
+  variable: "--font-display",
+  display: "swap",
+  weight: "400 800",
+});
+const space = localFont({
+  src: "../public/fonts/SpaceGrotesk.ttf",
+  variable: "--font-space",
+  display: "swap",
+  weight: "300 700",
+});
+const instrument = localFont({
+  preload: false,
+  src: "../public/fonts/InstrumentSerif-Italic.ttf",
+  variable: "--font-instrument",
+  display: "swap",
+  weight: "400",
+  style: "italic",
+});
 export const metadata: Metadata = {
   title: {
     default: "Synapse — Research by Assirem Benseddik",
@@ -20,7 +42,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${space.variable} ${instrument.variable} ${display.variable}`}
+    >
       <body>
         <a className="skip" href="#main">
           Skip to content
@@ -40,8 +65,10 @@ export default function RootLayout({
             <p>Independent research by Assirem Benseddik.</p>
           </div>
           <nav aria-label="Footer">
-            <Link href="/about">About the project</Link>
-            <Link href="/credits">Credits & licenses</Link>
+            <Link href="/about">About me</Link>
+            <Link href="/sources">Sources</Link>
+            <Link href="/credits">Licenses</Link>
+            <Link href="/methods">Methods</Link>
             <Link href="/accessibility">Accessibility</Link>
             <a href="/data/study.json">Research data →</a>
           </nav>

@@ -1,317 +1,261 @@
 "use client";
 import { useEffect, useRef } from "react";
+import type WebGLFluidEnhanced from "webgl-fluid-enhanced";
+import { softwareGraphics } from "@/lib/graphics";
 import { useReducedEffects } from "../useReducedEffects";
 
-// Original analytic wave field. WebGL 1 / no float textures or SVG filter dependencies.
-const vertex = `attribute vec2 aPosition; varying vec2 vUv; void main(){vUv=aPosition*.5+.5;gl_Position=vec4(aPosition,0.,1.);}`;
-const fragment = `precision highp float;
-varying vec2 vUv; uniform vec2 uResolution; uniform float uTime; uniform vec2 uPointer; uniform vec4 uRipples[8];
-void main(){
- float aspect=uResolution.x/uResolution.y; vec2 p=(vUv-.5)*vec2(aspect,1.);
- float t=uTime*.13;
- float a=p.x*2.4+p.y*1.7+t; float b=p.y*3.8-p.x*1.5-t*.65;
- vec2 grad=vec2(cos(a)*.38-cos(b)*.21,cos(a)*.27+cos(b)*.53);
- float h=sin(a)*.16+sin(b)*.14;
- for(int i=0;i<8;i++){
-   vec4 r=uRipples[i]; if(r.w<.01 || uTime-r.z>4.0)continue; float age=max(0.,uTime-r.z);vec2 d=(vUv-r.xy)*vec2(aspect,1.);float dist=length(d)+.001;
-   float envelope=exp(-age*1.35)*exp(-pow((dist-age*.24)*5.,2.))*r.w;
-   float wave=dist*48.-age*9.;h+=sin(wave)*envelope*.12;
-   grad+=d/dist*cos(wave)*envelope*2.1;
- }
- vec3 n=normalize(vec3(-grad,1.0));
- vec3 view=normalize(vec3((vUv-.5)*.2,1.));
- float blue=pow(max(dot(n,normalize(vec3(-.65,.6,1.))),0.),15.);
- float pink=pow(max(dot(n,normalize(vec3(.75,-.45,1.))),0.),20.);
- float ridge=pow(.5+.5*sin(h*15.+p.x*.7),18.);
- float fresnel=pow(1.-max(dot(n,view),0.),3.);
- vec3 color=vec3(.012,.019,.045);
- color+=vec3(.025,.17,.82)*(blue*.9+ridge*.08);
- color+=vec3(.8,.018,.28)*(pink*.85+fresnel*.25);
- color+=vec3(.20,.32,.55)*pow(blue*pink,2.)*.4;
- float vignette=1.-smoothstep(.15,1.25,length(p*.65));
- color*=.5+vignette*.5;
- gl_FragColor=vec4(color,1.);
-}`;
+/** Persistent, pointer-transparent fluid layer. Upstream MIT solver is loaded only on accelerated adapters. */
 export function WaterBackdrop() {
-  const surface = useRef<HTMLDivElement>(null),
-    canvas = useRef<HTMLCanvasElement>(null),
-    fallback = useRef<HTMLCanvasElement>(null),
-    cursor = useRef<HTMLDivElement>(null);
+  const root = useRef<HTMLDivElement>(null),
+    fluidLayer = useRef<HTMLDivElement>(null),
+    fallback = useRef<HTMLDivElement>(null),
+    tracker = useRef<HTMLDivElement>(null),
+    dot = useRef<HTMLDivElement>(null);
   const { reduced } = useReducedEffects();
   const quiet = useRef(reduced);
   useEffect(() => {
     quiet.current = reduced;
+    window.dispatchEvent(new Event("synapse-visual-wake"));
   }, [reduced]);
   useEffect(() => {
-    const node = surface.current!,
-      gpu = canvas.current!,
-      plain = fallback.current!,
-      lens = cursor.current!;
-    let gl: WebGLRenderingContext | null = null,
-      program: WebGLProgram | null = null,
-      buffer: WebGLBuffer | null = null;
-    const shaders: WebGLShader[] = [];
-    let fallbackMode = false,
+    const node = root.current!,
+      layer = fluidLayer.current!,
+      rings = Array.from(fallback.current!.children) as HTMLElement[],
+      ring = tracker.current!,
+      point = dot.current!;
+    let fluid: WebGLFluidEnhanced | null = null,
+      disposed = false,
+      usingGPU = false,
       frame = 0,
-      dirty = true,
-      previousQuiet = false,
-      previous = 0;
-    const start = performance.now() / 1000;
-    let x = 0.72,
-      y = 0.6,
-      cx = 0.72,
-      cy = 0.6,
-      cursorX = 0,
-      cursorY = 0,
+      last = 0,
+      px = -100,
+      py = -100,
+      x = -100,
+      y = -100,
+      previousX = -100,
+      previousY = -100,
+      seen = false,
+      interactive = false,
+      wasInteractive = false,
+      iteration = 0,
       lastSplat = 0,
-      next = 0,
-      draws = 0,
-      quality = 0.7,
-      lastQualityChange = 0;
-    const ripples = new Float32Array(32);
-    for (let i = 0; i < 8; i++) ripples[i * 4 + 2] = -100;
-    let resolution: WebGLUniformLocation | null = null,
-      time: WebGLUniformLocation | null = null,
-      point: WebGLUniformLocation | null = null,
-      waves: WebGLUniformLocation | null = null;
-    const ctx = plain.getContext("2d");
-    const activateFallback = () => {
-      fallbackMode = true;
-      node.dataset.renderer = "canvas2d";
-      gpu.style.visibility = "hidden";
-      plain.style.display = "block";
-      dirty = true;
-    };
-    try {
-      gl = gpu.getContext("webgl", {
-        alpha: false,
-        antialias: false,
-        depth: false,
-        stencil: false,
-        powerPreference: "low-power",
-      });
-      if (!gl) throw new Error("WebGL unavailable");
-      const debug = gl.getExtension("WEBGL_debug_renderer_info");
-      const renderer = debug
-        ? String(gl.getParameter(debug.UNMASKED_RENDERER_WEBGL))
-        : "";
-      if (/swiftshader|llvmpipe|softpipe|software/i.test(renderer)) {
-        node.dataset.fallbackReason = "software-renderer";
-        throw new Error("Use the light renderer on software graphics");
+      slow = 0,
+      quality = 0;
+    let canvas: HTMLCanvasElement | null = null;
+    function ready() {
+      node.dataset.ready = "true";
+      window.dispatchEvent(new Event("synapse-scene-ready"));
+    }
+    function activateLight() {
+      fluid?.stop();
+      usingGPU = false;
+      layer.hidden = true;
+      node.dataset.renderer = "compositor";
+      document.documentElement.dataset.graphics = "software";
+      ready();
+    }
+    async function initialize() {
+      try {
+        const probe = document.createElement("canvas");
+        const adapter = probe.getContext("webgl2") || probe.getContext("webgl");
+        if (!adapter || softwareGraphics(adapter as WebGLRenderingContext)) {
+          adapter?.getExtension("WEBGL_lose_context")?.loseContext();
+          activateLight();
+          return;
+        }
+        adapter.getExtension("WEBGL_lose_context")?.loseContext();
+        const { default: Fluid } = await import("webgl-fluid-enhanced");
+        if (disposed) return;
+        fluid = new Fluid(layer);
+        fluid.setConfig({
+          simResolution: 96,
+          dyeResolution: 384,
+          pressureIterations: 8,
+          densityDissipation: 2.8,
+          velocityDissipation: 1.1,
+          curl: 14,
+          splatRadius: 0.065,
+          splatForce: 750,
+          shading: true,
+          colorful: false,
+          colorPalette: ["#ff381c", "#ff662e"],
+          hover: false,
+          transparent: true,
+          brightness: 0.11,
+          bloom: false,
+          sunrays: false,
+        });
+        usingGPU = true;
+        layer.hidden = false;
+        node.dataset.renderer = "fluid";
+        document.documentElement.dataset.graphics = "accelerated";
+        canvas = layer.querySelector("canvas");
+        canvas?.addEventListener("webglcontextlost", contextLost);
+        if (!quiet.current && !document.hidden) fluid.start();
+        ready();
+      } catch {
+        activateLight();
       }
-
-      const compile = (type: number, source: string) => {
-        const s = gl!.createShader(type)!;
-        shaders.push(s);
-        gl!.shaderSource(s, source);
-        gl!.compileShader(s);
-        if (!gl!.getShaderParameter(s, gl!.COMPILE_STATUS))
-          throw new Error("Shader unavailable");
-        return s;
-      };
-      program = gl.createProgram()!;
-      gl.attachShader(program, compile(gl.VERTEX_SHADER, vertex));
-      gl.attachShader(program, compile(gl.FRAGMENT_SHADER, fragment));
-      gl.linkProgram(program);
-      if (!gl.getProgramParameter(program, gl.LINK_STATUS))
-        throw new Error("Shader program unavailable");
-      gl.useProgram(program);
-      buffer = gl.createBuffer();
-      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-      gl.bufferData(
-        gl.ARRAY_BUFFER,
-        new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]),
-        gl.STATIC_DRAW,
+    }
+    function contextLost(event: Event) {
+      event.preventDefault();
+      activateLight();
+    }
+    function splat(stamp: number) {
+      if (quiet.current || stamp - lastSplat < (usingGPU ? 14 : 28)) return;
+      lastSplat = stamp;
+      const dx = previousX < 0 ? 0 : px - previousX,
+        dy = previousY < 0 ? 0 : py - previousY;
+      previousX = px;
+      previousY = py;
+      if (usingGPU && fluid) {
+        const scale = 0.65;
+        fluid.splatAtLocation(
+          px * devicePixelRatio * scale,
+          py * scale,
+          dx * 12,
+          -dy * 12,
+          iteration % 3 ? "#f34b25" : "#ff8c41",
+        );
+      } else {
+        const ripple = rings[iteration % rings.length];
+        ripple.getAnimations().forEach((a) => a.cancel());
+        ripple.style.left = `${px}px`;
+        ripple.style.top = `${py}px`;
+        ripple.animate(
+          [
+            {
+              transform: "translate(-50%,-50%) rotate(-18deg) scale(.06)",
+              opacity: 0.16,
+            },
+            {
+              transform: "translate(-50%,-50%) rotate(12deg) scale(3.8)",
+              opacity: 0,
+            },
+          ],
+          {
+            duration: 1700,
+            easing: "cubic-bezier(.12,.45,.35,1)",
+            fill: "forwards",
+          },
+        );
+      }
+      node.dataset.ripples = String(++iteration);
+    }
+    function move(event: PointerEvent) {
+      px = event.clientX;
+      py = event.clientY;
+      if (!seen) {
+        x = px;
+        y = py;
+        seen = true;
+      }
+      interactive = !!(event.target as Element | null)?.closest?.(
+        "a,button,input,select,[data-cursor]",
       );
-      const a = gl.getAttribLocation(program, "aPosition");
-      gl.enableVertexAttribArray(a);
-      gl.vertexAttribPointer(a, 2, gl.FLOAT, false, 0, 0);
-      resolution = gl.getUniformLocation(program, "uResolution");
-      time = gl.getUniformLocation(program, "uTime");
-      point = gl.getUniformLocation(program, "uPointer");
-      waves = gl.getUniformLocation(program, "uRipples[0]");
-      node.dataset.renderer = "webgl";
-    } catch {
-      activateFallback();
+      node.dataset.touch = String(event.pointerType === "touch");
+      node.dataset.pointer = "true";
+      splat(performance.now());
+      wake();
     }
-    function resize() {
-      const scale = innerWidth < 700 ? Math.min(0.85, quality + 0.1) : quality;
-      const dpr = 1;
-      const w = Math.max(1, Math.round(innerWidth * scale * dpr)),
-        h = Math.max(1, Math.round(innerHeight * scale * dpr));
-      gpu.width = w;
-      gpu.height = h;
-      plain.width = w;
-      plain.height = h;
-      if (gl && !fallbackMode) {
-        gl.viewport(0, 0, w, h);
-        gl.uniform2f(resolution, w, h);
+    function draw(stamp: number) {
+      frame = 0;
+      if (disposed || document.hidden || quiet.current || !seen) return;
+      const dt = last ? Math.min(50, stamp - last) : 16.67;
+      last = stamp;
+      const ease = 1 - Math.exp(-dt / 42);
+      x += (px - x) * ease;
+      y += (py - y) * ease;
+      ring.style.transform = `translate3d(${x}px,${y}px,0) scale(${interactive ? 1.65 : 1})`;
+      point.style.transform = `translate3d(${px}px,${py}px,0)`;
+      if (interactive !== wasInteractive) {
+        wasInteractive = interactive;
+        node.dataset.interactive = String(interactive);
       }
-      dirty = true;
-    }
-    function splat(px: number, py: number, now: number, strength = 1) {
-      const offset = (next++ % 8) * 4;
-      ripples[offset] = px;
-      ripples[offset + 1] = 1 - py;
-      ripples[offset + 2] = now;
-      ripples[offset + 3] = strength;
-      dirty = true;
-      node.dataset.ripples = String(next);
-    }
-    const move = (e: PointerEvent) => {
-      x = e.clientX / innerWidth;
-      y = e.clientY / innerHeight;
-      lens.dataset.visible = e.pointerType === "touch" ? "false" : "true";
-      if (quiet.current) return;
-      const now = performance.now() / 1000;
-      if (now - lastSplat > 0.045) {
-        splat(x, y, now, 0.6);
-        lastSplat = now;
-      }
-      // Update only the hovered glass: no page-wide layout walk per pointer event.
-      const glass = (e.target as Element).closest<HTMLElement>(
-        ".glass-surface",
-      );
-      if (glass) {
-        const r = glass.getBoundingClientRect();
-        glass.style.setProperty(
-          "--glint-x",
-          `${((e.clientX - r.left) / r.width) * 100}%`,
-        );
-        glass.style.setProperty(
-          "--glint-y",
-          `${((e.clientY - r.top) / r.height) * 100}%`,
-        );
-      }
-    };
-    const down = (e: PointerEvent) => {
-      if (!quiet.current)
-        splat(
-          e.clientX / innerWidth,
-          e.clientY / innerHeight,
-          performance.now() / 1000,
-          1.2,
-        );
-    };
-    const leave = () => {
-      lens.dataset.visible = "false";
-    };
-    const drawPlain = (now: number) => {
-      if (!ctx) return;
-      const w = plain.width,
-        h = plain.height;
-      ctx.clearRect(0, 0, w, h);
-      for (let i = 0; i < 8; i++) {
-        const o = i * 4,
-          age = now - ripples[o + 2];
-        if (age < 0 || age > 3) continue;
-        const radius = age * h * 0.24,
-          alpha = Math.exp(-age * 1.6) * ripples[o + 3];
-        for (let ring = 0; ring < 3; ring++) {
-          ctx.beginPath();
-          ctx.ellipse(
-            ripples[o] * w,
-            (1 - ripples[o + 1]) * h,
-            Math.max(1, radius - ring * 10),
-            Math.max(1, (radius - ring * 10) * 0.72),
-            -0.12,
-            0,
-            Math.PI * 2,
-          );
-          ctx.strokeStyle =
-            ring % 2
-              ? `rgba(255,65,171,${alpha * 0.45})`
-              : `rgba(76,139,255,${alpha * 0.6})`;
-          ctx.lineWidth = 2;
-          ctx.stroke();
+      if (usingGPU) {
+        slow = dt > 22 ? slow + 1 : Math.max(0, slow - 1);
+        if (slow > 22) {
+          if (quality === 0) {
+            quality = 1;
+            fluid?.setConfig({
+              simResolution: 64,
+              dyeResolution: 256,
+              pressureIterations: 6,
+            });
+          } else activateLight();
+          slow = 0;
         }
       }
-    };
-    const render = (stamp: number) => {
-      frame = requestAnimationFrame(render);
-      if (document.hidden) return;
-      if (quiet.current !== previousQuiet) {
-        previousQuiet = quiet.current;
-        dirty = true;
-      }
+      if (Math.abs(px - x) + Math.abs(py - y) > 0.05)
+        frame = requestAnimationFrame(draw);
+    }
+    function wake() {
+      if (!frame && !quiet.current && !document.hidden)
+        frame = requestAnimationFrame(draw);
+    }
+    function preference() {
       if (quiet.current) {
-        lens.dataset.visible = "false";
-        if (!dirty) return;
+        node.dataset.pointer = "false";
+        fluid?.stop();
+        fallback.current
+          ?.getAnimations({ subtree: true })
+          .forEach((a) => a.cancel());
+        cancelAnimationFrame(frame);
+        frame = 0;
+      } else {
+        if (usingGPU && !document.hidden) fluid?.start();
+        wake();
       }
-      if (!dirty && stamp - previous < 1000 / (innerWidth < 700 ? 30 : 60))
-        return;
-      const delta = stamp - previous;
-      previous = stamp;
-      const now = stamp / 1000;
-      if (
-        !quiet.current &&
-        draws > 12 &&
-        delta > 50 &&
-        now - lastQualityChange > 2 &&
-        quality > 0.4
-      ) {
-        quality = Math.max(0.4, quality - 0.1);
-        lastQualityChange = now;
-        resize();
-        node.dataset.quality = quality.toFixed(1);
+    }
+    function visibility() {
+      last = 0;
+      if (document.hidden) {
+        fluid?.stop();
+        cancelAnimationFrame(frame);
+        frame = 0;
+        fallback.current
+          ?.getAnimations({ subtree: true })
+          .forEach((a) => a.pause());
+      } else {
+        if (usingGPU && !quiet.current) fluid?.start();
+        wake();
       }
-      cx += (x - cx) * 0.13;
-      cy += (y - cy) * 0.13;
-      cursorX = cx * innerWidth;
-      cursorY = cy * innerHeight;
-      lens.style.transform = `translate3d(${cursorX - 15}px,${cursorY - 15}px,0)`;
-      if (fallbackMode) drawPlain(quiet.current ? start : now);
-      else if (gl) {
-        gl.uniform1f(time, quiet.current ? start : now);
-        gl.uniform2f(point, cx, 1 - cy);
-        gl.uniform4fv(
-          waves,
-          quiet.current ? new Float32Array(32).fill(-100) : ripples,
-        );
-        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-      }
-      dirty = false;
-      node.dataset.frames = String(++draws);
-      if (draws === 1) {
-        node.dataset.ready = "true";
-        window.dispatchEvent(new Event("synapse-scene-ready"));
-      }
+    }
+    const leave = () => {
+      node.dataset.pointer = "false";
+      seen = false;
     };
-    const lost = (e: Event) => {
-      e.preventDefault();
-      activateFallback();
-    };
-    gpu.addEventListener("webglcontextlost", lost);
     window.addEventListener("pointermove", move, { passive: true });
-    window.addEventListener("pointerdown", down, { passive: true });
+    window.addEventListener("pointerdown", move, { passive: true });
     document.addEventListener("pointerleave", leave);
-    window.addEventListener("resize", resize, { passive: true });
-    resize();
-    frame = requestAnimationFrame(render);
+    document.addEventListener("visibilitychange", visibility);
+    window.addEventListener("synapse-visual-wake", preference);
+    initialize();
     return () => {
+      disposed = true;
       cancelAnimationFrame(frame);
-      gpu.removeEventListener("webglcontextlost", lost);
+      fluid?.stop();
+      canvas?.removeEventListener("webglcontextlost", contextLost);
+      const gl = canvas?.getContext("webgl2") || canvas?.getContext("webgl");
+      gl?.getExtension("WEBGL_lose_context")?.loseContext();
+      rings.forEach((r) => r.getAnimations().forEach((a) => a.cancel()));
       window.removeEventListener("pointermove", move);
-      window.removeEventListener("pointerdown", down);
+      window.removeEventListener("pointerdown", move);
       document.removeEventListener("pointerleave", leave);
-      window.removeEventListener("resize", resize);
-      if (gl) {
-        if (buffer) gl.deleteBuffer(buffer);
-        if (program) gl.deleteProgram(program);
-        shaders.forEach((s) => gl!.deleteShader(s));
-      }
+      document.removeEventListener("visibilitychange", visibility);
+      window.removeEventListener("synapse-visual-wake", preference);
     };
   }, []);
   return (
-    <>
-      <div ref={surface} className="water-backdrop" aria-hidden="true">
-        <div className="atmosphere-fallback" />
-        <canvas ref={canvas} />
-        <canvas ref={fallback} className="water-fallback" />
+    <div className="water-backdrop" ref={root} aria-hidden="true">
+      <div className="fluid-layer" ref={fluidLayer} hidden />
+      <div className="water-fallback" ref={fallback}>
+        {Array.from({ length: 8 }, (_, i) => (
+          <i key={i} />
+        ))}
       </div>
-      <div ref={cursor} className="cursor-lens" aria-hidden="true">
-        <span />
-      </div>
-    </>
+      <div ref={tracker} className="cursor-tracker" />
+      <div ref={dot} className="cursor-point" />
+    </div>
   );
 }

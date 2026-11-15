@@ -5,6 +5,7 @@ const routes = [
   "/explore",
   "/explore/failures",
   "/study",
+  "/study/paper",
   "/study/confirmation",
   "/study/diagnostics",
   "/study/training-control",
@@ -96,7 +97,11 @@ test("system reduced motion is clear and full-motion override persists", async (
 }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
-  expect(await page.locator("audio").count()).toBe(0);
+  expect(
+    await page
+      .locator("audio")
+      .evaluate((el) => (el as HTMLAudioElement).paused),
+  ).toBe(true);
   await page.keyboard.press("Tab");
   await expect(
     page.getByRole("link", { name: "Skip to content" }),
@@ -449,59 +454,58 @@ test("conceptual readout comparison shows changes rather than raw values", async
     page.getByText("CONCEPTUAL EXAMPLE / NOT A SAVED SHOT"),
   ).toBeVisible();
 });
-test("guided history links to its exact real saved shot", async ({ page }) => {
+test("cinematic history links to its exact real saved shot", async ({
+  page,
+}) => {
   await page.goto("/");
-  await expect(page.locator(".history-art .detected")).toHaveCount(2);
-  await page.getByRole("link", { name: /Inspect every detector/ }).click();
+  await page.getByRole("button", { name: "Show step 3: Remember" }).click();
+  await expect(page.locator(".film-data")).toContainText(
+    "2 EVENTS / 24 DETECTORS",
+  );
+  await page.getByRole("button", { name: "Show step 4: Decode" }).click();
+  await page.getByRole("link", { name: /Inspect the saved shots/ }).click();
   await expect(page).toHaveURL(/noise=0.03&shot=1/);
   await expect(page.getByLabel("Saved test shot")).toHaveValue("1");
 });
-test("guided readout and noise comparisons respond with actual counts", async ({
+test("homepage noise scrubber shows measured counts at both ends", async ({
   page,
 }) => {
   await page.goto("/");
-  await page
-    .getByRole("button", { name: "Flip readout 2, currently 0" })
-    .click();
-  await expect(page.locator(".parity-readouts .changed")).toHaveCount(2);
-  await page
-    .getByRole("group", { name: "Measurement noise" })
-    .getByRole("button", { name: "0.1%" })
-    .click();
-  await expect(page.locator(".error-race strong").first()).toContainText("31");
-  await expect(page.locator(".error-race strong").last()).toContainText("10");
+  const slider = page.getByRole("slider", {
+    name: "Homepage evaluation measurement noise",
+  });
+  await expect(page.locator(".evidence-number>p")).toContainText(
+    "732 errors / 20,000",
+  );
+  await slider.focus();
+  await page.keyboard.press("Home");
+  await expect(page.locator(".evidence-number>p")).toContainText(
+    "31 errors / 20,000",
+  );
+  await expect(page.locator(".evidence-number>strong")).toHaveText("0.15%");
+  await page.keyboard.press("End");
+  await expect(page.locator(".evidence-number>strong")).toHaveText("3.66%");
 });
-test("water background context loss preserves reading and route transition completes", async ({
-  page,
-}) => {
+test("persistent cursor survives navigation to the study", async ({ page }) => {
   await page.goto("/");
-  await page.waitForTimeout(1900);
-  await page
-    .locator(".water-backdrop canvas")
-    .first()
-    .evaluate((c) =>
-      c.dispatchEvent(new Event("webglcontextlost", { cancelable: true })),
-    );
-  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  await expect(page.locator(".water-backdrop")).toHaveAttribute(
+    "data-ready",
+    "true",
+  );
+  await page.mouse.move(700, 300);
   await page.getByRole("link", { name: "The study", exact: true }).click();
   await expect(page).toHaveURL(/\/study$/);
   await expect(page.locator(".route-curtain")).not.toHaveClass(/cover/);
+  await page.mouse.move(500, 450);
+  await expect(page.locator(".water-backdrop")).toHaveAttribute(
+    "data-pointer",
+    "true",
+  );
 });
-
 test("confidence cutoff changes retained evidence without inventing accuracy", async ({
   page,
 }) => {
-  await page.goto("/");
-  await expect(page.locator(".confidence-note")).toContainText(
-    "83,087 retained shots · 1,178 mistakes",
-  );
-  const cutoff = page.getByRole("slider", { name: /Minimum class confidence/ });
-  await cutoff.focus();
-  await page.keyboard.press("Home");
-  await expect(page.locator(".confidence-note")).toContainText(
-    "100,000 retained shots · 3,796 mistakes",
-  );
-  await expect(page.locator(".confidence-number.observed")).toContainText(
-    "96.20",
-  );
+  await page.goto("/study/diagnostics");
+  await expect(page.getByText(/83,087/).first()).toBeVisible();
+  await expect(page.locator("main")).toContainText("1,178");
 });

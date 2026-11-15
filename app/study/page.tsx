@@ -94,6 +94,7 @@ export default function StudyPage() {
               claim about all neural decoders.
             </p>
             <div className="data-links">
+              <Link href="/study/paper">Read the complete research paper →</Link>
               <a href="/data/study.json" download>
                 Download aggregate JSON ↓
               </a>

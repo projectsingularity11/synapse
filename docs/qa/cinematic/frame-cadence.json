@@ -1,0 +1,26 @@
+{
+  "base": "http://127.0.0.1:3001",
+  "scope": "180 requestAnimationFrame intervals during continuous pointer input per viewport. Software graphics and browser compositor; not physical display presentation, a physical GPU result, or a cross-device guarantee.",
+  "results": [
+    {
+      "width": 1440,
+      "frames": 180,
+      "fps": 60.00400026668446,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.700000000000728,
+      "over25ms": 0,
+      "sculpture": "poster",
+      "water": "compositor"
+    },
+    {
+      "width": 390,
+      "frames": 180,
+      "fps": 59.66982695750183,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.800000000000182,
+      "over25ms": 1,
+      "sculpture": "poster",
+      "water": "compositor"
+    }
+  ]
+}

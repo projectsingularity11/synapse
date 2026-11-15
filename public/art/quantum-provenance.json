@@ -1,0 +1,33 @@
+{
+  "origin": "Original instanced circuit, detector-history, and architecture scenes",
+  "source": "lib/quantum-world.ts",
+  "generator": "node scripts/render-quantum-posters.mjs",
+  "library": "Three.js 0.187.0; MIT RoomEnvironment and RoundedBoxGeometry examples",
+  "files": [
+    {
+      "file": "quantum-hero.webp",
+      "bytes": 40280,
+      "sha256": "aa3180fe82b71efc0c16b9a93ac9512ce3bb05b9727bf697eb9b9d4d0977c9fa"
+    },
+    {
+      "file": "quantum-0.webp",
+      "bytes": 9520,
+      "sha256": "5da453e120d85609a98846650d41c8458a106680aca326b150b734146ea48e89"
+    },
+    {
+      "file": "quantum-1.webp",
+      "bytes": 9548,
+      "sha256": "5aa7748a5f24fc5c73ba5c46ebf8a49e2ed1127d39ad2f528ba420980a8a2b39"
+    },
+    {
+      "file": "quantum-2.webp",
+      "bytes": 10590,
+      "sha256": "732dd73dbf760d862e895a410b07344c059cabd6b4a192699118dc4c0e693e5a"
+    },
+    {
+      "file": "quantum-3.webp",
+      "bytes": 21640,
+      "sha256": "862413487a4d71dc8432f39939e74e09c3a3171b3e4be54f66187236e7370d7c"
+    }
+  ]
+}
