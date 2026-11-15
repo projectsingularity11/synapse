@@ -1,0 +1,19 @@
+{
+  "parentRunId": "d3-memory-z-20261115T004549Z",
+  "purpose": "Fresh held-out shots for frozen seed101 model; precision confirmation conditional on the same fitted model, not independent training replication",
+  "distance": 3,
+  "basis": "Z",
+  "rounds": 3,
+  "otherNoise": 0.001,
+  "trainMeasurementNoise": 0.005,
+  "measurementNoiseSweep": [0.001, 0.005, 0.015, 0.03],
+  "testShots": 100000,
+  "testDataSeeds": [53001, 53002, 53003, 53004],
+  "threshold": 0.5,
+  "calibrationBins": 10,
+  "modelSeed": 101,
+  "checkpointPath": "research/experiments/manifests/seed101-checkpoint.json",
+  "checkpointSha256": "7584092387b2ac5cf8c39027288b0b91a088dd4099b61a32d87a5cbf359cdd6e",
+  "maximumRuntimeSeconds": 60,
+  "threads": 1
+}
