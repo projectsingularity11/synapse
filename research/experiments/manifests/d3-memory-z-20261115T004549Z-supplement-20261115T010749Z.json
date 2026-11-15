@@ -1,0 +1,60 @@
+{
+  "runId": "d3-memory-z-20261115T004549Z-supplement-20261115T010749Z",
+  "parentRunId": "d3-memory-z-20261115T004549Z",
+  "sourceCodeCommit": "df706525a49d9e291d8dbe8f8aa6668b5fdbf74c",
+  "workingTreeDirty": true,
+  "executionDateUTC": "2026-11-15T01:07:49.474473+00:00",
+  "hardware": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "threads": 1,
+    "gpu": "none"
+  },
+  "packageVersions": {
+    "stim": "1.16.0",
+    "pymatching": "2.4.0",
+    "numpy": "2.5.4",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "threadpoolctl": "3.8.0"
+  },
+  "sourceAndInputHashes": {
+    "research/results/aggregates/study.json": "75e31a475c1d6ffad95b493370108f4d73984bbb8b2bcb7bdeb43714d9e27ae3",
+    "research/results/representative-traces/traces.json": "4a87875afec4a358f7de332c4cea126fdc6e1831920e3fb52714947186698605",
+    "research/experiments/scripts/run.py": "03eb5215f8fae6cf9f1f46bb28a7737411af5a2cf65be8db52e4ec16060273df",
+    "research/experiments/scripts/supplement.py": "fd62f2c241fbbf6fe0ada1116c132437cbf07c4541a693cc00c96b86c160b85d",
+    "research/experiments/configs/d3.json": "74d2a0fc02ce3017ecea8f771997b25a0496b1b5ab035478b9259dabf23e41b9",
+    "research/experiments/manifests/seed101-checkpoint.json": "7584092387b2ac5cf8c39027288b0b91a088dd4099b61a32d87a5cbf359cdd6e"
+  },
+  "reproductionChecks": "All four original NN metrics including reliability bins/Brier, fixed/matched metrics, validation checkpoint, and all representative trace probabilities exactly reproduced",
+  "randomSeeds": {
+    "train": 41001,
+    "validation": 42001,
+    "test": [
+      43001,
+      43002,
+      43003,
+      43004
+    ],
+    "model": 101
+  },
+  "sampleCounts": {
+    "train": 40000,
+    "validation": 8000,
+    "testPerCondition": 20000
+  },
+  "modelArchitecture": [
+    24,
+    32,
+    16,
+    1
+  ],
+  "optimizer": "Original Adam settings, unchanged; see parent manifest and config",
+  "baselineSettings": "Original uncorrelated graphlike MWPM, fixed training prior and matched test prior",
+  "outputFiles": [
+    "research/results/aggregates/supplement.json",
+    "research/results/aggregates/topology.json",
+    "research/results/representative-traces/handpicked.json",
+    "research/experiments/manifests/seed101-checkpoint.json"
+  ],
+  "completionStatus": "completed"
+}

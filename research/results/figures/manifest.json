@@ -1,0 +1,37 @@
+{
+  "parentRunId": "d3-memory-z-20261115T004549Z",
+  "generator": "research/experiments/scripts/plot.py",
+  "method": "Saved aggregates only; no new measurements",
+  "inputs": {
+    "research/results/aggregates/study.json": "75e31a475c1d6ffad95b493370108f4d73984bbb8b2bcb7bdeb43714d9e27ae3",
+    "research/results/aggregates/supplement.json": "3dcda200196b72bafa876325ae6bfc04aa7bf0cadda0ad69d82584f956ee36b9"
+  },
+  "scriptSha256": "861e50fe11d5fb5be5e6f9147069e846082382754ef0870c52d873af65244360",
+  "matplotlibVersion": "3.11.2",
+  "outputs": {
+    "calibration.pdf": {
+      "sha256": "9a777ec13ef6b171de4d6c0fa16dd35832a0f8e28e3ea01a1eaeb0ae956ce8c4",
+      "bytes": 32668
+    },
+    "calibration.png": {
+      "sha256": "22bf4b92d3b5f1a1abbfd51a2dd8f374d0d77bd79ae9755271ad8b4413c3ce1f",
+      "bytes": 172097
+    },
+    "calibration.svg": {
+      "sha256": "36584b3036bd023e752b4d14d6f391495036bd4852490ae5838f788559d9897d",
+      "bytes": 45066
+    },
+    "logical-error-sweep.pdf": {
+      "sha256": "286daaded6c86ba2dac1adfeccb4bf200025f0168daa144cb9aa8f462e7fcd43",
+      "bytes": 28388
+    },
+    "logical-error-sweep.png": {
+      "sha256": "d2d066d32e637d5012cbfc2c5dce74c077dccef82aea01cc2f958c948b63265c",
+      "bytes": 173730
+    },
+    "logical-error-sweep.svg": {
+      "sha256": "dcdcedbecd2e866a4425c7c815097b9439d206e2ba13d73ef11485a38006c864",
+      "bytes": 24982
+    }
+  }
+}
