@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "parentRunId": "d3-memory-z-20261115T004549Z",
+  "runId": "d3-memory-z-20261115T004549Z-supplement-20261115T010749Z",
+  "procedure": "Union of actual data-ancilla CX pairs in the flattened generated circuit; basis from ancilla Hadamard participation. No nearest-neighbor inference.",
+  "checks": [
+    {
+      "ancillaId": 2,
+      "basis": "X",
+      "dataQubitIds": [
+        1,
+        3
+      ]
+    },
+    {
+      "ancillaId": 9,
+      "basis": "Z",
+      "dataQubitIds": [
+        1,
+        3,
+        8,
+        10
+      ]
+    },
+    {
+      "ancillaId": 11,
+      "basis": "X",
+      "dataQubitIds": [
+        3,
+        5,
+        10,
+        12
+      ]
+    },
+    {
+      "ancillaId": 13,
+      "basis": "Z",
+      "dataQubitIds": [
+        5,
+        12
+      ]
+    },
+    {
+      "ancillaId": 14,
+      "basis": "Z",
+      "dataQubitIds": [
+        8,
+        15
+      ]
+    },
+    {
+      "ancillaId": 16,
+      "basis": "X",
+      "dataQubitIds": [
+        8,
+        10,
+        15,
+        17
+      ]
+    },
+    {
+      "ancillaId": 18,
+      "basis": "Z",
+      "dataQubitIds": [
+        10,
+        12,
+        17,
+        19
+      ]
+    },
+    {
+      "ancillaId": 25,
+      "basis": "X",
+      "dataQubitIds": [
+        17,
+        19
+      ]
+    }
+  ]
+}

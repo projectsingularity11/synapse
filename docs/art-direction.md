@@ -1,0 +1,5 @@
+# An instrument, opened
+
+SYNDROME begins as a suspended measuring instrument, then opens into a paper research notebook. A single lattice recurs in the opening, replay and explanation. A narrow index, generous type and fine rules establish editorial pacing. The navigation stays visible; ordinary links and scrolling reveal each chapter.
+
+Tokens in app/globals.css: ink #15251e, paper #f1f0e7, muted #59685e, line #c4ccc0, event #e2ae64, prediction #b7dec5, failure #bd493b. Detection events are squares, predictions diamonds, and failures labeled crosses. Analytical plots use dark equivalents for contrast on paper. Georgia is the editorial serif; Arial the interface sans. Spacing uses 4/8/12/16/24/32/48/64/96px. Rules are 1px. Minimal hover transitions 180ms; reduced-effects and prefers-reduced-motion disable motion. No cursor replacement, forced camera, bloom, downloaded visual assets or copied scene composition.

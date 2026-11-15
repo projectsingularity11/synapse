@@ -1,0 +1,22 @@
+# Glossary
+
+- **Physical qubit:** one physical carrier of quantum information; in this project it is represented by a circuit wire, not laboratory hardware.
+- **Logical qubit:** information encoded across physical qubits so some faults can be detected and corrected.
+- **Data qubit:** a qubit carrying part of the encoded information.
+- **Measurement ancilla:** a helper qubit used to extract check information through interactions and measurement.
+- **Stabilizer readout:** a measured check outcome; individual outcomes need not equal detection events.
+- **Detection event:** a detector parity differing from its expected noiseless value. Usually related check measurements are compared; exact declarations define this experiment.
+- **Syndrome history:** the check-derived evidence over time available to a decoder. It is not privileged knowledge of fault locations.
+- **Fault:** a simulated local noise mechanism. Faults and detection events are not in one-to-one correspondence.
+- **Logical-observable flip:** change in an encoded measurement parity relative to the noiseless reference; the binary prediction target here.
+- **Logical prediction error:** a decoder's observable prediction disagrees with the simulator target for one complete experiment.
+- **Code distance:** a property of the code's logical operators. Distance 3 here does not promise arbitrary fault correction for every circuit event pattern.
+- **Measurement-noise probability:** probability parameter of a specified noise channel before measurement, not a logical error rate.
+- **MWPM:** minimum-weight perfect matching, applied to a detector graph and its boundary assumptions.
+- **Fixed prior:** matching graph and weights from the training noise configuration.
+- **Matched prior:** matching graph and weights rebuilt from the actual test noise configuration.
+- **Brier score:** mean squared difference between a probability and its binary target; smaller is better on the evaluated sample.
+- **Calibration:** agreement between probabilities and long-run event frequencies among similarly predicted cases.
+- **Wilson interval:** a binomial confidence interval with nonzero width even after zero observed failures; here nominal 95% conditional test-sampling uncertainty.
+- **Saved experimental replay:** inspection of already simulated samples and model outputs. It does not run a quantum experiment in the browser.
+- **Visual metaphor:** an explanatory graphic that is not an additional scientific measurement, such as depth or lighting used to clarify a detector history.
