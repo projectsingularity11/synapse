@@ -8,7 +8,9 @@ export default defineConfig({
     baseURL: process.env.TEST_BASE_URL || "http://127.0.0.1:3000",
     browserName: "chromium",
     launchOptions: {
-      executablePath: "/usr/bin/chromium",
+      executablePath:
+        process.env.CHROMIUM_EXECUTABLE_PATH ??
+        (process.platform === "linux" ? "/usr/bin/chromium" : undefined),
       args: ["--no-sandbox", "--enable-unsafe-swiftshader"],
     },
     trace: "retain-on-failure",

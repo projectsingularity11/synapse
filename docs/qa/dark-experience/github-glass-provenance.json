@@ -1,0 +1,23 @@
+{
+  "repository": "DavidHDev/react-bits",
+  "commit": "cf2801031f07f53d4684e65b961bde7c2e2a6921",
+  "adoption": "Adapted GlassSurface fallback CSS only, integrated into this website. Original dynamic pointer highlights. No standalone component redistribution. SVG/WebGL backdrop sampling modes not copied.",
+  "license": "MIT + Commons Clause; full text public/licenses/react-bits-glass-surface.txt",
+  "records": [
+    {
+      "url": "https://raw.githubusercontent.com/DavidHDev/react-bits/cf2801031f07f53d4684e65b961bde7c2e2a6921/LICENSE.md",
+      "bytes": 2060,
+      "sha256": "4bdd1fa59a6b7d5954bc3b213dbc34e455c635a94bbcecf9293553797d0fad02"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/DavidHDev/react-bits/cf2801031f07f53d4684e65b961bde7c2e2a6921/src/content/Components/GlassSurface/GlassSurface.css",
+      "bytes": 5251,
+      "sha256": "90cfc3ad54ad7aa92bb2b700696e2d9f2d8704162ba1b94ebf0b6f8dcecc4e61"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/DavidHDev/react-bits/cf2801031f07f53d4684e65b961bde7c2e2a6921/src/content/Components/GlassSurface/GlassSurface.jsx",
+      "bytes": 28528,
+      "sha256": "d435562be2930a98270e3ff5881402a301f84813b06f0603ed353af12a9c96b3"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "scope": "Recorded real Chromium interaction on local production with software WebGL; not physical Mac or frame-rate certification.",
+  "route": "http://127.0.0.1:3004/study/diagnostics",
+  "heading": {
+    "x": 50.390625,
+    "y": 194,
+    "width": 1339.21875,
+    "height": 90.71875
+  },
+  "renderer": "webgl",
+  "quality": "0.4"
+}

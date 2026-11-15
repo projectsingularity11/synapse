@@ -1,0 +1,5 @@
+{
+  "scope": "Current release, actual Chromium software-graphics fast path. No physical Mac/Comet validation or frame-rate certification.",
+  "renderer": "canvas2d",
+  "reason": "software-renderer"
+}

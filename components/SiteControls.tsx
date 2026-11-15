@@ -12,7 +12,7 @@ export function SiteControls() {
   const [open, setOpen] = useState(false);
   const { reduced: quiet, toggle } = useReducedEffects();
   return (
-    <header className="site-header">
+    <header className="site-header glass-surface">
       <Link className="wordmark" href="/" aria-label="Synapse home">
         <svg
           className="brand-icon"
@@ -46,8 +46,19 @@ export function SiteControls() {
           </Link>
         ))}
       </nav>
-      <button className="effects" aria-pressed={quiet} onClick={toggle}>
-        Reduced effects <span aria-hidden="true">{quiet ? "●" : "○"}</span>
+      <button
+        className="effects"
+        aria-label={`Motion: ${quiet ? "Reduced" : "Full"}. Reduced effects toggle`}
+        aria-pressed={quiet}
+        title={
+          quiet
+            ? "Reduced motion is active. Enable full motion and cursor effects."
+            : "Full motion is active. Reduce motion and cursor effects."
+        }
+        onClick={toggle}
+      >
+        Motion: {quiet ? "Reduced" : "Full"}
+        <span aria-hidden="true">{quiet ? "○" : "●"}</span>
       </button>
     </header>
   );

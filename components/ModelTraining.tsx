@@ -1,12 +1,16 @@
 "use client";
 import { ResponsivePlot } from "./charts/ResponsivePlot";
 import type { Study } from "@/lib/data";
-export function ModelTraining({ study }: { study: Pick<Study,"model"|"runId"> }) {
+export function ModelTraining({
+  study,
+}: {
+  study: Pick<Study, "model" | "runId">;
+}) {
   const records = study.model.training ?? [];
   const ymax =
     Math.max(...records.flatMap((r) => r.validationLogLossByEpoch)) || 1;
   const maxEpoch = Math.max(...records.map((r) => r.epochsExecuted)) || 40;
-  const colors = ["#326449", "#55615b", "#4b567e"];
+  const colors = ["#91b6ff", "#f39acb", "#a0c6d9"];
   return (
     <section className="figure-section" id="learning">
       <span className="eyebrow">CLASSICAL LEARNING / MODEL RECORD</span>

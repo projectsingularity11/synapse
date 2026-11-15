@@ -27,6 +27,7 @@ const files = {
   "docs/asset-register.csv": "asset-register.csv",
   "docs/qa-report.md": "qa-report.md",
   "docs/redesign-report.md": "redesign-report.md",
+  "docs/dark-experience-report.md": "dark-experience-report.md",
 };
 fs.mkdirSync("public/data", { recursive: true });
 for (const [src, name] of Object.entries(files))

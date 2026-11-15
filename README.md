@@ -2,7 +2,7 @@
 
 Independent research by Assirem Benseddik. An immersive, interactive explanation of learned quantum error decoding, backed by actual offline Stim/PyMatching/compact-MLP experiments and a reproducible research vault.
 
-The current visual release is documented in [the redesign report](docs/redesign-report.md). Previous editorial-release screenshots and performance records are historical.
+The current visual release is documented in [the dark experience report](docs/dark-experience-report.md). Previous editorial and silver-release screenshots and performance records are historical. The current design uses blue/pink glass, a water-ripple cursor, and guided introductory chapters.
 
 For review, start with the [proposed final product](docs/proposed-final-product.md), [handoff](docs/handoff.md) and [measured QA](docs/qa-report.md). The current fourteen-route experience includes separate fresh-shot confirmation, confidence diagnostics and a twelve-fit training control. All visitor plots use saved evidence; training remains offline.
 

@@ -1,5 +1,7 @@
 # SYNDROME — proposed final product
 
+> The current dark glass release and its motion/browser checks are documented in [dark-experience-report.md](dark-experience-report.md). Earlier visual and performance records below are historical.
+
 > This document records the earlier editorial release. The immersive Synapse redesign supersedes its visual design and performance claims. See [the current redesign report](redesign-report.md).
 
 A quiet scientific instrument that opens into an evidence-led research notebook.

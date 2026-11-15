@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit",
     "validate:data": "node scripts/validate-data.mjs",
     "test": "playwright test",
-    "test:data": "node --test scripts/data-validation.test.mjs"
+    "test:data": "node --test scripts/data-validation.test.mjs",
+    "test:webkit": "playwright test --config=playwright.webkit.config.ts"
   },
   "dependencies": {
     "@react-three/drei": "10.7.9",

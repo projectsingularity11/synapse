@@ -1,0 +1,23 @@
+{
+  "scope": "Chromium diagnosis, not reproduction on physical Mac",
+  "records": [
+    {
+      "osReduced": false,
+      "htmlClasses": "lenis",
+      "effects": "full",
+      "buttonPressed": "false",
+      "cssScrollTimeline": true,
+      "horizontalChapters": 0,
+      "cursorSurface": 0
+    },
+    {
+      "osReduced": true,
+      "htmlClasses": "",
+      "effects": "full",
+      "buttonPressed": "false",
+      "cssScrollTimeline": true,
+      "horizontalChapters": 0,
+      "cursorSurface": 0
+    }
+  ]
+}

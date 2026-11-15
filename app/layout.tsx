@@ -3,6 +3,8 @@ import Link from "next/link";
 import { SiteControls } from "@/components/SiteControls";
 import "./globals.css";
 import "./experience.css";
+import "./dark-experience.css";
+import { WaterBackdrop } from "@/components/experience/WaterBackdrop";
 import { ExperienceMotion } from "@/components/experience/ExperienceMotion";
 export const metadata: Metadata = {
   title: {
@@ -24,6 +26,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <ExperienceMotion />
+        <WaterBackdrop />
         <noscript>
           <style>{`.experience-loader{display:none!important}`}</style>
         </noscript>

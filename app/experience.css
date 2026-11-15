@@ -1026,37 +1026,7 @@ footer p {
     pointer-events: none;
   }
 }
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    html:not([data-effects="reduced"]) .question-interlude h2 {
-      animation: questionReveal linear both;
-      animation-timeline: view();
-      animation-range: entry 10% cover 55%;
-    }
-    @keyframes questionReveal {
-      from {
-        transform: translateY(70px);
-        opacity: 0.35;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-    html:not([data-effects="reduced"]) .interlude-orbit {
-      animation: orbitTurn linear both;
-      animation-timeline: view();
-    }
-    @keyframes orbitTurn {
-      from {
-        transform: rotate(-25deg) scale(0.9);
-      }
-      to {
-        transform: rotate(25deg) scale(1.2);
-      }
-    }
-  }
-}
+
 @media (min-width: 1600px) {
   .scene-copy p {
     font-size: 17px;
@@ -1538,22 +1508,7 @@ footer p {
     font-size: 20vw;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *:before,
-  *:after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-  }
-  .route-curtain {
-    display: none;
-  }
-  .scroll-cue {
-    animation: none;
-  }
-}
+
 html[data-effects="reduced"] * {
   scroll-behavior: auto !important;
   animation: none !important;
@@ -1609,29 +1564,7 @@ html[data-effects="reduced"] * {
 .research-experience .pill-action {
   cursor: pointer;
 }
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    html:not([data-effects="reduced"]) .history-scene {
-      view-timeline-name: --history;
-      view-timeline-axis: block;
-    }
-    html:not([data-effects="reduced"]) .history-art {
-      animation: historyAssemble linear both;
-      animation-timeline: --history;
-      animation-range: entry 15% exit 80%;
-    }
-    @keyframes historyAssemble {
-      0% {
-        transform: perspective(900px) rotateY(-18deg) rotateX(8deg)
-          translateY(45px);
-      }
-      100% {
-        transform: perspective(900px) rotateY(6deg) rotateX(-4deg)
-          translateY(-25px);
-      }
-    }
-  }
-}
+
 /* Final viewport and state corrections from the batched review. */
 .route-curtain {
   visibility: hidden;
@@ -1720,5 +1653,14 @@ html[data-effects="reduced"] * {
   }
   .interlude-bottom {
     margin-top: 100px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion-choice="full"]) *,
+  html:not([data-motion-choice="full"]) *::before,
+  html:not([data-motion-choice="full"]) *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
   }
 }

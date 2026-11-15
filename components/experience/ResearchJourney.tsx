@@ -2,7 +2,8 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { Condition, Trace, ConfidenceGroup } from "@/lib/data";
-import { ParticleField } from "./ParticleField";
+import { useReducedEffects } from "../useReducedEffects";
+import { Foundations } from "./Foundations";
 
 function Arrow({ diagonal = false }: { diagonal?: boolean }) {
   return (
@@ -38,6 +39,7 @@ export function ResearchJourney({
   const [cutoff, setCutoff] = useState(confidence.length - 1);
   const selectedConfidence = confidence[cutoff];
   const root = useRef<HTMLDivElement>(null);
+  const { reduced } = useReducedEffects();
   const trace = traces.find(
     (t) => t.measurementNoise === 0.03 && t.shotIndex === shot,
   )!;
@@ -60,71 +62,98 @@ export function ResearchJourney({
   useEffect(() => {
     const sections = root.current?.querySelectorAll(".story-scene");
     if (!sections) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries)
-          if (entry.isIntersecting) entry.target.classList.add("scene-entered");
-      },
-      { threshold: 0.15 },
-    );
-    sections.forEach((s) => observer.observe(s));
-    return () => observer.disconnect();
-  }, []);
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const progress = reduced
+          ? 0.5
+          : Math.max(
+              0,
+              Math.min(
+                1,
+                (innerHeight - rect.top) / (innerHeight + rect.height),
+              ),
+            );
+        (section as HTMLElement).style.setProperty(
+          "--scene-progress",
+          String(progress),
+        );
+      });
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule, { passive: true });
+    update();
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
+  }, [reduced]);
   return (
     <div className="research-experience" ref={root}>
       <section className="experience-hero" aria-labelledby="synapse-title">
         <div className="hero-question">
           <span>Independent research by Assirem Benseddik</span>
           <h1 id="synapse-title">
-            What happens when
+            Can a model still be right
             <br />
-            the noise changes?
+            when the noise changes?
           </h1>
-          <a href="#begin" className="round-link">
-            Explore the research <Arrow diagonal />
+          <p className="hero-context">
+            I trained a small neural network to read error clues from a quantum
+            memory. Then I changed the noise. Let’s work through what that
+            means.
+          </p>
+          <a href="#learn" className="round-link glass-surface">
+            Begin the interactive study <Arrow diagonal />
           </a>
         </div>
-        <ParticleField />
+
         <p className="pointer-hint">
           <span className="pointer-instruction">
-            Move your pointer to disturb the field.
+            Move your pointer to make ripples.
             <br />
           </span>
-          This sculpture is a visual metaphor.
+          The liquid background is a visual effect, not research data.
         </p>
         <div className="hero-signature" aria-label="Synapse">
           <span>Synapse</span>
         </div>
         <div className="hero-baseline">
           <span>A study of learning and quantum error correction</span>
-          <a href="#begin">
+          <a href="#learn">
             Scroll to explore <span className="scroll-cue">↓</span>
           </a>
         </div>
       </section>
 
-      <section className="question-interlude story-scene" id="begin">
+      <Foundations />
+      <section
+        className="question-interlude story-scene glass-surface"
+        id="begin"
+      >
         <div className="interlude-orbit" aria-hidden="true">
           <span />
           <span />
           <span />
         </div>
-        <p>
-          A quantum computer is fragile.
-          <br />
-          An error can change its answer.
-        </p>
+        <p>What does noise mean here?</p>
         <h2>
-          Can a model trained
+          A measurement can
           <br />
-          on one kind of noise
-          <br />
-          handle another?
+          give the wrong result.
         </h2>
         <div className="interlude-bottom">
           <p>
-            I tested a small neural network on a simulated quantum memory.
-            Here’s the idea, the experiment, and what didn’t work.
+            In this experiment, measurement noise means a configured chance that
+            a readout flips. At 0.5%, that is about one flip in 200
+            measurements—not one failed experiment in 200. I trained at that
+            level, then tested whether the model could handle other levels.
           </p>
           <span>Assirem Benseddik</span>
         </div>
@@ -133,23 +162,24 @@ export function ResearchJourney({
       <section className="story-scene parity-scene" id="checks">
         <div className="scene-copy">
           <h2>
-            Look for changes.
-            <br />
-            Not the information.
+            Checks reveal changes.
+            <br />A decoder reads the clues.
           </h2>
           <p>
             We can’t read an unknown quantum state just to check whether it’s
             okay. Instead, we measure checks that give us clues about errors.
           </p>
           <p>
-            This simple bit example shows how a comparison can reveal a change.
-            Try flipping a readout.
+            A readout is a recorded measurement result. In this ordinary-bit
+            analogy, each comparison asks whether two results agree. Flip the
+            middle readout: both comparisons change, helping you narrow down
+            what happened.
           </p>
           <span className="demo-mode">
             Interactive analogy · three ordinary bits
           </span>
         </div>
-        <div className="parity-demo">
+        <div className="parity-demo glass-surface">
           <div className="bit-links" aria-hidden="true">
             <i className={bits[0] !== bits[1] ? "active" : ""} />
             <i className={bits[1] !== bits[2] ? "active" : ""} />
@@ -238,7 +268,7 @@ export function ResearchJourney({
               </label>
             </div>
           </div>
-          <div className="history-art">
+          <div className="history-art glass-surface">
             <div className="time-spine" />
             {[0, 1, 2, 3].map((layer) => (
               <div
@@ -306,11 +336,13 @@ export function ResearchJourney({
             More noise.
           </h2>
           <p>
-            The model learned at 0.5% measurement noise. I kept its training
-            fixed and tested four noise levels. Move between them.
+            A neural network learns patterns from labeled examples: a check
+            history and its known outcome. Mine learned at 0.5% measurement
+            noise. I then froze it and tested four noise levels. Choose a level
+            to compare errors.
           </p>
         </div>
-        <div className="noise-console">
+        <div className="noise-console glass-surface">
           <div
             className="noise-selection"
             role="group"
@@ -369,9 +401,11 @@ export function ResearchJourney({
           </p>
           <div>
             <p>
-              Each pair uses the same 20,000 shots. Matching is told the
-              test-noise model. Higher noise also makes the task harder, so this
-              sweep alone can’t isolate the cost of a training mismatch.
+              A shot is one complete simulated memory experiment. Each pair uses
+              the same 20,000 shots. Matching is a standard algorithm that links
+              error clues using their costs; it is told the test-noise model.
+              Higher noise also makes the task harder, so this sweep alone can’t
+              isolate the cost of a training mismatch.
             </p>
             <Link href="/study">
               See uncertainty and all model seeds <Arrow diagonal />
@@ -388,8 +422,10 @@ export function ResearchJourney({
             mean right.
           </h2>
           <p>
-            At the highest noise, I looked at the frozen model’s most confident
-            predictions on fresh test shots.
+            Confidence is the probability the model assigns to the class it
+            picked. Accuracy is how often that prediction was actually correct.
+            Those are different quantities. Here they are on fresh shots at the
+            highest noise.
           </p>
           <p>
             Even among its most confident predictions, it still made mistakes.
@@ -411,7 +447,7 @@ export function ResearchJourney({
             Explore confidence <Arrow diagonal />
           </Link>
         </div>
-        <div className="confidence-art">
+        <div className="confidence-art glass-surface">
           <div className="confidence-number">
             {(selectedConfidence.meanConfidence! * 100).toFixed(2)}
             <span>%</span>
@@ -440,7 +476,7 @@ export function ResearchJourney({
           <br />
           the new noise?
         </h2>
-        <div className="control-comparison">
+        <div className="control-comparison glass-surface">
           <div>
             <span>Fixed training</span>
             <strong>{control.fixed.toLocaleString()}</strong>

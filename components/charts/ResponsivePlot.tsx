@@ -40,11 +40,11 @@ export function ResponsivePlot({
   );
 }
 export const chartColors = {
-  neural: "#244aff",
-  fixed: "#55615b",
-  matched: "#4b567e",
-  grid: "#c7cbc9",
-  muted: "#526056",
+  neural: "#91b6ff",
+  fixed: "#f39acb",
+  matched: "#a0c6d9",
+  grid: "#3c4a64",
+  muted: "#b1c6e5",
 };
 export function Point({
   x,

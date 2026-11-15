@@ -1,0 +1,472 @@
+{
+  "scope": "Headless Chromium on Linux; hardware Mac/Comet not exercised.",
+  "stats": {
+    "startTime": "2026-11-15T03:46:22.461Z",
+    "duration": 143559.215,
+    "expected": 45,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "wheel input interpolates through multiple scroll positions",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 9106
+        }
+      ]
+    },
+    {
+      "title": "guided chapters move sideways without CSS scroll timelines",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 10258
+        }
+      ]
+    },
+    {
+      "title": "cursor produces rendered ripples and glass highlights",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 9298
+        }
+      ]
+    },
+    {
+      "title": "WebGL failure keeps a real 2D ripple renderer and all reading content",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2161
+        }
+      ]
+    },
+    {
+      "title": "system and saved reduced motion can explicitly restore full effects",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 6592
+        }
+      ]
+    },
+    {
+      "title": "touch visitors can advance the foundations without wheel or cursor",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 4204
+        }
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 7458
+        }
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /explore",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 7001
+        }
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /explore/failures",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 6858
+        }
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /study",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 6913
+        }
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /study/confirmation",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 6476
+        }
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /study/diagnostics",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 7426
+        }
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /study/training-control",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 6562
+        }
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /methods",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5958
+        }
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /methods/glossary",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5210
+        }
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /methods/circuit",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 4186
+        }
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /sources",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 6275
+        }
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /about",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 4640
+        }
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /credits",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5627
+        }
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /accessibility",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 6048
+        }
+      ]
+    },
+    {
+      "title": "replay discrete settings, URL, scrubber, withheld outcome and selection",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 7810
+        }
+      ]
+    },
+    {
+      "title": "calibration uses measured setting and actual bin counts",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 4586
+        }
+      ]
+    },
+    {
+      "title": "mobile menu, no horizontal document overflow, no WebGL dependency",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 12055
+        }
+      ]
+    },
+    {
+      "title": "system reduced motion is clear and full-motion override persists",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 3176
+        }
+      ]
+    },
+    {
+      "title": "download links resolve to real data and public source records",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 124
+        }
+      ]
+    },
+    {
+      "title": "missing address has deliberate not-found state",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1580
+        }
+      ]
+    },
+    {
+      "title": "selected gallery labels its bias and deep-links exact trace",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5264
+        }
+      ]
+    },
+    {
+      "title": "WebGL unavailable retains usable complete 2D replay",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5431
+        }
+      ]
+    },
+    {
+      "title": "spatial view mounts on gesture, camera buttons and context-loss fallback work",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 10628
+        }
+      ]
+    },
+    {
+      "title": "source claims resolve to source records",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 3104
+        }
+      ]
+    },
+    {
+      "title": "fresh-shot confirmation remains separate from original results",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2432
+        }
+      ]
+    },
+    {
+      "title": "unmeasured URL setting is clearly identified",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1265
+        }
+      ]
+    },
+    {
+      "title": "reduced effects still toggle when storage is readable but unwritable",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 3413
+        }
+      ]
+    },
+    {
+      "title": "stabilizer inspector exposes actual check support and boundaries",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5251
+        }
+      ]
+    },
+    {
+      "title": "all reading content works without JavaScript or WebGL",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 1884
+        }
+      ]
+    },
+    {
+      "title": "layout stays inside viewport across phone tablet desktop widths",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 28321
+        }
+      ]
+    },
+    {
+      "title": "every internal navigation and download link resolves",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 18482
+        }
+      ]
+    },
+    {
+      "title": "full noise range and calibration scale fit narrow screens",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2460
+        }
+      ]
+    },
+    {
+      "title": "new diagnostics use actual base rates and conditional coverage",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5140
+        }
+      ]
+    },
+    {
+      "title": "training-control model selector preserves exact independent study counts",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 3910
+        }
+      ]
+    },
+    {
+      "title": "conceptual readout comparison shows changes rather than raw values",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 7209
+        }
+      ]
+    },
+    {
+      "title": "guided history links to its exact real saved shot",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 4690
+        }
+      ]
+    },
+    {
+      "title": "guided readout and noise comparisons respond with actual counts",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 4822
+        }
+      ]
+    },
+    {
+      "title": "water background context loss preserves reading and route transition completes",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5818
+        }
+      ]
+    },
+    {
+      "title": "confidence cutoff changes retained evidence without inventing accuracy",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 2761
+        }
+      ]
+    }
+  ],
+  "finalNarrowPointerAndMotionConfirmation": {
+    "startTime": "2026-11-15T03:54:13.424Z",
+    "duration": 11309.126,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "stage": "45-test pass before software-renderer policy; hardware WebGL branch active on this host."
+}

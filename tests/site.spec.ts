@@ -89,9 +89,11 @@ test("mobile menu, no horizontal document overflow, no WebGL dependency", async 
     .getByRole("link", { name: "Explore", exact: true })
     .click();
   await expect(page).toHaveURL(/explore/);
-  await expect(page.locator("canvas")).toHaveCount(0);
+  await expect(page.locator(".spatial-section canvas")).toHaveCount(0);
 });
-test("silent entry, skip link, reduced effects persist", async ({ page }) => {
+test("system reduced motion is clear and full-motion override persists", async ({
+  page,
+}) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   expect(await page.locator("audio").count()).toBe(0);
@@ -99,12 +101,11 @@ test("silent entry, skip link, reduced effects persist", async ({ page }) => {
   await expect(
     page.getByRole("link", { name: "Skip to content" }),
   ).toBeFocused();
-  await page.getByRole("button", { name: "Reduced effects" }).click();
-  expect(await page.locator("html").getAttribute("data-effects")).toBe(
-    "reduced",
-  );
-  await page.reload();
   await expect(page.locator("html")).toHaveAttribute("data-effects", "reduced");
+  await page.getByRole("button", { name: "Reduced effects" }).click();
+  expect(await page.locator("html").getAttribute("data-effects")).toBe("full");
+  await page.reload();
+  await expect(page.locator("html")).toHaveAttribute("data-effects", "full");
 });
 test("download links resolve to real data and public source records", async ({
   request,
@@ -180,20 +181,20 @@ test("spatial view mounts on gesture, camera buttons and context-loss fallback w
   page,
 }) => {
   await page.goto("/explore/failures?noise=0.03");
-  await expect(page.locator("canvas")).toHaveCount(0);
+  await expect(page.locator(".spatial-section canvas")).toHaveCount(0);
   await page.getByRole("button", { name: "Open spatial view" }).click();
   await page.locator(".spatial-section").scrollIntoViewIfNeeded();
-  await expect(page.locator("canvas")).toBeVisible();
+  await expect(page.locator(".spatial-section canvas")).toBeVisible();
   await page.getByRole("button", { name: "Front camera" }).click();
   await expect(
     page.getByRole("button", { name: "Front camera" }),
   ).toHaveAttribute("aria-pressed", "true");
-  await expect(page.locator("canvas")).toHaveAttribute(
+  await expect(page.locator(".spatial-section canvas")).toHaveAttribute(
     "data-context-loss-ready",
     "true",
   );
   await page
-    .locator("canvas")
+    .locator(".spatial-section canvas")
     .evaluate((c) =>
       c.dispatchEvent(new Event("webglcontextlost", { cancelable: true })),
     );
@@ -201,7 +202,7 @@ test("spatial view mounts on gesture, camera buttons and context-loss fallback w
     page.getByText("WebGL context lost.", { exact: false }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Close spatial view" }).click();
-  await expect(page.locator("canvas")).toHaveCount(0);
+  await expect(page.locator(".spatial-section canvas")).toHaveCount(0);
 });
 test("source claims resolve to source records", async ({ page }) => {
   await page.goto("/sources");
@@ -470,13 +471,14 @@ test("guided readout and noise comparisons respond with actual counts", async ({
   await expect(page.locator(".error-race strong").first()).toContainText("31");
   await expect(page.locator(".error-race strong").last()).toContainText("10");
 });
-test("particle context loss preserves reading and route transition completes", async ({
+test("water background context loss preserves reading and route transition completes", async ({
   page,
 }) => {
   await page.goto("/");
   await page.waitForTimeout(1900);
   await page
-    .locator(".particle-art canvas")
+    .locator(".water-backdrop canvas")
+    .first()
     .evaluate((c) =>
       c.dispatchEvent(new Event("webglcontextlost", { cancelable: true })),
     );

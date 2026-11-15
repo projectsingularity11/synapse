@@ -1,5 +1,7 @@
 # Synapse immersive redesign
 
+> The current dark glass release and its motion/browser checks are documented in [dark-experience-report.md](dark-experience-report.md). Earlier visual and performance records below are historical.
+
 Synapse is now presented as Assirem Benseddik’s independent research project, with a visual scroll narrative as its front door. This replaces the previous paper-and-green editorial homepage. The fourteen evidence and technical routes remain available with replacement typography, palette, navigation and direct headings.
 
 ## What changed

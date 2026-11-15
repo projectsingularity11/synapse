@@ -1,5 +1,7 @@
 # QA report
 
+> The current dark glass release and its motion/browser checks are documented in [dark-experience-report.md](dark-experience-report.md). Earlier visual and performance records below are historical.
+
 > This document records the earlier editorial release. The immersive Synapse redesign supersedes its visual design and performance claims. See [the current redesign report](redesign-report.md).
 
 Evidence recorded on 2026-11-15 UTC; the latest browser/performance records are timestamped 02:11–02:18 UTC in the raw files. Local production build; no deployment or field metrics claimed.

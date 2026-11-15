@@ -8,7 +8,7 @@ export function PageHeader({
   children: React.ReactNode;
 }) {
   return (
-    <header className="page-header">
+    <header className="page-header glass-surface">
       <span className="eyebrow">SYNDROME / {index}</span>
       <h1>{title}</h1>
       <p>{children}</p>

@@ -28,21 +28,34 @@ export function ExperienceMotion() {
     };
   }, [pathname]);
   useEffect(() => {
-    const media = matchMedia("(prefers-reduced-motion: reduce)");
-    if (reduced || media.matches) return;
+    if (reduced) {
+      document.documentElement.dataset.scrollEngine = "native";
+      return;
+    }
     const lenis = new Lenis({
-      autoRaf: true,
+      autoRaf: false,
       lerp: 0.085,
       smoothWheel: true,
       anchors: true,
+      syncTouch: false,
     });
-    const change = () => {
-      if (media.matches) lenis.destroy();
+    document.documentElement.dataset.scrollEngine = "lenis";
+    let frame = 0;
+    const tick = (now: number) => {
+      lenis.raf(now);
+      frame = requestAnimationFrame(tick);
     };
-    media.addEventListener("change", change);
+    frame = requestAnimationFrame(tick);
+    const scrollTo = (event: Event) => {
+      const { top } = (event as CustomEvent<{ top: number }>).detail;
+      lenis.scrollTo(top, { duration: 1.15, force: true });
+    };
+    window.addEventListener("synapse-scroll-to", scrollTo);
     return () => {
-      media.removeEventListener("change", change);
+      cancelAnimationFrame(frame);
+      window.removeEventListener("synapse-scroll-to", scrollTo);
       lenis.destroy();
+      delete document.documentElement.dataset.scrollEngine;
     };
   }, [reduced]);
   useEffect(() => {
@@ -55,8 +68,7 @@ export function ExperienceMotion() {
         event.metaKey ||
         event.shiftKey ||
         event.altKey ||
-        reduced ||
-        matchMedia("(prefers-reduced-motion: reduce)").matches
+        reduced
       )
         return;
       const link = (event.target as Element).closest("a");

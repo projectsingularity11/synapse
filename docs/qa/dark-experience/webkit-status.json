@@ -1,0 +1,7 @@
+{
+  "status": "installation blocked; engine tests not executed",
+  "command": "PLAYWRIGHT_BROWSERS_PATH=/workspace/.playwright npm exec -- playwright install webkit",
+  "attemptedEngine": "WebKit 27.2 / Playwright revision 2388 / Debian13",
+  "result": "HTTP403 Domain forbidden from cdn.playwright.dev and playwright.download.prss.microsoft.com mirrors",
+  "scope": "No physical Mac/Comet or Safari session was available; Comet uses Chromium, tested separately."
+}
