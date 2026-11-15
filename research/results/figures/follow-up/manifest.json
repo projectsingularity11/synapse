@@ -1,0 +1,55 @@
+{
+  "generator": "research/experiments/scripts/plot_followup.py",
+  "scriptSha256": "2e5b5f8015af5eb1f2c3fe3afe3850313ffe4e1c6edf52a96c044f8b9cac88b2",
+  "executionDateUTC": "2026-11-15T02:04:23.264948+00:00",
+  "matplotlibVersion": "3.11.2",
+  "font": "Bundled DejaVu Sans; no new font download",
+  "dataRuns": [
+    "d3-memory-z-20261115T004549Z-training-control-20261115T015445Z",
+    "d3-memory-z-20261115T004549Z-diagnostics-20261115T015124Z",
+    "d3-memory-z-20261115T004549Z-confirmation-20261115T011610Z"
+  ],
+  "inputs": {
+    "research/results/aggregates/training-control.json": "a357f0d48a46989beff14521156f7bad78726419f096d402d85d7b736242dbd6",
+    "research/results/aggregates/diagnostics.json": "7c8b166adf1c365978f22cfbb8ac0726254663af6807a7da990cd237c016eb73",
+    "research/results/aggregates/confirmation.json": "7e1dbcaa685436ce64ccc060e66d26d970447050d3cb7847a44ffd1c45670fb0"
+  },
+  "method": "Original figures generated solely from saved validated artifacts; no measurements, fitting or interpolation",
+  "preservedOriginalFigureFiles": {
+    "research/results/figures/calibration.png": "d23c261fb10e30e43da51f32548ec520797f2a162cbdf680f1e34281e4508bf2",
+    "research/results/figures/manifest.json": "9164b0e25bf69f002daa1b2bd7ab1afe99d3b5b7076fa9042ac1f6906193f1bf",
+    "research/results/figures/calibration.pdf": "1097247ee481c1f68611f09797fa67836ae5536300356995c20142d45deb4793",
+    "research/results/figures/README.md": "d8a7fd7c3fc7debf33cdfb8f9cfd8578eea462d4d605242f9ce131f1d888f6ea",
+    "research/results/figures/calibration.svg": "82749c76714e34b5c0075e7dffa5bd2506b9309a56aff0acebb8d5cb5bed5252",
+    "research/results/figures/logical-error-sweep.svg": "b94729d2fa7e248379d12a9ad1924f52fbc98d57caeb7e681519df57e373e74c",
+    "research/results/figures/LICENSE_DEJAVU.txt": "d75938dec098f06f0ac3c00853065d94f020be1c3c62ef1dc2975ba15b4d9b0e",
+    "research/results/figures/logical-error-sweep.png": "83712c8f6cd417f7c211bc90d99448dc3795153c5088d0fe00882c9399e11bbe",
+    "research/results/figures/logical-error-sweep.pdf": "b408615a24857788d015d42f1bd1c33e76c419d07ae791ca352bbf434aae0837"
+  },
+  "outputs": {
+    "confidence-coverage.pdf": {
+      "sha256": "821995e891eb5052226806ea6b1840554b4214645c3f22ae4a1ead849e2c5dbd",
+      "bytes": 39167
+    },
+    "confidence-coverage.png": {
+      "sha256": "184ca36bf68e46f4a6a187a0c01d2b951125973365bbbfa334cc8dc3b8277d00",
+      "bytes": 265176
+    },
+    "confidence-coverage.svg": {
+      "sha256": "284ac4af2a9a0a3986135ceb2230916a4d49b4fa7f9021e505d24cca44db1d5d",
+      "bytes": 39677
+    },
+    "training-noise-control.pdf": {
+      "sha256": "e41620a6d28b825985d366dafbccc31660bba1db3de9e18d8a0d649f03dc2a5f",
+      "bytes": 34719
+    },
+    "training-noise-control.png": {
+      "sha256": "c420bfcaa104eab6402c465ae767747ec850a722377a4e3802960d81771c3bc7",
+      "bytes": 242487
+    },
+    "training-noise-control.svg": {
+      "sha256": "bb265232eb35796099ef37a81a6fe39faa1d2e17e0552724befddcd237e38c3f",
+      "bytes": 39675
+    }
+  }
+}
