@@ -74,14 +74,14 @@ export function WaterBackdrop() {
           densityDissipation: 2.8,
           velocityDissipation: 1.1,
           curl: 14,
-          splatRadius: 0.065,
-          splatForce: 750,
+          splatRadius: 0.035,
+          splatForce: 300,
           shading: true,
           colorful: false,
           colorPalette: ["#ff381c", "#ff662e"],
           hover: false,
           transparent: true,
-          brightness: 0.11,
+          brightness: 0.045,
           bloom: false,
           sunrays: false,
         });
@@ -126,15 +126,15 @@ export function WaterBackdrop() {
           [
             {
               transform: "translate(-50%,-50%) rotate(-18deg) scale(.06)",
-              opacity: 0.16,
+              opacity: 0.055,
             },
             {
-              transform: "translate(-50%,-50%) rotate(12deg) scale(3.8)",
+              transform: "translate(-50%,-50%) rotate(12deg) scale(2.1)",
               opacity: 0,
             },
           ],
           {
-            duration: 1700,
+            duration: 850,
             easing: "cubic-bezier(.12,.45,.35,1)",
             fill: "forwards",
           },

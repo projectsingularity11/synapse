@@ -7,26 +7,26 @@ import type { Study, Trace } from "@/lib/data";
 const chapters = [
   {
     name: "Store",
-    title: "Protect one qubit with nine.",
+    title: "Logical-qubit encoding",
     copy: "A quantum memory is fragile. This experiment spreads one logical qubit across nine data qubits, so a small disturbance does not have to erase the information.",
     detail: "Distance-three surface code · schematic layout",
   },
   {
     name: "Check",
-    title: "Look for changes without reading the state.",
+    title: "Parity-check measurements",
     copy: "Extra qubits measure checks around the memory. When an expected relation changes, it leaves a clue called a detection event.",
     detail: "Check illustration · not an animation of actual faults",
   },
   {
     name: "Remember",
-    title: "Read the clues across time.",
+    title: "Detector history",
     copy: "One round can be ambiguous. Keeping several rounds gives the decoder more context. Turn this saved shot to see two recorded events among its 24 detectors.",
     detail:
       "Saved shot 1 at 3% measurement noise · actual detector coordinates",
   },
   {
     name: "Decode",
-    title: "Predict whether the information flipped.",
+    title: "Neural decoder architecture",
     copy: "The neural network reads all 24 detector bits and predicts one logical outcome. I then change the measurement noise to find out how well it holds up.",
     detail:
       "24 → 32 → 16 → 1 · architecture schematic; lines are not learned weights",

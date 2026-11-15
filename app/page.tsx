@@ -21,11 +21,11 @@ export default function Home() {
         </div>
         <div className="cinema-title">
           <h1 id="home-title">
-            Can a neural
+            Quantum error
             <br />
-            network read
+            decoding under
             <br />
-            through <em>noise?</em>
+            <em>measurement noise</em>
           </h1>
           <p>
             I trained a small model to read error clues from a quantum memory.
@@ -52,7 +52,7 @@ export default function Home() {
             +
           </span>
           <div>
-            <strong>A quantum memory, illustrated</strong>
+            <strong>Quantum memory schematic</strong>
             <span>Turn the structure by dragging.</span>
           </div>
         </div>
@@ -69,18 +69,14 @@ export default function Home() {
             </div>
           ))}
           <a href="#question" aria-label="Scroll to the research question">
-            Scroll to understand <span>↓</span>
+            Research question <span>↓</span>
           </a>
         </div>
       </section>
       <section className="research-question" id="question">
-        <span className="micro">WHY I ASKED THIS QUESTION</span>
+        <span className="micro">MEASUREMENT-NOISE SHIFT</span>
         <h2>
-          A model learns from one world.
-          <br />
-          What happens when
-          <br />
-          <em>that world changes?</em>
+          The research question
         </h2>
         <div className="question-aside">
           <p>
@@ -118,17 +114,13 @@ export default function Home() {
         />
       )}
       <section className="research-door">
-        <span className="micro">READ, INSPECT, OR REPRODUCE</span>
+        <span className="micro">RESEARCH MATERIALS</span>
         <div className="research-door-title">
           <h2>
-            Go deeper into
-            <br />
-            <em>the research.</em>
+            Paper and experimental records
           </h2>
           <p>
-            The homepage explains the idea.
-            <br />
-            The evidence and methods are all here.
+            Read the methods and results, or inspect individual saved shots.
           </p>
         </div>
         <div className="research-doors">

@@ -9,10 +9,10 @@ import { WaterBackdrop } from "@/components/experience/WaterBackdrop";
 import localFont from "next/font/local";
 import { ExperienceMotion } from "@/components/experience/ExperienceMotion";
 const display = localFont({
-  src: "../public/fonts/syne.woff2",
+  src: "../public/fonts/ElMessiri.ttf",
   variable: "--font-display",
   display: "swap",
-  weight: "400 800",
+  weight: "400 700",
 });
 const space = localFont({
   src: "../public/fonts/SpaceGrotesk.ttf",

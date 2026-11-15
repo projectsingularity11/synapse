@@ -28,7 +28,7 @@ test("scroll changes the 3D explanation and keyboard seeking reaches every step"
   );
   await expect(section).toHaveAttribute("data-chapter", "2");
   await expect(
-    page.getByRole("heading", { name: "Read the clues across time." }),
+    page.getByRole("heading", { name: "Detector history" }),
   ).toBeVisible();
   await expect(page.locator(".film-data")).toContainText(
     "2 EVENTS / 24 DETECTORS",
@@ -153,7 +153,7 @@ test("a touch visitor can move between steps using the native slider", async ({
   );
   await expect(
     page.getByRole("heading", {
-      name: "Predict whether the information flipped.",
+      name: "Neural decoder architecture",
     }),
   ).toBeVisible();
   await context.close();

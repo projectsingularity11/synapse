@@ -20,7 +20,7 @@ export function NoiseEvidence({ conditions }: { conditions: Condition[] }) {
         <span className="micro">ORIGINAL EXPERIMENT / SEED 101</span>
       </div>
       <div className="evidence-intro">
-        <h2>The noise increased.<br/>So did the errors.</h2>
+        <h2>Logical error across measurement-noise settings</h2>
         <p>
           I trained at 0.5% measurement noise, then changed it. More noise meant
           more mistakes. But that alone cannot tell us how much damage came from

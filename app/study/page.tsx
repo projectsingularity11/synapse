@@ -13,7 +13,7 @@ export default function StudyPage() {
   const shifted = s?.conditions.at(-1);
   return (
     <>
-      <PageHeader index="THE EVIDENCE / 03" title="What changed when the noise increased?">
+      <PageHeader index="THE EVIDENCE / 03" title="Measurement-noise results">
         When measurement noise differs from the training distribution, how do
         logical prediction error and confidence calibration change for a compact
         neural decoder?
@@ -120,7 +120,7 @@ export default function StudyPage() {
             <SeedSensitivity study={s} />
             <PairedComparison supplement={getSupplement()} />
             <section className="prose">
-              <h2>What these results can tell us.</h2>
+              <h2>Interpretation</h2>
               <p>
                 These measurements apply to the particular distance, rounds,
                 basis, circuit noise, model capacity and shot budget documented
@@ -134,7 +134,7 @@ export default function StudyPage() {
                 matched-prior baseline is given the true evaluation noise
                 specification. The neural model is held fixed after training.
               </p>
-              <h3>Read the limitations with the curves.</h3>
+              <h3>Study limitations</h3>
               <p>
                 Binomial intervals describe finite test-shot uncertainty
                 conditional on the fitted model. They do not include
@@ -150,7 +150,7 @@ export default function StudyPage() {
           </>
         ) : (
           <div className="empty">
-            <h2>No results asserted.</h2>
+            <h2>Results unavailable</h2>
             <p>
               The protocol exists, but this page requires a validated run. There
               are no invented benchmark values.

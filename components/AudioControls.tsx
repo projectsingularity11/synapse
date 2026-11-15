@@ -121,7 +121,7 @@ export function AudioControls() {
           aria-label="Sound settings"
         >
           <div className="sound-panel-header">
-            <strong>Set the atmosphere</strong>
+            <strong>Audio settings</strong>
             <button
               onClick={() => setOpen(false)}
               aria-label="Close sound settings"

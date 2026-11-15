@@ -9,14 +9,13 @@ export default function Credits() {
       <div className="page-body prose">
         <h2>Typefaces</h2>
         <p>
-          Syne by Bonjour Monde and Lucas Descroix, Instrument Serif by Rodrigo Fuenzalida, Space Grotesk by Florian
-          Karsten, and Instrument Serif by Rodrigo Fuenzalida and Jordan Egstad
-          are self-hosted under the SIL Open Font License.{" "}
-          <a href="/fonts/OFL-BricolageGrotesque.txt">
-            Bricolage Grotesque license
-          </a>{" "}
-          · <a href="/fonts/OFL-spacegrotesk.txt">Space Grotesk license</a> ·{" "}
+          El Messiri by Mohamed Gaber, Space Grotesk by Florian Karsten,
+          and Instrument Serif by Rodrigo Fuenzalida and Jordan Egstad are
+          self-hosted under the SIL Open Font License.
+          <a href="/fonts/OFL-ElMessiri.txt">El Messiri license</a> ·{" "}
+          <a href="/fonts/OFL-spacegrotesk.txt">Space Grotesk license</a> ·{" "}
           <a href="/fonts/OFL-instrumentserif.txt">Instrument Serif license</a>.
+
         </p>
         <h2>Software</h2>
         <p>
