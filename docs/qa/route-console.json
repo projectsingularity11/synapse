@@ -1,0 +1,66 @@
+{
+  "date": "2026-11-15T01:41:26.487Z",
+  "browser": "system Chromium production server",
+  "records": [
+    {
+      "route": "/",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/explore",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/explore/failures",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/study",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/study/confirmation",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/methods",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/methods/glossary",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/methods/circuit",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/sources",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/about",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/credits",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/accessibility",
+      "status": 200,
+      "errors": []
+    }
+  ]
+}

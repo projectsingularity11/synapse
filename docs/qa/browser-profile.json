@@ -1,0 +1,518 @@
+{
+  "date": "2026-11-15T01:28:14.272Z",
+  "browser": "system Chromium headless",
+  "viewport": "1440x1000",
+  "network": "local production server, unthrottled; fresh browser context per route",
+  "cpu": "unthrottled shared cloud Intel Xeon 8573C",
+  "errors": [],
+  "records": [
+    {
+      "route": "/",
+      "longTasks": [
+        {
+          "start": 169,
+          "duration": 74
+        }
+      ],
+      "canvasCount": 0,
+      "raf": {
+        "count": 120,
+        "medianMs": 16.699999999999818,
+        "p95Ms": 16.799999999999727,
+        "note": "Idle browser rAF scheduling sample on SVG path; not GPU throughput or proof of sustained 60fps"
+      },
+      "resources": [
+        {
+          "name": "_next/static/chunks/02q4hrr4vcacr.css",
+          "transferSize": 4371,
+          "decodedBodySize": 16107,
+          "duration": 28.799999999813735
+        },
+        {
+          "name": "_next/static/chunks/310vm2bl3xxpt.js",
+          "transferSize": 2270,
+          "decodedBodySize": 5364,
+          "duration": 43.89999999990687
+        },
+        {
+          "name": "_next/static/chunks/1x26dnhe--g_l.js",
+          "transferSize": 7055,
+          "decodedBodySize": 22139,
+          "duration": 44.60000000009313
+        },
+        {
+          "name": "_next/static/chunks/2-k1bp-mzg57u.js",
+          "transferSize": 45820,
+          "decodedBodySize": 165565,
+          "duration": 64.10000000009313
+        },
+        {
+          "name": "_next/static/chunks/2urr6-fm2smyv.js",
+          "transferSize": 8988,
+          "decodedBodySize": 32999,
+          "duration": 52.299999999813735
+        },
+        {
+          "name": "_next/static/chunks/3r-okv0vpv6lc.js",
+          "transferSize": 65667,
+          "decodedBodySize": 207263,
+          "duration": 64.59999999962747
+        },
+        {
+          "name": "_next/static/chunks/turbopack-2u1d16houkiyo.js",
+          "transferSize": 4205,
+          "decodedBodySize": 9974,
+          "duration": 56
+        },
+        {
+          "name": "_next/static/chunks/0mxq5dsnhg5jx.js",
+          "transferSize": 7425,
+          "decodedBodySize": 23673,
+          "duration": 64.29999999981374
+        },
+        {
+          "name": "_next/static/chunks/33315znge8bej.js",
+          "transferSize": 999,
+          "decodedBodySize": 699,
+          "duration": 63.700000000186265
+        },
+        {
+          "name": "icon.svg?icon.3w6zn3f3yfcnw.svg",
+          "transferSize": 502,
+          "decodedBodySize": 254,
+          "duration": 8.899999999906868
+        },
+        {
+          "name": "?_rsc=5CB68i4pnAekjehf",
+          "transferSize": 464,
+          "decodedBodySize": 164,
+          "duration": 30.800000000279397
+        },
+        {
+          "name": "explore?_rsc=5CB68i4pnAekjehf",
+          "transferSize": 482,
+          "decodedBodySize": 214,
+          "duration": 31
+        },
+        {
+          "name": "study?_rsc=5CB68i4pnAekjehf",
+          "transferSize": 480,
+          "decodedBodySize": 212,
+          "duration": 32
+        },
+        {
+          "name": "methods?_rsc=5CB68i4pnAekjehf",
+          "transferSize": 482,
+          "decodedBodySize": 214,
+          "duration": 32.09999999962747
+        },
+        {
+          "name": "sources?_rsc=5CB68i4pnAekjehf",
+          "transferSize": 482,
+          "decodedBodySize": 214,
+          "duration": 11.800000000279397
+        },
+        {
+          "name": "?_rsc=8nTjltbQWvg6NcbE",
+          "transferSize": 4246,
+          "decodedBodySize": 15221,
+          "duration": 16.899999999906868
+        },
+        {
+          "name": "explore?_rsc=y5uIUfDQA6olE3D1",
+          "transferSize": 9464,
+          "decodedBodySize": 42906,
+          "duration": 18.5
+        },
+        {
+          "name": "study?_rsc=hPgDd82sA3L2g6qz",
+          "transferSize": 12882,
+          "decodedBodySize": 55126,
+          "duration": 17.899999999906868
+        },
+        {
+          "name": "methods?_rsc=9FNQl1dyoE4Jqpe0",
+          "transferSize": 7210,
+          "decodedBodySize": 21152,
+          "duration": 8.5
+        },
+        {
+          "name": "sources?_rsc=Uj_hwpAr8bOzvZRl",
+          "transferSize": 5659,
+          "decodedBodySize": 23552,
+          "duration": 4.5
+        },
+        {
+          "name": "_next/static/chunks/26uzusr0_qqed.js",
+          "transferSize": 6964,
+          "decodedBodySize": 19533,
+          "duration": 4.399999999906868
+        },
+        {
+          "name": "_next/static/chunks/0kr4kcgyd3mhn.js",
+          "transferSize": 3212,
+          "decodedBodySize": 8900,
+          "duration": 4.100000000093132
+        }
+      ]
+    },
+    {
+      "route": "/explore?noise=0.03",
+      "longTasks": [
+        {
+          "start": 163.60000000009313,
+          "duration": 76
+        }
+      ],
+      "canvasCount": 0,
+      "raf": {
+        "count": 120,
+        "medianMs": 16.699999999999818,
+        "p95Ms": 16.800000000000182,
+        "note": "Idle browser rAF scheduling sample on SVG path; not GPU throughput or proof of sustained 60fps"
+      },
+      "resources": [
+        {
+          "name": "_next/static/chunks/02q4hrr4vcacr.css",
+          "transferSize": 4371,
+          "decodedBodySize": 16107,
+          "duration": 32.10000000009313
+        },
+        {
+          "name": "_next/static/chunks/310vm2bl3xxpt.js",
+          "transferSize": 2270,
+          "decodedBodySize": 5364,
+          "duration": 41.700000000186265
+        },
+        {
+          "name": "_next/static/chunks/1x26dnhe--g_l.js",
+          "transferSize": 7055,
+          "decodedBodySize": 22139,
+          "duration": 41.8000000002794
+        },
+        {
+          "name": "_next/static/chunks/2urr6-fm2smyv.js",
+          "transferSize": 8988,
+          "decodedBodySize": 32999,
+          "duration": 42.3000000002794
+        },
+        {
+          "name": "_next/static/chunks/3r-okv0vpv6lc.js",
+          "transferSize": 65667,
+          "decodedBodySize": 207263,
+          "duration": 58.5
+        },
+        {
+          "name": "_next/static/chunks/2-k1bp-mzg57u.js",
+          "transferSize": 45820,
+          "decodedBodySize": 165565,
+          "duration": 57.60000000009313
+        },
+        {
+          "name": "_next/static/chunks/turbopack-2u1d16houkiyo.js",
+          "transferSize": 4205,
+          "decodedBodySize": 9974,
+          "duration": 47.40000000037253
+        },
+        {
+          "name": "_next/static/chunks/0mxq5dsnhg5jx.js",
+          "transferSize": 7425,
+          "decodedBodySize": 23673,
+          "duration": 51
+        },
+        {
+          "name": "_next/static/chunks/33315znge8bej.js",
+          "transferSize": 999,
+          "decodedBodySize": 699,
+          "duration": 50.200000000186265
+        },
+        {
+          "name": "_next/static/chunks/26uzusr0_qqed.js",
+          "transferSize": 6964,
+          "decodedBodySize": 19533,
+          "duration": 53.39999999990687
+        },
+        {
+          "name": "?_rsc=TLJ23gVnbrIc7BPU",
+          "transferSize": 464,
+          "decodedBodySize": 164,
+          "duration": 27.799999999813735
+        },
+        {
+          "name": "explore?_rsc=TLJ23gVnbrIc7BPU",
+          "transferSize": 482,
+          "decodedBodySize": 214,
+          "duration": 31.399999999906868
+        },
+        {
+          "name": "study?_rsc=TLJ23gVnbrIc7BPU",
+          "transferSize": 480,
+          "decodedBodySize": 212,
+          "duration": 31.100000000093132
+        },
+        {
+          "name": "methods?_rsc=TLJ23gVnbrIc7BPU",
+          "transferSize": 482,
+          "decodedBodySize": 214,
+          "duration": 31.399999999906868
+        },
+        {
+          "name": "icon.svg?icon.3w6zn3f3yfcnw.svg",
+          "transferSize": 502,
+          "decodedBodySize": 254,
+          "duration": 25.700000000186265
+        },
+        {
+          "name": "sources?_rsc=TLJ23gVnbrIc7BPU",
+          "transferSize": 482,
+          "decodedBodySize": 214,
+          "duration": 16.899999999906868
+        },
+        {
+          "name": "explore/failures?_rsc=TLJ23gVnbrIc7BPU",
+          "transferSize": 496,
+          "decodedBodySize": 265,
+          "duration": 16.5
+        },
+        {
+          "name": "about?_rsc=TLJ23gVnbrIc7BPU",
+          "transferSize": 480,
+          "decodedBodySize": 212,
+          "duration": 14.899999999906868
+        },
+        {
+          "name": "credits?_rsc=TLJ23gVnbrIc7BPU",
+          "transferSize": 482,
+          "decodedBodySize": 214,
+          "duration": 13.200000000186265
+        },
+        {
+          "name": "?_rsc=KsxuEkAuE6v4gGng",
+          "transferSize": 4246,
+          "decodedBodySize": 15221,
+          "duration": 16.399999999906868
+        },
+        {
+          "name": "explore?_rsc=0IwdRzqrqDyMJUgO",
+          "transferSize": 9464,
+          "decodedBodySize": 42906,
+          "duration": 16
+        },
+        {
+          "name": "study?_rsc=TnsswNE_fuKOvQUU",
+          "transferSize": 12882,
+          "decodedBodySize": 55126,
+          "duration": 16.200000000186265
+        },
+        {
+          "name": "methods?_rsc=bkcupABs8D3-hJL_",
+          "transferSize": 7210,
+          "decodedBodySize": 21152,
+          "duration": 15.200000000186265
+        },
+        {
+          "name": "sources?_rsc=dDISB8CBJd_BbqMY",
+          "transferSize": 5659,
+          "decodedBodySize": 23552,
+          "duration": 4
+        },
+        {
+          "name": "explore/failures?_rsc=b_UGCCVFTNfTjk4Z",
+          "transferSize": 9573,
+          "decodedBodySize": 38345,
+          "duration": 6.2999999998137355
+        },
+        {
+          "name": "_next/static/chunks/0kr4kcgyd3mhn.js",
+          "transferSize": 3212,
+          "decodedBodySize": 8900,
+          "duration": 4.100000000093132
+        },
+        {
+          "name": "icon.svg?icon.3w6zn3f3yfcnw.svg",
+          "transferSize": 502,
+          "decodedBodySize": 254,
+          "duration": 22.90000000037253
+        },
+        {
+          "name": "about?_rsc=pmVa6vAepvlpl7mI",
+          "transferSize": 2469,
+          "decodedBodySize": 5622,
+          "duration": 8.900000000372529
+        },
+        {
+          "name": "credits?_rsc=0sDo36q1oziCW6kq",
+          "transferSize": 2749,
+          "decodedBodySize": 6270,
+          "duration": 10.100000000093132
+        }
+      ]
+    },
+    {
+      "route": "/study",
+      "longTasks": [
+        {
+          "start": 53.799999999813735,
+          "duration": 91
+        },
+        {
+          "start": 170.79999999981374,
+          "duration": 78
+        }
+      ],
+      "canvasCount": 0,
+      "raf": {
+        "count": 120,
+        "medianMs": 16.699999999999818,
+        "p95Ms": 16.700000000000273,
+        "note": "Idle browser rAF scheduling sample on SVG path; not GPU throughput or proof of sustained 60fps"
+      },
+      "resources": [
+        {
+          "name": "_next/static/chunks/02q4hrr4vcacr.css",
+          "transferSize": 4371,
+          "decodedBodySize": 16107,
+          "duration": 26.600000000093132
+        },
+        {
+          "name": "_next/static/chunks/310vm2bl3xxpt.js",
+          "transferSize": 2270,
+          "decodedBodySize": 5364,
+          "duration": 32.10000000009313
+        },
+        {
+          "name": "_next/static/chunks/1x26dnhe--g_l.js",
+          "transferSize": 7055,
+          "decodedBodySize": 22139,
+          "duration": 31.800000000279397
+        },
+        {
+          "name": "_next/static/chunks/2-k1bp-mzg57u.js",
+          "transferSize": 45820,
+          "decodedBodySize": 165565,
+          "duration": 44.1999999997206
+        },
+        {
+          "name": "_next/static/chunks/3r-okv0vpv6lc.js",
+          "transferSize": 65667,
+          "decodedBodySize": 207263,
+          "duration": 57.09999999962747
+        },
+        {
+          "name": "_next/static/chunks/turbopack-2u1d16houkiyo.js",
+          "transferSize": 4205,
+          "decodedBodySize": 9974,
+          "duration": 40.5
+        },
+        {
+          "name": "_next/static/chunks/2urr6-fm2smyv.js",
+          "transferSize": 8988,
+          "decodedBodySize": 32999,
+          "duration": 43.700000000186265
+        },
+        {
+          "name": "_next/static/chunks/0mxq5dsnhg5jx.js",
+          "transferSize": 7425,
+          "decodedBodySize": 23673,
+          "duration": 44.10000000009313
+        },
+        {
+          "name": "_next/static/chunks/33315znge8bej.js",
+          "transferSize": 999,
+          "decodedBodySize": 699,
+          "duration": 43.200000000186265
+        },
+        {
+          "name": "_next/static/chunks/0kr4kcgyd3mhn.js",
+          "transferSize": 3212,
+          "decodedBodySize": 8900,
+          "duration": 49.10000000009313
+        },
+        {
+          "name": "icon.svg?icon.3w6zn3f3yfcnw.svg",
+          "transferSize": 502,
+          "decodedBodySize": 254,
+          "duration": 6.699999999720603
+        },
+        {
+          "name": "?_rsc=KJtrtFcRgTYhySfQ",
+          "transferSize": 464,
+          "decodedBodySize": 164,
+          "duration": 16
+        },
+        {
+          "name": "explore?_rsc=KJtrtFcRgTYhySfQ",
+          "transferSize": 482,
+          "decodedBodySize": 214,
+          "duration": 17.899999999906868
+        },
+        {
+          "name": "study?_rsc=KJtrtFcRgTYhySfQ",
+          "transferSize": 480,
+          "decodedBodySize": 212,
+          "duration": 18.200000000186265
+        },
+        {
+          "name": "methods?_rsc=KJtrtFcRgTYhySfQ",
+          "transferSize": 482,
+          "decodedBodySize": 214,
+          "duration": 17.300000000279397
+        },
+        {
+          "name": "sources?_rsc=KJtrtFcRgTYhySfQ",
+          "transferSize": 482,
+          "decodedBodySize": 214,
+          "duration": 10.100000000093132
+        },
+        {
+          "name": "study/confirmation?_rsc=KJtrtFcRgTYhySfQ",
+          "transferSize": 498,
+          "decodedBodySize": 267,
+          "duration": 14.200000000186265
+        },
+        {
+          "name": "?_rsc=OfoPpVkEzxJC1zDi",
+          "transferSize": 4246,
+          "decodedBodySize": 15221,
+          "duration": 17.399999999906868
+        },
+        {
+          "name": "explore?_rsc=lDIl7O5-DLDd1gTX",
+          "transferSize": 9464,
+          "decodedBodySize": 42906,
+          "duration": 16.399999999906868
+        },
+        {
+          "name": "study?_rsc=9qzwnuMY9w-Zd7XZ",
+          "transferSize": 12882,
+          "decodedBodySize": 55126,
+          "duration": 15.700000000186265
+        },
+        {
+          "name": "methods?_rsc=Gsnzy1GmPV1mQgie",
+          "transferSize": 7210,
+          "decodedBodySize": 21152,
+          "duration": 10.199999999720603
+        },
+        {
+          "name": "sources?_rsc=sKfEd0VasRD0v3RG",
+          "transferSize": 5659,
+          "decodedBodySize": 23552,
+          "duration": 9.200000000186265
+        },
+        {
+          "name": "_next/static/chunks/26uzusr0_qqed.js",
+          "transferSize": 6964,
+          "decodedBodySize": 19533,
+          "duration": 8.399999999906868
+        },
+        {
+          "name": "study/confirmation?_rsc=2RKqsBdlEfY1VYUi",
+          "transferSize": 6544,
+          "decodedBodySize": 20111,
+          "duration": 14.900000000372529
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2674 @@
+[
+  {
+    "route": "/",
+    "run": 1,
+    "fetchTime": "2026-11-15T01:38:48.242Z",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "config": {
+      "output": "json",
+      "maxWaitForFcp": 30000,
+      "maxWaitForLoad": 45000,
+      "pauseAfterFcpMs": 1000,
+      "pauseAfterLoadMs": 1000,
+      "networkQuietThresholdMs": 1000,
+      "cpuQuietThresholdMs": 1000,
+      "formFactor": "mobile",
+      "throttling": {
+        "rttMs": 150,
+        "throughputKbps": 1638.4,
+        "requestLatencyMs": 562.5,
+        "downloadThroughputKbps": 1474.5600000000002,
+        "uploadThroughputKbps": 675,
+        "cpuSlowdownMultiplier": 4
+      },
+      "throttlingMethod": "simulate",
+      "screenEmulation": {
+        "mobile": true,
+        "width": 412,
+        "height": 823,
+        "deviceScaleFactor": 1.75,
+        "disabled": false
+      },
+      "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+      "auditMode": false,
+      "gatherMode": false,
+      "clearStorageTypes": [
+        "file_systems",
+        "shader_cache",
+        "service_workers",
+        "cache_storage"
+      ],
+      "disableStorageReset": false,
+      "debugNavigation": false,
+      "channel": "node",
+      "usePassiveGathering": false,
+      "disableFullPageScreenshot": false,
+      "skipAboutBlank": false,
+      "blankPage": "about:blank",
+      "ignoreStatusCode": false,
+      "locale": "en-US",
+      "blockedUrlPatterns": null,
+      "additionalTraceCategories": null,
+      "extraHeaders": null,
+      "precomputedLanternData": null,
+      "onlyAudits": null,
+      "onlyCategories": [
+        "performance",
+        "accessibility",
+        "best-practices",
+        "seo"
+      ],
+      "skipAudits": null
+    },
+    "version": "13.0.3",
+    "scores": {
+      "performance": 0.93,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "metrics": {
+      "largest-contentful-paint": {
+        "value": 2322.0653,
+        "unit": "millisecond"
+      },
+      "cumulative-layout-shift": {
+        "value": 0,
+        "unit": "unitless"
+      },
+      "total-blocking-time": {
+        "value": 247,
+        "unit": "millisecond"
+      },
+      "speed-index": {
+        "value": 767.0653,
+        "unit": "millisecond"
+      },
+      "first-contentful-paint": {
+        "value": 767.0653,
+        "unit": "millisecond"
+      },
+      "interactive": {
+        "value": 2322.0653,
+        "unit": "millisecond"
+      }
+    },
+    "failedAudits": [
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.93
+      },
+      {
+        "id": "total-blocking-time",
+        "title": "Total Blocking Time",
+        "score": 0.84
+      },
+      {
+        "id": "max-potential-fid",
+        "title": "Max Potential First Input Delay",
+        "score": 0.36
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.99
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3001/_next/static/chunks/3r-okv0vpv6lc.js",
+              "totalBytes": 65424,
+              "wastedBytes": 28623,
+              "wastedPercent": 43.74924612690157
+            }
+          ],
+          "overallSavingsMs": 300,
+          "overallSavingsBytes": 28623,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 300
+            }
+          }
+        }
+      },
+      {
+        "id": "bf-cache",
+        "title": "Page prevented back/forward cache restoration",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "reason",
+              "valueType": "text",
+              "subItemsHeading": {
+                "key": "frameUrl",
+                "valueType": "url"
+              },
+              "label": "Failure reason"
+            },
+            {
+              "key": "failureType",
+              "valueType": "text",
+              "label": "Failure type"
+            }
+          ],
+          "items": [
+            {
+              "reason": "Back/forward cache is disabled by flags. Visit chrome://flags/#back-forward-cache to enable it locally on this device.",
+              "failureType": "Not actionable",
+              "subItems": {
+                "type": "subitems",
+                "items": [
+                  {
+                    "frameUrl": "http://127.0.0.1:3001/"
+                  }
+                ]
+              },
+              "protocolReason": "BackForwardCacheDisabled"
+            },
+            {
+              "reason": "Back/forward cache is disabled by the command line.",
+              "failureType": "Not actionable",
+              "subItems": {
+                "type": "subitems",
+                "items": [
+                  {
+                    "frameUrl": "http://127.0.0.1:3001/"
+                  }
+                ]
+              },
+              "protocolReason": "BackForwardCacheDisabledByCommandLine"
+            }
+          ]
+        }
+      },
+      {
+        "id": "legacy-javascript-insight",
+        "title": "Legacy JavaScript",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "location",
+                "valueType": "source-location"
+              },
+              "label": "URL"
+            },
+            {
+              "key": null,
+              "valueType": "code",
+              "subItemsHeading": {
+                "key": "signal"
+              },
+              "label": ""
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "label": "Wasted bytes"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+              "wastedBytes": 14271,
+              "subItems": {
+                "type": "subitems",
+                "items": [
+                  {
+                    "signal": "Array.prototype.at",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 1116
+                    }
+                  },
+                  {
+                    "signal": "Array.prototype.flat",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 504
+                    }
+                  },
+                  {
+                    "signal": "Array.prototype.flatMap",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 617
+                    }
+                  },
+                  {
+                    "signal": "Object.fromEntries",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 993
+                    }
+                  },
+                  {
+                    "signal": "Object.hasOwn",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 1251
+                    }
+                  },
+                  {
+                    "signal": "String.prototype.trimEnd",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 246
+                    }
+                  },
+                  {
+                    "signal": "String.prototype.trimStart",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 161
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "wastedBytes": 14271
+          }
+        }
+      },
+      {
+        "id": "network-dependency-tree-insight",
+        "title": "Network dependency tree",
+        "score": 0,
+        "details": {
+          "type": "list",
+          "items": [
+            {
+              "type": "list-section",
+              "value": {
+                "type": "network-tree",
+                "chains": {
+                  "657ED9DC1314DD83AD8CAFBF01F80128": {
+                    "url": "http://127.0.0.1:3001/",
+                    "navStartToEndTime": 42,
+                    "transferSize": 6648,
+                    "isLongest": true,
+                    "children": {
+                      "24447.2": {
+                        "url": "http://127.0.0.1:3001/_next/static/chunks/2h-u61-h88kqy.css",
+                        "navStartToEndTime": 67,
+                        "transferSize": 4534,
+                        "isLongest": true,
+                        "children": {}
+                      }
+                    }
+                  }
+                },
+                "longestChain": {
+                  "duration": 67
+                }
+              }
+            },
+            {
+              "type": "list-section",
+              "title": "Preconnected origins",
+              "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+              "value": {
+                "type": "text",
+                "value": "no origins were preconnected"
+              }
+            },
+            {
+              "type": "list-section",
+              "title": "Preconnect candidates",
+              "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+              "value": {
+                "type": "text",
+                "value": "No additional origins are good candidates for preconnecting"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "render-blocking-insight",
+        "title": "Render blocking requests",
+        "score": 0.5,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedMs",
+              "valueType": "timespanMs",
+              "label": "Duration"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3001/_next/static/chunks/2h-u61-h88kqy.css",
+              "totalBytes": 4534,
+              "wastedMs": 159
+            }
+          ]
+        }
+      }
+    ],
+    "runtimeError": null
+  },
+  {
+    "route": "/",
+    "run": 2,
+    "fetchTime": "2026-11-15T01:38:56.081Z",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "config": {
+      "output": "json",
+      "maxWaitForFcp": 30000,
+      "maxWaitForLoad": 45000,
+      "pauseAfterFcpMs": 1000,
+      "pauseAfterLoadMs": 1000,
+      "networkQuietThresholdMs": 1000,
+      "cpuQuietThresholdMs": 1000,
+      "formFactor": "mobile",
+      "throttling": {
+        "rttMs": 150,
+        "throughputKbps": 1638.4,
+        "requestLatencyMs": 562.5,
+        "downloadThroughputKbps": 1474.5600000000002,
+        "uploadThroughputKbps": 675,
+        "cpuSlowdownMultiplier": 4
+      },
+      "throttlingMethod": "simulate",
+      "screenEmulation": {
+        "mobile": true,
+        "width": 412,
+        "height": 823,
+        "deviceScaleFactor": 1.75,
+        "disabled": false
+      },
+      "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+      "auditMode": false,
+      "gatherMode": false,
+      "clearStorageTypes": [
+        "file_systems",
+        "shader_cache",
+        "service_workers",
+        "cache_storage"
+      ],
+      "disableStorageReset": false,
+      "debugNavigation": false,
+      "channel": "node",
+      "usePassiveGathering": false,
+      "disableFullPageScreenshot": false,
+      "skipAboutBlank": false,
+      "blankPage": "about:blank",
+      "ignoreStatusCode": false,
+      "locale": "en-US",
+      "blockedUrlPatterns": null,
+      "additionalTraceCategories": null,
+      "extraHeaders": null,
+      "precomputedLanternData": null,
+      "onlyAudits": null,
+      "onlyCategories": [
+        "performance",
+        "accessibility",
+        "best-practices",
+        "seo"
+      ],
+      "skipAudits": null
+    },
+    "version": "13.0.3",
+    "scores": {
+      "performance": 0.96,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "metrics": {
+      "largest-contentful-paint": {
+        "value": 2219.7846,
+        "unit": "millisecond"
+      },
+      "cumulative-layout-shift": {
+        "value": 0,
+        "unit": "unitless"
+      },
+      "total-blocking-time": {
+        "value": 164,
+        "unit": "millisecond"
+      },
+      "speed-index": {
+        "value": 761.7846,
+        "unit": "millisecond"
+      },
+      "first-contentful-paint": {
+        "value": 761.7846,
+        "unit": "millisecond"
+      },
+      "interactive": {
+        "value": 2219.7846,
+        "unit": "millisecond"
+      }
+    },
+    "failedAudits": [
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.94
+      },
+      {
+        "id": "total-blocking-time",
+        "title": "Total Blocking Time",
+        "score": 0.93
+      },
+      {
+        "id": "max-potential-fid",
+        "title": "Max Potential First Input Delay",
+        "score": 0.61
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.99
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3001/_next/static/chunks/3r-okv0vpv6lc.js",
+              "totalBytes": 65424,
+              "wastedBytes": 28623,
+              "wastedPercent": 43.74924612690157
+            }
+          ],
+          "overallSavingsMs": 300,
+          "overallSavingsBytes": 28623,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 300
+            }
+          }
+        }
+      },
+      {
+        "id": "bf-cache",
+        "title": "Page prevented back/forward cache restoration",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "reason",
+              "valueType": "text",
+              "subItemsHeading": {
+                "key": "frameUrl",
+                "valueType": "url"
+              },
+              "label": "Failure reason"
+            },
+            {
+              "key": "failureType",
+              "valueType": "text",
+              "label": "Failure type"
+            }
+          ],
+          "items": [
+            {
+              "reason": "Back/forward cache is disabled by flags. Visit chrome://flags/#back-forward-cache to enable it locally on this device.",
+              "failureType": "Not actionable",
+              "subItems": {
+                "type": "subitems",
+                "items": [
+                  {
+                    "frameUrl": "http://127.0.0.1:3001/"
+                  }
+                ]
+              },
+              "protocolReason": "BackForwardCacheDisabled"
+            },
+            {
+              "reason": "Back/forward cache is disabled by the command line.",
+              "failureType": "Not actionable",
+              "subItems": {
+                "type": "subitems",
+                "items": [
+                  {
+                    "frameUrl": "http://127.0.0.1:3001/"
+                  }
+                ]
+              },
+              "protocolReason": "BackForwardCacheDisabledByCommandLine"
+            }
+          ]
+        }
+      },
+      {
+        "id": "forced-reflow-insight",
+        "title": "Forced reflow",
+        "score": 0,
+        "details": {
+          "type": "list",
+          "items": [
+            {
+              "type": "table",
+              "headings": [
+                {
+                  "key": "source",
+                  "valueType": "source-location",
+                  "label": "Source"
+                },
+                {
+                  "key": "reflowTime",
+                  "valueType": "ms",
+                  "granularity": 1,
+                  "label": "Total reflow time"
+                }
+              ],
+              "items": [
+                {
+                  "source": {
+                    "type": "text",
+                    "value": "[unattributed]"
+                  },
+                  "reflowTime": 37.865
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "legacy-javascript-insight",
+        "title": "Legacy JavaScript",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "location",
+                "valueType": "source-location"
+              },
+              "label": "URL"
+            },
+            {
+              "key": null,
+              "valueType": "code",
+              "subItemsHeading": {
+                "key": "signal"
+              },
+              "label": ""
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "label": "Wasted bytes"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+              "wastedBytes": 14271,
+              "subItems": {
+                "type": "subitems",
+                "items": [
+                  {
+                    "signal": "Array.prototype.at",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 1116
+                    }
+                  },
+                  {
+                    "signal": "Array.prototype.flat",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 504
+                    }
+                  },
+                  {
+                    "signal": "Array.prototype.flatMap",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 617
+                    }
+                  },
+                  {
+                    "signal": "Object.fromEntries",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 993
+                    }
+                  },
+                  {
+                    "signal": "Object.hasOwn",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 1251
+                    }
+                  },
+                  {
+                    "signal": "String.prototype.trimEnd",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 246
+                    }
+                  },
+                  {
+                    "signal": "String.prototype.trimStart",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 161
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "wastedBytes": 14271
+          }
+        }
+      },
+      {
+        "id": "network-dependency-tree-insight",
+        "title": "Network dependency tree",
+        "score": 0,
+        "details": {
+          "type": "list",
+          "items": [
+            {
+              "type": "list-section",
+              "value": {
+                "type": "network-tree",
+                "chains": {
+                  "A2409EEA1B9BF7C57F3F225D7C720CDF": {
+                    "url": "http://127.0.0.1:3001/",
+                    "navStartToEndTime": 32,
+                    "transferSize": 6648,
+                    "isLongest": true,
+                    "children": {
+                      "24615.2": {
+                        "url": "http://127.0.0.1:3001/_next/static/chunks/2h-u61-h88kqy.css",
+                        "navStartToEndTime": 63,
+                        "transferSize": 4534,
+                        "isLongest": true,
+                        "children": {}
+                      }
+                    }
+                  }
+                },
+                "longestChain": {
+                  "duration": 63
+                }
+              }
+            },
+            {
+              "type": "list-section",
+              "title": "Preconnected origins",
+              "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+              "value": {
+                "type": "text",
+                "value": "no origins were preconnected"
+              }
+            },
+            {
+              "type": "list-section",
+              "title": "Preconnect candidates",
+              "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+              "value": {
+                "type": "text",
+                "value": "No additional origins are good candidates for preconnecting"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "render-blocking-insight",
+        "title": "Render blocking requests",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedMs",
+              "valueType": "timespanMs",
+              "label": "Duration"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3001/_next/static/chunks/2h-u61-h88kqy.css",
+              "totalBytes": 4534,
+              "wastedMs": 156
+            }
+          ]
+        }
+      }
+    ],
+    "runtimeError": null
+  },
+  {
+    "route": "/",
+    "run": 3,
+    "fetchTime": "2026-11-15T01:39:03.796Z",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "config": {
+      "output": "json",
+      "maxWaitForFcp": 30000,
+      "maxWaitForLoad": 45000,
+      "pauseAfterFcpMs": 1000,
+      "pauseAfterLoadMs": 1000,
+      "networkQuietThresholdMs": 1000,
+      "cpuQuietThresholdMs": 1000,
+      "formFactor": "mobile",
+      "throttling": {
+        "rttMs": 150,
+        "throughputKbps": 1638.4,
+        "requestLatencyMs": 562.5,
+        "downloadThroughputKbps": 1474.5600000000002,
+        "uploadThroughputKbps": 675,
+        "cpuSlowdownMultiplier": 4
+      },
+      "throttlingMethod": "simulate",
+      "screenEmulation": {
+        "mobile": true,
+        "width": 412,
+        "height": 823,
+        "deviceScaleFactor": 1.75,
+        "disabled": false
+      },
+      "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+      "auditMode": false,
+      "gatherMode": false,
+      "clearStorageTypes": [
+        "file_systems",
+        "shader_cache",
+        "service_workers",
+        "cache_storage"
+      ],
+      "disableStorageReset": false,
+      "debugNavigation": false,
+      "channel": "node",
+      "usePassiveGathering": false,
+      "disableFullPageScreenshot": false,
+      "skipAboutBlank": false,
+      "blankPage": "about:blank",
+      "ignoreStatusCode": false,
+      "locale": "en-US",
+      "blockedUrlPatterns": null,
+      "additionalTraceCategories": null,
+      "extraHeaders": null,
+      "precomputedLanternData": null,
+      "onlyAudits": null,
+      "onlyCategories": [
+        "performance",
+        "accessibility",
+        "best-practices",
+        "seo"
+      ],
+      "skipAudits": null
+    },
+    "version": "13.0.3",
+    "scores": {
+      "performance": 0.98,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "metrics": {
+      "largest-contentful-paint": {
+        "value": 1564.6328,
+        "unit": "millisecond"
+      },
+      "cumulative-layout-shift": {
+        "value": 0,
+        "unit": "unitless"
+      },
+      "total-blocking-time": {
+        "value": 139.1836000000003,
+        "unit": "millisecond"
+      },
+      "speed-index": {
+        "value": 762.6328000000001,
+        "unit": "millisecond"
+      },
+      "first-contentful-paint": {
+        "value": 762.6328000000001,
+        "unit": "millisecond"
+      },
+      "interactive": {
+        "value": 2243.8828000000003,
+        "unit": "millisecond"
+      }
+    },
+    "failedAudits": [
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.99
+      },
+      {
+        "id": "total-blocking-time",
+        "title": "Total Blocking Time",
+        "score": 0.95
+      },
+      {
+        "id": "max-potential-fid",
+        "title": "Max Potential First Input Delay",
+        "score": 0.71
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.99
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0.5,
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3001/_next/static/chunks/3r-okv0vpv6lc.js",
+              "totalBytes": 65424,
+              "wastedBytes": 28623,
+              "wastedPercent": 43.74924612690157
+            }
+          ],
+          "overallSavingsMs": 0,
+          "overallSavingsBytes": 28623,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "bf-cache",
+        "title": "Page prevented back/forward cache restoration",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "reason",
+              "valueType": "text",
+              "subItemsHeading": {
+                "key": "frameUrl",
+                "valueType": "url"
+              },
+              "label": "Failure reason"
+            },
+            {
+              "key": "failureType",
+              "valueType": "text",
+              "label": "Failure type"
+            }
+          ],
+          "items": [
+            {
+              "reason": "Back/forward cache is disabled by flags. Visit chrome://flags/#back-forward-cache to enable it locally on this device.",
+              "failureType": "Not actionable",
+              "subItems": {
+                "type": "subitems",
+                "items": [
+                  {
+                    "frameUrl": "http://127.0.0.1:3001/"
+                  }
+                ]
+              },
+              "protocolReason": "BackForwardCacheDisabled"
+            },
+            {
+              "reason": "Back/forward cache is disabled by the command line.",
+              "failureType": "Not actionable",
+              "subItems": {
+                "type": "subitems",
+                "items": [
+                  {
+                    "frameUrl": "http://127.0.0.1:3001/"
+                  }
+                ]
+              },
+              "protocolReason": "BackForwardCacheDisabledByCommandLine"
+            }
+          ]
+        }
+      },
+      {
+        "id": "forced-reflow-insight",
+        "title": "Forced reflow",
+        "score": 0,
+        "details": {
+          "type": "list",
+          "items": [
+            {
+              "type": "table",
+              "headings": [
+                {
+                  "key": "source",
+                  "valueType": "source-location",
+                  "label": "Source"
+                },
+                {
+                  "key": "reflowTime",
+                  "valueType": "ms",
+                  "granularity": 1,
+                  "label": "Total reflow time"
+                }
+              ],
+              "items": [
+                {
+                  "source": {
+                    "type": "text",
+                    "value": "[unattributed]"
+                  },
+                  "reflowTime": 37.763
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "legacy-javascript-insight",
+        "title": "Legacy JavaScript",
+        "score": 0.5,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "location",
+                "valueType": "source-location"
+              },
+              "label": "URL"
+            },
+            {
+              "key": null,
+              "valueType": "code",
+              "subItemsHeading": {
+                "key": "signal"
+              },
+              "label": ""
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "label": "Wasted bytes"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+              "wastedBytes": 14271,
+              "subItems": {
+                "type": "subitems",
+                "items": [
+                  {
+                    "signal": "Array.prototype.at",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 1116
+                    }
+                  },
+                  {
+                    "signal": "Array.prototype.flat",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 504
+                    }
+                  },
+                  {
+                    "signal": "Array.prototype.flatMap",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 617
+                    }
+                  },
+                  {
+                    "signal": "Object.fromEntries",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 993
+                    }
+                  },
+                  {
+                    "signal": "Object.hasOwn",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 1251
+                    }
+                  },
+                  {
+                    "signal": "String.prototype.trimEnd",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 246
+                    }
+                  },
+                  {
+                    "signal": "String.prototype.trimStart",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 161
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "wastedBytes": 14271
+          }
+        }
+      },
+      {
+        "id": "network-dependency-tree-insight",
+        "title": "Network dependency tree",
+        "score": 0,
+        "details": {
+          "type": "list",
+          "items": [
+            {
+              "type": "list-section",
+              "value": {
+                "type": "network-tree",
+                "chains": {
+                  "428B67785183AF36C954BA214BA0B992": {
+                    "url": "http://127.0.0.1:3001/",
+                    "navStartToEndTime": 55,
+                    "transferSize": 6648,
+                    "isLongest": true,
+                    "children": {
+                      "24868.2": {
+                        "url": "http://127.0.0.1:3001/_next/static/chunks/2h-u61-h88kqy.css",
+                        "navStartToEndTime": 69,
+                        "transferSize": 4534,
+                        "isLongest": true,
+                        "children": {}
+                      }
+                    }
+                  }
+                },
+                "longestChain": {
+                  "duration": 69
+                }
+              }
+            },
+            {
+              "type": "list-section",
+              "title": "Preconnected origins",
+              "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+              "value": {
+                "type": "text",
+                "value": "no origins were preconnected"
+              }
+            },
+            {
+              "type": "list-section",
+              "title": "Preconnect candidates",
+              "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+              "value": {
+                "type": "text",
+                "value": "No additional origins are good candidates for preconnecting"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "render-blocking-insight",
+        "title": "Render blocking requests",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedMs",
+              "valueType": "timespanMs",
+              "label": "Duration"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3001/_next/static/chunks/2h-u61-h88kqy.css",
+              "totalBytes": 4534,
+              "wastedMs": 156
+            }
+          ]
+        }
+      }
+    ],
+    "runtimeError": null
+  },
+  {
+    "route": "/study",
+    "run": 1,
+    "fetchTime": "2026-11-15T01:39:11.577Z",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "config": {
+      "output": "json",
+      "maxWaitForFcp": 30000,
+      "maxWaitForLoad": 45000,
+      "pauseAfterFcpMs": 1000,
+      "pauseAfterLoadMs": 1000,
+      "networkQuietThresholdMs": 1000,
+      "cpuQuietThresholdMs": 1000,
+      "formFactor": "mobile",
+      "throttling": {
+        "rttMs": 150,
+        "throughputKbps": 1638.4,
+        "requestLatencyMs": 562.5,
+        "downloadThroughputKbps": 1474.5600000000002,
+        "uploadThroughputKbps": 675,
+        "cpuSlowdownMultiplier": 4
+      },
+      "throttlingMethod": "simulate",
+      "screenEmulation": {
+        "mobile": true,
+        "width": 412,
+        "height": 823,
+        "deviceScaleFactor": 1.75,
+        "disabled": false
+      },
+      "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+      "auditMode": false,
+      "gatherMode": false,
+      "clearStorageTypes": [
+        "file_systems",
+        "shader_cache",
+        "service_workers",
+        "cache_storage"
+      ],
+      "disableStorageReset": false,
+      "debugNavigation": false,
+      "channel": "node",
+      "usePassiveGathering": false,
+      "disableFullPageScreenshot": false,
+      "skipAboutBlank": false,
+      "blankPage": "about:blank",
+      "ignoreStatusCode": false,
+      "locale": "en-US",
+      "blockedUrlPatterns": null,
+      "additionalTraceCategories": null,
+      "extraHeaders": null,
+      "precomputedLanternData": null,
+      "onlyAudits": null,
+      "onlyCategories": [
+        "performance",
+        "accessibility",
+        "best-practices",
+        "seo"
+      ],
+      "skipAudits": null
+    },
+    "version": "13.0.3",
+    "scores": {
+      "performance": 0.97,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "metrics": {
+      "largest-contentful-paint": {
+        "value": 2360.3544,
+        "unit": "millisecond"
+      },
+      "cumulative-layout-shift": {
+        "value": 0,
+        "unit": "unitless"
+      },
+      "total-blocking-time": {
+        "value": 142,
+        "unit": "millisecond"
+      },
+      "speed-index": {
+        "value": 914.3543999999999,
+        "unit": "millisecond"
+      },
+      "first-contentful-paint": {
+        "value": 914.3543999999999,
+        "unit": "millisecond"
+      },
+      "interactive": {
+        "value": 2360.3544,
+        "unit": "millisecond"
+      }
+    },
+    "failedAudits": [
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.92
+      },
+      {
+        "id": "total-blocking-time",
+        "title": "Total Blocking Time",
+        "score": 0.95
+      },
+      {
+        "id": "max-potential-fid",
+        "title": "Max Potential First Input Delay",
+        "score": 0.69
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.99
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3001/_next/static/chunks/3r-okv0vpv6lc.js",
+              "totalBytes": 65424,
+              "wastedBytes": 28825,
+              "wastedPercent": 44.05899750558469
+            }
+          ],
+          "overallSavingsMs": 300,
+          "overallSavingsBytes": 28825,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 300
+            }
+          }
+        }
+      },
+      {
+        "id": "bf-cache",
+        "title": "Page prevented back/forward cache restoration",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "reason",
+              "valueType": "text",
+              "subItemsHeading": {
+                "key": "frameUrl",
+                "valueType": "url"
+              },
+              "label": "Failure reason"
+            },
+            {
+              "key": "failureType",
+              "valueType": "text",
+              "label": "Failure type"
+            }
+          ],
+          "items": [
+            {
+              "reason": "Back/forward cache is disabled by flags. Visit chrome://flags/#back-forward-cache to enable it locally on this device.",
+              "failureType": "Not actionable",
+              "subItems": {
+                "type": "subitems",
+                "items": [
+                  {
+                    "frameUrl": "http://127.0.0.1:3001/study"
+                  }
+                ]
+              },
+              "protocolReason": "BackForwardCacheDisabled"
+            },
+            {
+              "reason": "Back/forward cache is disabled by the command line.",
+              "failureType": "Not actionable",
+              "subItems": {
+                "type": "subitems",
+                "items": [
+                  {
+                    "frameUrl": "http://127.0.0.1:3001/study"
+                  }
+                ]
+              },
+              "protocolReason": "BackForwardCacheDisabledByCommandLine"
+            }
+          ]
+        }
+      },
+      {
+        "id": "forced-reflow-insight",
+        "title": "Forced reflow",
+        "score": 0,
+        "details": {
+          "type": "list",
+          "items": [
+            {
+              "type": "table",
+              "headings": [
+                {
+                  "key": "source",
+                  "valueType": "source-location",
+                  "label": "Source"
+                },
+                {
+                  "key": "reflowTime",
+                  "valueType": "ms",
+                  "granularity": 1,
+                  "label": "Total reflow time"
+                }
+              ],
+              "items": [
+                {
+                  "source": {
+                    "type": "text",
+                    "value": "[unattributed]"
+                  },
+                  "reflowTime": 68.165
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "legacy-javascript-insight",
+        "title": "Legacy JavaScript",
+        "score": 0.5,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "location",
+                "valueType": "source-location"
+              },
+              "label": "URL"
+            },
+            {
+              "key": null,
+              "valueType": "code",
+              "subItemsHeading": {
+                "key": "signal"
+              },
+              "label": ""
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "label": "Wasted bytes"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+              "wastedBytes": 14271,
+              "subItems": {
+                "type": "subitems",
+                "items": [
+                  {
+                    "signal": "Array.prototype.at",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 1116
+                    }
+                  },
+                  {
+                    "signal": "Array.prototype.flat",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 504
+                    }
+                  },
+                  {
+                    "signal": "Array.prototype.flatMap",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 617
+                    }
+                  },
+                  {
+                    "signal": "Object.fromEntries",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 993
+                    }
+                  },
+                  {
+                    "signal": "Object.hasOwn",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 1251
+                    }
+                  },
+                  {
+                    "signal": "String.prototype.trimEnd",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 246
+                    }
+                  },
+                  {
+                    "signal": "String.prototype.trimStart",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 161
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "wastedBytes": 14271
+          }
+        }
+      },
+      {
+        "id": "network-dependency-tree-insight",
+        "title": "Network dependency tree",
+        "score": 0,
+        "details": {
+          "type": "list",
+          "items": [
+            {
+              "type": "list-section",
+              "value": {
+                "type": "network-tree",
+                "chains": {
+                  "D329F8A3E4440B39B88D003130717081": {
+                    "url": "http://127.0.0.1:3001/study",
+                    "navStartToEndTime": 63,
+                    "transferSize": 20060,
+                    "isLongest": true,
+                    "children": {
+                      "25163.2": {
+                        "url": "http://127.0.0.1:3001/_next/static/chunks/2h-u61-h88kqy.css",
+                        "navStartToEndTime": 51,
+                        "transferSize": 4534,
+                        "children": {}
+                      }
+                    }
+                  }
+                },
+                "longestChain": {
+                  "duration": 63
+                }
+              }
+            },
+            {
+              "type": "list-section",
+              "title": "Preconnected origins",
+              "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+              "value": {
+                "type": "text",
+                "value": "no origins were preconnected"
+              }
+            },
+            {
+              "type": "list-section",
+              "title": "Preconnect candidates",
+              "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+              "value": {
+                "type": "text",
+                "value": "No additional origins are good candidates for preconnecting"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "render-blocking-insight",
+        "title": "Render blocking requests",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedMs",
+              "valueType": "timespanMs",
+              "label": "Duration"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3001/_next/static/chunks/2h-u61-h88kqy.css",
+              "totalBytes": 4534,
+              "wastedMs": 157
+            }
+          ]
+        }
+      }
+    ],
+    "runtimeError": null
+  },
+  {
+    "route": "/study",
+    "run": 2,
+    "fetchTime": "2026-11-15T01:39:19.383Z",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "config": {
+      "output": "json",
+      "maxWaitForFcp": 30000,
+      "maxWaitForLoad": 45000,
+      "pauseAfterFcpMs": 1000,
+      "pauseAfterLoadMs": 1000,
+      "networkQuietThresholdMs": 1000,
+      "cpuQuietThresholdMs": 1000,
+      "formFactor": "mobile",
+      "throttling": {
+        "rttMs": 150,
+        "throughputKbps": 1638.4,
+        "requestLatencyMs": 562.5,
+        "downloadThroughputKbps": 1474.5600000000002,
+        "uploadThroughputKbps": 675,
+        "cpuSlowdownMultiplier": 4
+      },
+      "throttlingMethod": "simulate",
+      "screenEmulation": {
+        "mobile": true,
+        "width": 412,
+        "height": 823,
+        "deviceScaleFactor": 1.75,
+        "disabled": false
+      },
+      "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+      "auditMode": false,
+      "gatherMode": false,
+      "clearStorageTypes": [
+        "file_systems",
+        "shader_cache",
+        "service_workers",
+        "cache_storage"
+      ],
+      "disableStorageReset": false,
+      "debugNavigation": false,
+      "channel": "node",
+      "usePassiveGathering": false,
+      "disableFullPageScreenshot": false,
+      "skipAboutBlank": false,
+      "blankPage": "about:blank",
+      "ignoreStatusCode": false,
+      "locale": "en-US",
+      "blockedUrlPatterns": null,
+      "additionalTraceCategories": null,
+      "extraHeaders": null,
+      "precomputedLanternData": null,
+      "onlyAudits": null,
+      "onlyCategories": [
+        "performance",
+        "accessibility",
+        "best-practices",
+        "seo"
+      ],
+      "skipAudits": null
+    },
+    "version": "13.0.3",
+    "scores": {
+      "performance": 0.97,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "metrics": {
+      "largest-contentful-paint": {
+        "value": 2355.8138,
+        "unit": "millisecond"
+      },
+      "cumulative-layout-shift": {
+        "value": 0,
+        "unit": "unitless"
+      },
+      "total-blocking-time": {
+        "value": 148,
+        "unit": "millisecond"
+      },
+      "speed-index": {
+        "value": 911.8137999999999,
+        "unit": "millisecond"
+      },
+      "first-contentful-paint": {
+        "value": 911.8137999999999,
+        "unit": "millisecond"
+      },
+      "interactive": {
+        "value": 2355.8138,
+        "unit": "millisecond"
+      }
+    },
+    "failedAudits": [
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.92
+      },
+      {
+        "id": "total-blocking-time",
+        "title": "Total Blocking Time",
+        "score": 0.95
+      },
+      {
+        "id": "max-potential-fid",
+        "title": "Max Potential First Input Delay",
+        "score": 0.67
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.99
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3001/_next/static/chunks/3r-okv0vpv6lc.js",
+              "totalBytes": 65424,
+              "wastedBytes": 28834,
+              "wastedPercent": 44.07250691150857
+            }
+          ],
+          "overallSavingsMs": 300,
+          "overallSavingsBytes": 28834,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 300
+            }
+          }
+        }
+      },
+      {
+        "id": "bf-cache",
+        "title": "Page prevented back/forward cache restoration",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "reason",
+              "valueType": "text",
+              "subItemsHeading": {
+                "key": "frameUrl",
+                "valueType": "url"
+              },
+              "label": "Failure reason"
+            },
+            {
+              "key": "failureType",
+              "valueType": "text",
+              "label": "Failure type"
+            }
+          ],
+          "items": [
+            {
+              "reason": "Back/forward cache is disabled by flags. Visit chrome://flags/#back-forward-cache to enable it locally on this device.",
+              "failureType": "Not actionable",
+              "subItems": {
+                "type": "subitems",
+                "items": [
+                  {
+                    "frameUrl": "http://127.0.0.1:3001/study"
+                  }
+                ]
+              },
+              "protocolReason": "BackForwardCacheDisabled"
+            },
+            {
+              "reason": "Back/forward cache is disabled by the command line.",
+              "failureType": "Not actionable",
+              "subItems": {
+                "type": "subitems",
+                "items": [
+                  {
+                    "frameUrl": "http://127.0.0.1:3001/study"
+                  }
+                ]
+              },
+              "protocolReason": "BackForwardCacheDisabledByCommandLine"
+            }
+          ]
+        }
+      },
+      {
+        "id": "legacy-javascript-insight",
+        "title": "Legacy JavaScript",
+        "score": 0.5,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "location",
+                "valueType": "source-location"
+              },
+              "label": "URL"
+            },
+            {
+              "key": null,
+              "valueType": "code",
+              "subItemsHeading": {
+                "key": "signal"
+              },
+              "label": ""
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "label": "Wasted bytes"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+              "wastedBytes": 14271,
+              "subItems": {
+                "type": "subitems",
+                "items": [
+                  {
+                    "signal": "Array.prototype.at",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 1116
+                    }
+                  },
+                  {
+                    "signal": "Array.prototype.flat",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 504
+                    }
+                  },
+                  {
+                    "signal": "Array.prototype.flatMap",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 617
+                    }
+                  },
+                  {
+                    "signal": "Object.fromEntries",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 993
+                    }
+                  },
+                  {
+                    "signal": "Object.hasOwn",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 1251
+                    }
+                  },
+                  {
+                    "signal": "String.prototype.trimEnd",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 246
+                    }
+                  },
+                  {
+                    "signal": "String.prototype.trimStart",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 161
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "wastedBytes": 14271
+          }
+        }
+      },
+      {
+        "id": "network-dependency-tree-insight",
+        "title": "Network dependency tree",
+        "score": 0,
+        "details": {
+          "type": "list",
+          "items": [
+            {
+              "type": "list-section",
+              "value": {
+                "type": "network-tree",
+                "chains": {
+                  "84B1905ECB780A7272ECA92E458836E2": {
+                    "url": "http://127.0.0.1:3001/study",
+                    "navStartToEndTime": 37,
+                    "transferSize": 20060,
+                    "isLongest": true,
+                    "children": {
+                      "25423.2": {
+                        "url": "http://127.0.0.1:3001/_next/static/chunks/2h-u61-h88kqy.css",
+                        "navStartToEndTime": 50,
+                        "transferSize": 4534,
+                        "isLongest": true,
+                        "children": {}
+                      }
+                    }
+                  }
+                },
+                "longestChain": {
+                  "duration": 50
+                }
+              }
+            },
+            {
+              "type": "list-section",
+              "title": "Preconnected origins",
+              "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+              "value": {
+                "type": "text",
+                "value": "no origins were preconnected"
+              }
+            },
+            {
+              "type": "list-section",
+              "title": "Preconnect candidates",
+              "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+              "value": {
+                "type": "text",
+                "value": "No additional origins are good candidates for preconnecting"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "render-blocking-insight",
+        "title": "Render blocking requests",
+        "score": 0.5,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedMs",
+              "valueType": "timespanMs",
+              "label": "Duration"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3001/_next/static/chunks/2h-u61-h88kqy.css",
+              "totalBytes": 4534,
+              "wastedMs": 156
+            }
+          ]
+        }
+      }
+    ],
+    "runtimeError": null
+  },
+  {
+    "route": "/study",
+    "run": 3,
+    "fetchTime": "2026-11-15T01:39:27.019Z",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "config": {
+      "output": "json",
+      "maxWaitForFcp": 30000,
+      "maxWaitForLoad": 45000,
+      "pauseAfterFcpMs": 1000,
+      "pauseAfterLoadMs": 1000,
+      "networkQuietThresholdMs": 1000,
+      "cpuQuietThresholdMs": 1000,
+      "formFactor": "mobile",
+      "throttling": {
+        "rttMs": 150,
+        "throughputKbps": 1638.4,
+        "requestLatencyMs": 562.5,
+        "downloadThroughputKbps": 1474.5600000000002,
+        "uploadThroughputKbps": 675,
+        "cpuSlowdownMultiplier": 4
+      },
+      "throttlingMethod": "simulate",
+      "screenEmulation": {
+        "mobile": true,
+        "width": 412,
+        "height": 823,
+        "deviceScaleFactor": 1.75,
+        "disabled": false
+      },
+      "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+      "auditMode": false,
+      "gatherMode": false,
+      "clearStorageTypes": [
+        "file_systems",
+        "shader_cache",
+        "service_workers",
+        "cache_storage"
+      ],
+      "disableStorageReset": false,
+      "debugNavigation": false,
+      "channel": "node",
+      "usePassiveGathering": false,
+      "disableFullPageScreenshot": false,
+      "skipAboutBlank": false,
+      "blankPage": "about:blank",
+      "ignoreStatusCode": false,
+      "locale": "en-US",
+      "blockedUrlPatterns": null,
+      "additionalTraceCategories": null,
+      "extraHeaders": null,
+      "precomputedLanternData": null,
+      "onlyAudits": null,
+      "onlyCategories": [
+        "performance",
+        "accessibility",
+        "best-practices",
+        "seo"
+      ],
+      "skipAudits": null
+    },
+    "version": "13.0.3",
+    "scores": {
+      "performance": 0.96,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "metrics": {
+      "largest-contentful-paint": {
+        "value": 2174.5497,
+        "unit": "millisecond"
+      },
+      "cumulative-layout-shift": {
+        "value": 0,
+        "unit": "unitless"
+      },
+      "total-blocking-time": {
+        "value": 195,
+        "unit": "millisecond"
+      },
+      "speed-index": {
+        "value": 971.27485,
+        "unit": "millisecond"
+      },
+      "first-contentful-paint": {
+        "value": 971.27485,
+        "unit": "millisecond"
+      },
+      "interactive": {
+        "value": 2359.5497000000005,
+        "unit": "millisecond"
+      }
+    },
+    "failedAudits": [
+      {
+        "id": "largest-contentful-paint",
+        "title": "Largest Contentful Paint",
+        "score": 0.95
+      },
+      {
+        "id": "total-blocking-time",
+        "title": "Total Blocking Time",
+        "score": 0.9
+      },
+      {
+        "id": "max-potential-fid",
+        "title": "Max Potential First Input Delay",
+        "score": 0.72
+      },
+      {
+        "id": "interactive",
+        "title": "Time to Interactive",
+        "score": 0.99
+      },
+      {
+        "id": "unused-javascript",
+        "title": "Reduce unused JavaScript",
+        "score": 0,
+        "details": {
+          "type": "opportunity",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "source",
+                "valueType": "code"
+              },
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceBytes"
+              },
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "subItemsHeading": {
+                "key": "sourceWastedBytes"
+              },
+              "label": "Est Savings"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3001/_next/static/chunks/3r-okv0vpv6lc.js",
+              "totalBytes": 65424,
+              "wastedBytes": 28834,
+              "wastedPercent": 44.07250691150857
+            }
+          ],
+          "overallSavingsMs": 300,
+          "overallSavingsBytes": 28834,
+          "sortedBy": [
+            "wastedBytes"
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "metricSavings": {
+              "FCP": 0,
+              "LCP": 300
+            }
+          }
+        }
+      },
+      {
+        "id": "bf-cache",
+        "title": "Page prevented back/forward cache restoration",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "reason",
+              "valueType": "text",
+              "subItemsHeading": {
+                "key": "frameUrl",
+                "valueType": "url"
+              },
+              "label": "Failure reason"
+            },
+            {
+              "key": "failureType",
+              "valueType": "text",
+              "label": "Failure type"
+            }
+          ],
+          "items": [
+            {
+              "reason": "Back/forward cache is disabled by flags. Visit chrome://flags/#back-forward-cache to enable it locally on this device.",
+              "failureType": "Not actionable",
+              "subItems": {
+                "type": "subitems",
+                "items": [
+                  {
+                    "frameUrl": "http://127.0.0.1:3001/study"
+                  }
+                ]
+              },
+              "protocolReason": "BackForwardCacheDisabled"
+            },
+            {
+              "reason": "Back/forward cache is disabled by the command line.",
+              "failureType": "Not actionable",
+              "subItems": {
+                "type": "subitems",
+                "items": [
+                  {
+                    "frameUrl": "http://127.0.0.1:3001/study"
+                  }
+                ]
+              },
+              "protocolReason": "BackForwardCacheDisabledByCommandLine"
+            }
+          ]
+        }
+      },
+      {
+        "id": "legacy-javascript-insight",
+        "title": "Legacy JavaScript",
+        "score": 0,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "subItemsHeading": {
+                "key": "location",
+                "valueType": "source-location"
+              },
+              "label": "URL"
+            },
+            {
+              "key": null,
+              "valueType": "code",
+              "subItemsHeading": {
+                "key": "signal"
+              },
+              "label": ""
+            },
+            {
+              "key": "wastedBytes",
+              "valueType": "bytes",
+              "label": "Wasted bytes"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+              "wastedBytes": 14271,
+              "subItems": {
+                "type": "subitems",
+                "items": [
+                  {
+                    "signal": "Array.prototype.at",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 1116
+                    }
+                  },
+                  {
+                    "signal": "Array.prototype.flat",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 504
+                    }
+                  },
+                  {
+                    "signal": "Array.prototype.flatMap",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 617
+                    }
+                  },
+                  {
+                    "signal": "Object.fromEntries",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 993
+                    }
+                  },
+                  {
+                    "signal": "Object.hasOwn",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 1251
+                    }
+                  },
+                  {
+                    "signal": "String.prototype.trimEnd",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 246
+                    }
+                  },
+                  {
+                    "signal": "String.prototype.trimStart",
+                    "location": {
+                      "type": "source-location",
+                      "url": "http://127.0.0.1:3001/_next/static/chunks/1x26dnhe--g_l.js",
+                      "urlProvider": "network",
+                      "line": 0,
+                      "column": 161
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "debugData": {
+            "type": "debugdata",
+            "wastedBytes": 14271
+          }
+        }
+      },
+      {
+        "id": "network-dependency-tree-insight",
+        "title": "Network dependency tree",
+        "score": 0,
+        "details": {
+          "type": "list",
+          "items": [
+            {
+              "type": "list-section",
+              "value": {
+                "type": "network-tree",
+                "chains": {
+                  "06E4D916553BC25C9E58D02F1C10289F": {
+                    "url": "http://127.0.0.1:3001/study",
+                    "navStartToEndTime": 56,
+                    "transferSize": 20060,
+                    "isLongest": true,
+                    "children": {
+                      "25593.2": {
+                        "url": "http://127.0.0.1:3001/_next/static/chunks/2h-u61-h88kqy.css",
+                        "navStartToEndTime": 132,
+                        "transferSize": 4534,
+                        "isLongest": true,
+                        "children": {}
+                      }
+                    }
+                  }
+                },
+                "longestChain": {
+                  "duration": 132
+                }
+              }
+            },
+            {
+              "type": "list-section",
+              "title": "Preconnected origins",
+              "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.",
+              "value": {
+                "type": "text",
+                "value": "no origins were preconnected"
+              }
+            },
+            {
+              "type": "list-section",
+              "title": "Preconnect candidates",
+              "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4.",
+              "value": {
+                "type": "text",
+                "value": "No additional origins are good candidates for preconnecting"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "render-blocking-insight",
+        "title": "Render blocking requests",
+        "score": 0.5,
+        "details": {
+          "type": "table",
+          "headings": [
+            {
+              "key": "url",
+              "valueType": "url",
+              "label": "URL"
+            },
+            {
+              "key": "totalBytes",
+              "valueType": "bytes",
+              "label": "Transfer Size"
+            },
+            {
+              "key": "wastedMs",
+              "valueType": "timespanMs",
+              "label": "Duration"
+            }
+          ],
+          "items": [
+            {
+              "url": "http://127.0.0.1:3001/_next/static/chunks/2h-u61-h88kqy.css",
+              "totalBytes": 4534,
+              "wastedMs": 159
+            }
+          ]
+        }
+      }
+    ],
+    "runtimeError": null
+  }
+]

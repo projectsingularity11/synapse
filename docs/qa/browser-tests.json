@@ -1,0 +1,273 @@
+{
+  "stats": {
+    "startTime": "2026-11-15T01:37:26.548Z",
+    "duration": 42271.822,
+    "expected": 29,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "direct navigation and accessibility /",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /explore",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /explore/failures",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /study",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /study/confirmation",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /methods",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /methods/glossary",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /methods/circuit",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /sources",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /about",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /credits",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /accessibility",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "replay discrete settings, URL, scrubber, withheld outcome and selection",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "calibration uses measured setting and actual bin counts",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "mobile menu, no horizontal document overflow, no WebGL dependency",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "silent entry, skip link, reduced effects persist",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "download links resolve to real data and public source records",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "missing address has deliberate not-found state",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "selected gallery labels its bias and deep-links exact trace",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "WebGL unavailable retains usable complete 2D replay",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "spatial view mounts on gesture, camera buttons and context-loss fallback work",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "source claims resolve to source records",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "fresh-shot confirmation remains separate from original results",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "unmeasured URL setting is clearly identified",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "reduced effects still toggle when storage is readable but unwritable",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "stabilizer inspector exposes actual check support and boundaries",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "all reading content works without JavaScript or WebGL",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "layout stays inside viewport across phone tablet desktop widths",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "every internal navigation and download link resolves",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    }
+  ]
+}

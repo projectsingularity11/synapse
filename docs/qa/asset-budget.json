@@ -1,0 +1,72 @@
+{
+  "date": "2026-11-15T01:40:42.605Z",
+  "route": "/explore",
+  "conditions": "Fresh headless Chromium context, local production server, activation only by explicit Open spatial view gesture",
+  "initial": {
+    "transferBytes": 149396,
+    "decodedBytes": 487221,
+    "files": [
+      {
+        "file": "310vm2bl3xxpt.js",
+        "transferBytes": 2270,
+        "decodedBytes": 5364
+      },
+      {
+        "file": "2urr6-fm2smyv.js",
+        "transferBytes": 8988,
+        "decodedBytes": 32999
+      },
+      {
+        "file": "turbopack-2u1d16houkiyo.js",
+        "transferBytes": 4205,
+        "decodedBytes": 9974
+      },
+      {
+        "file": "1x26dnhe--g_l.js",
+        "transferBytes": 7055,
+        "decodedBytes": 22139
+      },
+      {
+        "file": "2-k1bp-mzg57u.js",
+        "transferBytes": 45820,
+        "decodedBytes": 165565
+      },
+      {
+        "file": "3r-okv0vpv6lc.js",
+        "transferBytes": 65667,
+        "decodedBytes": 207263
+      },
+      {
+        "file": "0mxq5dsnhg5jx.js",
+        "transferBytes": 7425,
+        "decodedBytes": 23673
+      },
+      {
+        "file": "33315znge8bej.js",
+        "transferBytes": 999,
+        "decodedBytes": 699
+      },
+      {
+        "file": "0dc5kl0wd7nvr.js",
+        "transferBytes": 6967,
+        "decodedBytes": 19545
+      }
+    ]
+  },
+  "optionalSpatial": {
+    "transferBytes": 260451,
+    "decodedBytes": 979604,
+    "files": [
+      {
+        "file": "2fr3jkvrd9o_e.js",
+        "transferBytes": 3344,
+        "decodedBytes": 9553
+      },
+      {
+        "file": "0bfucyh1vozk7.js",
+        "transferBytes": 257107,
+        "decodedBytes": 970051
+      }
+    ]
+  }
+}
