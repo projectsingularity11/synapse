@@ -1,3 +1,4 @@
+import { ReadoutLesson } from "@/components/ReadoutLesson";
 import Link from "next/link";
 import { Suspense } from "react";
 import { PageHeader } from "@/components/PageHeader";
@@ -18,6 +19,7 @@ export default function Explore() {
           <span>FIRST EIGHT SHOTS / REPRESENTATIVE RULE</span>
           <Link href="/explore/failures">Open labeled failure gallery →</Link>
         </div>
+        <ReadoutLesson />
         {s && t ? (
           <Suspense fallback={<p>Loading saved instrument controls…</p>}>
             <Replay study={s} traces={t} topology={getTopology()} />

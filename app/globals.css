@@ -1264,3 +1264,389 @@ html[data-effects="reduced"] *::after {
   padding: 12px 0;
   min-height: 48px;
 }
+/* Scientific plots size their coordinates to the container, so every endpoint stays visible. */
+.responsive-plot {
+  width: 100%;
+  overflow: visible;
+  contain: layout;
+}
+.responsive-plot svg {
+  display: block;
+  overflow: visible;
+}
+.responsive-plot text {
+  font: 11px var(--sans);
+  fill: var(--muted);
+}
+.axis-heading {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 24px 0 8px;
+}
+.axis-footer {
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0 0 24px;
+}
+.bin-occupancy {
+  margin-top: 32px;
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+}
+.bin-bars {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 20px;
+}
+.bin-column {
+  text-align: center;
+  min-width: 0;
+}
+.bin-count {
+  font-size: 10px;
+  white-space: nowrap;
+  display: block;
+  height: 24px;
+  color: var(--muted);
+}
+.bin-track {
+  height: 72px;
+  display: flex;
+  align-items: end;
+  border-bottom: 1px solid var(--line);
+}
+.bin-track i {
+  display: block;
+  background: #879b80;
+  width: 100%;
+  min-width: 0;
+}
+.bin-edge {
+  font-size: 10px;
+  color: var(--muted);
+}
+@media (max-width: 700px) {
+  .responsive-plot text {
+    font-size: 11px;
+  }
+  .bin-bars {
+    gap: 4px;
+  }
+  .bin-count {
+    font-size: 8px;
+  }
+  .bin-edge {
+    font-size: 9px;
+  }
+  .axis-heading {
+    font-size: 11px;
+  }
+  .axis-footer {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 700px) {
+  .bin-bars {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 16px 8px;
+  }
+  .bin-count {
+    font-size: 11px;
+  }
+  .bin-edge {
+    font-size: 9px;
+  }
+}
+
+.hero-trace-link {
+  margin: 20px 4vw 24px 40px;
+  font-size: 11px;
+  color: #c3cec5;
+  display: block;
+  max-width: 440px;
+}
+.hero-trace-link > span {
+  display: block;
+  font-size: 10px;
+  color: #b4c2b7;
+  margin-top: 4px;
+}
+.event-id {
+  fill: var(--event);
+}
+@media (max-width: 700px) {
+  .hero-instrument {
+    max-height: none;
+  }
+  .hero-trace-link {
+    margin: 16px 6vw;
+    font-size: 11px;
+  }
+}
+.prevalence-bar {
+  display: flex;
+  height: 32px;
+  width: 100%;
+  margin-top: 32px;
+  border: 1px solid var(--line);
+}
+.prevalence-bar > span {
+  background: #dce2d3;
+}
+.prevalence-bar > i {
+  background: repeating-linear-gradient(
+    135deg,
+    #55615b 0,
+    #55615b 2px,
+    #eef0e7 2px,
+    #eef0e7 6px
+  );
+}
+.outcome-matrix {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 32px;
+  border: 1px solid var(--line);
+}
+.matrix-cell {
+  padding: 32px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.matrix-cell:nth-child(2n) {
+  border-right: 0;
+}
+.matrix-cell:nth-child(n + 3) {
+  border-bottom: 0;
+}
+.matrix-cell > span {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+.matrix-cell > strong {
+  display: block;
+  font: 400 56px/1.5 var(--serif);
+}
+.matrix-cell > p {
+  font-size: 14px;
+  margin: 0 0 8px;
+}
+.matrix-cell > small {
+  color: var(--muted);
+  font-size: 12px;
+}
+.matrix-cell.is-mistake {
+  background: #ebe4d9;
+}
+.matrix-cell.is-mistake > span {
+  color: var(--failure);
+}
+.confidence-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 32px;
+}
+.confidence-facts span {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.confidence-facts strong {
+  display: block;
+  font: 400 46px/1.6 var(--serif);
+}
+.confidence-facts p {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0;
+}
+.failure-ink {
+  color: var(--failure);
+}
+.prediction-ink {
+  color: #326449;
+}
+@media (max-width: 700px) {
+  .matrix-cell {
+    padding: 20px 12px;
+  }
+  .matrix-cell > strong {
+    font-size: 40px;
+  }
+  .matrix-cell > p {
+    font-size: 12px;
+  }
+  .confidence-facts {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .confidence-facts > div {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 16px;
+  }
+  .confidence-facts strong {
+    font-size: 42px;
+  }
+}
+.training-design {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin: 32px 0;
+}
+.training-design > div {
+  padding: 24px;
+  border-right: 1px solid var(--line);
+}
+.training-design > div:last-child {
+  border-right: 0;
+}
+.training-design span {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+.training-design strong {
+  font: 400 36px/1.7 var(--serif);
+  display: block;
+}
+.training-design p {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 8px 0 0;
+}
+.paired-strips {
+  max-width: 800px;
+  margin: 32px 0;
+}
+.paired-strips > div {
+  display: grid;
+  grid-template-columns: 190px 1fr 70px;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+}
+.paired-strips span {
+  font-size: 12px;
+}
+.paired-strips i {
+  display: block;
+  height: 12px;
+  background: #729071;
+  max-width: 100%;
+}
+.paired-strips strong {
+  font-size: 14px;
+  text-align: right;
+  font-weight: 400;
+}
+@media (max-width: 700px) {
+  .training-design {
+    grid-template-columns: 1fr;
+  }
+  .training-design > div {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .training-design strong {
+    font-size: 30px;
+  }
+  .paired-strips > div {
+    grid-template-columns: 120px 1fr 48px;
+    gap: 12px;
+  }
+  .paired-strips span {
+    font-size: 11px;
+  }
+}
+.matrix-cell.is-mistake > span {
+  color: #963b30;
+}
+.readout-lesson {
+  margin: 24px 0 40px;
+  max-width: 850px;
+}
+.readout-lesson h2 {
+  font-size: 42px;
+  margin: 24px 0;
+}
+.readout-lesson > p {
+  color: var(--muted);
+  max-width: 720px;
+}
+.readout-bits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 32px 0 16px;
+}
+.readout-bits > button {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  padding: 16px;
+}
+.readout-bits span {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.readout-bits strong {
+  display: block;
+  font: 400 52px/1.4 var(--serif);
+}
+.readout-bits > button[aria-pressed="true"] {
+  background: #dce2d3;
+}
+.difference-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 24px 0 32px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.difference-pair > div {
+  padding: 20px 24px;
+}
+.difference-pair > div:first-child {
+  border-right: 1px solid var(--line);
+}
+.difference-pair span {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+}
+.difference-pair strong {
+  font: 400 28px/1.7 var(--serif);
+}
+.difference-pair .detected {
+  color: #936020;
+}
+.difference-pair p {
+  font-size: 12px;
+  margin: 0;
+}
+.readout-lesson > .control-button {
+  margin: 0 12px 12px 0;
+}
+@media (max-width: 700px) {
+  .readout-bits {
+    gap: 8px;
+  }
+  .readout-bits > button {
+    padding: 12px 8px;
+  }
+  .difference-pair > div {
+    padding: 16px;
+  }
+}

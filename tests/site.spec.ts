@@ -6,6 +6,8 @@ const routes = [
   "/explore/failures",
   "/study",
   "/study/confirmation",
+  "/study/diagnostics",
+  "/study/training-control",
   "/methods",
   "/methods/glossary",
   "/methods/circuit",
@@ -332,4 +334,128 @@ test("layout stays inside viewport across phone tablet desktop widths", async ({
   }
 });
 
-test('every internal navigation and download link resolves',async({page,request})=>{const links=new Set<string>();for(const route of routes){await page.goto(route);for(const href of await page.locator('a[href]').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('href')||''))){if(href.startsWith('/')&&!href.startsWith('//'))links.add(href.split('#')[0])}}for(const href of links){const response=await request.get(href);expect(response.status(),href).toBe(200)}});
+test("every internal navigation and download link resolves", async ({
+  page,
+  request,
+}) => {
+  const links = new Set<string>();
+  for (const route of routes) {
+    await page.goto(route);
+    for (const href of await page
+      .locator("a[href]")
+      .evaluateAll((nodes) => nodes.map((n) => n.getAttribute("href") || ""))) {
+      if (href.startsWith("/") && !href.startsWith("//"))
+        links.add(href.split("#")[0]);
+    }
+  }
+  for (const href of links) {
+    const response = await request.get(href);
+    expect(response.status(), href).toBe(200);
+  }
+});
+
+test("full noise range and calibration scale fit narrow screens", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 320, height: 800 });
+  await page.goto("/study");
+  const plots = page.locator(".responsive-plot");
+  await expect(plots).toHaveCount(2);
+  for (const plot of await plots.all()) {
+    await expect(plot.locator("svg")).toBeVisible();
+    expect(
+      await plot.evaluate((n) => n.scrollWidth <= n.clientWidth + 1),
+    ).toBeTruthy();
+  }
+  await expect(
+    plots.first().locator("text").filter({ hasText: "3.0%" }),
+  ).toBeVisible();
+  await expect(
+    plots.last().locator("text").filter({ hasText: /^1$/ }),
+  ).toHaveCount(2);
+});
+test("new diagnostics use actual base rates and conditional coverage", async ({
+  page,
+}) => {
+  await page.goto("/study/diagnostics");
+  await expect(
+    page.getByText("89,811 of these 100,000 shots", { exact: false }),
+  ).toBeVisible();
+  await expect(page.locator(".confidence-facts")).toContainText(
+    "83,087 / 100,000",
+  );
+  await expect(page.locator(".confidence-facts")).toContainText(
+    "1,178 mistakes retained",
+  );
+  await page
+    .getByLabel("Retain predictions with confidence at least")
+    .selectOption("0.5");
+  await expect(page.locator(".confidence-facts")).toContainText(
+    "100,000 / 100,000",
+  );
+  await page
+    .getByLabel("Decoder for outcome matrix")
+    .selectOption("matchedMatching");
+  expect(
+    await page.locator(".matrix-cell strong").allTextContents(),
+  ).toHaveLength(4);
+  await page
+    .getByLabel("Noise setting for diagnostic sample")
+    .selectOption("1");
+  await expect(
+    page.getByText("96,620 of these 100,000 shots", { exact: false }),
+  ).toBeVisible();
+});
+test("training-control model selector preserves exact independent study counts", async ({
+  page,
+}) => {
+  await page.goto("/study/training-control");
+  await expect(page.locator(".confidence-facts")).toContainText(
+    "3,775 / 100,000",
+  );
+  await expect(page.locator(".confidence-facts")).toContainText(
+    "2,736 / 100,000",
+  );
+  await page.getByLabel("Model initialization").selectOption("202");
+  await expect(page.locator(".confidence-facts")).toContainText(
+    "3,913 / 100,000",
+  );
+  await expect(page.locator(".confidence-facts")).toContainText(
+    "2,490 / 100,000",
+  );
+});
+test("conceptual readout comparison shows changes rather than raw values", async ({
+  page,
+}) => {
+  await page.goto("/explore");
+  await page.getByText("Why can one flipped readout leave two traces?").click();
+  await expect(page.locator(".difference-pair")).toContainText(
+    "Detection event",
+  );
+  await page.getByRole("button", { name: "Set all readouts to zero" }).click();
+  await expect(page.locator(".difference-pair strong")).toHaveText([
+    "□ 0",
+    "□ 0",
+  ]);
+  await page
+    .getByRole("button", { name: "Flip the middle readout only" })
+    .click();
+  await expect(page.locator(".difference-pair strong")).toHaveText([
+    "■ 1",
+    "■ 1",
+  ]);
+  await expect(
+    page.getByText("CONCEPTUAL EXAMPLE / NOT A SAVED SHOT"),
+  ).toBeVisible();
+});
+test("hero opens the exact saved shot shown in its data-bound scene", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(
+    page.locator('.hero-instrument svg rect[fill="var(--event)"]'),
+  ).toHaveCount(2);
+  await page.getByRole("link", { name: /Inspect this actual shot/ }).click();
+  await expect(page).toHaveURL(/noise=0.03&shot=1/);
+  await expect(page.getByLabel("Saved test shot")).toHaveValue("1");
+});

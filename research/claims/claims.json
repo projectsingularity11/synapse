@@ -166,5 +166,68 @@
     "category": "project method",
     "status": "verified frozen-checkpoint protocol and manifest",
     "site": "/methods"
+  },
+  {
+    "id": "C17",
+    "claim": "The original fixed-model noise sweep changes task difficulty as well as the training-distribution match; without matched-noise neural retraining controls it does not isolate an excess error caused specifically by mismatch.",
+    "sourceIds": [
+      "S05",
+      "S06",
+      "S08"
+    ],
+    "category": "project method",
+    "status": "verified design limitation; no causal mismatch estimate",
+    "site": "/study"
+  },
+  {
+    "id": "C18",
+    "claim": "The probability of a logical flip and confidence in the predicted class are different: class confidence is max(P(flip),1\u2212P(flip)).",
+    "sourceIds": [
+      "S09"
+    ],
+    "category": "project method",
+    "status": "verified diagnostic definition",
+    "site": "/study/diagnostics"
+  },
+  {
+    "id": "C19",
+    "claim": "In the existing high-noise confirmation shots, the frozen model retained 83,087 shots at class confidence at least 0.99 and made 1,178 errors among them; this is a post-hoc descriptive subset, not an operating recommendation.",
+    "sourceIds": [
+      "S08",
+      "S09"
+    ],
+    "category": "project result",
+    "status": "verified subset counts; data reused, not a new experiment",
+    "site": "/study/diagnostics"
+  },
+  {
+    "id": "C20",
+    "claim": "In the separate equal-budget control, training at the known evaluation noise reduced both observed logical errors and Brier score for all three initializations at measurement noise 0.015 and 0.03.",
+    "sourceIds": [
+      "S10"
+    ],
+    "category": "project result",
+    "status": "verified exploratory procedural comparison; one dataset per training setting",
+    "site": "/study/training-control"
+  },
+  {
+    "id": "C21",
+    "claim": "Matched-noise training did not reduce observed logical errors at evaluation noise 0.001 for any of the three initializations; at 0.005 the fixed and matched procedures use identical models by construction.",
+    "sourceIds": [
+      "S10"
+    ],
+    "category": "project result",
+    "status": "verified all-seed counts and identity control",
+    "site": "/study/training-control"
+  },
+  {
+    "id": "C22",
+    "claim": "The training-control follow-up freezes all twelve validation-selected models before fresh test generation; it compares learning procedures under known evaluation noise rather than unlabeled adaptation or independent training-dataset replication.",
+    "sourceIds": [
+      "S10"
+    ],
+    "category": "project method",
+    "status": "verified committed protocol, manifest and artifact",
+    "site": "/methods"
   }
 ]

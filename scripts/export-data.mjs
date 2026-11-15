@@ -1,5 +1,11 @@
 import fs from "node:fs";
 const files = {
+  "research/results/aggregates/diagnostics.json": "diagnostics.json",
+  "research/results/aggregates/training-control.json": "training-control.json",
+  "research/experiments/configs/training-control-protocol.md":
+    "training-control-protocol.md",
+  "research/results/training-control-note.md": "training-control-note.md",
+  "research/results/diagnostics-note.md": "diagnostics-note.md",
   "research/glossary.md": "glossary.md",
   "research/experiments/manifests/training-circuit.stim":
     "training-circuit.stim",
@@ -95,4 +101,20 @@ if (fs.existsSync(confirmationPath)) {
   );
 }
 
-fs.copyFileSync("research/results/figures/LICENSE_DEJAVU.txt","public/figures/LICENSE_DEJAVU.txt");
+fs.copyFileSync(
+  "research/results/figures/LICENSE_DEJAVU.txt",
+  "public/figures/LICENSE_DEJAVU.txt",
+);
+
+for (const name of ["diagnostics", "training-control"]) {
+  const file = `research/results/aggregates/${name}.json`;
+  const data = JSON.parse(fs.readFileSync(file, "utf8"));
+  fs.copyFileSync(data.manifestPath, `public/data/${name}-manifest.json`);
+}
+fs.cpSync("research/results/figures/follow-up", "public/figures/follow-up", {
+  recursive: true,
+});
+fs.copyFileSync(
+  "research/results/figures/LICENSE_DEJAVU.txt",
+  "public/figures/follow-up/LICENSE_DEJAVU.txt",
+);

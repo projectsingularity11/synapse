@@ -105,5 +105,31 @@
     "type": "project confirmation artifact",
     "relevance": "Four fresh held-out samples of 100,000 shots each for the original frozen seed101 model and fixed/matched MWPM. Conditional precision confirmation, not independent training replication.",
     "verification": "Protocol/configuration/source committed before fresh labels; frozen checkpoint hash recorded; completed run d3-memory-z-20261115T004549Z-confirmation-20261115T011610Z"
+  },
+  {
+    "id": "S09",
+    "title": "SYNDROME rare-label, event-probability and classification-confidence diagnostics",
+    "authors": [
+      "SYNDROME computational research pipeline"
+    ],
+    "date": "2026-11-15",
+    "url": "/data/diagnostics.json",
+    "accessDate": "2026-11-15",
+    "type": "project post-hoc diagnostic artifact",
+    "relevance": "Training-only prevalence baseline, confusion matrices, event-probability gaps, class-confidence bins and risk/coverage on existing original and confirmation shots.",
+    "verification": "Completed post-hoc analysis of retained/frozen model; no new independent test evidence, training or threshold tuning. Run d3-memory-z-20261115T004549Z-diagnostics-20261115T015124Z"
+  },
+  {
+    "id": "S10",
+    "title": "SYNDROME exploratory equal-budget training-noise control",
+    "authors": [
+      "SYNDROME computational research pipeline"
+    ],
+    "date": "2026-11-15",
+    "url": "/data/training-control.json",
+    "accessDate": "2026-11-15",
+    "type": "project exploratory training-control artifact",
+    "relevance": "Twelve new equal-budget models compare fixed-noise training with training at each known evaluation noise, on shared fresh tests. Separates comparisons within a noise setting without claiming universal mismatch causality.",
+    "verification": "Completed. Protocol/source committed before fresh test labels; all validation-selected checkpoints frozen before final tests. One train/validation dataset per noise and three initializations. Run d3-memory-z-20261115T004549Z-training-control-20261115T015445Z"
   }
 ]

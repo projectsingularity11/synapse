@@ -10,6 +10,10 @@ Error correction extracts check information without directly measuring an arbitr
 
 The question is distribution shift: training and validation sample one configured measurement-noise probability while evaluation changes that probability. This tests a narrow failure mode rather than general robustness. There is no hardware, institutional affiliation, quantum computational advantage, or real-time decoder deployment in this work.
 
+## Identification: a noise sweep is not a causal mismatch estimate
+
+The design measures a fixed model on samples from changed noise configurations. Increasing measurement noise can make decoding intrinsically harder even for a decoder trained at that new probability. Consequently, the observed increase in neural error or Brier score cannot by itself be attributed entirely to training-distribution mismatch. The original experiment did not retrain a same-architecture network at each test noise setting under a comparable budget. A separate exploratory follow-up, reported below, now supplies that procedural comparison. The follow-up adds a within-setting learning-procedure comparison using disjoint validation and fresh final tests; differences in training samples and optimization still limit causal interpretation. The matched-prior MWPM comparison changes both model family and prior access, so it is not a substitute for this neural control. We report descriptive performance under shift, not an isolated causal effect of mismatch.
+
 ## Circuit and data representation
 
 Stim generates `surface_code:rotated_memory_z`, distance 3 and rounds 3. Other configured noise probabilities remain at 0.001; measurement-flip probability sweeps over 0.001, 0.005, 0.015 and 0.03. The retained circuit and detector error model are the definitive channel placements. The measurement parameter includes final measurements according to the generated circuit, so it is not exclusively an ancilla-readout drift model.
@@ -87,3 +91,45 @@ Run `d3-memory-z-20261115T004549Z-confirmation-20261115T011610Z` is a separate c
 This confirms precision conditional on the same fitted classifier and circuit-noise family, not independent model-training replication. Counts are not pooled with the original 20,000-shot results, and the original three-seed study remains visible. Matching uses the same fresh shots, with the same fixed versus test-noise-informed prior distinction. Intervals exclude training variability and noise-model error. The Brier score remains a composite probability-quality measure; no unique calibration mechanism or hardware generalization is established.
 
 Manifest: `research/experiments/manifests/d3-memory-z-20261115T004549Z-confirmation-20261115T011610Z.json`. Source record S08 and claims C15–C16 link this addendum to the public evidence view.
+
+The fresh-shot confirmation preserves this identification limit: narrower conditional sampling intervals do not distinguish inherent noise difficulty from neural mismatch cost.
+
+## Post-hoc rare-label and confidence diagnostics
+
+Run `d3-memory-z-20261115T004549Z-diagnostics-20261115T015124Z` reuses the 80,000 original and 400,000 frozen-model confirmation shots. It adds interpretation rather than new independent evidence. All predictions remain fixed. Training-label prevalence is 1,349/40,000 = 0.033725; that training-only value defines a constant-probability baseline without using final test labels for fitting. The always-no-flip classifier exposes label imbalance. Neither trivial baseline is a substitute for matching.
+
+Event probability p=P(logical flip) differs from classification confidence max(p,1−p). A positive mean event-probability gap indicates overprediction of flips, not automatically overconfidence: confidence depends on which class was predicted. Diagnostics therefore retain both event-probability comparisons and class-confidence accuracy bins. Five class-confidence bins use edges 0.5,0.6,…,1; interval endpoints include 1 in the last bin. Empty conditioned groups retain null rates, never fabricated perfect accuracy.
+
+Selective-risk thresholds are 0.5,0.6,0.7,0.8,0.9,0.95 and 0.99. Coverage is retained shots divided by all shots; selective risk is errors divided by retained shots. Threshold groups overlap and are not independent experiments. They were fixed for this descriptive analysis after the original results were known and are not a tuned deployment policy. Pointwise Wilson intervals concern the conditioned empirical error, not uncertainty in the model's probability.
+
+In the confirmation data at measurement noise 0.03, confidence at least 0.99 retains 83,087/100,000 shots (83.087%) and contains 1,178 errors, approximately 1.418%. The figure does not mean that confident predictions are guaranteed correct. These reused labels, sparse bins and post-hoc choices must remain visible in the interpretation. We do not report an exact Brier-score decomposition: coarsening into fixed bins changes predictions, so omitting residual terms would not give an exact decomposition of the original score. Source S09 links to definitions, all counts and the diagnostic manifest.
+
+
+## Exploratory equal-budget training-noise control
+
+Run `d3-memory-z-20261115T004549Z-training-control-20261115T015445Z` adds a within-evaluation-setting comparison that the original sweep lacked. It was designed after seeing earlier results; its protocol, configuration and source were committed before any fresh test labels. It is an exploratory follow-up, not retroactive preregistration or a universal causal decomposition.
+
+Four new training groups use measurement noise 0.001, 0.005, 0.015 and 0.03, with 40,000 training shots and 8,000 validation shots each (seeds 61001–61004 and 62001–62004). Each group fits seeds 101,202,303 using the same 1,345-parameter architecture, objective, optimizer, maximum epochs, patience, selection rule and 0.5 threshold. All twelve validation-selected models are frozen before any final-test sample is drawn. Fresh seeds 63001–63004 generate 100,000 test shots per evaluation setting, common to all compared models and matching baselines.
+
+For each model seed, fixed training means the new 0.005 training group reused across evaluations; matched training means the group trained at the known evaluation probability. These are new models, not the original frozen seed101 weights. At evaluation 0.005 the two procedures are exactly the same models, so identical predictions and metrics provide a useful identity check.
+
+| Evaluation measurement noise | Model seed | Fixed-training failures / 100,000 | Matched-training failures / 100,000 | Matched − fixed error (percentage points) | Fixed Brier | Matched Brier |
+|---|---:|---:|---:|---:|---:|---:|
+| 0.001 | 101 | 141 | 147 | +0.006 | 0.001577 | 0.001481 |
+| 0.001 | 202 | 137 | 176 | +0.039 | 0.001237 | 0.001465 |
+| 0.001 | 303 | 140 | 149 | +0.009 | 0.001261 | 0.001335 |
+| 0.005 | 101 | 391 | 391 | +0.000 | 0.003638 | 0.003638 |
+| 0.005 | 202 | 434 | 434 | +0.000 | 0.003706 | 0.003706 |
+| 0.005 | 303 | 422 | 422 | +0.000 | 0.003600 | 0.003600 |
+| 0.015 | 101 | 1,390 | 1,156 | -0.234 | 0.012276 | 0.009603 |
+| 0.015 | 202 | 1,461 | 1,062 | -0.399 | 0.012492 | 0.009194 |
+| 0.015 | 303 | 1,498 | 1,094 | -0.404 | 0.012684 | 0.009352 |
+| 0.030 | 101 | 3,775 | 2,736 | -1.039 | 0.032841 | 0.022942 |
+| 0.030 | 202 | 3,913 | 2,490 | -1.423 | 0.033326 | 0.021728 |
+| 0.030 | 303 | 4,023 | 2,807 | -1.216 | 0.034267 | 0.023201 |
+
+At the two higher-noise settings, matched training yields fewer logical errors and lower Brier scores for every initialization. At the lower-noise setting 0.001, it does not reduce logical errors for any initialization; Brier changes are mixed. Matching the training noise is therefore not an automatic improvement under this finite budget. At 0.03, seed101 changes from 3,775 errors with fixed training to 2,736 with matched training on the same 100,000 shots, a descriptive difference of −1.039 percentage points. Confidence intervals and paired correctness counts for all model pairs are retained in the artifact; no significance p-value is claimed.
+
+This comparison holds evaluation noise constant within each pair and equalizes architecture and budgets. It therefore gives a more direct procedural contrast than comparing a fixed model across different noise levels. Nevertheless, training samples differ between noise groups, only one train/validation realization exists at each setting, optimization is finite, and the matched procedure is told the evaluation noise distribution. The three seeds vary initialization and shuffling, not independent training datasets. No rates are pooled into an artificial 300,000-shot independent sample. The experiment is not blind drift adaptation, a complete decomposition of mismatch cost, or evidence of hardware transfer. Original, confirmation and training-control results remain separate.
+
+Source S10, claims C20–C22 and the artifact's manifest connect these results to the committed protocol and all checkpoint hashes.

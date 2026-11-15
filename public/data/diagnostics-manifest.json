@@ -1,0 +1,118 @@
+{
+  "runId": "d3-memory-z-20261115T004549Z-diagnostics-20261115T015124Z",
+  "parentRunIds": [
+    "d3-memory-z-20261115T004549Z",
+    "d3-memory-z-20261115T004549Z-confirmation-20261115T011610Z"
+  ],
+  "sourceCodeCommit": "cd1ad69b9342a4ff9b324fb39f126e322dca1f4e",
+  "workingTreeDirty": true,
+  "executionDateUTC": "2026-11-15T01:51:24.790343+00:00",
+  "sourceAndInputHashes": {
+    "research/experiments/scripts/diagnostics.py": "be0e6279b6cab722fa608a51b0d5d64ffcd74d3b59669e5aa4a31cf5f173460f",
+    "research/experiments/scripts/run.py": "03eb5215f8fae6cf9f1f46bb28a7737411af5a2cf65be8db52e4ec16060273df",
+    "research/experiments/scripts/confirmation.py": "fe03b645daaa8bb215a1dfe5e17f7986a8c2e1777ed5b18b566f45e6ea68ab05",
+    "research/results/aggregates/study.json": "75e31a475c1d6ffad95b493370108f4d73984bbb8b2bcb7bdeb43714d9e27ae3",
+    "research/results/aggregates/confirmation.json": "7e1dbcaa685436ce64ccc060e66d26d970447050d3cb7847a44ffd1c45670fb0",
+    "research/experiments/manifests/seed101-checkpoint.json": "7584092387b2ac5cf8c39027288b0b91a088dd4099b61a32d87a5cbf359cdd6e",
+    "research/experiments/configs/d3.json": "74d2a0fc02ce3017ecea8f771997b25a0496b1b5ab035478b9259dabf23e41b9",
+    "research/experiments/configs/confirmation.json": "7ab952e91a18836e997e57deba79f3564370e1d71ccfb5089a9fadf0f8ad6ee4"
+  },
+  "packageVersions": {
+    "stim": "1.16.0",
+    "pymatching": "2.4.0",
+    "numpy": "2.5.4",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "threadpoolctl": "3.8.0"
+  },
+  "hardware": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+    "threads": 1,
+    "gpu": "none"
+  },
+  "dataReused": {
+    "training": {
+      "seed": 41001,
+      "shots": 40000,
+      "purpose": "constant baseline only"
+    },
+    "test": [
+      {
+        "source": "primary",
+        "parentRunId": "d3-memory-z-20261115T004549Z",
+        "conditions": [
+          {
+            "measurementNoise": 0.001,
+            "seed": 43001,
+            "shots": 20000
+          },
+          {
+            "measurementNoise": 0.005,
+            "seed": 43002,
+            "shots": 20000
+          },
+          {
+            "measurementNoise": 0.015,
+            "seed": 43003,
+            "shots": 20000
+          },
+          {
+            "measurementNoise": 0.03,
+            "seed": 43004,
+            "shots": 20000
+          }
+        ]
+      },
+      {
+        "source": "confirmation",
+        "parentRunId": "d3-memory-z-20261115T004549Z-confirmation-20261115T011610Z",
+        "conditions": [
+          {
+            "measurementNoise": 0.001,
+            "seed": 53001,
+            "shots": 100000
+          },
+          {
+            "measurementNoise": 0.005,
+            "seed": 53002,
+            "shots": 100000
+          },
+          {
+            "measurementNoise": 0.015,
+            "seed": 53003,
+            "shots": 100000
+          },
+          {
+            "measurementNoise": 0.03,
+            "seed": 53004,
+            "shots": 100000
+          }
+        ]
+      }
+    ]
+  },
+  "modelArchitecture": [
+    24,
+    32,
+    16,
+    1
+  ],
+  "optimizer": "None, frozen checkpoint",
+  "baselineSettings": "Unchanged parent fixed/matched uncorrelated MWPM; plus always0 and original-training-prevalence Brier baselines",
+  "sampleCounts": {
+    "originalTest": 80000,
+    "confirmationTest": 400000,
+    "reusedTraining": 40000,
+    "newShots": 0
+  },
+  "reproduction": "All parent metrics verified before diagnostics emitted",
+  "completionStatus": "completed",
+  "wallSeconds": 0.5898516440001913,
+  "outputFiles": [
+    "research/results/aggregates/diagnostics.json"
+  ],
+  "outputHashes": {
+    "research/results/aggregates/diagnostics.json": "7c8b166adf1c365978f22cfbb8ac0726254663af6807a7da990cd237c016eb73"
+  }
+}

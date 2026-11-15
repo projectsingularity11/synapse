@@ -7,3 +7,7 @@ Denied by proxy CONNECT 403: www.nature.com paper, link.aps.org DOI, journals.ap
 The FMA individual-track candidate was also denied. No audio file was downloaded, licensed for this project or auditioned. The site ships silently until track-level license and file evidence are verified.
 
 A GitHub code search returned an authentication page, not scientific evidence. No credential extraction or network-policy bypass was attempted.
+
+## Bounded follow-up retrieval pass
+
+A subsequent authorized refinement rechecked the Nature article, APS abstract/PDF/DOI routes, arXiv, Crossref, PMC, PubMed and Google DeepMind article. All still returned CONNECT 403. Public GitHub repository search worked but yielded unaffiliated reproductions rather than an identified primary-author full-text source. Those implementations were not used to verify paper-specific findings. No network settings were changed, no proxy bypass was used and no paper reading is claimed. The source-access limitation remains open.

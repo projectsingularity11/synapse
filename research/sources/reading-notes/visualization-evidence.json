@@ -1,0 +1,83 @@
+[
+  {
+    "repository": "d3/d3",
+    "commit": "db118c93a429e82b83f091dbaa18fd0a82c06130",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/d3/d3/db118c93a429e82b83f091dbaa18fd0a82c06130/LICENSE",
+    "bytes": 731,
+    "sha256": "2a6d2d5f32ba0b755ddbc1c833f766e30cdbe6ebe9a6d4e3e24427721f0b63d3",
+    "headCommitDateObserved": "Tue, 3 Nov 2026 11:42:40 -0800"
+  },
+  {
+    "repository": "d3/d3",
+    "commit": "db118c93a429e82b83f091dbaa18fd0a82c06130",
+    "path": "docs/d3-shape/line.md",
+    "url": "https://raw.githubusercontent.com/d3/d3/db118c93a429e82b83f091dbaa18fd0a82c06130/docs/d3-shape/line.md",
+    "bytes": 6640,
+    "sha256": "9557a926fe6d5176f574d655d5fd8273645fca5b4fb684363d902aa1144271f6",
+    "headCommitDateObserved": "Tue, 3 Nov 2026 11:42:40 -0800"
+  },
+  {
+    "repository": "d3/d3",
+    "commit": "db118c93a429e82b83f091dbaa18fd0a82c06130",
+    "path": "docs/d3-axis.md",
+    "url": "https://raw.githubusercontent.com/d3/d3/db118c93a429e82b83f091dbaa18fd0a82c06130/docs/d3-axis.md",
+    "bytes": 14112,
+    "sha256": "96358eb20182f3ba59a445d9704a4ca9be4c91789d6b0bae4039a25a31ea7ae9",
+    "headCommitDateObserved": "Tue, 3 Nov 2026 11:42:40 -0800"
+  },
+  {
+    "repository": "d3/d3",
+    "commit": "db118c93a429e82b83f091dbaa18fd0a82c06130",
+    "path": "docs/d3-scale/linear.md",
+    "url": "https://raw.githubusercontent.com/d3/d3/db118c93a429e82b83f091dbaa18fd0a82c06130/docs/d3-scale/linear.md",
+    "bytes": 16955,
+    "sha256": "0f9efbc1a4eda4723e58f7a2125070e45aab327c9dba8b284b3e90dc961d3040",
+    "headCommitDateObserved": "Tue, 3 Nov 2026 11:42:40 -0800"
+  },
+  {
+    "repository": "observablehq/plot",
+    "commit": "2245188895e95ef2043f0ad12c2f900d6e48ef1a",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/observablehq/plot/2245188895e95ef2043f0ad12c2f900d6e48ef1a/LICENSE",
+    "bytes": 735,
+    "sha256": "4b295e011e0e046170041b5b46f1349393aeceb95797793a55bd21dbb543363a",
+    "headCommitDateObserved": "Thu, 5 Nov 2026 14:31:23 -0800"
+  },
+  {
+    "repository": "observablehq/plot",
+    "commit": "2245188895e95ef2043f0ad12c2f900d6e48ef1a",
+    "path": "README.md",
+    "url": "https://raw.githubusercontent.com/observablehq/plot/2245188895e95ef2043f0ad12c2f900d6e48ef1a/README.md",
+    "bytes": 1621,
+    "sha256": "855c69fe6e5e0cc83c6beedf8b782f5944f5fa852da8b880936e158865b029d6",
+    "headCommitDateObserved": "Thu, 5 Nov 2026 14:31:23 -0800"
+  },
+  {
+    "repository": "airbnb/visx",
+    "commit": "485c0359664ee8e612992defb16e1f035ed40b23",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/airbnb/visx/485c0359664ee8e612992defb16e1f035ed40b23/LICENSE",
+    "bytes": 1076,
+    "sha256": "8c766533b7d4200b4dfb1a1afff396e3665460d21d7b4c34d059efcb5a332c84",
+    "headCommitDateObserved": "Mon, 22 Jun 2026 10:20:47 -0400"
+  },
+  {
+    "repository": "airbnb/visx",
+    "commit": "485c0359664ee8e612992defb16e1f035ed40b23",
+    "path": "packages/visx-demo/src/sandboxes/visx-xychart/Example.tsx",
+    "url": "https://raw.githubusercontent.com/airbnb/visx/485c0359664ee8e612992defb16e1f035ed40b23/packages/visx-demo/src/sandboxes/visx-xychart/Example.tsx",
+    "bytes": 11718,
+    "sha256": "c7ffe3df7113b150c63278c146e3c0911e8050e15ae500515e350b663b027e4a",
+    "headCommitDateObserved": "Mon, 22 Jun 2026 10:20:47 -0400"
+  },
+  {
+    "repository": "airbnb/visx",
+    "commit": "485c0359664ee8e612992defb16e1f035ed40b23",
+    "path": "packages/visx-demo/src/sandboxes/visx-threshold/Example.tsx",
+    "url": "https://raw.githubusercontent.com/airbnb/visx/485c0359664ee8e612992defb16e1f035ed40b23/packages/visx-demo/src/sandboxes/visx-threshold/Example.tsx",
+    "bytes": 3459,
+    "sha256": "1910cc9654ba6cac70b6424b48a3a5f0094de582f6857409dce7df7558b03b3c",
+    "headCommitDateObserved": "Mon, 22 Jun 2026 10:20:47 -0400"
+  }
+]

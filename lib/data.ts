@@ -155,3 +155,94 @@ export function readTextArtifact(file: string): string | null {
   const location = path.join(process.cwd(), "research", file);
   return fs.existsSync(location) ? fs.readFileSync(location, "utf8") : null;
 }
+export type ConfidenceGroup = {
+  lower?: number;
+  upper?: number;
+  minimumConfidence?: number;
+  count: number;
+  failures: number;
+  coverage: number;
+  errorRate: number | null;
+  ci95: [number, number] | null;
+  meanConfidence: number | null;
+  observedAccuracy: number | null;
+  observedAccuracyCi95: [number, number] | null;
+};
+export type ConfusionCounts = {
+  trueNegative: number;
+  falsePositive: number;
+  falseNegative: number;
+  truePositive: number;
+};
+export type DiagnosticCondition = {
+  measurementNoise: number;
+  testDataSeed: number;
+  shots: number;
+  observableOneCount: number;
+  prevalence: number;
+  meanPredictedFlipProbability: number;
+  eventProbabilityGap: number;
+  baselines: {
+    alwaysNoFlip: Metric & { brier: number };
+    trainingPrevalenceConstant: { probability: number; brier: number };
+  };
+  confusion: Record<
+    "neural" | "fixedMatching" | "matchedMatching",
+    ConfusionCounts
+  >;
+  confidenceBins: ConfidenceGroup[];
+  selectiveRisk: ConfidenceGroup[];
+};
+export type Diagnostics = {
+  schemaVersion: number;
+  runId: string;
+  parentRunIds: string[];
+  purpose: string;
+  status: string;
+  trainingPrevalence: {
+    sourceSeed: number;
+    shots: number;
+    observableOneCount: number;
+    probability: number;
+  };
+  definitions: Record<string, string | number[]>;
+  datasets: {
+    source: "primary" | "confirmation";
+    parentRunId: string;
+    conditions: DiagnosticCondition[];
+  }[];
+  manifestPath: string;
+};
+export const getDiagnostics = () =>
+  readArtifact<Diagnostics>("results/aggregates/diagnostics.json");
+export type TrainingControl = {
+  schemaVersion: number;
+  runId: string;
+  parentRunId: string;
+  purpose: string;
+  status: string;
+  config: Record<string, string | number | number[]>;
+  model: { architecture: number[]; parameterCount: number; seeds: number[] };
+  conditions: {
+    measurementNoise: number;
+    testDataSeed: number;
+    shots: number;
+    seeds: {
+      seed: number;
+      fixedTraining: Metric & { brier: number };
+      matchedTraining: Metric & { brier: number };
+      paired: {
+        bothCorrect: number;
+        fixedOnlyCorrect: number;
+        matchedOnlyCorrect: number;
+        bothWrong: number;
+      };
+      errorDifferenceMatchedMinusFixed: number;
+    }[];
+    fixedMatching: Metric;
+    matchedMatching: Metric;
+  }[];
+  manifestPath: string;
+};
+export const getTrainingControl = () =>
+  readArtifact<TrainingControl>("results/aggregates/training-control.json");

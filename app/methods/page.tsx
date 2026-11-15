@@ -94,7 +94,7 @@ export default function Methods() {
         ) : (
           <p className="notice">Experiment execution pending.</p>
         )}
-        {s && <ModelTraining study={s} />}
+        {s && <ModelTraining study={{model:s.model,runId:s.runId}} />}
         <div className="data-links">
           <a href="/data/manifest.json">Full run manifest →</a>
           <a href="/data/protocol.md">Read protocol ↓</a>

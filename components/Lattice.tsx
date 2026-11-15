@@ -1,96 +1,95 @@
-export function Lattice({
-  events = [1, 4, 10],
-  dark = false,
-}: {
-  events?: number[];
-  dark?: boolean;
-}) {
-  const nodes = Array.from({ length: 9 }, (_, i) => ({
-    x: 180 + (i % 3) * 100,
-    y: 110 + Math.floor(i / 3) * 100,
-  }));
+import type { Study, Trace } from "@/lib/data";
+/** An original space-time projection of actual Stim coordinates and saved detector bits. */
+export function Lattice({ study, trace }: { study: Study; trace: Trace }) {
+  const project = (x: number, y: number, t: number) => ({
+    x: 125 + x * 48 + t * 14,
+    y: 165 + y * 43 - t * 38,
+  });
   return (
     <svg
-      className={dark ? "lattice dark-lattice" : "lattice"}
+      className="lattice dark-lattice"
       viewBox="0 0 600 500"
       role="img"
-      aria-labelledby={dark ? "hero-lattice-title" : "lattice-title"}
+      aria-labelledby="hero-lattice-title hero-lattice-description"
     >
-      <title id={dark ? "hero-lattice-title" : "lattice-title"}>
-        Conceptual surface-code instrument: nine data qubits and square check
-        signals
+      <title id="hero-lattice-title">
+        Saved distance-three detector history
       </title>
+      <desc id="hero-lattice-description">{`${study.qubits.filter((q) => q.role === "data").length} data qubits and ${study.detectors.length} detector positions use actual circuit coordinates. Amber squares are the ${trace.detectionEvents.reduce((n, v) => n + v, 0)} observed detection events in saved shot ${trace.shotIndex} at measurement noise ${trace.measurementNoise * 100} percent. Space-time depth is a visual metaphor, not a measured quantum state.`}</desc>
       <defs>
         <pattern
-          id={dark ? "dots-dark" : "dots"}
+          id="hero-dots"
           width="25"
           height="25"
           patternUnits="userSpaceOnUse"
         >
-          <circle cx="1" cy="1" r=".8" fill="currentColor" opacity=".2" />
+          <circle cx="1" cy="1" r=".8" fill="currentColor" opacity=".15" />
         </pattern>
       </defs>
-      <rect
-        width="600"
-        height="500"
-        fill={`url(#${dark ? "dots-dark" : "dots"})`}
-      />
-      <g transform="translate(10 20) rotate(-24 300 240) skewX(12)">
-        <path
-          d="M180 110H380V310H180ZM180 210H380M280 110V310"
-          stroke="currentColor"
-          opacity=".4"
-          fill="none"
-        />
-        {[0, 1, 2, 3].map((i) => (
-          <path
-            key={i}
-            d={`M${130 + i * 100} 60V360 M130 ${60 + i * 100}H430`}
-            stroke="currentColor"
-            opacity=".12"
-            fill="none"
-          />
-        ))}
-        {nodes.map((n, i) => (
-          <g key={i}>
-            <circle cx={n.x} cy={n.y} r="13" className="qubit-halo" />
-            <circle cx={n.x} cy={n.y} r="4" fill="currentColor" />
-          </g>
-        ))}
-        {Array.from({ length: 12 }, (_, i) => {
-          const x = 130 + (i % 4) * 100,
-            y = 110 + Math.floor(i / 4) * 100;
+      <rect width="600" height="500" fill="url(#hero-dots)" />
+      <g transform="translate(0 4) rotate(-24 300 250) skewX(10)">
+        {[0, 1, 2, 3].map((t) => {
+          const a = project(0, 0, t),
+            b = project(6, 0, t),
+            c = project(6, 6, t),
+            d = project(0, 6, t);
           return (
-            <g key={i}>
-              <rect
-                x={x - 6}
-                y={y - 6}
-                width="12"
-                height="12"
-                fill={events.includes(i) ? "var(--event)" : "none"}
-                stroke={events.includes(i) ? "var(--event)" : "currentColor"}
-                opacity={events.includes(i) ? 1 : 0.35}
+            <g key={t}>
+              <path
+                d={`M${a.x} ${a.y}L${b.x} ${b.y}L${c.x} ${c.y}L${d.x} ${d.y}Z`}
+                fill="none"
+                stroke="currentColor"
+                strokeOpacity={t === 0 ? 0.22 : 0.1}
               />
-              {events.includes(i) && (
-                <path
-                  d={`M${x} ${y + 16}v40`}
-                  stroke="var(--event)"
-                  strokeDasharray="2 4"
-                />
+              <text x={c.x + 14} y={c.y + 3} className="svg-note">
+                t{t}
+              </text>
+            </g>
+          );
+        })}
+        {study.qubits
+          .filter((q) => q.role === "data")
+          .map((q) => {
+            const p = project(q.coordinates[0], q.coordinates[1], 0);
+            return (
+              <g key={q.id}>
+                <circle cx={p.x} cy={p.y} r="12" className="qubit-halo" />
+                <circle cx={p.x} cy={p.y} r="3.5" fill="currentColor" />
+              </g>
+            );
+          })}
+        {study.detectors.map((d) => {
+          const p = project(
+            d.coordinates[0],
+            d.coordinates[1],
+            d.coordinates[2],
+          );
+          const active = trace.detectionEvents[d.id] === 1;
+          return (
+            <g key={d.id}>
+              <rect
+                x={p.x - (active ? 6 : 3)}
+                y={p.y - (active ? 6 : 3)}
+                width={active ? 12 : 6}
+                height={active ? 12 : 6}
+                fill={active ? "var(--event)" : "none"}
+                stroke={active ? "var(--event)" : "currentColor"}
+                strokeOpacity={active ? 1 : 0.3}
+              />
+              {active && (
+                <text x={p.x + 12} y={p.y + 3} className="svg-note event-id">
+                  D{d.id}
+                </text>
               )}
             </g>
           );
         })}
       </g>
-      <path d="M470 120h55M497 92v55" stroke="currentColor" opacity=".4" />
-      <text x="490" y="170" className="svg-note">
-        Z
+      <text x="44" y="470" className="svg-note">
+        d = 3 / Z MEMORY / SAVED SHOT {trace.shotIndex}
       </text>
-      <text x="45" y="440" className="svg-note">
-        d = 3 / CONCEPTUAL SCENE
-      </text>
-      <text x="490" y="440" className="svg-note">
-        01—09
+      <text x="452" y="470" className="svg-note">
+        24 DETECTORS
       </text>
     </svg>
   );

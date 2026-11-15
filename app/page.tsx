@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { Lattice } from "@/components/Lattice";
-import { getStudy } from "@/lib/data";
+import { getStudy, getTraces } from "@/lib/data";
 export default function Home() {
   const study = getStudy();
+  const heroTrace = getTraces()?.traces.find(
+    (t) => t.measurementNoise === 0.03 && t.shotIndex === 1,
+  );
   return (
     <>
       <section className="hero">
@@ -34,13 +37,23 @@ export default function Home() {
             </Link>
           </div>
           <div className="hero-instrument">
-            <Lattice dark />
+            {study && heroTrace ? (
+              <Lattice study={study} trace={heroTrace} />
+            ) : (
+              <p className="notice">Saved instrument data are unavailable.</p>
+            )}
             <div className="instrument-label">
               <span>
-                <i className="square" /> CHECK SIGNAL
+                <i className="square" /> DETECTION EVENT
               </span>
-              <span>SCHEMATIC / NOT A MEASUREMENT</span>
+              <span>SAVED SIMULATION / SCHEMATIC DEPTH</span>
             </div>
+            <Link className="hero-trace-link" href="/explore?noise=0.03&shot=1">
+              Inspect this actual shot →{" "}
+              <span>
+                Perspective represents time, not the unknown quantum state.
+              </span>
+            </Link>
           </div>
         </div>
         <div className="hero-bottom">

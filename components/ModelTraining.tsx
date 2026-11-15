@@ -1,5 +1,7 @@
+"use client";
+import { ResponsivePlot } from "./charts/ResponsivePlot";
 import type { Study } from "@/lib/data";
-export function ModelTraining({ study }: { study: Study }) {
+export function ModelTraining({ study }: { study: Pick<Study,"model"|"runId"> }) {
   const records = study.model.training ?? [];
   const ymax =
     Math.max(...records.flatMap((r) => r.validationLogLossByEpoch)) || 1;
@@ -38,74 +40,71 @@ export function ModelTraining({ study }: { study: Study }) {
       </p>
       {records.length > 0 && (
         <figure>
-          <div
-            className="chart-scroll"
-            role="region"
-            aria-label="Validation loss over training epochs"
-            tabIndex={0}
+          <div className="axis-heading">Validation binary log loss</div>
+          <ResponsivePlot
+            title="Validation log loss for three training seeds"
+            description="Dots mark validation-selected checkpoints. The entire epoch range is shown."
           >
-            <svg
-              className="chart"
-              viewBox="0 0 840 380"
-              role="img"
-              aria-labelledby="training-title"
-            >
-              <title id="training-title">
-                Validation log loss for three training seeds
-              </title>
-              {[0, 0.25, 0.5, 0.75, 1].map((v) => (
-                <g key={v}>
-                  <path d={`M80 ${300 - v * 240}H760`} stroke="#c4ccc0" />
-                  <text x="65" y={304 - v * 240} textAnchor="end">
-                    {(v * ymax).toFixed(2)}
-                  </text>
-                </g>
-              ))}
-              {[1, 10, 20, 30, 40].map((epoch) => (
-                <text
-                  key={epoch}
-                  x={80 + ((epoch - 1) / (maxEpoch - 1)) * 680}
-                  y="326"
-                  textAnchor="middle"
-                >
-                  {epoch}
-                </text>
-              ))}
-              {records.map((r, i) => (
-                <g key={r.seed}>
-                  <polyline
-                    fill="none"
-                    stroke={colors[i % 3]}
-                    strokeWidth="2"
-                    strokeDasharray={
-                      i === 1 ? "6 3" : i === 2 ? "2 3" : undefined
-                    }
-                    points={r.validationLogLossByEpoch
-                      .map(
-                        (loss, e) =>
-                          `${80 + (e / (maxEpoch - 1)) * 680},${300 - (loss / ymax) * 240}`,
-                      )
-                      .join(" ")}
-                  />
-                  <circle
-                    cx={80 + ((r.selectedEpoch - 1) / (maxEpoch - 1)) * 680}
-                    cy={300 - (r.validationLogLoss / ymax) * 240}
-                    r="4"
-                    fill={colors[i % 3]}
-                  />
-                </g>
-              ))}
-              <text x="420" y="366" textAnchor="middle">
-                Training epoch
-              </text>
-              <text
-                transform="translate(20 180) rotate(-90)"
-                textAnchor="middle"
-              >
-                Validation binary log loss
-              </text>
-            </svg>
-          </div>
+            {({ width, height }) => {
+              const left = 46,
+                right = 18,
+                top = 16,
+                bottom = height - 40;
+              const x = (epoch: number) =>
+                left + ((epoch - 1) / (maxEpoch - 1)) * (width - left - right);
+              const y = (loss: number) =>
+                bottom - (loss / ymax) * (bottom - top);
+              return (
+                <>
+                  {[0, 0.25, 0.5, 0.75, 1].map((v) => (
+                    <g key={v}>
+                      <path
+                        d={`M${left} ${y(v * ymax)}H${width - right}`}
+                        stroke="#c4ccc0"
+                      />
+                      <text x={left - 10} y={y(v * ymax) + 4} textAnchor="end">
+                        {(v * ymax).toFixed(2)}
+                      </text>
+                    </g>
+                  ))}
+                  {[1, 10, 20, 30, 40]
+                    .filter((e) => e <= maxEpoch)
+                    .map((e) => (
+                      <text
+                        key={e}
+                        x={x(e)}
+                        y={bottom + 24}
+                        textAnchor="middle"
+                      >
+                        {e}
+                      </text>
+                    ))}
+                  {records.map((r, i) => (
+                    <g key={r.seed}>
+                      <polyline
+                        fill="none"
+                        stroke={colors[i % 3]}
+                        strokeWidth="1.8"
+                        strokeDasharray={
+                          i === 1 ? "6 3" : i === 2 ? "2 3" : undefined
+                        }
+                        points={r.validationLogLossByEpoch
+                          .map((loss, e) => `${x(e + 1)},${y(loss)}`)
+                          .join(" ")}
+                      />
+                      <circle
+                        cx={x(r.selectedEpoch)}
+                        cy={y(r.validationLogLoss)}
+                        r="4"
+                        fill={colors[i % 3]}
+                      />
+                    </g>
+                  ))}
+                </>
+              );
+            }}
+          </ResponsivePlot>
+          <div className="axis-footer">Training epoch</div>
           <div className="legend">
             {records.map((r, i) => (
               <span key={r.seed}>

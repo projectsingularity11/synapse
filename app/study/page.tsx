@@ -37,6 +37,13 @@ export default function StudyPage() {
               alone does not establish calibrated probabilities. This pilot is
               deliberately narrow.
             </p>
+            <p className="notice">
+              More noise also makes inference harder. These original fixed-model
+              curves do not isolate the extra cost of a training mismatch.{" "}
+              <Link href="/study/training-control">
+                Inspect the separate matched-training control →
+              </Link>
+            </p>
             {baseline && shifted && (
               <div className="finding-band" id="result-summary">
                 <div>
@@ -95,6 +102,9 @@ export default function StudyPage() {
               </a>
               <Link href="/methods">Inspect methods →</Link>
               <Link href="/study/confirmation">Fresh-shot confirmation →</Link>
+              <Link href="/study/diagnostics">
+                Class balance & confidence →
+              </Link>
               <a href="/data/metrics.csv" download>
                 Metrics CSV ↓
               </a>

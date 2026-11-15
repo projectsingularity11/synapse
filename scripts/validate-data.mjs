@@ -239,3 +239,118 @@ for (const c of confirmation.conditions) {
 console.log(
   "Verified frozen checkpoint, pre-label protocol/source/config hashes and all 400,000 fresh-shot confirmation counts.",
 );
+const diagnostics = read("research/results/aggregates/diagnostics.json");
+const dm = read(diagnostics.manifestPath);
+assert.deepEqual(diagnostics.parentRunIds, [s.runId, confirmation.runId]);
+assert.equal(dm.runId, diagnostics.runId);
+for (const [file, hash] of Object.entries(dm.sourceAndInputHashes))
+  assert.equal(digest(file), hash, `Diagnostic input ${file}`);
+for (const [file, hash] of Object.entries(dm.outputHashes ?? {}))
+  assert.equal(digest(file), hash, `Diagnostic output ${file}`);
+for (const dataset of diagnostics.datasets) {
+  const parent = dataset.source === "primary" ? s : confirmation;
+  assert.equal(dataset.parentRunId, parent.runId);
+  for (const c of dataset.conditions) {
+    const original = parent.conditions.find(
+      (p) => p.measurementNoise === c.measurementNoise,
+    );
+    assert.equal(c.shots, original.shots);
+    assert.equal(c.prevalence, c.observableOneCount / c.shots);
+    for (const [key, matrix] of Object.entries(c.confusion)) {
+      assert.equal(
+        Object.values(matrix).reduce((n, v) => n + v, 0),
+        c.shots,
+      );
+      assert.equal(
+        matrix.falsePositive + matrix.falseNegative,
+        original[key].failures,
+      );
+      assert.equal(
+        matrix.truePositive + matrix.falseNegative,
+        c.observableOneCount,
+      );
+    }
+    for (const g of [...c.confidenceBins, ...c.selectiveRisk]) {
+      assert.equal(g.coverage, g.count / c.shots);
+      if (g.count) {
+        assert.equal(g.errorRate, g.failures / g.count);
+        assert.equal(g.observedAccuracy, 1 - g.errorRate);
+        assert.deepEqual(g.observedAccuracyCi95, [
+          1 - g.ci95[1],
+          1 - g.ci95[0],
+        ]);
+      } else {
+        assert.equal(g.errorRate, null);
+        assert.equal(g.ci95, null);
+      }
+    }
+    assert.equal(
+      c.confidenceBins.reduce((n, g) => n + g.count, 0),
+      c.shots,
+    );
+    assert.equal(c.selectiveRisk[0].count, c.shots);
+  }
+}
+const tc = read("research/results/aggregates/training-control.json");
+const tm = read(tc.manifestPath);
+assert.equal(tc.parentRunId, s.runId);
+assert.equal(tm.runId, tc.runId);
+assert.equal(tm.protocolCommittedBeforeFreshLabels, true);
+assert.ok(
+  Date.parse(tm.allCheckpointsFrozenAtUTC) <
+    Date.parse(tm.testGenerationStartedAtUTC),
+);
+for (const [file, hash] of Object.entries({
+  ...tm.sourceAndInputHashes,
+  ...tm.outputHashes,
+}))
+  assert.equal(digest(file), hash, `Training control ${file}`);
+const allControlSeeds = [
+  ...tc.config.trainDataSeeds,
+  ...tc.config.validationDataSeeds,
+  ...tc.config.testDataSeeds,
+];
+assert.equal(new Set(allControlSeeds).size, 12);
+for (const seed of allControlSeeds) {
+  assert.ok(!priorSeeds.has(seed));
+  assert.ok(!confirmation.config.testDataSeeds.includes(seed));
+}
+for (const c of tc.conditions) {
+  assert.equal(c.shots, 100000);
+  for (const fit of c.seeds) {
+    for (const metric of [fit.fixedTraining, fit.matchedTraining])
+      assert.equal(metric.errorRate, metric.failures / c.shots);
+    assert.equal(
+      Object.values(fit.paired).reduce((n, v) => n + v, 0),
+      c.shots,
+    );
+    assert.equal(
+      fit.paired.matchedOnlyCorrect + fit.paired.bothWrong,
+      fit.fixedTraining.failures,
+    );
+    assert.equal(
+      fit.paired.fixedOnlyCorrect + fit.paired.bothWrong,
+      fit.matchedTraining.failures,
+    );
+    if (c.measurementNoise === 0.005)
+      assert.deepEqual(fit.fixedTraining, fit.matchedTraining);
+  }
+}
+console.log(
+  "Verified reused-data diagnostics, exact confusion/coverage counts and separately frozen equal-budget training control on 400,000 fresh test shots.",
+);
+const followup = read("research/results/figures/follow-up/manifest.json");
+assert.equal(digest(followup.generator), followup.scriptSha256);
+for (const [file, hash] of Object.entries({
+  ...followup.inputs,
+  ...followup.preservedOriginalFigureFiles,
+}))
+  assert.equal(digest(file), hash, `Follow-up figure input/original ${file}`);
+for (const [file, record] of Object.entries(followup.outputs))
+  assert.equal(
+    digest(`research/results/figures/follow-up/${file}`),
+    record.sha256,
+  );
+console.log(
+  "Verified six follow-up figure exports, their source/inputs, and byte-preservation of all original figures.",
+);

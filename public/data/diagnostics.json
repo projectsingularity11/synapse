@@ -1,0 +1,2864 @@
+{
+  "schemaVersion": 1,
+  "runId": "d3-memory-z-20261115T004549Z-diagnostics-20261115T015124Z",
+  "parentRunIds": [
+    "d3-memory-z-20261115T004549Z",
+    "d3-memory-z-20261115T004549Z-confirmation-20261115T011610Z"
+  ],
+  "purpose": "Post-hoc rare-label and confidence diagnostics of the frozen seed101 model on existing shots; no tuning or retraining",
+  "status": "completed-post-hoc-diagnostics",
+  "trainingPrevalence": {
+    "sourceSeed": 41001,
+    "shots": 40000,
+    "observableOneCount": 1349,
+    "probability": 0.033725
+  },
+  "definitions": {
+    "analysisStatus": "Post-hoc descriptive; all bins/thresholds fixed in source before processing this analysis, after parent results were known. No fitting or threshold optimization.",
+    "confidence": "max(P(observable flip), 1-P(observable flip)); confidence in the predicted binary class, distinct from event probability",
+    "confidenceBinEdges": [
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0
+    ],
+    "confidenceBinMembership": "Lower-inclusive, upper-exclusive except final bin includes1",
+    "selectiveThresholds": [
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      0.95,
+      0.99
+    ],
+    "coverage": "selected count / all shots at that condition",
+    "selectiveRisk": "mistakes / selected count for confidence >= threshold; thresholds overlap and are not independent experiments",
+    "emptyGroups": "count/failures0, coverage0, error/interval/confidence/accuracy null, never inferred as perfect accuracy",
+    "eventGap": "mean predicted flip probability minus observed flip frequency; positive=overprediction of flips, not necessarily overconfidence",
+    "constantBaseline": "Probability estimated ONLY from original training labels, held fixed on all original and confirmation test conditions",
+    "alwaysNoFlip": "Predicts logical flip0 at threshold0.5; Brier equals observed flip prevalence",
+    "intervals": "Pointwise95% Wilson intervals for conditioned error rates, conditional on frozen model and simulator; not simultaneous bands, no inferential significance claim",
+    "brierDecomposition": "Not reported: fixed-bin coarsening changes the predictions and an exact original-score Murphy decomposition would require residual terms",
+    "reproductionTolerance": "All failure counts, decisions, sample counts, bin counts and Wilson intervals exactly equal stored results; Brier/probability summaries absolute tolerance2e-7 to allow float32 GEMM rounding",
+    "dataReuse": "Reuses all80,000 original test shots and400,000 confirmation shots plus40,000 original training labels; no new independent evidence or training replication",
+    "causalLimit": "The measurement-noise sweep changes task difficulty and training mismatch together. Without separately retrained matched-noise neural models it does not isolate the causal cost of mismatch alone."
+  },
+  "datasets": [
+    {
+      "source": "primary",
+      "parentRunId": "d3-memory-z-20261115T004549Z",
+      "conditions": [
+        {
+          "measurementNoise": 0.001,
+          "testDataSeed": 43001,
+          "shots": 20000,
+          "observableOneCount": 443,
+          "prevalence": 0.02215,
+          "meanPredictedFlipProbability": 0.022257888689637184,
+          "eventProbabilityGap": 0.00010788868963718459,
+          "baselines": {
+            "alwaysNoFlip": {
+              "failures": 443,
+              "shots": 20000,
+              "errorRate": 0.02215,
+              "ci95": [
+                0.020200244862203308,
+                0.024283283996615876
+              ],
+              "brier": 0.02215
+            },
+            "trainingPrevalenceConstant": {
+              "probability": 0.033725,
+              "brier": 0.021793358125000002
+            }
+          },
+          "confusion": {
+            "neural": {
+              "trueNegative": 19548,
+              "falsePositive": 9,
+              "falseNegative": 22,
+              "truePositive": 421
+            },
+            "fixedMatching": {
+              "trueNegative": 19552,
+              "falsePositive": 5,
+              "falseNegative": 8,
+              "truePositive": 435
+            },
+            "matchedMatching": {
+              "trueNegative": 19553,
+              "falsePositive": 4,
+              "falseNegative": 6,
+              "truePositive": 437
+            }
+          },
+          "eventCalibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 19499,
+              "meanPrediction": 0.0008846385753713548,
+              "observedFrequency": 0.0004615621313913534,
+              "signedGap": 0.0004230764439800014,
+              "absoluteGap": 0.0004230764439800014
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 45,
+              "meanPrediction": 0.1376243233680725,
+              "observedFrequency": 0.1111111111111111,
+              "signedGap": 0.026513212256961405,
+              "absoluteGap": 0.026513212256961405
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 11,
+              "meanPrediction": 0.22663506865501404,
+              "observedFrequency": 0.09090909090909091,
+              "signedGap": 0.13572597774592313,
+              "absoluteGap": 0.13572597774592313
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "count": 11,
+              "meanPrediction": 0.3557160198688507,
+              "observedFrequency": 0.36363636363636365,
+              "signedGap": -0.007920343767512938,
+              "absoluteGap": 0.007920343767512938
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 4,
+              "meanPrediction": 0.4440598487854004,
+              "observedFrequency": 0.75,
+              "signedGap": -0.3059401512145996,
+              "absoluteGap": 0.3059401512145996
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 3,
+              "meanPrediction": 0.5673460364341736,
+              "observedFrequency": 0.6666666666666666,
+              "signedGap": -0.09932063023249305,
+              "absoluteGap": 0.09932063023249305
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 3,
+              "meanPrediction": 0.6526183485984802,
+              "observedFrequency": 0.6666666666666666,
+              "signedGap": -0.014048318068186405,
+              "absoluteGap": 0.014048318068186405
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 5,
+              "meanPrediction": 0.7316458821296692,
+              "observedFrequency": 0.6,
+              "signedGap": 0.1316458821296692,
+              "absoluteGap": 0.1316458821296692
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 33,
+              "meanPrediction": 0.8625750541687012,
+              "observedFrequency": 0.9090909090909091,
+              "signedGap": -0.04651585492220789,
+              "absoluteGap": 0.04651585492220789
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 386,
+              "meanPrediction": 0.9786266088485718,
+              "observedFrequency": 0.9948186528497409,
+              "signedGap": -0.016192044001169137,
+              "absoluteGap": 0.016192044001169137
+            }
+          ],
+          "confidenceBins": [
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 7,
+              "coverage": 0.00035,
+              "failures": 4,
+              "errorRate": 0.5714285714285714,
+              "ci95": [
+                0.2504583645276572,
+                0.8417801447485302
+              ],
+              "meanConfidence": 0.5608285069465637,
+              "observedAccuracy": 0.4285714285714286,
+              "observedAccuracyCi95": [
+                0.15821985525146975,
+                0.7495416354723428
+              ]
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 14,
+              "coverage": 0.0007,
+              "failures": 5,
+              "errorRate": 0.35714285714285715,
+              "ci95": [
+                0.1634473175355414,
+                0.612355768960926
+              ],
+              "meanConfidence": 0.6460699439048767,
+              "observedAccuracy": 0.6428571428571428,
+              "observedAccuracyCi95": [
+                0.38764423103907397,
+                0.8365526824644586
+              ]
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 16,
+              "coverage": 0.0008,
+              "failures": 3,
+              "errorRate": 0.1875,
+              "ci95": [
+                0.06591599071428142,
+                0.4300888096197414
+              ],
+              "meanConfidence": 0.7603276968002319,
+              "observedAccuracy": 0.8125,
+              "observedAccuracyCi95": [
+                0.5699111903802586,
+                0.9340840092857186
+              ]
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 78,
+              "coverage": 0.0039,
+              "failures": 8,
+              "errorRate": 0.10256410256410256,
+              "ci95": [
+                0.052893347657463854,
+                0.18954439852402394
+              ],
+              "meanConfidence": 0.8624600172042847,
+              "observedAccuracy": 0.8974358974358975,
+              "observedAccuracyCi95": [
+                0.8104556014759761,
+                0.9471066523425361
+              ]
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 19885,
+              "coverage": 0.99425,
+              "failures": 11,
+              "errorRate": 0.0005531807895398542,
+              "ci95": [
+                0.00030892505564455216,
+                0.0009903692684717202
+              ],
+              "meanConfidence": 0.9987175464630127,
+              "observedAccuracy": 0.9994468192104602,
+              "observedAccuracyCi95": [
+                0.9990096307315283,
+                0.9996910749443555
+              ]
+            }
+          ],
+          "selectiveRisk": [
+            {
+              "minimumConfidence": 0.5,
+              "count": 20000,
+              "coverage": 1.0,
+              "failures": 31,
+              "errorRate": 0.00155,
+              "ci95": [
+                0.001092225196048294,
+                0.002199215548282407
+              ],
+              "meanConfidence": 0.9975953102111816,
+              "observedAccuracy": 0.99845,
+              "observedAccuracyCi95": [
+                0.9978007844517176,
+                0.9989077748039517
+              ]
+            },
+            {
+              "minimumConfidence": 0.6,
+              "count": 19993,
+              "coverage": 0.99965,
+              "failures": 27,
+              "errorRate": 0.0013504726654329016,
+              "ci95": [
+                0.0009283304952014607,
+                0.0019641992545495934
+              ],
+              "meanConfidence": 0.9977482557296753,
+              "observedAccuracy": 0.9986495273345671,
+              "observedAccuracyCi95": [
+                0.9980358007454504,
+                0.9990716695047985
+              ]
+            },
+            {
+              "minimumConfidence": 0.7,
+              "count": 19979,
+              "coverage": 0.99895,
+              "failures": 22,
+              "errorRate": 0.001101156214024726,
+              "ci95": [
+                0.0007273305337925071,
+                0.0016667963935157347
+              ],
+              "meanConfidence": 0.9979946613311768,
+              "observedAccuracy": 0.9988988437859753,
+              "observedAccuracyCi95": [
+                0.9983332036064843,
+                0.9992726694662075
+              ]
+            },
+            {
+              "minimumConfidence": 0.8,
+              "count": 19963,
+              "coverage": 0.99815,
+              "failures": 19,
+              "errorRate": 0.0009517607574011922,
+              "ci95": [
+                0.0006094184257604825,
+                0.001486128779689478
+              ],
+              "meanConfidence": 0.9981850981712341,
+              "observedAccuracy": 0.9990482392425988,
+              "observedAccuracyCi95": [
+                0.9985138712203105,
+                0.9993905815742395
+              ]
+            },
+            {
+              "minimumConfidence": 0.9,
+              "count": 19885,
+              "coverage": 0.99425,
+              "failures": 11,
+              "errorRate": 0.0005531807895398542,
+              "ci95": [
+                0.00030892505564455216,
+                0.0009903692684717202
+              ],
+              "meanConfidence": 0.9987175464630127,
+              "observedAccuracy": 0.9994468192104602,
+              "observedAccuracyCi95": [
+                0.9990096307315283,
+                0.9996910749443555
+              ]
+            },
+            {
+              "minimumConfidence": 0.95,
+              "count": 19749,
+              "coverage": 0.98745,
+              "failures": 7,
+              "errorRate": 0.00035444832649754416,
+              "ci95": [
+                0.00017170824297352717,
+                0.0007315268109749754
+              ],
+              "meanConfidence": 0.9992209076881409,
+              "observedAccuracy": 0.9996455516735024,
+              "observedAccuracyCi95": [
+                0.999268473189025,
+                0.9998282917570265
+              ]
+            },
+            {
+              "minimumConfidence": 0.99,
+              "count": 19355,
+              "coverage": 0.96775,
+              "failures": 3,
+              "errorRate": 0.00015499870834409713,
+              "ci95": [
+                5.2714916771378766e-05,
+                0.00045565532024039997
+              ],
+              "meanConfidence": 0.999659538269043,
+              "observedAccuracy": 0.9998450012916559,
+              "observedAccuracyCi95": [
+                0.9995443446797596,
+                0.9999472850832286
+              ]
+            }
+          ]
+        },
+        {
+          "measurementNoise": 0.005,
+          "testDataSeed": 43002,
+          "shots": 20000,
+          "observableOneCount": 654,
+          "prevalence": 0.0327,
+          "meanPredictedFlipProbability": 0.03245727717876434,
+          "eventProbabilityGap": -0.00024272282123565664,
+          "baselines": {
+            "alwaysNoFlip": {
+              "failures": 654,
+              "shots": 20000,
+              "errorRate": 0.0327,
+              "ci95": [
+                0.0303235085754209,
+                0.03525596832261448
+              ],
+              "brier": 0.0327
+            },
+            "trainingPrevalenceConstant": {
+              "probability": 0.033725,
+              "brier": 0.031631760625000005
+            }
+          },
+          "confusion": {
+            "neural": {
+              "trueNegative": 19320,
+              "falsePositive": 26,
+              "falseNegative": 52,
+              "truePositive": 602
+            },
+            "fixedMatching": {
+              "trueNegative": 19330,
+              "falsePositive": 16,
+              "falseNegative": 22,
+              "truePositive": 632
+            },
+            "matchedMatching": {
+              "trueNegative": 19330,
+              "falsePositive": 16,
+              "falseNegative": 22,
+              "truePositive": 632
+            }
+          },
+          "eventCalibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 19270,
+              "meanPrediction": 0.0012482404708862305,
+              "observedFrequency": 0.0013492475350285417,
+              "signedGap": -0.00010100706414231122,
+              "absoluteGap": 0.00010100706414231122
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 42,
+              "meanPrediction": 0.13613004982471466,
+              "observedFrequency": 0.14285714285714285,
+              "signedGap": -0.006727093032428189,
+              "absoluteGap": 0.006727093032428189
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 31,
+              "meanPrediction": 0.22877663373947144,
+              "observedFrequency": 0.22580645161290322,
+              "signedGap": 0.002970182126568216,
+              "absoluteGap": 0.002970182126568216
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "count": 18,
+              "meanPrediction": 0.34643542766571045,
+              "observedFrequency": 0.3888888888888889,
+              "signedGap": -0.042453461223178446,
+              "absoluteGap": 0.042453461223178446
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 11,
+              "meanPrediction": 0.4692274332046509,
+              "observedFrequency": 0.5454545454545454,
+              "signedGap": -0.07622711224989454,
+              "absoluteGap": 0.07622711224989454
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 10,
+              "meanPrediction": 0.5527113676071167,
+              "observedFrequency": 0.8,
+              "signedGap": -0.24728863239288335,
+              "absoluteGap": 0.24728863239288335
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 10,
+              "meanPrediction": 0.6394782662391663,
+              "observedFrequency": 0.6,
+              "signedGap": 0.03947826623916628,
+              "absoluteGap": 0.03947826623916628
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 11,
+              "meanPrediction": 0.7335500121116638,
+              "observedFrequency": 0.8181818181818182,
+              "signedGap": -0.08463180607015441,
+              "absoluteGap": 0.08463180607015441
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 42,
+              "meanPrediction": 0.863253116607666,
+              "observedFrequency": 0.9285714285714286,
+              "signedGap": -0.06531831196376259,
+              "absoluteGap": 0.06531831196376259
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 555,
+              "meanPrediction": 0.9813287258148193,
+              "observedFrequency": 0.972972972972973,
+              "signedGap": 0.008355752841846309,
+              "absoluteGap": 0.008355752841846309
+            }
+          ],
+          "confidenceBins": [
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 21,
+              "coverage": 0.00105,
+              "failures": 8,
+              "errorRate": 0.38095238095238093,
+              "ci95": [
+                0.20751011368564493,
+                0.5912134622488425
+              ],
+              "meanConfidence": 0.5412195920944214,
+              "observedAccuracy": 0.6190476190476191,
+              "observedAccuracyCi95": [
+                0.4087865377511575,
+                0.792489886314355
+              ]
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 28,
+              "coverage": 0.0014,
+              "failures": 11,
+              "errorRate": 0.39285714285714285,
+              "ci95": [
+                0.2356568654157959,
+                0.5759095570340281
+              ],
+              "meanConfidence": 0.6485337615013123,
+              "observedAccuracy": 0.6071428571428572,
+              "observedAccuracyCi95": [
+                0.42409044296597187,
+                0.7643431345842041
+              ]
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 42,
+              "coverage": 0.0021,
+              "failures": 9,
+              "errorRate": 0.21428571428571427,
+              "ci95": [
+                0.11705799876003031,
+                0.35939845316322905
+              ],
+              "meanConfidence": 0.7613565921783447,
+              "observedAccuracy": 0.7857142857142857,
+              "observedAccuracyCi95": [
+                0.640601546836771,
+                0.8829420012399697
+              ]
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 84,
+              "coverage": 0.0042,
+              "failures": 9,
+              "errorRate": 0.10714285714285714,
+              "ci95": [
+                0.057400212876644804,
+                0.19124614516344507
+              ],
+              "meanConfidence": 0.8635614514350891,
+              "observedAccuracy": 0.8928571428571429,
+              "observedAccuracyCi95": [
+                0.8087538548365549,
+                0.9425997871233552
+              ]
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 19825,
+              "coverage": 0.99125,
+              "failures": 41,
+              "errorRate": 0.002068095838587642,
+              "ci95": [
+                0.0015249272262370507,
+                0.002804194018640737
+              ],
+              "meanConfidence": 0.9982638955116272,
+              "observedAccuracy": 0.9979319041614123,
+              "observedAccuracyCi95": [
+                0.9971958059813593,
+                0.9984750727737629
+              ]
+            }
+          ],
+          "selectiveRisk": [
+            {
+              "minimumConfidence": 0.5,
+              "count": 20000,
+              "coverage": 1.0,
+              "failures": 78,
+              "errorRate": 0.0039,
+              "ci95": [
+                0.0031263065166543596,
+                0.00486423165821265
+              ],
+              "meanConfidence": 0.9962312579154968,
+              "observedAccuracy": 0.9961,
+              "observedAccuracyCi95": [
+                0.9951357683417873,
+                0.9968736934833456
+              ]
+            },
+            {
+              "minimumConfidence": 0.6,
+              "count": 19979,
+              "coverage": 0.99895,
+              "failures": 70,
+              "errorRate": 0.003503678862805946,
+              "ci95": [
+                0.0027743274890288916,
+                0.0044239210241824554
+              ],
+              "meanConfidence": 0.996709406375885,
+              "observedAccuracy": 0.9964963211371941,
+              "observedAccuracyCi95": [
+                0.9955760789758176,
+                0.9972256725109712
+              ]
+            },
+            {
+              "minimumConfidence": 0.7,
+              "count": 19951,
+              "coverage": 0.99755,
+              "failures": 59,
+              "errorRate": 0.0029572452508646184,
+              "ci95": [
+                0.0022934798292723792,
+                0.003812379697205403
+              ],
+              "meanConfidence": 0.9971980452537537,
+              "observedAccuracy": 0.9970427547491354,
+              "observedAccuracyCi95": [
+                0.9961876203027946,
+                0.9977065201707276
+              ]
+            },
+            {
+              "minimumConfidence": 0.8,
+              "count": 19909,
+              "coverage": 0.99545,
+              "failures": 50,
+              "errorRate": 0.002511426992817319,
+              "ci95": [
+                0.001905628377022136,
+                0.003309170276170373
+              ],
+              "meanConfidence": 0.9976955652236938,
+              "observedAccuracy": 0.9974885730071826,
+              "observedAccuracyCi95": [
+                0.9966908297238296,
+                0.9980943716229779
+              ]
+            },
+            {
+              "minimumConfidence": 0.9,
+              "count": 19825,
+              "coverage": 0.99125,
+              "failures": 41,
+              "errorRate": 0.002068095838587642,
+              "ci95": [
+                0.0015249272262370507,
+                0.002804194018640737
+              ],
+              "meanConfidence": 0.9982638955116272,
+              "observedAccuracy": 0.9979319041614123,
+              "observedAccuracyCi95": [
+                0.9971958059813593,
+                0.9984750727737629
+              ]
+            },
+            {
+              "minimumConfidence": 0.95,
+              "count": 19686,
+              "coverage": 0.9843,
+              "failures": 36,
+              "errorRate": 0.001828710758914965,
+              "ci95": [
+                0.0013212771667395512,
+                0.0025305293081530405
+              ],
+              "meanConfidence": 0.9987713098526001,
+              "observedAccuracy": 0.998171289241085,
+              "observedAccuracyCi95": [
+                0.997469470691847,
+                0.9986787228332604
+              ]
+            },
+            {
+              "minimumConfidence": 0.99,
+              "count": 19124,
+              "coverage": 0.9562,
+              "failures": 22,
+              "errorRate": 0.001150386948337168,
+              "ci95": [
+                0.0007598532433946798,
+                0.0017412893410254935
+              ],
+              "meanConfidence": 0.9993951916694641,
+              "observedAccuracy": 0.9988496130516629,
+              "observedAccuracyCi95": [
+                0.9982587106589745,
+                0.9992401467566053
+              ]
+            }
+          ]
+        },
+        {
+          "measurementNoise": 0.015,
+          "testDataSeed": 43003,
+          "shots": 20000,
+          "observableOneCount": 1178,
+          "prevalence": 0.0589,
+          "meanPredictedFlipProbability": 0.05914527550339699,
+          "eventProbabilityGap": 0.00024527550339698695,
+          "baselines": {
+            "alwaysNoFlip": {
+              "failures": 1178,
+              "shots": 20000,
+              "errorRate": 0.0589,
+              "ci95": [
+                0.05572098444580418,
+                0.06224842976289132
+              ],
+              "brier": 0.0589
+            },
+            "trainingPrevalenceConstant": {
+              "probability": 0.033725,
+              "brier": 0.05606457062500001
+            }
+          },
+          "confusion": {
+            "neural": {
+              "trueNegative": 18715,
+              "falsePositive": 107,
+              "falseNegative": 154,
+              "truePositive": 1024
+            },
+            "fixedMatching": {
+              "trueNegative": 18789,
+              "falsePositive": 33,
+              "falseNegative": 69,
+              "truePositive": 1109
+            },
+            "matchedMatching": {
+              "trueNegative": 18791,
+              "falsePositive": 31,
+              "falseNegative": 70,
+              "truePositive": 1108
+            }
+          },
+          "eventCalibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 18605,
+              "meanPrediction": 0.0025415734853595495,
+              "observedFrequency": 0.00472991131416286,
+              "signedGap": -0.00218833782880331,
+              "absoluteGap": 0.00218833782880331
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 112,
+              "meanPrediction": 0.1489110291004181,
+              "observedFrequency": 0.11607142857142858,
+              "signedGap": 0.032839600528989515,
+              "absoluteGap": 0.032839600528989515
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 67,
+              "meanPrediction": 0.2264166921377182,
+              "observedFrequency": 0.1791044776119403,
+              "signedGap": 0.04731221452577791,
+              "absoluteGap": 0.04731221452577791
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "count": 43,
+              "meanPrediction": 0.3474765717983246,
+              "observedFrequency": 0.32558139534883723,
+              "signedGap": 0.021895176449487352,
+              "absoluteGap": 0.021895176449487352
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 42,
+              "meanPrediction": 0.4514543414115906,
+              "observedFrequency": 0.6428571428571429,
+              "signedGap": -0.19140280144555233,
+              "absoluteGap": 0.19140280144555233
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 29,
+              "meanPrediction": 0.5513180494308472,
+              "observedFrequency": 0.4827586206896552,
+              "signedGap": 0.06855942874119197,
+              "absoluteGap": 0.06855942874119197
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 26,
+              "meanPrediction": 0.6466591954231262,
+              "observedFrequency": 0.6538461538461539,
+              "signedGap": -0.007186958423027634,
+              "absoluteGap": 0.007186958423027634
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 34,
+              "meanPrediction": 0.7592295408248901,
+              "observedFrequency": 0.7647058823529411,
+              "signedGap": -0.0054763415280509875,
+              "absoluteGap": 0.0054763415280509875
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 83,
+              "meanPrediction": 0.857161819934845,
+              "observedFrequency": 0.8433734939759037,
+              "signedGap": 0.013788325958941305,
+              "absoluteGap": 0.013788325958941305
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 959,
+              "meanPrediction": 0.9803016185760498,
+              "observedFrequency": 0.935349322210636,
+              "signedGap": 0.04495229636541376,
+              "absoluteGap": 0.04495229636541376
+            }
+          ],
+          "confidenceBins": [
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 71,
+              "coverage": 0.00355,
+              "failures": 42,
+              "errorRate": 0.5915492957746479,
+              "ci95": [
+                0.47538781849423417,
+                0.6983126973007014
+              ],
+              "meanConfidence": 0.5496780276298523,
+              "observedAccuracy": 0.4084507042253521,
+              "observedAccuracyCi95": [
+                0.30168730269929855,
+                0.5246121815057658
+              ]
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 69,
+              "coverage": 0.00345,
+              "failures": 23,
+              "errorRate": 0.3333333333333333,
+              "ci95": [
+                0.2335105070168671,
+                0.4507352457128168
+              ],
+              "meanConfidence": 0.650313675403595,
+              "observedAccuracy": 0.6666666666666667,
+              "observedAccuracyCi95": [
+                0.5492647542871831,
+                0.766489492983133
+              ]
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 101,
+              "coverage": 0.00505,
+              "failures": 20,
+              "errorRate": 0.19801980198019803,
+              "ci95": [
+                0.13200501483806298,
+                0.2861640884331373
+              ],
+              "meanConfidence": 0.7687512636184692,
+              "observedAccuracy": 0.801980198019802,
+              "observedAccuracyCi95": [
+                0.7138359115668627,
+                0.8679949851619371
+              ]
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 195,
+              "coverage": 0.00975,
+              "failures": 26,
+              "errorRate": 0.13333333333333333,
+              "ci95": [
+                0.09264026550590015,
+                0.18819381784816197
+              ],
+              "meanConfidence": 0.8536738753318787,
+              "observedAccuracy": 0.8666666666666667,
+              "observedAccuracyCi95": [
+                0.8118061821518381,
+                0.9073597344940998
+              ]
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 19564,
+              "coverage": 0.9782,
+              "failures": 150,
+              "errorRate": 0.007667143733387855,
+              "ci95": [
+                0.006537836865202663,
+                0.008989755151530995
+              ],
+              "meanConfidence": 0.9966173768043518,
+              "observedAccuracy": 0.9923328562666122,
+              "observedAccuracyCi95": [
+                0.991010244848469,
+                0.9934621631347973
+              ]
+            }
+          ],
+          "selectiveRisk": [
+            {
+              "minimumConfidence": 0.5,
+              "count": 20000,
+              "coverage": 1.0,
+              "failures": 261,
+              "errorRate": 0.01305,
+              "ci95": [
+                0.011568040346249461,
+                0.014718983568790835
+              ],
+              "meanConfidence": 0.9912915825843811,
+              "observedAccuracy": 0.98695,
+              "observedAccuracyCi95": [
+                0.9852810164312091,
+                0.9884319596537505
+              ]
+            },
+            {
+              "minimumConfidence": 0.6,
+              "count": 19929,
+              "coverage": 0.99645,
+              "failures": 219,
+              "errorRate": 0.01098901098901099,
+              "ci95": [
+                0.009632938734352522,
+                0.012533567718502956
+              ],
+              "meanConfidence": 0.9928649067878723,
+              "observedAccuracy": 0.989010989010989,
+              "observedAccuracyCi95": [
+                0.987466432281497,
+                0.9903670612656474
+              ]
+            },
+            {
+              "minimumConfidence": 0.7,
+              "count": 19860,
+              "coverage": 0.993,
+              "failures": 196,
+              "errorRate": 0.00986908358509567,
+              "ci95": [
+                0.008585927144732169,
+                0.011341812393529079
+              ],
+              "meanConfidence": 0.9940550923347473,
+              "observedAccuracy": 0.9901309164149044,
+              "observedAccuracyCi95": [
+                0.988658187606471,
+                0.9914140728552678
+              ]
+            },
+            {
+              "minimumConfidence": 0.8,
+              "count": 19759,
+              "coverage": 0.98795,
+              "failures": 176,
+              "errorRate": 0.008907333367073233,
+              "ci95": [
+                0.007689368477355731,
+                0.010316213339517693
+              ],
+              "meanConfidence": 0.9952067136764526,
+              "observedAccuracy": 0.9910926666329267,
+              "observedAccuracyCi95": [
+                0.9896837866604823,
+                0.9923106315226443
+              ]
+            },
+            {
+              "minimumConfidence": 0.9,
+              "count": 19564,
+              "coverage": 0.9782,
+              "failures": 150,
+              "errorRate": 0.007667143733387855,
+              "ci95": [
+                0.006537836865202663,
+                0.008989755151530995
+              ],
+              "meanConfidence": 0.9966173768043518,
+              "observedAccuracy": 0.9923328562666122,
+              "observedAccuracyCi95": [
+                0.991010244848469,
+                0.9934621631347973
+              ]
+            },
+            {
+              "minimumConfidence": 0.95,
+              "count": 19292,
+              "coverage": 0.9646,
+              "failures": 128,
+              "errorRate": 0.0066348745594028615,
+              "ci95": [
+                0.005583412731823353,
+                0.007882776829032153
+              ],
+              "meanConfidence": 0.9976093173027039,
+              "observedAccuracy": 0.9933651254405972,
+              "observedAccuracyCi95": [
+                0.9921172231709678,
+                0.9944165872681766
+              ]
+            },
+            {
+              "minimumConfidence": 0.99,
+              "count": 18217,
+              "coverage": 0.91085,
+              "failures": 67,
+              "errorRate": 0.0036778832958225833,
+              "ci95": [
+                0.0028973679930097444,
+                0.004667675538718325
+              ],
+              "meanConfidence": 0.9988965392112732,
+              "observedAccuracy": 0.9963221167041774,
+              "observedAccuracyCi95": [
+                0.9953323244612817,
+                0.9971026320069902
+              ]
+            }
+          ]
+        },
+        {
+          "measurementNoise": 0.03,
+          "testDataSeed": 43004,
+          "shots": 20000,
+          "observableOneCount": 2013,
+          "prevalence": 0.10065,
+          "meanPredictedFlipProbability": 0.09410849958658218,
+          "eventProbabilityGap": -0.0065415004134178195,
+          "baselines": {
+            "alwaysNoFlip": {
+              "failures": 2013,
+              "shots": 20000,
+              "errorRate": 0.10065,
+              "ci95": [
+                0.09655668912443076,
+                0.10489669007358
+              ],
+              "brier": 0.10065
+            },
+            "trainingPrevalenceConstant": {
+              "probability": 0.033725,
+              "brier": 0.09499853312500002
+            }
+          },
+          "confusion": {
+            "neural": {
+              "trueNegative": 17739,
+              "falsePositive": 248,
+              "falseNegative": 484,
+              "truePositive": 1529
+            },
+            "fixedMatching": {
+              "trueNegative": 17872,
+              "falsePositive": 115,
+              "falseNegative": 237,
+              "truePositive": 1776
+            },
+            "matchedMatching": {
+              "trueNegative": 17887,
+              "falsePositive": 100,
+              "falseNegative": 240,
+              "truePositive": 1773
+            }
+          },
+          "eventCalibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 17638,
+              "meanPrediction": 0.004522918723523617,
+              "observedFrequency": 0.016781948066674227,
+              "signedGap": -0.01225902934315061,
+              "absoluteGap": 0.01225902934315061
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 251,
+              "meanPrediction": 0.146066352725029,
+              "observedFrequency": 0.17928286852589642,
+              "signedGap": -0.03321651580086743,
+              "absoluteGap": 0.03321651580086743
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 129,
+              "meanPrediction": 0.23919972777366638,
+              "observedFrequency": 0.32558139534883723,
+              "signedGap": -0.08638166757517085,
+              "absoluteGap": 0.08638166757517085
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "count": 99,
+              "meanPrediction": 0.3448060154914856,
+              "observedFrequency": 0.37373737373737376,
+              "signedGap": -0.02893135824588816,
+              "absoluteGap": 0.02893135824588816
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 106,
+              "meanPrediction": 0.45376962423324585,
+              "observedFrequency": 0.6037735849056604,
+              "signedGap": -0.1500039606724145,
+              "absoluteGap": 0.1500039606724145
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 67,
+              "meanPrediction": 0.5557916164398193,
+              "observedFrequency": 0.582089552238806,
+              "signedGap": -0.02629793579898665,
+              "absoluteGap": 0.02629793579898665
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 69,
+              "meanPrediction": 0.6418834328651428,
+              "observedFrequency": 0.6811594202898551,
+              "signedGap": -0.03927598742471228,
+              "absoluteGap": 0.03927598742471228
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 78,
+              "meanPrediction": 0.7465731501579285,
+              "observedFrequency": 0.7564102564102564,
+              "signedGap": -0.00983710625232792,
+              "absoluteGap": 0.00983710625232792
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 125,
+              "meanPrediction": 0.8531728982925415,
+              "observedFrequency": 0.84,
+              "signedGap": 0.013172898292541535,
+              "absoluteGap": 0.013172898292541535
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 1438,
+              "meanPrediction": 0.9779086112976074,
+              "observedFrequency": 0.8894297635605007,
+              "signedGap": 0.08847884773710668,
+              "absoluteGap": 0.08847884773710668
+            }
+          ],
+          "confidenceBins": [
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 173,
+              "coverage": 0.00865,
+              "failures": 92,
+              "errorRate": 0.5317919075144508,
+              "ci95": [
+                0.45755421084279413,
+                0.6046483974898667
+              ],
+              "meanConfidence": 0.5499333143234253,
+              "observedAccuracy": 0.4682080924855492,
+              "observedAccuracyCi95": [
+                0.39535160251013335,
+                0.5424457891572059
+              ]
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 168,
+              "coverage": 0.0084,
+              "failures": 59,
+              "errorRate": 0.35119047619047616,
+              "ci95": [
+                0.28306984292412546,
+                0.4259642845609543
+              ],
+              "meanConfidence": 0.6497271656990051,
+              "observedAccuracy": 0.6488095238095238,
+              "observedAccuracyCi95": [
+                0.5740357154390456,
+                0.7169301570758746
+              ]
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 207,
+              "coverage": 0.01035,
+              "failures": 61,
+              "errorRate": 0.2946859903381642,
+              "ci95": [
+                0.23677547432166318,
+                0.3600780075531394
+              ],
+              "meanConfidence": 0.7554393410682678,
+              "observedAccuracy": 0.7053140096618358,
+              "observedAccuracyCi95": [
+                0.6399219924468607,
+                0.7632245256783368
+              ]
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 376,
+              "coverage": 0.0188,
+              "failures": 65,
+              "errorRate": 0.17287234042553193,
+              "ci95": [
+                0.13800970818431055,
+                0.21435166710167322
+              ],
+              "meanConfidence": 0.8536807298660278,
+              "observedAccuracy": 0.8271276595744681,
+              "observedAccuracyCi95": [
+                0.7856483328983268,
+                0.8619902918156894
+              ]
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 19076,
+              "coverage": 0.9538,
+              "failures": 455,
+              "errorRate": 0.02385196057873768,
+              "ci95": [
+                0.02178059187450882,
+                0.026115060759345804
+              ],
+              "meanConfidence": 0.9941527247428894,
+              "observedAccuracy": 0.9761480394212623,
+              "observedAccuracyCi95": [
+                0.9738849392406542,
+                0.9782194081254911
+              ]
+            }
+          ],
+          "selectiveRisk": [
+            {
+              "minimumConfidence": 0.5,
+              "count": 20000,
+              "coverage": 1.0,
+              "failures": 732,
+              "errorRate": 0.0366,
+              "ci95": [
+                0.034085300785314104,
+                0.03929267823148366
+              ],
+              "meanConfidence": 0.9823054671287537,
+              "observedAccuracy": 0.9634,
+              "observedAccuracyCi95": [
+                0.9607073217685164,
+                0.9659146992146859
+              ]
+            },
+            {
+              "minimumConfidence": 0.6,
+              "count": 19827,
+              "coverage": 0.99135,
+              "failures": 640,
+              "errorRate": 0.03227921521158017,
+              "ci95": [
+                0.0299082693856061,
+                0.03483136667505363
+              ],
+              "meanConfidence": 0.9860780835151672,
+              "observedAccuracy": 0.9677207847884198,
+              "observedAccuracyCi95": [
+                0.9651686333249464,
+                0.9700917306143939
+              ]
+            },
+            {
+              "minimumConfidence": 0.7,
+              "count": 19659,
+              "coverage": 0.98295,
+              "failures": 581,
+              "errorRate": 0.029553893890838803,
+              "ci95": [
+                0.02727691191717403,
+                0.032014694601765835
+              ],
+              "meanConfidence": 0.9889524579048157,
+              "observedAccuracy": 0.9704461061091612,
+              "observedAccuracyCi95": [
+                0.9679853053982341,
+                0.9727230880828259
+              ]
+            },
+            {
+              "minimumConfidence": 0.8,
+              "count": 19452,
+              "coverage": 0.9726,
+              "failures": 520,
+              "errorRate": 0.026732469668928643,
+              "ci95": [
+                0.02455747278408926,
+                0.029094355178738204
+              ],
+              "meanConfidence": 0.9914374351501465,
+              "observedAccuracy": 0.9732675303310714,
+              "observedAccuracyCi95": [
+                0.9709056448212618,
+                0.9754425272159107
+              ]
+            },
+            {
+              "minimumConfidence": 0.9,
+              "count": 19076,
+              "coverage": 0.9538,
+              "failures": 455,
+              "errorRate": 0.02385196057873768,
+              "ci95": [
+                0.02178059187450882,
+                0.026115060759345804
+              ],
+              "meanConfidence": 0.9941527247428894,
+              "observedAccuracy": 0.9761480394212623,
+              "observedAccuracyCi95": [
+                0.9738849392406542,
+                0.9782194081254911
+              ]
+            },
+            {
+              "minimumConfidence": 0.95,
+              "count": 18537,
+              "coverage": 0.92685,
+              "failures": 392,
+              "errorRate": 0.021146895398392405,
+              "ci95": [
+                0.01917280323927914,
+                0.0233194137709625
+              ],
+              "meanConfidence": 0.9960581660270691,
+              "observedAccuracy": 0.9788531046016076,
+              "observedAccuracyCi95": [
+                0.9766805862290375,
+                0.9808271967607208
+              ]
+            },
+            {
+              "minimumConfidence": 0.99,
+              "count": 16612,
+              "coverage": 0.8306,
+              "failures": 218,
+              "errorRate": 0.013123043582952083,
+              "ci95": [
+                0.011501591613621999,
+                0.014969620206180225
+              ],
+              "meanConfidence": 0.9984078407287598,
+              "observedAccuracy": 0.9868769564170479,
+              "observedAccuracyCi95": [
+                0.9850303797938198,
+                0.988498408386378
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "confirmation",
+      "parentRunId": "d3-memory-z-20261115T004549Z-confirmation-20261115T011610Z",
+      "conditions": [
+        {
+          "measurementNoise": 0.001,
+          "testDataSeed": 53001,
+          "shots": 100000,
+          "observableOneCount": 2312,
+          "prevalence": 0.02312,
+          "meanPredictedFlipProbability": 0.023343553766608238,
+          "eventProbabilityGap": 0.00022355376660823656,
+          "baselines": {
+            "alwaysNoFlip": {
+              "failures": 2312,
+              "shots": 100000,
+              "errorRate": 0.02312,
+              "ci95": [
+                0.022206699639894887,
+                0.024069937250362324
+              ],
+              "brier": 0.02312
+            },
+            "trainingPrevalenceConstant": {
+              "probability": 0.033725,
+              "brier": 0.022697931625
+            }
+          },
+          "confusion": {
+            "neural": {
+              "trueNegative": 97636,
+              "falsePositive": 52,
+              "falseNegative": 101,
+              "truePositive": 2211
+            },
+            "fixedMatching": {
+              "trueNegative": 97672,
+              "falsePositive": 16,
+              "falseNegative": 45,
+              "truePositive": 2267
+            },
+            "matchedMatching": {
+              "trueNegative": 97668,
+              "falsePositive": 20,
+              "falseNegative": 39,
+              "truePositive": 2273
+            }
+          },
+          "eventCalibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 97387,
+              "meanPrediction": 0.0008946519810706377,
+              "observedFrequency": 0.0006058303469662276,
+              "signedGap": 0.0002888216341044101,
+              "absoluteGap": 0.0002888216341044101
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 172,
+              "meanPrediction": 0.13870103657245636,
+              "observedFrequency": 0.0755813953488372,
+              "signedGap": 0.06311964122361916,
+              "absoluteGap": 0.06311964122361916
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 101,
+              "meanPrediction": 0.21884770691394806,
+              "observedFrequency": 0.09900990099009901,
+              "signedGap": 0.11983780592384904,
+              "absoluteGap": 0.11983780592384904
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "count": 54,
+              "meanPrediction": 0.3385080099105835,
+              "observedFrequency": 0.1111111111111111,
+              "signedGap": 0.2273968987994724,
+              "absoluteGap": 0.2273968987994724
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 23,
+              "meanPrediction": 0.44680067896842957,
+              "observedFrequency": 0.5652173913043478,
+              "signedGap": -0.11841671233591822,
+              "absoluteGap": 0.11841671233591822
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 14,
+              "meanPrediction": 0.5405474305152893,
+              "observedFrequency": 0.6428571428571429,
+              "signedGap": -0.1023097123418536,
+              "absoluteGap": 0.1023097123418536
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 20,
+              "meanPrediction": 0.6392358541488647,
+              "observedFrequency": 0.8,
+              "signedGap": -0.1607641458511353,
+              "absoluteGap": 0.1607641458511353
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 25,
+              "meanPrediction": 0.7395513653755188,
+              "observedFrequency": 0.84,
+              "signedGap": -0.10044863462448117,
+              "absoluteGap": 0.10044863462448117
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 201,
+              "meanPrediction": 0.8674690127372742,
+              "observedFrequency": 0.945273631840796,
+              "signedGap": -0.07780461910352188,
+              "absoluteGap": 0.07780461910352188
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 2003,
+              "meanPrediction": 0.9782872796058655,
+              "observedFrequency": 0.9860209685471792,
+              "signedGap": -0.0077336889413137655,
+              "absoluteGap": 0.0077336889413137655
+            }
+          ],
+          "confidenceBins": [
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 37,
+              "coverage": 0.00037,
+              "failures": 18,
+              "errorRate": 0.4864864864864865,
+              "ci95": [
+                0.3344640430301664,
+                0.6410510333438121
+              ],
+              "meanConfidence": 0.5484120845794678,
+              "observedAccuracy": 0.5135135135135135,
+              "observedAccuracyCi95": [
+                0.3589489666561879,
+                0.6655359569698336
+              ]
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 74,
+              "coverage": 0.00074,
+              "failures": 10,
+              "errorRate": 0.13513513513513514,
+              "ci95": [
+                0.07509048592618377,
+                0.23119178552523312
+              ],
+              "meanConfidence": 0.6554769277572632,
+              "observedAccuracy": 0.8648648648648649,
+              "observedAccuracyCi95": [
+                0.7688082144747669,
+                0.9249095140738163
+              ]
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 126,
+              "coverage": 0.00126,
+              "failures": 14,
+              "errorRate": 0.1111111111111111,
+              "ci95": [
+                0.06734979672470168,
+                0.17788357565034152
+              ],
+              "meanConfidence": 0.7728983759880066,
+              "observedAccuracy": 0.8888888888888888,
+              "observedAccuracyCi95": [
+                0.8221164243496585,
+                0.9326502032752984
+              ]
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 373,
+              "coverage": 0.00373,
+              "failures": 24,
+              "errorRate": 0.064343163538874,
+              "ci95": [
+                0.04361627741693104,
+                0.09395207555285444
+              ],
+              "meanConfidence": 0.8646237850189209,
+              "observedAccuracy": 0.935656836461126,
+              "observedAccuracyCi95": [
+                0.9060479244471455,
+                0.9563837225830689
+              ]
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 99390,
+              "coverage": 0.9939,
+              "failures": 87,
+              "errorRate": 0.0008753395713854513,
+              "ci95": [
+                0.000709769705890444,
+                0.0010794906367070864
+              ],
+              "meanConfidence": 0.9986856579780579,
+              "observedAccuracy": 0.9991246604286146,
+              "observedAccuracyCi95": [
+                0.9989205093632929,
+                0.9992902302941096
+              ]
+            }
+          ],
+          "selectiveRisk": [
+            {
+              "minimumConfidence": 0.5,
+              "count": 100000,
+              "coverage": 1.0,
+              "failures": 153,
+              "errorRate": 0.00153,
+              "ci95": [
+                0.0013061482397076873,
+                0.0017921473287508482
+              ],
+              "meanConfidence": 0.997480571269989,
+              "observedAccuracy": 0.99847,
+              "observedAccuracyCi95": [
+                0.9982078526712491,
+                0.9986938517602924
+              ]
+            },
+            {
+              "minimumConfidence": 0.6,
+              "count": 99963,
+              "coverage": 0.99963,
+              "failures": 135,
+              "errorRate": 0.001350499684883407,
+              "ci95": [
+                0.0011412031754277653,
+                0.001598119732293567
+              ],
+              "meanConfidence": 0.9976468086242676,
+              "observedAccuracy": 0.9986495003151166,
+              "observedAccuracyCi95": [
+                0.9984018802677065,
+                0.9988587968245722
+              ]
+            },
+            {
+              "minimumConfidence": 0.7,
+              "count": 99889,
+              "coverage": 0.99889,
+              "failures": 125,
+              "errorRate": 0.0012513890418364385,
+              "ci95": [
+                0.0010504988150925145,
+                0.0014906388191326212
+              ],
+              "meanConfidence": 0.9979002475738525,
+              "observedAccuracy": 0.9987486109581636,
+              "observedAccuracyCi95": [
+                0.9985093611808674,
+                0.9989495011849074
+              ]
+            },
+            {
+              "minimumConfidence": 0.8,
+              "count": 99763,
+              "coverage": 0.99763,
+              "failures": 111,
+              "errorRate": 0.001112636949570482,
+              "ci95": [
+                0.0009240899175777738,
+                0.001339602663227357
+              ],
+              "meanConfidence": 0.9981843829154968,
+              "observedAccuracy": 0.9988873630504295,
+              "observedAccuracyCi95": [
+                0.9986603973367727,
+                0.9990759100824222
+              ]
+            },
+            {
+              "minimumConfidence": 0.9,
+              "count": 99390,
+              "coverage": 0.9939,
+              "failures": 87,
+              "errorRate": 0.0008753395713854513,
+              "ci95": [
+                0.000709769705890444,
+                0.0010794906367070864
+              ],
+              "meanConfidence": 0.9986856579780579,
+              "observedAccuracy": 0.9991246604286146,
+              "observedAccuracyCi95": [
+                0.9989205093632929,
+                0.9992902302941096
+              ]
+            },
+            {
+              "minimumConfidence": 0.95,
+              "count": 98712,
+              "coverage": 0.98712,
+              "failures": 68,
+              "errorRate": 0.0006888726801199449,
+              "ci95": [
+                0.0005434816804750287,
+                0.0008731243753932077
+              ],
+              "meanConfidence": 0.9991793632507324,
+              "observedAccuracy": 0.99931112731988,
+              "observedAccuracyCi95": [
+                0.9991268756246068,
+                0.999456518319525
+              ]
+            },
+            {
+              "minimumConfidence": 0.99,
+              "count": 96600,
+              "coverage": 0.966,
+              "failures": 46,
+              "errorRate": 0.0004761904761904762,
+              "ci95": [
+                0.00035705301684797687,
+                0.0006350551371693607
+              ],
+              "meanConfidence": 0.9996548295021057,
+              "observedAccuracy": 0.9995238095238095,
+              "observedAccuracyCi95": [
+                0.9993649448628307,
+                0.999642946983152
+              ]
+            }
+          ]
+        },
+        {
+          "measurementNoise": 0.005,
+          "testDataSeed": 53002,
+          "shots": 100000,
+          "observableOneCount": 3380,
+          "prevalence": 0.0338,
+          "meanPredictedFlipProbability": 0.034100648015737534,
+          "eventProbabilityGap": 0.00030064801573753686,
+          "baselines": {
+            "alwaysNoFlip": {
+              "failures": 3380,
+              "shots": 100000,
+              "errorRate": 0.0338,
+              "ci95": [
+                0.03269772997853864,
+                0.03493808640763379
+              ],
+              "brier": 0.0338
+            },
+            "trainingPrevalenceConstant": {
+              "probability": 0.033725,
+              "brier": 0.03265756562500001
+            }
+          },
+          "confusion": {
+            "neural": {
+              "trueNegative": 96470,
+              "falsePositive": 150,
+              "falseNegative": 240,
+              "truePositive": 3140
+            },
+            "fixedMatching": {
+              "trueNegative": 96541,
+              "falsePositive": 79,
+              "falseNegative": 114,
+              "truePositive": 3266
+            },
+            "matchedMatching": {
+              "trueNegative": 96541,
+              "falsePositive": 79,
+              "falseNegative": 114,
+              "truePositive": 3266
+            }
+          },
+          "eventCalibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 96173,
+              "meanPrediction": 0.00133202422875911,
+              "observedFrequency": 0.0014869038087612948,
+              "signedGap": -0.00015487958000218486,
+              "absoluteGap": 0.00015487958000218486
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 269,
+              "meanPrediction": 0.13852311670780182,
+              "observedFrequency": 0.11152416356877323,
+              "signedGap": 0.026998953139028586,
+              "absoluteGap": 0.026998953139028586
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 129,
+              "meanPrediction": 0.22894875705242157,
+              "observedFrequency": 0.18604651162790697,
+              "signedGap": 0.042902245424514596,
+              "absoluteGap": 0.042902245424514596
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "count": 82,
+              "meanPrediction": 0.3447688817977905,
+              "observedFrequency": 0.24390243902439024,
+              "signedGap": 0.10086644277340029,
+              "absoluteGap": 0.10086644277340029
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 57,
+              "meanPrediction": 0.4534252882003784,
+              "observedFrequency": 0.40350877192982454,
+              "signedGap": 0.04991651627055388,
+              "absoluteGap": 0.04991651627055388
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 42,
+              "meanPrediction": 0.5522775053977966,
+              "observedFrequency": 0.40476190476190477,
+              "signedGap": 0.14751560063589186,
+              "absoluteGap": 0.14751560063589186
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 35,
+              "meanPrediction": 0.65062016248703,
+              "observedFrequency": 0.7142857142857143,
+              "signedGap": -0.06366555179868427,
+              "absoluteGap": 0.06366555179868427
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 50,
+              "meanPrediction": 0.7494237422943115,
+              "observedFrequency": 0.78,
+              "signedGap": -0.030576257705688503,
+              "absoluteGap": 0.030576257705688503
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 207,
+              "meanPrediction": 0.8628078699111938,
+              "observedFrequency": 0.8888888888888888,
+              "signedGap": -0.026081018977694992,
+              "absoluteGap": 0.026081018977694992
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 2956,
+              "meanPrediction": 0.9807195067405701,
+              "observedFrequency": 0.9725981055480379,
+              "signedGap": 0.00812140119253213,
+              "absoluteGap": 0.00812140119253213
+            }
+          ],
+          "confidenceBins": [
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 99,
+              "coverage": 0.00099,
+              "failures": 48,
+              "errorRate": 0.48484848484848486,
+              "ci95": [
+                0.3888222679365345,
+                0.5820066172776421
+              ],
+              "meanConfidence": 0.5489940643310547,
+              "observedAccuracy": 0.5151515151515151,
+              "observedAccuracyCi95": [
+                0.41799338272235786,
+                0.6111777320634655
+              ]
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 117,
+              "coverage": 0.00117,
+              "failures": 30,
+              "errorRate": 0.2564102564102564,
+              "ci95": [
+                0.18591679023720226,
+                0.3423907909831037
+              ],
+              "meanConfidence": 0.6538517475128174,
+              "observedAccuracy": 0.7435897435897436,
+              "observedAccuracyCi95": [
+                0.6576092090168963,
+                0.8140832097627977
+              ]
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 179,
+              "coverage": 0.00179,
+              "failures": 35,
+              "errorRate": 0.19553072625698323,
+              "ci95": [
+                0.144085311784642,
+                0.2597698056321781
+              ],
+              "meanConfidence": 0.7650100588798523,
+              "observedAccuracy": 0.8044692737430168,
+              "observedAccuracyCi95": [
+                0.7402301943678219,
+                0.855914688215358
+              ]
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 476,
+              "coverage": 0.00476,
+              "failures": 53,
+              "errorRate": 0.11134453781512606,
+              "ci95": [
+                0.0861395826262204,
+                0.14277239819897006
+              ],
+              "meanConfidence": 0.8620556592941284,
+              "observedAccuracy": 0.8886554621848739,
+              "observedAccuracyCi95": [
+                0.85722760180103,
+                0.9138604173737797
+              ]
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 99129,
+              "coverage": 0.99129,
+              "failures": 224,
+              "errorRate": 0.0022596818287282227,
+              "ci95": [
+                0.0019827631987757175,
+                0.0025751759480446314
+              ],
+              "meanConfidence": 0.9981326460838318,
+              "observedAccuracy": 0.9977403181712717,
+              "observedAccuracyCi95": [
+                0.9974248240519553,
+                0.9980172368012242
+              ]
+            }
+          ],
+          "selectiveRisk": [
+            {
+              "minimumConfidence": 0.5,
+              "count": 100000,
+              "coverage": 1.0,
+              "failures": 390,
+              "errorRate": 0.0039,
+              "ci95": [
+                0.003532288034981533,
+                0.00430582545532336
+              ],
+              "meanConfidence": 0.9962202310562134,
+              "observedAccuracy": 0.9961,
+              "observedAccuracyCi95": [
+                0.9956941745446767,
+                0.9964677119650185
+              ]
+            },
+            {
+              "minimumConfidence": 0.6,
+              "count": 99901,
+              "coverage": 0.99901,
+              "failures": 342,
+              "errorRate": 0.003423389155263711,
+              "ci95": [
+                0.0030797886222752166,
+                0.0038051775993489106
+              ],
+              "meanConfidence": 0.9966633915901184,
+              "observedAccuracy": 0.9965766108447363,
+              "observedAccuracyCi95": [
+                0.996194822400651,
+                0.9969202113777248
+              ]
+            },
+            {
+              "minimumConfidence": 0.7,
+              "count": 99784,
+              "coverage": 0.99784,
+              "failures": 312,
+              "errorRate": 0.003126753788182474,
+              "ci95": [
+                0.002798955275848377,
+                0.0034928078251681392
+              ],
+              "meanConfidence": 0.9970653653144836,
+              "observedAccuracy": 0.9968732462118175,
+              "observedAccuracyCi95": [
+                0.9965071921748319,
+                0.9972010447241516
+              ]
+            },
+            {
+              "minimumConfidence": 0.8,
+              "count": 99605,
+              "coverage": 0.99605,
+              "failures": 277,
+              "errorRate": 0.002780984890316751,
+              "ci95": [
+                0.0024725640466994703,
+                0.0031277566743412558
+              ],
+              "meanConfidence": 0.997482419013977,
+              "observedAccuracy": 0.9972190151096832,
+              "observedAccuracyCi95": [
+                0.9968722433256587,
+                0.9975274359533005
+              ]
+            },
+            {
+              "minimumConfidence": 0.9,
+              "count": 99129,
+              "coverage": 0.99129,
+              "failures": 224,
+              "errorRate": 0.0022596818287282227,
+              "ci95": [
+                0.0019827631987757175,
+                0.0025751759480446314
+              ],
+              "meanConfidence": 0.9981326460838318,
+              "observedAccuracy": 0.9977403181712717,
+              "observedAccuracyCi95": [
+                0.9974248240519553,
+                0.9980172368012242
+              ]
+            },
+            {
+              "minimumConfidence": 0.95,
+              "count": 98330,
+              "coverage": 0.9833,
+              "failures": 197,
+              "errorRate": 0.0020034577443303163,
+              "ci95": [
+                0.0017427556296921221,
+                0.0023030688079436067
+              ],
+              "meanConfidence": 0.9987058639526367,
+              "observedAccuracy": 0.9979965422556697,
+              "observedAccuracyCi95": [
+                0.9976969311920564,
+                0.9982572443703078
+              ]
+            },
+            {
+              "minimumConfidence": 0.99,
+              "count": 95345,
+              "coverage": 0.95345,
+              "failures": 114,
+              "errorRate": 0.0011956578740363942,
+              "ci95": [
+                0.000995487098201507,
+                0.0014360207761843807
+              ],
+              "meanConfidence": 0.9994016885757446,
+              "observedAccuracy": 0.9988043421259636,
+              "observedAccuracyCi95": [
+                0.9985639792238156,
+                0.9990045129017985
+              ]
+            }
+          ]
+        },
+        {
+          "measurementNoise": 0.015,
+          "testDataSeed": 53003,
+          "shots": 100000,
+          "observableOneCount": 6201,
+          "prevalence": 0.06201,
+          "meanPredictedFlipProbability": 0.06070921942591667,
+          "eventProbabilityGap": -0.0013007805740833309,
+          "baselines": {
+            "alwaysNoFlip": {
+              "failures": 6201,
+              "shots": 100000,
+              "errorRate": 0.06201,
+              "ci95": [
+                0.06053197589252674,
+                0.06352167322583377
+              ],
+              "brier": 0.06201
+            },
+            "trainingPrevalenceConstant": {
+              "probability": 0.033725,
+              "brier": 0.058964801125
+            }
+          },
+          "confusion": {
+            "neural": {
+              "trueNegative": 93307,
+              "falsePositive": 492,
+              "falseNegative": 872,
+              "truePositive": 5329
+            },
+            "fixedMatching": {
+              "trueNegative": 93565,
+              "falsePositive": 234,
+              "falseNegative": 414,
+              "truePositive": 5787
+            },
+            "matchedMatching": {
+              "trueNegative": 93590,
+              "falsePositive": 209,
+              "falseNegative": 427,
+              "truePositive": 5774
+            }
+          },
+          "eventCalibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 92941,
+              "meanPrediction": 0.0025225356221199036,
+              "observedFrequency": 0.005810137614185343,
+              "signedGap": -0.0032876019920654396,
+              "absoluteGap": 0.0032876019920654396
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 538,
+              "meanPrediction": 0.14681100845336914,
+              "observedFrequency": 0.11895910780669144,
+              "signedGap": 0.027851900646677696,
+              "absoluteGap": 0.027851900646677696
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 304,
+              "meanPrediction": 0.2341761291027069,
+              "observedFrequency": 0.24342105263157895,
+              "signedGap": -0.009244923528872045,
+              "absoluteGap": 0.009244923528872045
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "count": 213,
+              "meanPrediction": 0.3460537791252136,
+              "observedFrequency": 0.4413145539906103,
+              "signedGap": -0.09526077486539669,
+              "absoluteGap": 0.09526077486539669
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 183,
+              "meanPrediction": 0.4513079524040222,
+              "observedFrequency": 0.546448087431694,
+              "signedGap": -0.09514013502767182,
+              "absoluteGap": 0.09514013502767182
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 134,
+              "meanPrediction": 0.54826420545578,
+              "observedFrequency": 0.6119402985074627,
+              "signedGap": -0.06367609305168265,
+              "absoluteGap": 0.06367609305168265
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 136,
+              "meanPrediction": 0.6423771977424622,
+              "observedFrequency": 0.7352941176470589,
+              "signedGap": -0.09291691990459672,
+              "absoluteGap": 0.09291691990459672
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 155,
+              "meanPrediction": 0.7517578601837158,
+              "observedFrequency": 0.8129032258064516,
+              "signedGap": -0.06114536562273576,
+              "absoluteGap": 0.06114536562273576
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 346,
+              "meanPrediction": 0.8562526702880859,
+              "observedFrequency": 0.8410404624277457,
+              "signedGap": 0.015212207860340277,
+              "absoluteGap": 0.015212207860340277
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 5050,
+              "meanPrediction": 0.9814623594284058,
+              "observedFrequency": 0.9366336633663367,
+              "signedGap": 0.04482869606206907,
+              "absoluteGap": 0.04482869606206907
+            }
+          ],
+          "confidenceBins": [
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 317,
+              "coverage": 0.00317,
+              "failures": 152,
+              "errorRate": 0.4794952681388013,
+              "ci95": [
+                0.4250754731210486,
+                0.5344060725377211
+              ],
+              "meanConfidence": 0.5485112071037292,
+              "observedAccuracy": 0.5205047318611987,
+              "observedAccuracyCi95": [
+                0.4655939274622789,
+                0.5749245268789513
+              ]
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 349,
+              "coverage": 0.00349,
+              "failures": 130,
+              "errorRate": 0.37249283667621774,
+              "ci95": [
+                0.323415953467464,
+                0.4243461142400392
+              ],
+              "meanConfidence": 0.6494379639625549,
+              "observedAccuracy": 0.6275071633237823,
+              "observedAccuracyCi95": [
+                0.5756538857599608,
+                0.676584046532536
+              ]
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 459,
+              "coverage": 0.00459,
+              "failures": 103,
+              "errorRate": 0.22440087145969498,
+              "ci95": [
+                0.18861256113935554,
+                0.2647639781088003
+              ],
+              "meanConfidence": 0.761073887348175,
+              "observedAccuracy": 0.775599128540305,
+              "observedAccuracyCi95": [
+                0.7352360218911997,
+                0.8113874388606445
+              ]
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 884,
+              "coverage": 0.00884,
+              "failures": 119,
+              "errorRate": 0.1346153846153846,
+              "ci95": [
+                0.11368988995127532,
+                0.1587027274670736
+              ],
+              "meanConfidence": 0.8543881773948669,
+              "observedAccuracy": 0.8653846153846154,
+              "observedAccuracyCi95": [
+                0.8412972725329264,
+                0.8863101100487247
+              ]
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 97991,
+              "coverage": 0.97991,
+              "failures": 860,
+              "errorRate": 0.008776316192303376,
+              "ci95": [
+                0.008211287872405807,
+                0.00937985706092301
+              ],
+              "meanConfidence": 0.9966521263122559,
+              "observedAccuracy": 0.9912236838076967,
+              "observedAccuracyCi95": [
+                0.990620142939077,
+                0.9917887121275942
+              ]
+            }
+          ],
+          "selectiveRisk": [
+            {
+              "minimumConfidence": 0.5,
+              "count": 100000,
+              "coverage": 1.0,
+              "failures": 1364,
+              "errorRate": 0.01364,
+              "ci95": [
+                0.012939546208949564,
+                0.01437781899392221
+              ],
+              "meanConfidence": 0.9916808009147644,
+              "observedAccuracy": 0.98636,
+              "observedAccuracyCi95": [
+                0.9856221810060778,
+                0.9870604537910505
+              ]
+            },
+            {
+              "minimumConfidence": 0.6,
+              "count": 99683,
+              "coverage": 0.99683,
+              "failures": 1212,
+              "errorRate": 0.012158542579978532,
+              "ci95": [
+                0.01149676149457439,
+                0.01285792186474945
+              ],
+              "meanConfidence": 0.9930901527404785,
+              "observedAccuracy": 0.9878414574200215,
+              "observedAccuracyCi95": [
+                0.9871420781352506,
+                0.9885032385054257
+              ]
+            },
+            {
+              "minimumConfidence": 0.7,
+              "count": 99334,
+              "coverage": 0.99334,
+              "failures": 1082,
+              "errorRate": 0.010892544345339964,
+              "ci95": [
+                0.010265709791203732,
+                0.011557207105166986
+              ],
+              "meanConfidence": 0.9942973852157593,
+              "observedAccuracy": 0.9891074556546601,
+              "observedAccuracyCi95": [
+                0.988442792894833,
+                0.9897342902087962
+              ]
+            },
+            {
+              "minimumConfidence": 0.8,
+              "count": 98875,
+              "coverage": 0.98875,
+              "failures": 979,
+              "errorRate": 0.009901390644753476,
+              "ci95": [
+                0.009302997353369345,
+                0.010537864755009292
+              ],
+              "meanConfidence": 0.995380163192749,
+              "observedAccuracy": 0.9900986093552465,
+              "observedAccuracyCi95": [
+                0.9894621352449907,
+                0.9906970026466306
+              ]
+            },
+            {
+              "minimumConfidence": 0.9,
+              "count": 97991,
+              "coverage": 0.97991,
+              "failures": 860,
+              "errorRate": 0.008776316192303376,
+              "ci95": [
+                0.008211287872405807,
+                0.00937985706092301
+              ],
+              "meanConfidence": 0.9966521263122559,
+              "observedAccuracy": 0.9912236838076967,
+              "observedAccuracyCi95": [
+                0.990620142939077,
+                0.9917887121275942
+              ]
+            },
+            {
+              "minimumConfidence": 0.95,
+              "count": 96656,
+              "coverage": 0.96656,
+              "failures": 748,
+              "errorRate": 0.007738784969375931,
+              "ci95": [
+                0.007205575701813513,
+                0.00831112116199896
+              ],
+              "meanConfidence": 0.9975815415382385,
+              "observedAccuracy": 0.992261215030624,
+              "observedAccuracyCi95": [
+                0.991688878838001,
+                0.9927944242981865
+              ]
+            },
+            {
+              "minimumConfidence": 0.99,
+              "count": 91122,
+              "coverage": 0.91122,
+              "failures": 435,
+              "errorRate": 0.004773819714229275,
+              "ci95": [
+                0.004346680539956082,
+                0.005242711940063746
+              ],
+              "meanConfidence": 0.9988998174667358,
+              "observedAccuracy": 0.9952261802857707,
+              "observedAccuracyCi95": [
+                0.9947572880599362,
+                0.9956533194600439
+              ]
+            }
+          ]
+        },
+        {
+          "measurementNoise": 0.03,
+          "testDataSeed": 53004,
+          "shots": 100000,
+          "observableOneCount": 10189,
+          "prevalence": 0.10189,
+          "meanPredictedFlipProbability": 0.0951344221830368,
+          "eventProbabilityGap": -0.00675557781696319,
+          "baselines": {
+            "alwaysNoFlip": {
+              "failures": 10189,
+              "shots": 100000,
+              "errorRate": 0.10189,
+              "ci95": [
+                0.10003036400342492,
+                0.10378022128507595
+              ],
+              "brier": 0.10189
+            },
+            "trainingPrevalenceConstant": {
+              "probability": 0.033725,
+              "brier": 0.096154895125
+            }
+          },
+          "confusion": {
+            "neural": {
+              "trueNegative": 88479,
+              "falsePositive": 1332,
+              "falseNegative": 2464,
+              "truePositive": 7725
+            },
+            "fixedMatching": {
+              "trueNegative": 89191,
+              "falsePositive": 620,
+              "falseNegative": 1304,
+              "truePositive": 8885
+            },
+            "matchedMatching": {
+              "trueNegative": 89310,
+              "falsePositive": 501,
+              "falseNegative": 1325,
+              "truePositive": 8864
+            }
+          },
+          "eventCalibration": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 88085,
+              "meanPrediction": 0.004479288123548031,
+              "observedFrequency": 0.01808480445024692,
+              "signedGap": -0.013605516326698888,
+              "absoluteGap": 0.013605516326698888
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 1249,
+              "meanPrediction": 0.14801426231861115,
+              "observedFrequency": 0.16733386709367493,
+              "signedGap": -0.01931960477506378,
+              "absoluteGap": 0.01931960477506378
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 687,
+              "meanPrediction": 0.2401040494441986,
+              "observedFrequency": 0.29985443959243085,
+              "signedGap": -0.059750390148232246,
+              "absoluteGap": 0.059750390148232246
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "count": 480,
+              "meanPrediction": 0.34695684909820557,
+              "observedFrequency": 0.4479166666666667,
+              "signedGap": -0.10095981756846112,
+              "absoluteGap": 0.10095981756846112
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 442,
+              "meanPrediction": 0.44959256052970886,
+              "observedFrequency": 0.5452488687782805,
+              "signedGap": -0.09565630824857163,
+              "absoluteGap": 0.09565630824857163
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 337,
+              "meanPrediction": 0.5526641607284546,
+              "observedFrequency": 0.6142433234421365,
+              "signedGap": -0.06157916271368191,
+              "absoluteGap": 0.06157916271368191
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 376,
+              "meanPrediction": 0.643842875957489,
+              "observedFrequency": 0.675531914893617,
+              "signedGap": -0.031689038936127956,
+              "absoluteGap": 0.031689038936127956
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 396,
+              "meanPrediction": 0.7499620914459229,
+              "observedFrequency": 0.8181818181818182,
+              "signedGap": -0.06821972673589538,
+              "absoluteGap": 0.06821972673589538
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 770,
+              "meanPrediction": 0.8555155396461487,
+              "observedFrequency": 0.7740259740259741,
+              "signedGap": 0.08148956562017462,
+              "absoluteGap": 0.08148956562017462
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 7178,
+              "meanPrediction": 0.9779519438743591,
+              "observedFrequency": 0.8838116466982446,
+              "signedGap": 0.0941402971761145,
+              "absoluteGap": 0.0941402971761145
+            }
+          ],
+          "confidenceBins": [
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 779,
+              "coverage": 0.00779,
+              "failures": 371,
+              "errorRate": 0.4762516046213094,
+              "ci95": [
+                0.4413822300462137,
+                0.5113540493330896
+              ],
+              "meanConfidence": 0.5513836741447449,
+              "observedAccuracy": 0.5237483953786906,
+              "observedAccuracyCi95": [
+                0.4886459506669104,
+                0.5586177699537863
+              ]
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 856,
+              "coverage": 0.00856,
+              "failures": 337,
+              "errorRate": 0.39369158878504673,
+              "ci95": [
+                0.36150702400814466,
+                0.42682604817283615
+              ],
+              "meanConfidence": 0.649001955986023,
+              "observedAccuracy": 0.6063084112149533,
+              "observedAccuracyCi95": [
+                0.5731739518271639,
+                0.6384929759918554
+              ]
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 1083,
+              "coverage": 0.01083,
+              "failures": 278,
+              "errorRate": 0.2566943674976916,
+              "ci95": [
+                0.23157100165224911,
+                0.2835376687771663
+              ],
+              "meanConfidence": 0.7562636137008667,
+              "observedAccuracy": 0.7433056325023084,
+              "observedAccuracyCi95": [
+                0.7164623312228338,
+                0.7684289983477509
+              ]
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 2019,
+              "coverage": 0.02019,
+              "failures": 383,
+              "errorRate": 0.1896978702327885,
+              "ci95": [
+                0.17319171599985775,
+                0.20738257738520446
+              ],
+              "meanConfidence": 0.8533318638801575,
+              "observedAccuracy": 0.8103021297672115,
+              "observedAccuracyCi95": [
+                0.7926174226147955,
+                0.8268082840001423
+              ]
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 95263,
+              "coverage": 0.95263,
+              "failures": 2427,
+              "errorRate": 0.025476837806913493,
+              "ci95": [
+                0.024495222418704665,
+                0.026496721729254803
+              ],
+              "meanConfidence": 0.994196891784668,
+              "observedAccuracy": 0.9745231621930865,
+              "observedAccuracyCi95": [
+                0.9735032782707452,
+                0.9755047775812953
+              ]
+            }
+          ],
+          "selectiveRisk": [
+            {
+              "minimumConfidence": 0.5,
+              "count": 100000,
+              "coverage": 1.0,
+              "failures": 3796,
+              "errorRate": 0.03796,
+              "ci95": [
+                0.03679321264624143,
+                0.03916228414283432
+              ],
+              "meanConfidence": 0.9823715686798096,
+              "observedAccuracy": 0.96204,
+              "observedAccuracyCi95": [
+                0.9608377158571657,
+                0.9632067873537585
+              ]
+            },
+            {
+              "minimumConfidence": 0.6,
+              "count": 99221,
+              "coverage": 0.99221,
+              "failures": 3425,
+              "errorRate": 0.03451890224851594,
+              "ci95": [
+                0.033400885073452506,
+                0.03567296133490993
+              ],
+              "meanConfidence": 0.9857553839683533,
+              "observedAccuracy": 0.965481097751484,
+              "observedAccuracyCi95": [
+                0.9643270386650901,
+                0.9665991149265475
+              ]
+            },
+            {
+              "minimumConfidence": 0.7,
+              "count": 98365,
+              "coverage": 0.98365,
+              "failures": 3088,
+              "errorRate": 0.031393280130127585,
+              "ci95": [
+                0.03032171515555363,
+                0.03250144477164452
+              ],
+              "meanConfidence": 0.9886858463287354,
+              "observedAccuracy": 0.9686067198698725,
+              "observedAccuracyCi95": [
+                0.9674985552283555,
+                0.9696782848444464
+              ]
+            },
+            {
+              "minimumConfidence": 0.8,
+              "count": 97282,
+              "coverage": 0.97282,
+              "failures": 2810,
+              "errorRate": 0.02888509693468473,
+              "ci95": [
+                0.027851099613386825,
+                0.02995629943348438
+              ],
+              "meanConfidence": 0.9912733435630798,
+              "observedAccuracy": 0.9711149030653152,
+              "observedAccuracyCi95": [
+                0.9700437005665157,
+                0.9721489003866132
+              ]
+            },
+            {
+              "minimumConfidence": 0.9,
+              "count": 95263,
+              "coverage": 0.95263,
+              "failures": 2427,
+              "errorRate": 0.025476837806913493,
+              "ci95": [
+                0.024495222418704665,
+                0.026496721729254803
+              ],
+              "meanConfidence": 0.994196891784668,
+              "observedAccuracy": 0.9745231621930865,
+              "observedAccuracyCi95": [
+                0.9735032782707452,
+                0.9755047775812953
+              ]
+            },
+            {
+              "minimumConfidence": 0.95,
+              "count": 92625,
+              "coverage": 0.92625,
+              "failures": 2098,
+              "errorRate": 0.022650472334682863,
+              "ci95": [
+                0.02171190310664963,
+                0.023628634383369464
+              ],
+              "meanConfidence": 0.9960554838180542,
+              "observedAccuracy": 0.9773495276653171,
+              "observedAccuracyCi95": [
+                0.9763713656166305,
+                0.9782880968933504
+              ]
+            },
+            {
+              "minimumConfidence": 0.99,
+              "count": 83087,
+              "coverage": 0.83087,
+              "failures": 1178,
+              "errorRate": 0.014177909901669335,
+              "ci95": [
+                0.01339620325054031,
+                0.015004537642067179
+              ],
+              "meanConfidence": 0.99840247631073,
+              "observedAccuracy": 0.9858220900983307,
+              "observedAccuracyCi95": [
+                0.9849954623579328,
+                0.9866037967494596
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "manifestPath": "research/experiments/manifests/d3-memory-z-20261115T004549Z-diagnostics-20261115T015124Z.json"
+}
