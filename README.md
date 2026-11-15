@@ -2,6 +2,8 @@
 
 An independent study of learned quantum error decoding under measurement-noise mismatch. A Next.js editorial website, real offline Stim/PyMatching/compact-MLP experiment, and a human-readable research vault.
 
+For review, start with the [proposed final product](docs/proposed-final-product.md), [handoff](docs/handoff.md) and [measured QA](docs/qa-report.md). The current fourteen-route experience includes separate fresh-shot confirmation, confidence diagnostics and a twelve-fit training control. All visitor plots use saved evidence; training remains offline.
+
 ## Run the website
 
 Node 24.x (tested 24.22.1), npm 11.9.0. Existing cloud tasks are isolated: use this checkout; no extra worktree is required.

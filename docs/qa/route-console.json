@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-15T01:41:26.487Z",
+  "date": "2026-11-15T02:18:04.942Z",
   "browser": "system Chromium production server",
   "records": [
     {
@@ -24,6 +24,16 @@
     },
     {
       "route": "/study/confirmation",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/study/diagnostics",
+      "status": 200,
+      "errors": []
+    },
+    {
+      "route": "/study/training-control",
       "status": 200,
       "errors": []
     },

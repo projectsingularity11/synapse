@@ -1,25 +1,15 @@
 {
-  "date": "2026-11-15T01:40:42.605Z",
+  "date": "2026-11-15T02:15:14.748Z",
   "route": "/explore",
   "conditions": "Fresh headless Chromium context, local production server, activation only by explicit Open spatial view gesture",
   "initial": {
-    "transferBytes": 149396,
-    "decodedBytes": 487221,
+    "transferBytes": 150014,
+    "decodedBytes": 489088,
     "files": [
       {
         "file": "310vm2bl3xxpt.js",
         "transferBytes": 2270,
         "decodedBytes": 5364
-      },
-      {
-        "file": "2urr6-fm2smyv.js",
-        "transferBytes": 8988,
-        "decodedBytes": 32999
-      },
-      {
-        "file": "turbopack-2u1d16houkiyo.js",
-        "transferBytes": 4205,
-        "decodedBytes": 9974
       },
       {
         "file": "1x26dnhe--g_l.js",
@@ -37,6 +27,16 @@
         "decodedBytes": 207263
       },
       {
+        "file": "2urr6-fm2smyv.js",
+        "transferBytes": 8988,
+        "decodedBytes": 32999
+      },
+      {
+        "file": "turbopack-2u1d16houkiyo.js",
+        "transferBytes": 4205,
+        "decodedBytes": 9974
+      },
+      {
         "file": "0mxq5dsnhg5jx.js",
         "transferBytes": 7425,
         "decodedBytes": 23673
@@ -47,20 +47,30 @@
         "decodedBytes": 699
       },
       {
-        "file": "0dc5kl0wd7nvr.js",
-        "transferBytes": 6967,
-        "decodedBytes": 19545
+        "file": "3_d_6oo5ecvnl.js",
+        "transferBytes": 7585,
+        "decodedBytes": 21412
       }
     ]
   },
   "optionalSpatial": {
-    "transferBytes": 260451,
-    "decodedBytes": 979604,
+    "transferBytes": 270606,
+    "decodedBytes": 1005329,
     "files": [
       {
-        "file": "2fr3jkvrd9o_e.js",
-        "transferBytes": 3344,
-        "decodedBytes": 9553
+        "file": "0zhf80ywb2c-8.js",
+        "transferBytes": 4295,
+        "decodedBytes": 11764
+      },
+      {
+        "file": "2w7m3nu9hi4j1.js",
+        "transferBytes": 2237,
+        "decodedBytes": 3969
+      },
+      {
+        "file": "0dc5kl0wd7nvr.js",
+        "transferBytes": 6967,
+        "decodedBytes": 19545
       },
       {
         "file": "0bfucyh1vozk7.js",

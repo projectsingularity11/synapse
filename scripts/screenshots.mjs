@@ -18,6 +18,8 @@ for (const [name, width, height] of [
     ["/", "home"],
     ["/explore?noise=0.03", "explore"],
     ["/study", "study"],
+    ["/study/diagnostics", "diagnostics"],
+    ["/study/training-control", "training-control"],
   ]) {
     await page.goto(
       (process.env.TEST_BASE_URL ?? "http://127.0.0.1:3000") + route,

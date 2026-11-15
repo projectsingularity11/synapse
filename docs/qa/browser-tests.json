@@ -1,8 +1,8 @@
 {
   "stats": {
-    "startTime": "2026-11-15T01:37:26.548Z",
-    "duration": 42271.822,
-    "expected": 29,
+    "startTime": "2026-11-15T02:11:08.308Z",
+    "duration": 51132.944,
+    "expected": 36,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0
@@ -46,6 +46,24 @@
     },
     {
       "title": "direct navigation and accessibility /study/confirmation",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /study/diagnostics",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "direct navigation and accessibility /study/training-control",
       "ok": true,
       "statuses": [
         [
@@ -262,6 +280,51 @@
     },
     {
       "title": "every internal navigation and download link resolves",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "full noise range and calibration scale fit narrow screens",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "new diagnostics use actual base rates and conditional coverage",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "training-control model selector preserves exact independent study counts",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "conceptual readout comparison shows changes rather than raw values",
+      "ok": true,
+      "statuses": [
+        [
+          "passed"
+        ]
+      ]
+    },
+    {
+      "title": "hero opens the exact saved shot shown in its data-bound scene",
       "ok": true,
       "statuses": [
         [

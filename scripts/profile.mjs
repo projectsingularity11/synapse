@@ -7,7 +7,7 @@ const b = await chromium.launch({
 const records = [],
   errors = [];
 const base = process.env.TEST_BASE_URL || "http://127.0.0.1:3001";
-for (const route of ["/", "/explore?noise=0.03", "/study"]) {
+for (const route of ["/", "/explore?noise=0.03", "/study", "/study/diagnostics", "/study/training-control"]) {
   const p = await b.newPage({ viewport: { width: 1440, height: 1000 } });
   await p.addInitScript(() => {
     window.__longTasks = [];
@@ -51,14 +51,12 @@ for (const route of ["/", "/explore?noise=0.03", "/study"]) {
           p95Ms: sorted[Math.floor(sorted.length * 0.95)],
           note: "Idle browser rAF scheduling sample on SVG path; not GPU throughput or proof of sustained 60fps",
         },
-        resources: performance
-          .getEntriesByType("resource")
-          .map((r) => ({
-            name: r.name.split("/").slice(3).join("/"),
-            transferSize: r.transferSize,
-            decodedBodySize: r.decodedBodySize,
-            duration: r.duration,
-          })),
+        resources: performance.getEntriesByType("resource").map((r) => ({
+          name: r.name.split("/").slice(3).join("/"),
+          transferSize: r.transferSize,
+          decodedBodySize: r.decodedBodySize,
+          duration: r.duration,
+        })),
       };
     })),
   });

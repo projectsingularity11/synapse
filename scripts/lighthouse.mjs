@@ -3,7 +3,7 @@ import { chromium } from "@playwright/test";
 import fs from "node:fs";
 fs.mkdirSync("docs/qa", { recursive: true });
 let results = [];
-for (const route of ["/", "/study"])
+for (const route of ["/", "/study", "/study/diagnostics", "/study/training-control"])
   for (let run = 1; run <= 3; run++) {
     const chrome = await chromium.launch({
       executablePath: "/usr/bin/chromium",
