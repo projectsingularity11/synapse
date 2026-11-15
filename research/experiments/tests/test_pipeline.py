@@ -2,6 +2,7 @@
 import importlib.util
 import json
 import unittest
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -11,6 +12,8 @@ SPEC = importlib.util.spec_from_file_location("pipeline", Path(__file__).parents
 pipeline = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(pipeline)
 CFG = json.loads((Path(__file__).parents[1] / "configs" / "d3.json").read_text())
+sys.path.insert(0, str(Path(__file__).parents[1] / "scripts"))
+import supplement
 
 
 class PipelineTests(unittest.TestCase):
@@ -65,6 +68,48 @@ class PipelineTests(unittest.TestCase):
     def test_split_seeds_distinct(self):
         values = [CFG["trainDataSeed"], CFG["validationDataSeed"], *CFG["testDataSeeds"]]
         self.assertEqual(len(values), len(set(values)))
+
+    def test_topology_from_actual_cx(self):
+        checks = supplement.topology(pipeline.circuit(.005, CFG))
+        self.assertEqual(len(checks), 8)
+        self.assertEqual(sorted(len(c["dataQubitIds"]) for c in checks), [2, 2, 2, 2, 4, 4, 4, 4])
+        self.assertEqual(sum(c["basis"] == "X" for c in checks), 4)
+        # Ancilla 9's actual four CX data partners; not nearest-distance guesses.
+        self.assertEqual(next(c["dataQubitIds"] for c in checks if c["ancillaId"] == 9), [1, 3, 8, 10])
+
+    def test_paired_counts_meaning(self):
+        result = supplement.paired(np.array([0, 0, 1, 1]), np.array([0, 1, 0, 1]), np.array([0, 0, 0, 0]))
+        self.assertEqual(result, {"bothCorrect": 1, "neuralOnlyCorrect": 1, "matchingOnlyCorrect": 1, "bothWrong": 1})
+
+    def test_saved_artifacts_consistent(self):
+        # This check intentionally fails if the required completed study is absent.
+        r = Path(__file__).parents[2] / "results"
+        study = json.loads((r / "aggregates" / "study.json").read_text())
+        extra = json.loads((r / "aggregates" / "supplement.json").read_text())
+        traces = json.loads((r / "representative-traces" / "traces.json").read_text())
+        gallery = json.loads((r / "representative-traces" / "handpicked.json").read_text())
+        self.assertEqual(extra["parentRunId"], study["runId"])
+        self.assertEqual(gallery["parentRunId"], study["runId"])
+        self.assertEqual(len(traces["traces"]), 32)
+        for c, e in zip(study["conditions"], extra["conditions"]):
+            self.assertEqual(c["measurementNoise"], e["measurementNoise"])
+            self.assertEqual(sum(b["count"] for b in e["reliability"]), c["shots"])
+            for pair, baseline in zip(e["paired"], ["fixedMatching", "matchedMatching"]):
+                self.assertEqual(sum(pair[k] for k in ["bothCorrect", "neuralOnlyCorrect", "matchingOnlyCorrect", "bothWrong"]), c["shots"])
+                self.assertEqual(pair["matchingOnlyCorrect"] + pair["bothWrong"], c["neural"]["failures"])
+                self.assertEqual(pair["neuralOnlyCorrect"] + pair["bothWrong"], c[baseline]["failures"])
+            for b in e["reliability"]:
+                if b["count"]:
+                    self.assertTrue(b["observedFrequencyCi95"][0] <= b["observedFrequency"] <= b["observedFrequencyCi95"][1])
+        for t in traces["traces"] + gallery["traces"]:
+            self.assertEqual(len(t["detectionEvents"]), 24)
+            self.assertTrue(set(t["detectionEvents"]).issubset({0, 1}))
+            self.assertEqual(t["neuralPrediction"], int(t["neuralProbability"] >= .5))
+        for t in gallery["traces"]:
+            if t["specialSelection"] == "first-neural-error":
+                self.assertNotEqual(t["neuralPrediction"], t["observable"])
+            else:
+                self.assertNotEqual(t["neuralPrediction"], t["matchedPrediction"])
 
 
 if __name__ == "__main__":
