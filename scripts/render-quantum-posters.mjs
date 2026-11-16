@@ -4,7 +4,7 @@ import fs from "node:fs";
 import { execFileSync } from "node:child_process";
 import os from "node:os";
 import path from "node:path";
-import sharp from "sharp";
+import { featherImage } from "./feather-image.mjs";
 import { chromium } from "@playwright/test";
 const temporary = fs.mkdtempSync(path.join(os.tmpdir(), "synapse-posters-"));
 const bundle = path.join(temporary, "world.js");
@@ -70,8 +70,8 @@ try {
       },
       { name, detectors: study.detectors, events },
     );
-    await sharp(Buffer.from(data.split(",")[1], "base64"))
-      .removeAlpha()
+    const image = await featherImage(Buffer.from(data.split(",")[1], "base64"));
+    await image
       .webp({ quality: 87 })
       .toFile(`public/art/quantum-${name}.webp`);
     if (name !== "3")

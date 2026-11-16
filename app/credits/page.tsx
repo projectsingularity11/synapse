@@ -9,12 +9,16 @@ export default function Credits() {
       <div className="page-body prose">
         <h2>Typefaces</h2>
         <p>
-          El Messiri by Mohamed Gaber, Space Grotesk by Florian Karsten,
-          and Instrument Serif by Rodrigo Fuenzalida and Jordan Egstad are
-          self-hosted under the SIL Open Font License.
+          Cormorant Garamond by Christian Thalmann, Manrope by Mikhail Sharanda,
+          El Messiri by Mohamed Gaber, and Instrument Serif by Rodrigo Fuenzalida
+          and Jordan Egstad are self-hosted under the SIL Open Font License.{" "}
+          <a href="/fonts/OFL-CormorantGaramond.txt">Cormorant Garamond license</a> ·{" "}
+          <a href="/fonts/OFL-Manrope.txt">Manrope license</a> ·{" "}
           <a href="/fonts/OFL-ElMessiri.txt">El Messiri license</a> ·{" "}
-          <a href="/fonts/OFL-spacegrotesk.txt">Space Grotesk license</a> ·{" "}
           <a href="/fonts/OFL-instrumentserif.txt">Instrument Serif license</a>.
+          Directional arrow glyphs use a subset of Space Grotesk by Florian
+          Karsten under the same license.{" "}
+          <a href="/fonts/OFL-spacegrotesk.txt">Space Grotesk license</a>.
 
         </p>
         <h2>Software</h2>

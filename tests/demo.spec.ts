@@ -168,6 +168,7 @@ test("music starts on arrival when autoplay is permitted", async () => {
     await page.goto(
       (process.env.TEST_BASE_URL || "http://127.0.0.1:3000") + "/demo",
     );
+    await page.locator('.water-backdrop[data-ready="true"]').waitFor({ state: "attached" });
     await expect
       .poll(() =>
         page

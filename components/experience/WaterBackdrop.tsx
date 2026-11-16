@@ -112,14 +112,14 @@ export function WaterBackdrop() {
           simResolution: 96,
           dyeResolution: 384,
           pressureIterations: 8,
-          densityDissipation: 2.8,
-          velocityDissipation: 1.1,
-          curl: 14,
-          splatRadius: 0.018,
-          splatForce: 300,
-          shading: true,
+          densityDissipation: 4.6,
+          velocityDissipation: 2.4,
+          curl: 6,
+          splatRadius: 0.0035,
+          splatForce: 80,
+          shading: false,
           colorful: false,
-          colorPalette: ["#ff7925", "#ffa43b"],
+          colorPalette: ["#ff4918", "#ff641f"],
           hover: false,
           transparent: true,
           brightness: 0.22,
@@ -154,9 +154,11 @@ export function WaterBackdrop() {
         fluid.splatAtLocation(
           px * devicePixelRatio * scale,
           py * scale,
-          dx * 12,
-          -dy * 12,
-          iteration % 3 ? "#ff7925" : "#ffa43b",
+          Math.max(-60, Math.min(60, dx * 3)),
+          Math.max(-60, Math.min(60, -dy * 3)),
+          // The upstream API multiplies explicit RGB by ten. Keep green/blue
+          // low so repeated splats stay red-orange rather than clipping white.
+          iteration % 3 ? "#4d0e02" : "#561502",
         );
       } else {
         const ripple = rings[iteration % rings.length];
@@ -167,15 +169,15 @@ export function WaterBackdrop() {
           [
             {
               transform: "translate(-50%,-50%) rotate(-18deg) scale(.06)",
-              opacity: 0.34,
+              opacity: 0.65,
             },
             {
-              transform: "translate(-50%,-50%) rotate(12deg) scale(1.5)",
+              transform: "translate(-50%,-50%) rotate(12deg) scale(.85)",
               opacity: 0,
             },
           ],
           {
-            duration: 650,
+            duration: 420,
             easing: "cubic-bezier(.12,.45,.35,1)",
             fill: "forwards",
           },
@@ -185,6 +187,11 @@ export function WaterBackdrop() {
     }
     function move(event: PointerEvent) {
       if (quiet.current) return;
+      if (event.pointerType === "touch") {
+        node.dataset.touch = "true";
+        node.dataset.pointer = "false";
+        return;
+      }
       px = event.clientX;
       py = event.clientY;
       if (!seen) {

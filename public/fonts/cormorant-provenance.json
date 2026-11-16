@@ -1,0 +1,8 @@
+{
+  "family": "Cormorant Garamond",
+  "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/cormorantgaramond/CormorantGaramond%5Bwght%5D.ttf",
+  "sourceSha256": "b20b7d9626dd956b2c5e558692ad328b1f19e3275e2782db4fa07670d83f35e0",
+  "distributedSha256": "87fc37546967dc869760aca6bb212357bb656077899278d01802f5c60c572ce6",
+  "process": "FontTools WOFF2 container recompression; full glyph set and outlines retained",
+  "license": "SIL Open Font License 1.1; OFL-CormorantGaramond.txt"
+}

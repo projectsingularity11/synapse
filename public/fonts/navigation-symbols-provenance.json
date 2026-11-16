@@ -1,0 +1,8 @@
+{
+  "source": "SpaceGrotesk.ttf",
+  "sourceProvenance": "cinematic-provenance.json",
+  "treatment": "FontTools subset of U+2190\u201321FF directional arrows; original outlines retained, WOFF2 recompression",
+  "license": "SIL Open Font License 1.1; OFL-spacegrotesk.txt",
+  "bytes": 1348,
+  "sha256": "c0b0ab3b7e2a5682001577b137fbf727db36d5eb93673ae424dc9bca3f8c77fd"
+}

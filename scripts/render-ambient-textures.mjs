@@ -13,6 +13,11 @@ try {
   await page.setContent(`<style>html,body{margin:0;background:transparent}div{position:absolute;inset:40px;background-image:${light},url(data:image/webp;base64,${source});background-size:cover;mask-image:radial-gradient(ellipse,#000 20%,#000c 42%,transparent 71%);filter:${filter}}</style><div></div>`);
   await page.locator('div').evaluate(async el=>{const matches=getComputedStyle(el).backgroundImage.match(/url\("?(data:[^"]+)"?\)/);if(matches){const img=new Image();img.src=matches[1];await img.decode();}});
   const pixels=await page.screenshot({omitBackground:true});
-  await sharp(pixels).resize({width:512}).webp({quality:82,alphaQuality:80}).toFile(`public/art/ambient-${name}.webp`);
+  const {data,info}=await sharp(pixels).ensureAlpha().raw().toBuffer({resolveWithObject:true});
+  if(name==='ember') for(let i=0;i<data.length;i+=4){
+    const light=Math.max(data[i],data[i+1],data[i+2]);
+    data[i]=Math.min(255,light*1.12);data[i+1]=Math.round(light*.23);data[i+2]=Math.round(light*.055);
+  }
+  await sharp(data,{raw:{width:info.width,height:info.height,channels:4}}).resize({width:512}).webp({quality:82,alphaQuality:85}).toFile(`public/art/ambient-${name}.webp`);
  }
 } finally { await browser.close(); }

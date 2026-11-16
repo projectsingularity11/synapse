@@ -317,6 +317,8 @@ test("all reading content works without JavaScript or WebGL", async ({
 test("layout stays inside viewport across phone tablet desktop widths", async ({
   page,
 }) => {
+  // This matrix performs thirty complete navigations, not one page interaction.
+  test.setTimeout(90000);
   for (const width of [320, 430, 768, 1024, 1440, 1920]) {
     await page.setViewportSize({ width, height: 900 });
     for (const route of [

@@ -5,6 +5,7 @@ import "./globals.css";
 import "./experience.css";
 import "./dark-experience.css";
 import "./cinematic.css";
+import "./finish.css";
 import { WaterBackdrop } from "@/components/experience/WaterBackdrop";
 import localFont from "next/font/local";
 import { ExperienceMotion } from "@/components/experience/ExperienceMotion";
@@ -14,9 +15,15 @@ const display = localFont({
   display: "swap",
   weight: "400 700",
 });
-const space = localFont({
-  src: "../public/fonts/SpaceGrotesk.ttf",
-  variable: "--font-space",
+const bodyFont = localFont({
+  src: "../public/fonts/manrope.woff2",
+  variable: "--font-body",
+  display: "swap",
+  weight: "200 800",
+});
+const editorial = localFont({
+  src: "../public/fonts/cormorant-garamond.woff2",
+  variable: "--font-editorial",
   display: "swap",
   weight: "300 700",
 });
@@ -44,7 +51,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${space.variable} ${instrument.variable} ${display.variable}`}
+      className={`${bodyFont.variable} ${instrument.variable} ${display.variable} ${editorial.variable}`}
     >
       <body>
         <a className="skip" href="#main">

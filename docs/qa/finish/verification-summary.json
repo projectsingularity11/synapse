@@ -1,0 +1,95 @@
+{
+  "coverage": {
+    "routes": 16,
+    "viewports": [
+      [
+        320,
+        740
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        600,
+        960
+      ],
+      [
+        768,
+        1024
+      ],
+      [
+        1024,
+        768
+      ],
+      [
+        1440,
+        1000
+      ],
+      [
+        2560,
+        1440
+      ],
+      [
+        844,
+        390
+      ]
+    ],
+    "chromiumRouteViewportCombinations": 128
+  },
+  "notes": [
+    "Desktop/tablet/phone/landscape browser emulation; not physical-device testing.",
+    "Initial Chromium run: 67 passed, 2 timing failures; both passed in isolation. Readiness and navigation-matrix time budgets corrected in harness.",
+    "Initial WebKit run: 4 passed, 2 failures. Tablet assertions completed but trace teardown failed when concurrent CLI outputs collided. Motion test assumed only a poster, but WebKit correctly selected actual WebGL after initialization. Harness now accepts the active renderer. Isolated output used for recheck. A subsequent WebKit two-initialization test exceeded its original total time budget; with a 60-second budget it passed in 19.6 seconds."
+  ],
+  "reports": {
+    "chromium-results": {
+      "startTime": "2026-11-15T23:42:37.379Z",
+      "duration": 355182.004,
+      "expected": 67,
+      "skipped": 0,
+      "unexpected": 2,
+      "flaky": 0
+    },
+    "isolated-results": {
+      "startTime": "2026-11-15T23:50:56.221Z",
+      "duration": 42568.121,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "webkit-results": {
+      "startTime": "2026-11-15T23:49:36.199Z",
+      "duration": 193712.538,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 2,
+      "flaky": 0
+    },
+    "webkit-recheck": {
+      "startTime": "2026-11-15T23:54:24.077Z",
+      "duration": 87720.89199999999,
+      "expected": 1,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "webkit-motion-recheck": {
+      "startTime": "2026-11-15T23:56:56.335Z",
+      "duration": 21270.75,
+      "expected": 1,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "chromium-motion-recheck": {
+      "startTime": "2026-11-15T23:58:23.966Z",
+      "duration": 11580.539,
+      "expected": 1,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  }
+}

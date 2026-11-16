@@ -58,13 +58,15 @@ export function ResearchFilm({
       const box = section.getBoundingClientRect();
       const p =
         manual.current ??
-        Math.max(
-          0,
-          Math.min(
-            1,
-            -box.top / Math.max(1, section.offsetHeight - innerHeight),
-          ),
-        );
+        (reduced || innerWidth <= 700 || innerHeight <= 600
+          ? progress.current
+          : Math.max(
+              0,
+              Math.min(
+                1,
+                -box.top / Math.max(1, section.offsetHeight - innerHeight),
+              ),
+            ));
       progress.current = p;
       const c = Math.min(3, Math.floor(p * 4));
       track.style.transform = `translate3d(${-c * 100}%,0,0)`;
@@ -110,7 +112,7 @@ export function ResearchFilm({
     setScrub(value);
     setChapter(Math.min(3, Math.floor(value / 25)));
     window.dispatchEvent(new Event("synapse-story-seek"));
-    if (showChapter && (reduced || innerWidth <= 700))
+    if (showChapter && (reduced || innerWidth <= 700 || innerHeight <= 600))
       root.current?.scrollIntoView({
         block: "start",
         behavior: reduced ? "auto" : "smooth",

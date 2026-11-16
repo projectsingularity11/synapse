@@ -2,18 +2,18 @@
   "source": "Original Synapse metallic sculpture render: synapse-knot.webp",
   "sourceProvenance": "provenance.json",
   "generator": "node scripts/render-ambient-textures.mjs",
-  "treatment": "Static CSS light fields, Gaussian blur, tint and feathering captured once; 512px WebP textures with alpha",
+  "treatment": "Static light fields, Gaussian blur and feathering baked into 512px alpha WebP; ember RGB mapped to flame red-orange to remove yellow/white clipping.",
   "rights": "Original project work; no third-party photo",
   "files": [
     {
       "file": "ambient-silver.webp",
-      "bytes": 35662,
-      "sha256": "eb6bb6aa6397dd6d2bca228a91baab6ede60d794710ceda66520092c29947cda"
+      "bytes": 44696,
+      "sha256": "30cbd7de24bcb000e5af22ede549bac1121533ac7078d524dd4c12f783737e5c"
     },
     {
       "file": "ambient-ember.webp",
-      "bytes": 44134,
-      "sha256": "6258129626f2f2fb2826b58c1bd459e1d8667242e5c93f4867d84e61adc668d7"
+      "bytes": 42212,
+      "sha256": "dd306d946076831a8184214e20e565e2d97021c46f98fea11039aa6b66551e60"
     }
   ]
 }

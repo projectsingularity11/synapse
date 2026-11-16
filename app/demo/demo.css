@@ -700,3 +700,24 @@
   margin-bottom: 8px;
 }
 .demo-play svg{display:block;margin:auto}
+
+/* Keep technical numerals upright and legible beside the editorial headings. */
+.demo-sidebar dd {
+  font-family: var(--sans);
+  font-size: 29px;
+  font-weight: 400;
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: -.03em;
+}
+.demo-sidebar h1 { font-size: 40px; font-weight: 500; }
+.demo-sidebar dt, .demo-sidebar h2 { font-size: 11px; }
+.demo-caption p { font-size: 12px; }
+.demo-camera-tools button { min-width: 44px; min-height: 44px; }
+.demo-record-details summary { min-height: 44px; }
+@media (max-width: 760px) {
+  .demo-chapters button { font-size: 10px; min-height: 60px; }
+  .demo-sidebar dd { font-size: 28px; }
+  .demo-camera-tools { right: 8px; }
+  .demo-caption p { font-size: 12px; }
+  .demo-drag-hint { white-space: normal; width: calc(100% - 90px); text-align: center; }
+}

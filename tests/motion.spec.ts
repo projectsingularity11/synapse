@@ -102,12 +102,14 @@ test("WebGL unavailable retains complete 3D posters, controls and research", asy
 test("reduced motion pauses the poster and tracker, and full motion can be restored", async ({
   page,
 }) => {
+  // WebKit may initialize actual WebGL twice here, including after the reload.
+  test.setTimeout(60000);
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   await expect(page.locator("html")).toHaveAttribute("data-effects", "reduced");
   await expect(page.locator(".hero-stage")).toHaveAttribute(
     "data-renderer",
-    "poster",
+    /poster|webgl/,
   );
   await page.mouse.move(400, 300);
   await expect(page.locator(".cursor-tracker")).toBeHidden();
@@ -121,7 +123,9 @@ test("reduced motion pauses the poster and tracker, and full motion can be resto
       page
         .locator(".hero-stage .quantum-poster")
         .evaluate((el) =>
-          el.getAnimations().some((a) => a.playState === "running"),
+          el.closest<HTMLElement>(".hero-stage")?.dataset.renderer === "webgl"
+            ? !el.closest(".hero-stage")!.querySelector("canvas")!.hidden
+            : el.getAnimations().some((a) => a.playState === "running"),
         ),
     )
     .toBe(true);

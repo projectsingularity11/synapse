@@ -1,0 +1,208 @@
+/* Final optical and responsive refinements. Decorative light never owns layout. */
+@font-face {
+  font-family: "Synapse Symbols";
+  src: url("/fonts/navigation-symbols.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+  unicode-range: U+2190-21FF;
+}
+:root {
+  --display: var(--font-editorial), Georgia, serif;
+  --sans: "Synapse Symbols", var(--font-body), Arial, sans-serif;
+  --serif: "Synapse Symbols", var(--font-body), Arial, sans-serif;
+  --accent: #ff4f24;
+  --orange: #ff703a;
+  --muted: #bcb6b1;
+}
+body { -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { letter-spacing: -.025em; font-kerning: normal; text-wrap: balance; }
+p { text-wrap: pretty; }
+main { overflow-wrap: break-word; }
+button, input, select { font-family: var(--sans); }
+a { text-underline-offset: .25em; }
+:focus-visible { outline-color: #ff7845; }
+html { scrollbar-color: #8b4b38 #080808; }
+::selection { background: #ff6638; color: #080808; }
+
+/* Vivid at the edges, clear in the reading area. Alpha is baked into each field. */
+main > .ambient-light--silver { opacity: .3; }
+main > .ambient-light--ember { opacity: .72; }
+.cinema-hero, .research-question, .home-evidence, .research-door,
+.page-header, .page-body, .about-page, .paper-page { background-color: transparent; }
+.hero-atmosphere {
+  background: radial-gradient(ellipse at 84% 65%, #ff42191f, #ff421908 28%, transparent 65%);
+}
+/* The fallback has feathering baked into the raster, including on software GPUs. */
+.hero-stage .quantum-poster,
+html[data-graphics="software"] .hero-stage .quantum-poster {
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+.hero-stage canvas {
+  mask-image: radial-gradient(ellipse, #000 48%, #000c 65%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse, #000 48%, #000c 65%, transparent 85%);
+}
+.story-stage { background: transparent; }
+.film-copy[aria-hidden="true"] { visibility: hidden; }
+.story-stage canvas {
+  mask-image: radial-gradient(ellipse, #000 48%, #000c 65%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse, #000 48%, #000c 65%, transparent 85%);
+}
+main:has(.paper-page) > .ambient-light--silver { opacity: .14; }
+main:has(.paper-page) > .ambient-light--ember { opacity: .23; }
+
+/* A small saturated trace, rather than a sheet of flame. */
+.fluid-layer { opacity: .5; }
+.water-fallback > i,
+html[data-graphics="software"] .water-fallback > i {
+  width: 14px; height: 11px; border: 0; border-radius: 50%; box-shadow: none;
+  background: radial-gradient(ellipse, #ff4a1a 0%, #ff6226aa 24%, #ff451b30 48%, transparent 72%);
+}
+.water-fallback > i::after { display: none; }
+.cursor-tracker {
+  width: 8px; height: 8px; margin: -4px 0 0 -4px;
+  border-color: #ff5428d9; box-shadow: none;
+}
+.cursor-point {
+  width: 2px; height: 2px; margin: -1px 0 0 -1px;
+  background: #ff571e; box-shadow: none;
+}
+.water-backdrop[data-interactive="true"] .cursor-tracker { border-color: #ff6b32; background: #ff4a1810; }
+
+.cinema-header .wordmark, .footer-brand { font-family: var(--font-display), Georgia, serif; }
+.cinema-header .wordmark { flex-shrink: 0; }
+.cinema-header nav a { font-size: 12px; }
+.cinema-header .effects { min-height: 44px; font-size: 10px; }
+.sound-toggle { min-height: 44px; }
+.cinema-header.site-header { border-radius: 20px 8px 20px 8px; }
+.sound-panel { max-height: calc(100dvh - 120px); overflow-y: auto; }
+
+.cinema-hero {
+  min-height: 900px; height: auto; max-height: none;
+  padding-bottom: 110px;
+}
+.cinema-title { margin-top: clamp(60px, 6vw, 96px); }
+.cinema-title h1 {
+  font-size: clamp(58px, 5.75vw, 96px); line-height: 1.04;
+  font-weight: 500; letter-spacing: -.025em; max-width: 18ch;
+}
+.cinema-title > p { font-size: 15px; line-height: 1.9; color: #c5bfba; }
+.hero-stage { top: 24%; height: 65%; right: -1%; width: 51%; }
+.primary-action { font-size: 12px; min-height: 52px; }
+.quiet-action { font-size: 12px; }
+.research-question h2, .evidence-intro h2, .research-door-title h2 {
+  font-weight: 500; font-size: clamp(42px, 4.65vw, 72px); line-height: 1.08;
+}
+.film-copy h2 { font-weight: 500; font-size: clamp(38px, 4vw, 62px); line-height: 1.08; }
+.research-doors > a h3 { font-weight: 500; line-height: 1.14; font-size: clamp(30px, 3vw, 44px); }
+.page-header h1, .about-intro h1, .paper-title h1 { font-weight: 500; line-height: 1.06; }
+.page-header > p, .prose p { color: #c5bdb7; }
+.page-body h2 { font-weight: 500; letter-spacing: -.02em; }
+.page-body h3 { font-weight: 600; }
+.paper-title h1 { font-size: clamp(48px, 5.3vw, 84px); }
+.paper-article h2 { font-weight: 600; letter-spacing: -.02em; }
+.paper-article { min-width: 0; }
+.paper-article code, .prose code { overflow-wrap: anywhere; }
+.page-body, .controls, .replay-grid > *, .evidence-instrument > *, .about-layout > * { min-width: 0; }
+.controls { flex-wrap: wrap; }
+.controls label { flex: 1 1 150px; }
+.table-scroll { overscroll-behavior-x: contain; }
+.evidence-number > strong, .finding-band strong, .paper-at-a-glance dd { font-family: var(--sans); font-variant-numeric: lining-nums tabular-nums; letter-spacing: -.04em; }
+footer { background-color: #030303; }
+footer nav { flex-wrap: wrap; }
+footer a { min-height: 44px; display: inline-flex; align-items: center; }
+
+@media (min-width: 1800px) {
+  .cinema-hero { padding-inline: max(6vw, calc((100vw - 1720px)/2)); min-height: 1040px; }
+  .cinema-title { max-width: 800px; }
+  .hero-stage { width: min(51%, 1050px); right: max(0px, calc((100vw - 2100px)/2)); }
+  .research-question, .home-evidence, .research-door { padding-inline: max(8vw, calc((100vw - 1660px)/2)); }
+}
+@media (max-width: 1100px) and (min-width: 1001px) {
+  .cinema-header nav a { padding-inline: 9px; font-size: 11px; }
+  .cinema-title h1 { font-size: 62px; }
+}
+@media (max-width: 1000px) {
+  .cinema-hero { display: flex; flex-direction: column; height: auto; min-height: 0; padding: 130px 7vw 50px; }
+  .cinema-title { max-width: 720px; margin-top: 60px; }
+  .cinema-title h1 { font-size: clamp(48px, 7.8vw, 76px); max-width: 19ch; }
+  .cinema-title > p { max-width: 58ch; font-size: 15px; }
+  .hero-actions { gap: 28px; }
+  .hero-stage {
+    position: relative; top: auto; bottom: auto; right: auto;
+    width: 100%; height: clamp(370px, 60vw, 560px); flex-shrink: 0; margin: 28px 0 0;
+  }
+  .hero-stage .stage-readout { bottom: 18px; }
+  .cinema-header nav { max-height: calc(100dvh - 130px); overflow-y: auto; overscroll-behavior: contain; }
+  .cinema-header nav a { font-size: 28px; min-height: 44px; }
+  .cinema-header .effects { font-size: 10px; }
+  .cinema-header .menu-toggle { min-height: 44px; min-width: 44px; font-size: 12px; }
+  .research-question { gap: 6vw; }
+}
+@media (max-width: 700px) {
+  .cinema-header.site-header { inset: max(12px, env(safe-area-inset-top)) 4vw auto; gap: 10px; padding-inline: 12px; }
+  .cinema-header .wordmark { font-size: 25px; gap: 6px; }
+  .cinema-header .wordmark svg { width: 24px; height: 24px; }
+  .cinema-header .effects { font-size: 9px; padding: 6px 8px; gap: 5px; }
+  .cinema-header .menu-toggle { font-size: 11px; }
+  .sound-toggle { min-width: 30px; justify-content: center; }
+  .sound-panel { left: auto; right: 4vw; width: min(330px, 92vw); max-width: none; }
+  .cinema-hero { padding: 112px 6vw 40px; }
+  .cinema-title { margin-top: 44px; max-width: 100%; }
+  .cinema-title h1 { font-size: clamp(43px, 11.6vw, 66px); line-height: 1.05; margin-bottom: 28px; }
+  .cinema-title > p { font-size: 14px; line-height: 1.9; max-width: 45ch; }
+  .hero-actions { gap: 16px 24px; }
+  .primary-action { gap: 20px; padding-inline: 18px; font-size: 11px; }
+  .quiet-action { font-size: 11px; }
+  .hero-stage { width: 108%; height: clamp(330px, 95vw, 460px); margin: 24px 0 0 -4%; }
+  .research-question h2, .evidence-intro h2, .research-door-title h2 { font-size: clamp(38px, 10.4vw, 52px); line-height: 1.1; }
+  .research-question, .home-evidence, .research-door { padding-block: 90px; }
+  .research-film { height: auto; }
+  .film-sticky { position: relative; height: auto; min-height: 0; padding-top: 100px; }
+  .film-composition { min-height: 0; }
+  .film-visual { flex: none; height: 330px; min-height: 330px; max-height: none; margin-top: 20px; }
+  .story-stage { height: 100%; min-height: 0; width: 100%; margin-left: 0; }
+  .film-topline .micro:last-child { font-size: 10px; max-width: none; text-align: left; }
+  .chapter-navigation { gap: 12px; flex-wrap: wrap; }
+  .chapter-navigation button { min-height: 44px; font-size: 10px; }
+  .film-copy h2 { font-size: 32px; line-height: 1.1; }
+  .film-copy > p { font-size: 13px; line-height: 1.85; }
+  .film-scene-note { font-size: 10px; }
+  .page-header { padding: 125px 6vw 40px; }
+  .page-header h1 { font-size: clamp(40px, 11vw, 60px); overflow-wrap: break-word; }
+  .page-header > p { font-size: 15px; }
+  .page-body { padding-inline: 6vw; }
+  .page-body h2 { font-size: 34px; }
+  .paper-title h1 { font-size: clamp(38px, 10.3vw, 54px); }
+  .paper-article { --article-size: 15px; }
+  .paper-article h2 { font-size: 32px; }
+  .paper-masthead { font-size: 8px; line-height: 1.8; gap: 16px; flex-wrap: wrap; }
+  .about-intro h1 { font-size: clamp(52px, 14vw, 72px); }
+  .controls { gap: 16px; padding: 16px; }
+  .controls label { flex-basis: 100%; }
+  .controls select { width: 100%; }
+  footer { padding-bottom: max(32px, env(safe-area-inset-bottom)); }
+  footer nav { gap: 4px 20px; }
+}
+@media (max-width: 380px) {
+  .cinema-header.site-header { inset-inline: 3vw; gap: 6px; padding-inline: 10px; }
+  .cinema-header .wordmark { font-size: 22px; gap: 5px; }
+  .cinema-header .wordmark svg { width: 21px; height: 21px; }
+  .cinema-header .effects { font-size: 8px; padding-inline: 5px; }
+  .cinema-header .menu-toggle { font-size: 10px; }
+  .cinema-title h1 { font-size: 41px; }
+  .film-copy h2 { font-size: 29px; }
+  .hero-actions { align-items: flex-start; flex-direction: column; gap: 12px; }
+}
+@media (max-height: 600px) and (min-width: 701px) {
+  .research-film { height: auto; }
+  .film-sticky { position: relative; height: auto; min-height: 0; }
+  .film-visual { height: 380px; min-height: 380px; }
+  .film-copy h2 { font-size: 36px; }
+  .film-copy > p { font-size: 13px; }
+  .cinema-header.site-header { top: 10px; min-height: 60px; }
+  .cinema-header nav, .sound-panel { max-height: calc(100dvh - 100px); }
+}
+@media print {
+  .cinema-hero, .research-question, .home-evidence, .research-door, .page-header, .page-body, .about-page, .paper-page { background: white; color: black; }
+}
